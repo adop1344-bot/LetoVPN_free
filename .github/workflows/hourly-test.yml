@@ -1,0 +1,38 @@
+name: Hourly VPN config test
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # каждый час
+  workflow_dispatch:       # ручной запуск
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run config tester
+        run: python app.py
+
+      - name: Upload result as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: configs
+          path: configs.txt
+
+      - name: Commit and push
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git add configs.txt
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update configs $(date '+%Y-%m-%d %H:%M')"
+          git push

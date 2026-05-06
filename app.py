@@ -175,7 +175,9 @@ def main():
     print(f"Работоспособных конфигов: {len(working)}")
 
     # Генерация заголовка
-    now = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
+    from datetime import timezone, timedelta
+moscow_tz = timezone(timedelta(hours=3))
+now = datetime.now(moscow_tz).strftime("%d.%m.%Y %H:%M:%S")
     # Автоматическое определение URL репозитория
     repo = os.getenv("GITHUB_REPOSITORY", "YOUR_USERNAME/YOUR_REPO")
     this_url = f"https://raw.githubusercontent.com/{repo}/main/configs.txt"

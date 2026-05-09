@@ -38,50 +38,45 @@ FLAG_BY_CODE = {
     "AU": "🇦🇺", "NZ": "🇳🇿", "ZA": "🇿🇦"
 }
 
-def detect_country_by_name(name: str) -> str:
-    """Определяет страну по названию конфига"""
+def detect_country_by_name(name: str) -> Tuple[str, str]:
+    """Определяет страну по названию, возвращает (флаг, код_страны)"""
     # Ищем флаг
-    for flag in FLAG_BY_CODE.values():
+    for code, flag in FLAG_BY_CODE.items():
         if flag in name:
-            return flag
+            return (flag, code)
     # Ищем код страны
     match = re.search(r'\b([A-Z]{2})\b', name)
     if match:
         code = match.group(1)
         if code in FLAG_BY_CODE:
-            return FLAG_BY_CODE[code]
+            return (FLAG_BY_CODE[code], code)
     # Ищем названия
     country_names = {
-        "россия": "🇷🇺", "russia": "🇷🇺", "ru": "🇷🇺",
-        "сша": "🇺🇸", "usa": "🇺🇸", "us": "🇺🇸",
-        "германия": "🇩🇪", "germany": "🇩🇪", "de": "🇩🇪",
-        "франция": "🇫🇷", "france": "🇫🇷",
-        "нидерланды": "🇳🇱", "netherlands": "🇳🇱"
+        "россия": ("🇷🇺", "RU"), "russia": ("🇷🇺", "RU"), "ru": ("🇷🇺", "RU"),
+        "сша": ("🇺🇸", "US"), "usa": ("🇺🇸", "US"), "us": ("🇺🇸", "US"),
+        "германия": ("🇩🇪", "DE"), "germany": ("🇩🇪", "DE"), "de": ("🇩🇪", "DE"),
+        "франция": ("🇫🇷", "FR"), "france": ("🇫🇷", "FR"),
+        "нидерланды": ("🇳🇱", "NL"), "netherlands": ("🇳🇱", "NL")
     }
     name_lower = name.lower()
-    for key, flag in country_names.items():
+    for key, (flag, code) in country_names.items():
         if key in name_lower:
-            return flag
-    return "🏳️"
+            return (flag, code)
+    return ("🏳️", "ZZ")
 
 def check_youtube_access(host: str, port: int, timeout: float) -> bool:
-    """
-    Проверяет доступ к YouTube через прокси
-    Возвращает True если YouTube открывается
-    """
+    """Проверяет доступ к YouTube через прокси"""
     try:
         proxies = {
             "http": f"socks5://{host}:{port}",
             "https": f"socks5://{host}:{port}"
         }
-        # Пробуем открыть youtube.com
         response = requests.get(
             "https://www.youtube.com",
             proxies=proxies,
             timeout=timeout,
             allow_redirects=True
         )
-        # Если статус 200 или редирект на youtube.com - значит доступ есть
         return response.status_code == 200 or "youtube.com" in response.url
     except:
         return False
@@ -149,10 +144,10 @@ def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
     except:
         return None
 
-def process_config(config: str) -> Optional[Tuple[str, float]]:
+def process_config(config: str) -> Optional[Tuple[str, str, float]]:
     """
     Тестирует конфиг.
-    Возвращает (новый_конфиг, пинг) или None
+    Возвращает (новый_конфиг, код_страны, пинг) или None
     """
     # Пропуск anycast
     if 'anycast' in config.lower():
@@ -176,7 +171,7 @@ def process_config(config: str) -> Optional[Tuple[str, float]]:
         return None
 
     # Определение страны
-    country_flag = detect_country_by_name(name_part)
+    flag, country_code = detect_country_by_name(name_part)
     
     # Молния если пинг хороший
     lightning = "⚡" if ping_ms < PING_GOOD_THRESHOLD else ""
@@ -184,14 +179,14 @@ def process_config(config: str) -> Optional[Tuple[str, float]]:
     # Проверка CIDR-метки
     cidr_note = " обход белых листов" if '[*CIDR]' in name_part else ""
 
-    # Проверка доступа к YouTube
+    # Проверка доступа к YouTube (только если есть CIDR)
     youtube_note = ""
-    if '[*CIDR]' in name_part:  # проверяем только если есть CIDR
+    if '[*CIDR]' in name_part:
         if check_youtube_access(host, port, TIMEOUT):
             youtube_note = " yt"
 
     # Формирование нового названия
-    prefix = f"#{country_flag}"
+    prefix = f"#{flag}"
     if lightning:
         prefix += f" {lightning}"
     if cidr_note:
@@ -210,7 +205,7 @@ def process_config(config: str) -> Optional[Tuple[str, float]]:
     else:
         new_config = config + new_name
 
-    return (new_config, ping_ms)
+    return (new_config, country_code, ping_ms)
 
 def main():
     print("Загрузка конфигов из источников...")
@@ -231,7 +226,7 @@ def main():
     print(f"После пропуска anycast: {len(filtered)}")
 
     # Многопоточное тестирование
-    results = []  # (config, ping)
+    results = []  # (config, country_code, ping)
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         future_to_config = {executor.submit(process_config, cfg): cfg for cfg in filtered}
         for future in concurrent.futures.as_completed(future_to_config):
@@ -241,33 +236,45 @@ def main():
 
     print(f"Работоспособных конфигов: {len(results)}")
     
-    # Сортировка по пингу для 50fastest
-    results_sorted_by_ping = sorted(results, key=lambda x: x[1])
+    # Сортировка по странам для configs.txt
+    results_sorted_by_country = sorted(results, key=lambda x: x[1])
     
-    # Создаём заголовок
+    # Сортировка по пингу для 50fastest.txt
+    results_sorted_by_ping = sorted(results, key=lambda x: x[2])
+    
+    # Создаём заголовки
     moscow_tz = timezone(timedelta(hours=3))
     now = datetime.now(moscow_tz).strftime("%d.%m.%Y %H:%M:%S")
     repo = os.getenv("GITHUB_REPOSITORY", "YOUR_USERNAME/YOUR_REPO")
     this_url = f"https://raw.githubusercontent.com/{repo}/main/configs.txt"
     
-    header = f"""#announce: Обновлено: {now}, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+    # Общий заголовок для configs.txt
+    header_configs = f"""#announce: Обновлено: {now}, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #profile-web-page-url: {this_url}
 #profile-title: TG@LetoVPN_Free
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 """
-    # Сохраняем configs.txt (все конфиги, порядок как получился)
+    # Заголовок для 50fastest.txt с пометкой 50fast
+    header_fastest = f"""#announce: Обновлено: {now}, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#profile-web-page-url: {this_url}
+#profile-title: 50fast TG@LetoVPN_Free
+#support-url: https://t.me/@why_im_gay
+#profile-update-interval: 1
+
+"""
+    # Сохраняем configs.txt (все конфиги, сортировка по странам)
     with open("configs.txt", "w", encoding="utf-8") as f:
-        f.write(header)
-        for config, _ in results:
+        f.write(header_configs)
+        for config, _, _ in results_sorted_by_country:
             f.write(config + "\n")
     
     # Создаём 50fastest.txt (50 самых быстрых)
     fastest = results_sorted_by_ping[:50]
     with open("50fastest.txt", "w", encoding="utf-8") as f:
-        f.write(header)
-        for config, _ in fastest:
+        f.write(header_fastest)
+        for config, _, _ in fastest:
             f.write(config + "\n")
     
     print(f"Готово! configs.txt ({len(results)} конфигов) и 50fastest.txt ({len(fastest)} быстрых конфигов) сохранены.")

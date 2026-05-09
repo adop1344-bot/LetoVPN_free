@@ -14,7 +14,8 @@ SOURCES = [
     "https://raw.githubusercontent.com/GoldCaviar/vpn-configs-for-russia/refs/heads/main/Vless-Reality-White-Lists-Rus-Mobile.txt",
     "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/WHITE-CIDR-RU-checked.txt",
     "https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/WhiteKeys",
-    "https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/RU_other"
+    "https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/RU_other",
+    "https://github.com/AvenCores/goida-vpn-configs/raw/refs/heads/main/githubmirror/26.txt"
 ]
 TIMEOUT = 3.0          # таймаут теста в секундах
 MAX_WORKERS = 30       # число потоков

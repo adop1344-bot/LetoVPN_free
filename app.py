@@ -6,7 +6,8 @@ import time
 import base64
 import json
 import os
-from datetime import datetime
+import re
+from datetime import datetime, timezone, timedelta
 from typing import List, Tuple, Optional
 
 # ----- Конфигурация -----
@@ -17,13 +18,76 @@ SOURCES = [
     "https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/RU_other",
     "https://github.com/AvenCores/goida-vpn-configs/raw/refs/heads/main/githubmirror/26.txt"
 ]
-TIMEOUT = 3.0          # таймаут теста в секундах
-MAX_WORKERS = 30       # число потоков
-PING_GOOD_THRESHOLD = 1000  # мс, ниже этой границы ставим ⚡
+TIMEOUT = 3.0
+MAX_WORKERS = 30
+PING_GOOD_THRESHOLD = 1000
 
-# ----- Вспомогательные функции -----
+# ----- Страны и их флаги -----
+FLAG_BY_CODE = {
+    "RU": "🇷🇺", "UA": "🇺🇦", "BY": "🇧🇾", "KZ": "🇰🇿",
+    "US": "🇺🇸", "CA": "🇨🇦", "MX": "🇲🇽",
+    "DE": "🇩🇪", "FR": "🇫🇷", "GB": "🇬🇧", "IT": "🇮🇹", "ES": "🇪🇸",
+    "NL": "🇳🇱", "PL": "🇵🇱", "SE": "🇸🇪", "NO": "🇳🇴", "FI": "🇫🇮",
+    "DK": "🇩🇰", "BE": "🇧🇪", "CH": "🇨🇭", "AT": "🇦🇹", "CZ": "🇨🇿",
+    "HU": "🇭🇺", "RO": "🇷🇴", "BG": "🇧🇬", "GR": "🇬🇷", "PT": "🇵🇹",
+    "IE": "🇮🇪", "IS": "🇮🇸", "LT": "🇱🇹", "LV": "🇱🇻", "EE": "🇪🇪",
+    "JP": "🇯🇵", "KR": "🇰🇷", "CN": "🇨🇳", "TW": "🇹🇼", "HK": "🇭🇰",
+    "SG": "🇸🇬", "IN": "🇮🇳", "ID": "🇮🇩", "MY": "🇲🇾", "TH": "🇹🇭",
+    "VN": "🇻🇳", "PH": "🇵🇭", "TR": "🇹🇷", "IL": "🇮🇱", "SA": "🇸🇦",
+    "AE": "🇦🇪", "BR": "🇧🇷", "AR": "🇦🇷", "CL": "🇨🇱", "CO": "🇨🇴",
+    "AU": "🇦🇺", "NZ": "🇳🇿", "ZA": "🇿🇦"
+}
+
+def detect_country_by_name(name: str) -> str:
+    """Определяет страну по названию конфига"""
+    # Ищем флаг
+    for flag in FLAG_BY_CODE.values():
+        if flag in name:
+            return flag
+    # Ищем код страны
+    match = re.search(r'\b([A-Z]{2})\b', name)
+    if match:
+        code = match.group(1)
+        if code in FLAG_BY_CODE:
+            return FLAG_BY_CODE[code]
+    # Ищем названия
+    country_names = {
+        "россия": "🇷🇺", "russia": "🇷🇺", "ru": "🇷🇺",
+        "сша": "🇺🇸", "usa": "🇺🇸", "us": "🇺🇸",
+        "германия": "🇩🇪", "germany": "🇩🇪", "de": "🇩🇪",
+        "франция": "🇫🇷", "france": "🇫🇷",
+        "нидерланды": "🇳🇱", "netherlands": "🇳🇱"
+    }
+    name_lower = name.lower()
+    for key, flag in country_names.items():
+        if key in name_lower:
+            return flag
+    return "🏳️"
+
+def check_youtube_access(host: str, port: int, timeout: float) -> bool:
+    """
+    Проверяет доступ к YouTube через прокси
+    Возвращает True если YouTube открывается
+    """
+    try:
+        proxies = {
+            "http": f"socks5://{host}:{port}",
+            "https": f"socks5://{host}:{port}"
+        }
+        # Пробуем открыть youtube.com
+        response = requests.get(
+            "https://www.youtube.com",
+            proxies=proxies,
+            timeout=timeout,
+            allow_redirects=True
+        )
+        # Если статус 200 или редирект на youtube.com - значит доступ есть
+        return response.status_code == 200 or "youtube.com" in response.url
+    except:
+        return False
+
 def fetch_configs_from_url(url: str) -> List[str]:
-    """Загружает строки из URL, фильтрует пустые и комментарии (#)"""
+    """Загружает конфиги из URL"""
     try:
         r = requests.get(url, timeout=10)
         r.raise_for_status()
@@ -40,8 +104,7 @@ def fetch_configs_from_url(url: str) -> List[str]:
         return []
 
 def extract_host_port(config: str) -> Tuple[Optional[str], Optional[int]]:
-    """Извлекает хост и порт из строки vless://, vmess://, trojan:// и т.д."""
-    # vless://uuid@host:port?params#name
+    """Извлекает хост и порт из конфига"""
     if config.startswith('vless://'):
         parts = config[8:].split('@')
         if len(parts) == 2:
@@ -52,7 +115,6 @@ def extract_host_port(config: str) -> Tuple[Optional[str], Optional[int]]:
                     return host, int(port_str)
                 except:
                     pass
-    # vmess://base64
     elif config.startswith('vmess://'):
         try:
             b64 = config[8:]
@@ -65,7 +127,6 @@ def extract_host_port(config: str) -> Tuple[Optional[str], Optional[int]]:
                 return host, int(port)
         except:
             pass
-    # trojan://password@host:port?params#name
     elif config.startswith('trojan://'):
         parts = config[9:].split('@')
         if len(parts) == 2:
@@ -79,7 +140,7 @@ def extract_host_port(config: str) -> Tuple[Optional[str], Optional[int]]:
     return None, None
 
 def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
-    """Возвращает время установки соединения в мс или None, если не удалось"""
+    """Проверяет доступность хоста:порта"""
     try:
         start = time.time()
         with socket.create_connection((host, port), timeout=timeout):
@@ -88,64 +149,68 @@ def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
     except:
         return None
 
-def process_config(config: str) -> Optional[str]:
+def process_config(config: str) -> Optional[Tuple[str, float]]:
     """
-    Тестирует один конфиг.
-    Возвращает строку для итогового файла или None, если конфиг не прошёл.
+    Тестирует конфиг.
+    Возвращает (новый_конфиг, пинг) или None
     """
-    # 1. Пропуск anycast
+    # Пропуск anycast
     if 'anycast' in config.lower():
         return None
 
-    # 2. Извлечение хоста, порта и названия
+    # Извлечение хоста и порта
     host, port = extract_host_port(config)
     if not host or not port:
         return None
 
-    # Извлечение названия (часть после #)
+    # Извлечение названия
     name_part = ""
     if '#' in config:
         name_part = config.split('#', 1)[1].strip()
     else:
         name_part = ""
 
-    # 3. Проверка CIDR-метки
-    cidr_note = ""
-    if '[*CIDR]' in name_part:
-        cidr_note = " обход белых листов"
-
-    # 4. TCP-пинг
+    # TCP-пинг
     ping_ms = tcp_ping(host, port, TIMEOUT)
     if ping_ms is None:
-        return None  # недоступен
+        return None
 
-    # 5. Добавляем ⚡ если пинг < 1000 мс
+    # Определение страны
+    country_flag = detect_country_by_name(name_part)
+    
+    # Молния если пинг хороший
     lightning = "⚡" if ping_ms < PING_GOOD_THRESHOLD else ""
 
-    # 6. Формируем новое название (без страны)
-    #    формат: "#⚡ обход белых листов исходное_название"
-    prefix = "#"
+    # Проверка CIDR-метки
+    cidr_note = " обход белых листов" if '[*CIDR]' in name_part else ""
+
+    # Проверка доступа к YouTube
+    youtube_note = ""
+    if '[*CIDR]' in name_part:  # проверяем только если есть CIDR
+        if check_youtube_access(host, port, TIMEOUT):
+            youtube_note = " yt"
+
+    # Формирование нового названия
+    prefix = f"#{country_flag}"
     if lightning:
-        prefix += f"{lightning} "
+        prefix += f" {lightning}"
     if cidr_note:
-        prefix += f"{cidr_note} "
+        prefix += f"{cidr_note}"
+    if youtube_note:
+        prefix += youtube_note
     
-    # Убираем лишние пробелы в конце
-    prefix = prefix.strip()
-    
-    # Добавляем исходное название, если оно есть
     if name_part:
         new_name = f"{prefix} {name_part}"
     else:
         new_name = prefix
 
-    # Заменяем старую часть #... на новую
+    # Сборка итогового конфига
     if '#' in config:
         new_config = config.split('#', 1)[0] + new_name
     else:
         new_config = config + new_name
 
-    return new_config
+    return (new_config, ping_ms)
 
 def main():
     print("Загрузка конфигов из источников...")
@@ -156,30 +221,32 @@ def main():
         all_configs.extend(cfgs)
 
     print(f"Всего получено: {len(all_configs)}")
-    # Удаляем дубликаты (по строке)
+    
+    # Удаление дубликатов
     all_configs = list(dict.fromkeys(all_configs))
     print(f"После удаления дублей: {len(all_configs)}")
 
-    # Применяем фильтр anycast до многопоточности (быстро)
+    # Фильтрация anycast
     filtered = [c for c in all_configs if 'anycast' not in c.lower()]
     print(f"После пропуска anycast: {len(filtered)}")
 
     # Многопоточное тестирование
-    working = []
+    results = []  # (config, ping)
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         future_to_config = {executor.submit(process_config, cfg): cfg for cfg in filtered}
         for future in concurrent.futures.as_completed(future_to_config):
             res = future.result()
             if res is not None:
-                working.append(res)
+                results.append(res)
 
-    print(f"Работоспособных конфигов: {len(working)}")
-
-    # Генерация заголовка
-    from datetime import timezone, timedelta
+    print(f"Работоспособных конфигов: {len(results)}")
+    
+    # Сортировка по пингу для 50fastest
+    results_sorted_by_ping = sorted(results, key=lambda x: x[1])
+    
+    # Создаём заголовок
     moscow_tz = timezone(timedelta(hours=3))
     now = datetime.now(moscow_tz).strftime("%d.%m.%Y %H:%M:%S")
-    # Автоматическое определение URL репозитория
     repo = os.getenv("GITHUB_REPOSITORY", "YOUR_USERNAME/YOUR_REPO")
     this_url = f"https://raw.githubusercontent.com/{repo}/main/configs.txt"
     
@@ -190,13 +257,20 @@ def main():
 #profile-update-interval: 1
 
 """
-    # Сохраняем результат
+    # Сохраняем configs.txt (все конфиги, порядок как получился)
     with open("configs.txt", "w", encoding="utf-8") as f:
         f.write(header)
-        for line in working:
-            f.write(line + "\n")
-
-    print("Готово! configs.txt сохранён.")
+        for config, _ in results:
+            f.write(config + "\n")
+    
+    # Создаём 50fastest.txt (50 самых быстрых)
+    fastest = results_sorted_by_ping[:50]
+    with open("50fastest.txt", "w", encoding="utf-8") as f:
+        f.write(header)
+        for config, _ in fastest:
+            f.write(config + "\n")
+    
+    print(f"Готово! configs.txt ({len(results)} конфигов) и 50fastest.txt ({len(fastest)} быстрых конфигов) сохранены.")
 
 if __name__ == "__main__":
     main()

@@ -33,6 +33,6 @@ jobs:
         run: |
           git config user.name "GitHub Action"
           git config user.email "action@github.com"
-          git add configs.txt 50fastest.txt
+          git add configs.txt ru.txt
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update configs $(date '+%Y-%m-%d %H:%M')"
           git push

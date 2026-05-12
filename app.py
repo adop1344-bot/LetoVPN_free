@@ -16,7 +16,8 @@ SOURCES = [
     "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/WHITE-CIDR-RU-checked.txt",
     "https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/WhiteKeys",
     "https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/RU_other",
-    "https://github.com/AvenCores/goida-vpn-configs/raw/refs/heads/main/githubmirror/26.txt"
+    "https://github.com/AvenCores/goida-vpn-configs/raw/refs/heads/main/githubmirror/26.txt",
+    "https://raw.githubusercontent.com/luxxuria/harvester/refs/heads/main/top_600.txt"
 ]
 TIMEOUT = 3.0
 MAX_WORKERS = 30
@@ -63,23 +64,6 @@ def detect_country_by_name(name: str) -> Tuple[str, str]:
         if key in name_lower:
             return (flag, code)
     return ("🏳️", "ZZ")
-
-def check_youtube_access(host: str, port: int, timeout: float) -> bool:
-    """Проверяет доступ к YouTube через прокси"""
-    try:
-        proxies = {
-            "http": f"socks5://{host}:{port}",
-            "https": f"socks5://{host}:{port}"
-        }
-        response = requests.get(
-            "https://www.youtube.com",
-            proxies=proxies,
-            timeout=timeout,
-            allow_redirects=True
-        )
-        return response.status_code == 200 or "youtube.com" in response.url
-    except:
-        return False
 
 def fetch_configs_from_url(url: str) -> List[str]:
     """Загружает конфиги из URL"""
@@ -179,23 +163,21 @@ def process_config(config: str) -> Optional[Tuple[str, str, float]]:
     # Проверка CIDR-метки
     cidr_note = " обход белых листов" if '[*CIDR]' in name_part else ""
 
-    # Проверка доступа к YouTube (только если есть CIDR)
-    youtube_note = ""
-    if '[*CIDR]' in name_part:
-        if check_youtube_access(host, port, TIMEOUT):
-            youtube_note = " yt"
-
-    # Формирование нового названия
-    prefix = f"#{flag}"
+    # Формирование нового названия (без флага России!)
+    # Для всех стран, включая Россию, убираем флаг из названия
+    prefix = "#"
     if lightning:
         prefix += f" {lightning}"
     if cidr_note:
         prefix += f"{cidr_note}"
-    if youtube_note:
-        prefix += youtube_note
     
     if name_part:
-        new_name = f"{prefix} {name_part}"
+        # Убираем флаг из оригинального названия, если он там был
+        clean_name = name_part
+        for code, f in FLAG_BY_CODE.items():
+            if f in clean_name:
+                clean_name = clean_name.replace(f, "").strip()
+        new_name = f"{prefix} {clean_name}"
     else:
         new_name = prefix
 
@@ -236,19 +218,30 @@ def main():
 
     print(f"Работоспособных конфигов: {len(results)}")
     
-    # Сортировка по странам для configs.txt
-    results_sorted_by_country = sorted(results, key=lambda x: x[1])
+    # Разделяем на российские и остальные
+    ru_configs = []      # только Россия
+    other_configs = []   # все остальные страны
     
-    # Сортировка по пингу для 50fastest.txt
-    results_sorted_by_ping = sorted(results, key=lambda x: x[2])
+    for config, country_code, ping in results:
+        if country_code == "RU":
+            ru_configs.append((config, ping))
+        else:
+            other_configs.append((config, country_code, ping))
+    
+    # Сортируем остальные по странам
+    other_configs.sort(key=lambda x: x[1])
+    
+    # Сортируем российские по пингу (для ru.txt)
+    ru_configs.sort(key=lambda x: x[1])
     
     # Создаём заголовки
     moscow_tz = timezone(timedelta(hours=3))
     now = datetime.now(moscow_tz).strftime("%d.%m.%Y %H:%M:%S")
     repo = os.getenv("GITHUB_REPOSITORY", "YOUR_USERNAME/YOUR_REPO")
     this_url = f"https://raw.githubusercontent.com/{repo}/main/configs.txt"
+    ru_url = f"https://raw.githubusercontent.com/{repo}/main/ru.txt"
     
-    # Общий заголовок для configs.txt
+    # Заголовок для configs.txt (без России)
     header_configs = f"""#announce: Обновлено: {now}, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #profile-web-page-url: {this_url}
 #profile-title: TG@LetoVPN_Free
@@ -256,28 +249,28 @@ def main():
 #profile-update-interval: 1
 
 """
-    # Заголовок для 50fastest.txt с пометкой 50fast
-    header_fastest = f"""#announce: Обновлено: {now}, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
-#profile-web-page-url: {this_url}
-#profile-title: 50fast TG@LetoVPN_Free
+    # Заголовок для ru.txt (только Россия)
+    header_ru = f"""#announce: Обновлено: {now}, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#profile-web-page-url: {ru_url}
+#profile-title: Russia TG@LetoVPN_Free
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 """
-    # Сохраняем configs.txt (все конфиги, сортировка по странам)
+    
+    # Сохраняем configs.txt (все конфиги КРОМЕ России)
     with open("configs.txt", "w", encoding="utf-8") as f:
         f.write(header_configs)
-        for config, _, _ in results_sorted_by_country:
+        for config, _, _ in other_configs:
             f.write(config + "\n")
     
-    # Создаём 50fastest.txt (50 самых быстрых)
-    fastest = results_sorted_by_ping[:50]
-    with open("50fastest.txt", "w", encoding="utf-8") as f:
-        f.write(header_fastest)
-        for config, _, _ in fastest:
+    # Сохраняем ru.txt (только Россия, отсортированные по пингу)
+    with open("ru.txt", "w", encoding="utf-8") as f:
+        f.write(header_ru)
+        for config, _ in ru_configs:
             f.write(config + "\n")
     
-    print(f"Готово! configs.txt ({len(results)} конфигов) и 50fastest.txt ({len(fastest)} быстрых конфигов) сохранены.")
+    print(f"Готово! configs.txt ({len(other_configs)} конфигов без 🇷🇺) и ru.txt ({len(ru_configs)} российских конфигов) сохранены.")
 
 if __name__ == "__main__":
     main()

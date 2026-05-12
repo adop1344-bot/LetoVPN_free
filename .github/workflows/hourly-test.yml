@@ -2,7 +2,7 @@ name: Hourly VPN config test
 
 on:
   schedule:
-    - cron: '0 * * * *'   # каждый час
+    - cron: '0 */2 * * *'   # каждый час
   workflow_dispatch:       # ручной запуск
 
 jobs:

@@ -1,0 +1,18 @@
+RU:russia,россия,ru-,москва,спб,novosibirsk,ekaterinburg,kazan
+US:usa,сша,united states,ny,new york,la,los angeles
+DE:germany,германия,frankfurt,berlin
+FR:france,франция,paris
+NL:netherlands,нидерланды,amsterdam
+GB:uk,great britain,великобритания,london
+IT:italy,италия,milan
+ES:spain,испания,madrid
+JP:japan,япония,tokyo
+CN:china,китай,beijing,shanghai
+CA:canada,канада,toronto
+AU:australia,австралия,sydney
+BR:brazil,бразилия,sao paulo
+IN:india,индия,mumbai
+SG:singapore,сингапур
+TR:turkey,турция,istanbul
+IL:israel,израиль,tel aviv
+AE:uae,оаэ,dubai

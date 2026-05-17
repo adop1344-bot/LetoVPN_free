@@ -106,6 +106,16 @@ COUNTRY_FLAGS = load_flags()
 KEYWORDS = load_keywords()
 CITIES = load_cities()
 
+def get_protocol(config: str) -> str:
+    """Определяет протокол конфига (vless, vmess, trojan)"""
+    if config.startswith('vless://'):
+        return "VLESS"
+    elif config.startswith('vmess://'):
+        return "VMESS"
+    elif config.startswith('trojan://'):
+        return "TROJAN"
+    return ""
+
 # ----- ОПРЕДЕЛЕНИЕ СТРАНЫ ПО НАЗВАНИЮ (FALLBACK) -----
 def detect_country_from_name(name: str) -> Tuple[str, str]:
     """Парсит название конфига, возвращает (флаг, код_страны)"""
@@ -218,6 +228,7 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float]]:
         return None
 
     name_part = config.split('#', 1)[1].strip() if '#' in config else ""
+    protocol = get_protocol(config)
     
     # Гибридное определение страны: GeoIP + fallback по названию
     flag, country_code = get_country_geoip(host, reader)
@@ -228,16 +239,23 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float]]:
     city = detect_city_by_ip(host) if country_code == "RU" else ""
     cidr = " обход белых листов" if '[*CIDR]' in name_part else ""
 
-    # Формируем название
+    # Формируем название: #🇷🇺 VLESS ⚡ (Москва) обход белых листов
     if country_code == "RU":
         parts = [f"#{flag}"]
+        if protocol:
+            parts.append(protocol)
         if lightning:
             parts.append(lightning)
         if city:
             parts.append(f"({city})")
-        new_name = ''.join(parts) + cidr
+        new_name = ' '.join(parts) + cidr
     else:
-        new_name = f"#{flag}{lightning}{cidr}"
+        parts = [f"#{flag}"]
+        if protocol:
+            parts.append(protocol)
+        if lightning:
+            parts.append(lightning)
+        new_name = ' '.join(parts) + cidr
     
     new_name = re.sub(r'\s+', ' ', new_name).strip()
     

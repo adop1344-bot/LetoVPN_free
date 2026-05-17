@@ -6,3 +6,6 @@ https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/WhiteKeys
 https://github.com/AvenCores/goida-vpn-configs/raw/refs/heads/main/githubmirror/25.txt
 https://rkn-xuesosi.com.ru/sub
 https://github.com/nikita29a/FreeProxyList/raw/refs/heads/main/mirror/6.txt
+https://github.com/nikita29a/FreeProxyList/raw/refs/heads/main/mirror/8.txt
+https://github.com/nikita29a/FreeProxyList/raw/refs/heads/main/mirror/9.txt
+https://github.com/nikita29a/FreeProxyList/raw/refs/heads/main/mirror/11.txt

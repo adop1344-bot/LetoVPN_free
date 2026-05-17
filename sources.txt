@@ -3,9 +3,12 @@ https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/4Thur
 https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS_mobile.txt
 https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/WHITE-CIDR-RU-checked.txt
 https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/WhiteKeys
+https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/RU_other
+https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/WhiteKeys
 https://github.com/AvenCores/goida-vpn-configs/raw/refs/heads/main/githubmirror/25.txt
 https://rkn-xuesosi.com.ru/sub
 https://github.com/nikita29a/FreeProxyList/raw/refs/heads/main/mirror/6.txt
 https://github.com/nikita29a/FreeProxyList/raw/refs/heads/main/mirror/8.txt
 https://github.com/nikita29a/FreeProxyList/raw/refs/heads/main/mirror/9.txt
 https://github.com/nikita29a/FreeProxyList/raw/refs/heads/main/mirror/11.txt
+https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/4Thur

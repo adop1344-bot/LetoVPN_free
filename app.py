@@ -17,6 +17,7 @@ SOURCES_FILE = "sources.txt"
 FLAGS_FILE = "flags.txt"
 KEYWORDS_FILE = "keywords.txt"
 CITIES_FILE = "cities.txt"
+DOMAINS_FILE = "domains.txt"
 TIMEOUT = 3.0
 MAX_WORKERS = 500
 PING_GOOD_THRESHOLD = 200
@@ -52,7 +53,7 @@ def init_geoip_reader():
         if os.path.exists(GEOIP_FILE):
             return geoip2.database.Reader(GEOIP_FILE)
     except ImportError:
-        print("geoip2 не установлен, использую только парсинг названий")
+        print("geoip2 не установлен")
     return None
 
 # ----- ЗАГРУЗКА ВНЕШНИХ ФАЙЛОВ -----
@@ -100,14 +101,28 @@ def load_cities() -> dict:
         print(f"Ошибка: {CITIES_FILE} не найден")
     return cities
 
+def load_domains() -> dict:
+    domain_to_country = {}
+    try:
+        with open(DOMAINS_FILE, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#'):
+                    if ':' in line:
+                        domain, code = line.split(':', 1)
+                        domain_to_country[domain.lower()] = code
+    except FileNotFoundError:
+        print(f"Ошибка: {DOMAINS_FILE} не найден")
+    return domain_to_country
+
 # ----- ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ -----
 SOURCES = load_sources()
 COUNTRY_FLAGS = load_flags()
 KEYWORDS = load_keywords()
 CITIES = load_cities()
+DOMAIN_MAP = load_domains()
 
 def get_protocol(config: str) -> str:
-    """Определяет протокол конфига (vless, vmess, trojan)"""
     if config.startswith('vless://'):
         return "VLESS"
     elif config.startswith('vmess://'):
@@ -116,24 +131,44 @@ def get_protocol(config: str) -> str:
         return "TROJAN"
     return ""
 
-# ----- ОПРЕДЕЛЕНИЕ СТРАНЫ ПО НАЗВАНИЮ (FALLBACK) -----
+def detect_country_by_domain(host: str) -> Tuple[str, str]:
+    """Определяет страну по доменному окончанию хоста"""
+    if not host:
+        return "🏳️", "ZZ"
+    
+    host_lower = host.lower()
+    sorted_domains = sorted(DOMAIN_MAP.keys(), key=len, reverse=True)
+    for domain in sorted_domains:
+        if host_lower.endswith(domain):
+            code = DOMAIN_MAP[domain]
+            flag = COUNTRY_FLAGS.get(code, "🏳️")
+            return flag, code
+    return "🏳️", "ZZ"
+
+def get_domain_note(host: str) -> str:
+    """Возвращает заметку о домене для России (.ru)"""
+    if not host:
+        return ""
+    host_lower = host.lower()
+    if host_lower.endswith('.ru') or host_lower.endswith('.рф') or host_lower.endswith('.su'):
+        parts = host_lower.split('.')
+        if len(parts) >= 2:
+            return f" [{parts[-2]}.{parts[-1]}]"
+    return ""
+
 def detect_country_from_name(name: str) -> Tuple[str, str]:
-    """Парсит название конфига, возвращает (флаг, код_страны)"""
     name_lower = name.lower()
     
-    # 1. Ищем флаг в тексте
     for code, flag in COUNTRY_FLAGS.items():
         if flag in name:
             return flag, code
     
-    # 2. Ищем ключевые слова
     for code, words in KEYWORDS.items():
         for word in words:
             if word in name_lower:
                 flag = COUNTRY_FLAGS.get(code, "🏳️")
                 return flag, code
     
-    # 3. Ищем двухбуквенный код
     match = re.search(r'\b([A-Z]{2})\b', name)
     if match:
         code = match.group(1)
@@ -143,7 +178,6 @@ def detect_country_from_name(name: str) -> Tuple[str, str]:
     return "🏳️", "ZZ"
 
 def get_country_geoip(host: str, reader) -> Tuple[str, str]:
-    """Определяет страну через GeoIP базу"""
     try:
         if reader:
             response = reader.country(host)
@@ -156,7 +190,6 @@ def get_country_geoip(host: str, reader) -> Tuple[str, str]:
     return "🏳️", "ZZ"
 
 def detect_city_by_ip(host: str) -> str:
-    """Определяет город по маске IP из cities.txt"""
     if not re.match(r'^\d+\.\d+\.\d+\.\d+$', host):
         return ""
     parts = host.split('.')
@@ -165,7 +198,27 @@ def detect_city_by_ip(host: str) -> str:
     mask = f"{parts[0]}.{parts[1]}"
     return CITIES.get(mask, "")
 
-# ----- ОСНОВНЫЕ ФУНКЦИИ -----
+def check_antizapret(host: str, port: int, timeout: float) -> bool:
+    """Проверяет, может ли конфиг обойти блокировку (Rutracker)"""
+    try:
+        proxies = {
+            "http": f"socks5://{host}:{port}",
+            "https": f"socks5://{host}:{port}"
+        }
+        response = requests.get(
+            "https://rutracker.org/forum/index.php",
+            proxies=proxies,
+            timeout=timeout,
+            allow_redirects=True
+        )
+        if response.status_code == 200:
+            return True
+        if "rutracker" in response.text.lower():
+            return True
+        return False
+    except:
+        return False
+
 def fetch_configs_from_url(url: str) -> List[str]:
     try:
         r = requests.get(url, timeout=10)
@@ -230,16 +283,36 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float]]:
     name_part = config.split('#', 1)[1].strip() if '#' in config else ""
     protocol = get_protocol(config)
     
-    # Гибридное определение страны: GeoIP + fallback по названию
+    # Гибридное определение страны
+    flag, country_code = "🏳️", "ZZ"
+    
+    # 1. GeoIP
     flag, country_code = get_country_geoip(host, reader)
+    
+    # 2. По домену
+    if country_code == "ZZ":
+        flag, country_code = detect_country_by_domain(host)
+    
+    # 3. По названию конфига
     if country_code == "ZZ":
         flag, country_code = detect_country_from_name(name_part)
+    
+    # 4. Если страна не определилась (🏳️) — удаляем конфиг
+    if country_code == "ZZ" or flag == "🏳️":
+        return None
     
     lightning = "⚡" if ping < PING_GOOD_THRESHOLD else ""
     city = detect_city_by_ip(host) if country_code == "RU" else ""
     cidr = " обход белых листов" if '[*CIDR]' in name_part else ""
+    domain_note = get_domain_note(host) if country_code == "RU" else ""
 
-    # Формируем название: #🇷🇺 VLESS ⚡ (Москва) обход белых листов
+    # Проверка обхода блокировок (только для российских конфигов)
+    antizapret = ""
+    if country_code == "RU":
+        if check_antizapret(host, port, TIMEOUT):
+            antizapret = " [*ОБХОД]"
+
+    # Формируем название
     if country_code == "RU":
         parts = [f"#{flag}"]
         if protocol:
@@ -248,6 +321,10 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float]]:
             parts.append(lightning)
         if city:
             parts.append(f"({city})")
+        if domain_note:
+            parts.append(domain_note)
+        if antizapret:
+            parts.append(antizapret)
         new_name = ' '.join(parts) + cidr
     else:
         parts = [f"#{flag}"]
@@ -271,7 +348,6 @@ def main():
         print("Нет источников! Проверьте sources.txt")
         return
     
-    # Загружаем GeoIP
     download_geoip_db()
     reader = init_geoip_reader()
     
@@ -289,7 +365,6 @@ def main():
     filtered = [c for c in all_configs if 'anycast' not in c.lower()]
     print(f"После anycast: {len(filtered)}")
     
-    # Многопоточная обработка
     results = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         futures = [executor.submit(process_config, cfg, reader) for cfg in filtered]
@@ -302,13 +377,11 @@ def main():
     
     print(f"Работоспособных: {len(results)}")
     
-    # Разделяем на российские и остальные
     ru_configs = [(cfg, ping) for cfg, code, ping in results if code == "RU"]
     other_configs = [(cfg, code, ping) for cfg, code, ping in results if code != "RU"]
     other_configs.sort(key=lambda x: x[1])
     ru_configs.sort(key=lambda x: x[1])
     
-    # Заголовки
     now = datetime.now(timezone(timedelta(hours=3))).strftime("%d.%m.%Y %H:%M:%S")
     repo = os.getenv("GITHUB_REPOSITORY", "YOUR_USERNAME/YOUR_REPO")
     common_header = f"""#announce: Обновлено: {now}, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час

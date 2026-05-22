@@ -26,6 +26,9 @@ jobs:
 
       - name: Run config tester
         run: python app.py
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
       - name: Upload result as artifact
         uses: actions/upload-artifact@v4

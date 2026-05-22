@@ -198,26 +198,46 @@ def detect_city_by_ip(host: str) -> str:
     mask = f"{parts[0]}.{parts[1]}"
     return CITIES.get(mask, "")
 
-def check_antizapret(host: str, port: int, timeout: float) -> bool:
-    """Проверяет, может ли конфиг обойти блокировку (Rutracker)"""
-    try:
-        proxies = {
-            "http": f"socks5://{host}:{port}",
-            "https": f"socks5://{host}:{port}"
-        }
-        response = requests.get(
-            "https://rutracker.org/forum/index.php",
-            proxies=proxies,
-            timeout=timeout,
-            allow_redirects=True
-        )
-        if response.status_code == 200:
-            return True
-        if "rutracker" in response.text.lower():
-            return True
-        return False
-    except:
-        return False
+# ----- СПИСОК ТЕСТОВЫХ САЙТОВ -----
+TEST_URLS = [
+    ("https://rutracker.org/forum/index.php", "rutracker"),
+    ("https://www.cloudflare.com/cdn-cgi/trace", "cloudflare"),
+    ("https://www.google.com/generate_204", "google"),
+]
+
+def check_config_real(host: str, port: int, timeout: float) -> Optional[float]:
+    """Проверяет конфиг через несколько сайтов, возвращает время ответа в мс"""
+    proxies = {
+        "http": f"socks5://{host}:{port}",
+        "https": f"socks5://{host}:{port}"
+    }
+    
+    best_time = None
+    
+    for url, name in TEST_URLS:
+        try:
+            start = time.time()
+            response = requests.get(
+                url,
+                proxies=proxies,
+                timeout=timeout,
+                allow_redirects=True
+            )
+            elapsed = (time.time() - start) * 1000
+            
+            if response.status_code == 200:
+                if best_time is None or elapsed < best_time:
+                    best_time = elapsed
+                continue
+            
+            if name == "rutracker" and "rutracker" in response.text.lower():
+                if best_time is None or elapsed < best_time:
+                    best_time = elapsed
+                continue
+        except:
+            continue
+    
+    return best_time
 
 def fetch_configs_from_url(url: str) -> List[str]:
     try:
@@ -258,15 +278,20 @@ def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
     except:
         return None
 
-def check_config(host: str, port: int) -> Optional[float]:
-    p1 = tcp_ping(host, port, TIMEOUT)
-    if p1 is None:
-        return None
-    if RETRY_PING:
-        time.sleep(0.5)
-        p2 = tcp_ping(host, port, TIMEOUT)
-        return min(p1, p2) if p2 is not None else p1
-    return p1
+def verify_config(host: str, port: int, timeout: float) -> Tuple[Optional[float], bool]:
+    """Параллельная проверка: TCP + HTTP через несколько сайтов"""
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
+        tcp_future = executor.submit(tcp_ping, host, port, timeout)
+        http_future = executor.submit(check_config_real, host, port, timeout)
+        
+        ping = tcp_future.result()
+        http_ping = http_future.result()
+    
+    if http_ping is None:
+        return (ping, False)
+    
+    final_ping = min(p for p in [ping, http_ping] if p is not None)
+    return (final_ping, True)
 
 def process_config(config: str, reader) -> Optional[Tuple[str, str, float]]:
     if 'anycast' in config.lower():
@@ -276,28 +301,18 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float]]:
     if not host or not port:
         return None
 
-    ping = check_config(host, port)
-    if ping is None or ping > PING_MAX:
+    ping, is_working = verify_config(host, port, TIMEOUT)
+    if not is_working or ping is None or ping > PING_MAX:
         return None
 
     name_part = config.split('#', 1)[1].strip() if '#' in config else ""
     protocol = get_protocol(config)
     
-    # Гибридное определение страны
-    flag, country_code = "🏳️", "ZZ"
-    
-    # 1. GeoIP
     flag, country_code = get_country_geoip(host, reader)
-    
-    # 2. По домену
     if country_code == "ZZ":
         flag, country_code = detect_country_by_domain(host)
-    
-    # 3. По названию конфига
     if country_code == "ZZ":
         flag, country_code = detect_country_from_name(name_part)
-    
-    # 4. Если страна не определилась (🏳️) — удаляем конфиг
     if country_code == "ZZ" or flag == "🏳️":
         return None
     
@@ -306,13 +321,6 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float]]:
     cidr = " обход белых листов" if '[*CIDR]' in name_part else ""
     domain_note = get_domain_note(host) if country_code == "RU" else ""
 
-    # Проверка обхода блокировок (только для российских конфигов)
-    antizapret = ""
-    if country_code == "RU":
-        if check_antizapret(host, port, TIMEOUT):
-            antizapret = " [*ОБХОД]"
-
-    # Формируем название
     if country_code == "RU":
         parts = [f"#{flag}"]
         if protocol:
@@ -323,8 +331,6 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float]]:
             parts.append(f"({city})")
         if domain_note:
             parts.append(domain_note)
-        if antizapret:
-            parts.append(antizapret)
         new_name = ' '.join(parts) + cidr
     else:
         parts = [f"#{flag}"]
@@ -382,9 +388,26 @@ def main():
     other_configs.sort(key=lambda x: x[1])
     ru_configs.sort(key=lambda x: x[1])
     
+    # Создаём папку protocols
+    os.makedirs("protocols", exist_ok=True)
+    
+    protocol_files = {
+        "VLESS": [],
+        "VMESS": [],
+        "TROJAN": []
+    }
+    
+    for cfg, code, ping in results:
+        if cfg.startswith('vless://'):
+            protocol_files["VLESS"].append(cfg)
+        elif cfg.startswith('vmess://'):
+            protocol_files["VMESS"].append(cfg)
+        elif cfg.startswith('trojan://'):
+            protocol_files["TROJAN"].append(cfg)
+    
     now = datetime.now(timezone(timedelta(hours=3))).strftime("%d.%m.%Y %H:%M:%S")
     repo = os.getenv("GITHUB_REPOSITORY", "YOUR_USERNAME/YOUR_REPO")
-    common_header = f"""#announce: Обновлено: {now}, больше в телеграм канале @LetoVPN_free! Обновляется каждые 2 часа
+    common_header = f"""#announce: Обновлено: {now}, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
@@ -400,7 +423,20 @@ def main():
         for cfg, _ in ru_configs:
             f.write(cfg + "\n")
     
-    print(f"Готово! configs.txt ({len(other_configs)}), ru.txt ({len(ru_configs)})")
+    for protocol, configs in protocol_files.items():
+        if configs:
+            with open(f"protocols/{protocol}.txt", "w", encoding="utf-8") as f:
+                f.write(f"{common_header}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/protocols/{protocol}.txt\n#profile-title: {protocol} TG@LetoVPN_Free\n\n")
+                for cfg in configs:
+                    f.write(cfg + "\n")
+            print(f"  protocols/{protocol}.txt: {len(configs)} конфигов")
+    
+    print(f"\nГотово!")
+    print(f"  configs.txt: {len(other_configs)} конфигов")
+    print(f"  ru.txt: {len(ru_configs)} конфигов")
+    for protocol, configs in protocol_files.items():
+        if configs:
+            print(f"  protocols/{protocol}.txt: {len(configs)} конфигов")
     
     if reader:
         reader.close()

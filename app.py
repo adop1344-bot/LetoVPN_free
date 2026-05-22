@@ -25,14 +25,15 @@ KEYWORDS_FILE = "keywords.txt"
 CITIES_FILE = "cities.txt"
 DOMAINS_FILE = "domains.txt"
 TIMEOUT = 3.0
-MAX_WORKERS = 300
+MAX_WORKERS = 500
 PING_GOOD_THRESHOLD = 200
 PING_MAX = 10000
 GEOIP_URL = "https://cdn.jsdelivr.net/npm/geolite2-country/GeoLite2-Country.mmdb.gz"
 GEOIP_FILE = "GeoLite2-Country.mmdb"
 
-# ----- TELEGRAM -----
+# ----- TELEGRAM УВЕДОМЛЕНИЯ -----
 def send_telegram(message: str):
+    """Отправляет сообщение в Telegram"""
     token = os.getenv("TELEGRAM_TOKEN")
     chat_id = os.getenv("TELEGRAM_CHAT_ID")
     if not token or not chat_id:
@@ -42,6 +43,11 @@ def send_telegram(message: str):
         requests.post(url, json={"chat_id": chat_id, "text": message}, timeout=5)
     except:
         pass
+
+def log_and_send(message: str):
+    """Выводит в консоль и отправляет в Telegram"""
+    print(message)
+    send_telegram(message)
 
 # ----- ЗАГРУЗКА GEOIP -----
 def download_geoip_db():
@@ -275,8 +281,8 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, str]]
     else:
         new_config = config + new_name
     
-    # Формируем статус для Telegram
-    status_emoji = "✅" if lightning else "❌"
+    # Для Telegram: флаг + протокол + статус
+    status_emoji = "✅" if lightning else "⚠️"
     tg_message = f"{flag} {protocol} {status_emoji}"
     
     return (new_config, country_code, ping, tg_message)
@@ -311,14 +317,14 @@ def main():
             res = future.result()
             if res:
                 results.append(res)
-                # Отправляем сообщение о рабочем конфиге
                 send_telegram(f"✅ {res[3]}")
             checked += 1
             if checked % 100 == 0:
                 send_telegram(f"📊 Проверено {checked}/{len(filtered)} конфигов. Найдено {len(results)} рабочих.")
     
     # Финальное сообщение
-    send_telegram(f"🎉 Готово! Найдено {len(results)} рабочих конфигов. ✅{len([r for r in results if '⚡' in r[3]])} быстрых, ❌{len([r for r in results if '⚡' not in r[3]])} обычных.")
+    fast_count = len([r for r in results if '⚡' in r[3]])
+    send_telegram(f"🎉 Готово! Найдено {len(results)} рабочих конфигов. ⚡{fast_count} быстрых, {len(results)-fast_count} обычных.")
     
     # Разделяем на российские и остальные
     ru_configs = [(cfg, ping) for cfg, code, ping, _ in results if code == "RU"]
@@ -326,13 +332,17 @@ def main():
     other_configs.sort(key=lambda x: x[2])
     ru_configs.sort(key=lambda x: x[1])
     
+    # Папка protocols
     os.makedirs("protocols", exist_ok=True)
     
     protocol_files = {"VLESS": [], "VMESS": [], "TROJAN": []}
     for cfg, code, ping, _ in results:
-        if cfg.startswith('vless://'): protocol_files["VLESS"].append(cfg)
-        elif cfg.startswith('vmess://'): protocol_files["VMESS"].append(cfg)
-        elif cfg.startswith('trojan://'): protocol_files["TROJAN"].append(cfg)
+        if cfg.startswith('vless://'):
+            protocol_files["VLESS"].append(cfg)
+        elif cfg.startswith('vmess://'):
+            protocol_files["VMESS"].append(cfg)
+        elif cfg.startswith('trojan://'):
+            protocol_files["TROJAN"].append(cfg)
     
     now = datetime.now(timezone(timedelta(hours=3))).strftime("%d.%m.%Y %H:%M:%S")
     repo = os.getenv("GITHUB_REPOSITORY", "YOUR_USERNAME/YOUR_REPO")
@@ -358,8 +368,12 @@ def main():
                 f.write(f"{common_header}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/protocols/{protocol}.txt\n#profile-title: {protocol} TG@LetoVPN_Free\n\n")
                 for cfg in configs:
                     f.write(cfg + "\n")
+            print(f"  protocols/{protocol}.txt: {len(configs)} конфигов")
     
-    print(f"Готово! configs.txt ({len(other_configs)}), ru.txt ({len(ru_configs)})")
+    print(f"\nГотово! configs.txt ({len(other_configs)}), ru.txt ({len(ru_configs)})")
+    for protocol, configs in protocol_files.items():
+        if configs:
+            print(f"  protocols/{protocol}.txt: {len(configs)} конфигов")
     
     if reader:
         reader.close()

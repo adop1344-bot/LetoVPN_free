@@ -9,7 +9,6 @@ import os
 import re
 import gzip
 import shutil
-import random
 import warnings
 import urllib3
 from datetime import datetime, timezone, timedelta
@@ -25,19 +24,29 @@ FLAGS_FILE = "flags.txt"
 KEYWORDS_FILE = "keywords.txt"
 CITIES_FILE = "cities.txt"
 DOMAINS_FILE = "domains.txt"
-TIMEOUT = 4.0  # 4 секунды на рукопожатие
-MAX_WORKERS = 200  # 200 потоков для стабильности
+TIMEOUT = 3.0
+MAX_WORKERS = 300
 PING_GOOD_THRESHOLD = 200
 PING_MAX = 10000
 GEOIP_URL = "https://cdn.jsdelivr.net/npm/geolite2-country/GeoLite2-Country.mmdb.gz"
 GEOIP_FILE = "GeoLite2-Country.mmdb"
 
-# ----- ЗАГРУЗКА GEOIP БАЗЫ -----
+# ----- TELEGRAM -----
+def send_telegram(message: str):
+    token = os.getenv("TELEGRAM_TOKEN")
+    chat_id = os.getenv("TELEGRAM_CHAT_ID")
+    if not token or not chat_id:
+        return
+    try:
+        url = f"https://api.telegram.org/bot{token}/sendMessage"
+        requests.post(url, json={"chat_id": chat_id, "text": message}, timeout=5)
+    except:
+        pass
+
+# ----- ЗАГРУЗКА GEOIP -----
 def download_geoip_db():
     if os.path.exists(GEOIP_FILE):
-        print(f"База GeoIP уже есть: {GEOIP_FILE}")
         return True
-    print("Скачиваю GeoLite2 базу...")
     try:
         r = requests.get(GEOIP_URL, timeout=30)
         r.raise_for_status()
@@ -47,10 +56,8 @@ def download_geoip_db():
             with open(GEOIP_FILE, "wb") as f_out:
                 shutil.copyfileobj(f_in, f_out)
         os.remove(GEOIP_FILE + ".gz")
-        print("База GeoIP загружена")
         return True
-    except Exception as e:
-        print(f"Ошибка загрузки GeoIP: {e}")
+    except:
         return False
 
 def init_geoip_reader():
@@ -58,17 +65,16 @@ def init_geoip_reader():
         import geoip2.database
         if os.path.exists(GEOIP_FILE):
             return geoip2.database.Reader(GEOIP_FILE)
-    except ImportError:
-        print("geoip2 не установлен")
+    except:
+        pass
     return None
 
-# ----- ЗАГРУЗКА ВНЕШНИХ ФАЙЛОВ -----
+# ----- ЗАГРУЗКА ФАЙЛОВ -----
 def load_sources() -> List[str]:
     try:
         with open(SOURCES_FILE, "r", encoding="utf-8") as f:
             return [line.strip() for line in f if line.strip() and not line.startswith('#')]
-    except FileNotFoundError:
-        print(f"Ошибка: {SOURCES_FILE} не найден")
+    except:
         return []
 
 def load_flags() -> dict:
@@ -79,8 +85,8 @@ def load_flags() -> dict:
                 if ':' in line:
                     code, flag = line.strip().split(':', 1)
                     code_to_flag[code] = flag
-    except FileNotFoundError:
-        print(f"Ошибка: {FLAGS_FILE} не найден")
+    except:
+        pass
     return code_to_flag
 
 def load_keywords() -> dict:
@@ -91,8 +97,8 @@ def load_keywords() -> dict:
                 if ':' in line:
                     code, words_str = line.strip().split(':', 1)
                     keywords[code] = [w.strip().lower() for w in words_str.split(',')]
-    except FileNotFoundError:
-        print(f"Ошибка: {KEYWORDS_FILE} не найден")
+    except:
+        pass
     return keywords
 
 def load_cities() -> dict:
@@ -103,8 +109,8 @@ def load_cities() -> dict:
                 if ':' in line:
                     mask, city = line.strip().split(':', 1)
                     cities[mask] = city
-    except FileNotFoundError:
-        print(f"Ошибка: {CITIES_FILE} не найден")
+    except:
+        pass
     return cities
 
 def load_domains() -> dict:
@@ -117,109 +123,22 @@ def load_domains() -> dict:
                     if ':' in line:
                         domain, code = line.split(':', 1)
                         domain_to_country[domain.lower()] = code
-    except FileNotFoundError:
-        print(f"Ошибка: {DOMAINS_FILE} не найден")
+    except:
+        pass
     return domain_to_country
 
-# ----- ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ -----
 SOURCES = load_sources()
 COUNTRY_FLAGS = load_flags()
 KEYWORDS = load_keywords()
 CITIES = load_cities()
 DOMAIN_MAP = load_domains()
 
+# ----- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ -----
 def get_protocol(config: str) -> str:
-    if config.startswith('vless://'):
-        return "VLESS"
-    elif config.startswith('vmess://'):
-        return "VMESS"
-    elif config.startswith('trojan://'):
-        return "TROJAN"
+    if config.startswith('vless://'): return "VLESS"
+    elif config.startswith('vmess://'): return "VMESS"
+    elif config.startswith('trojan://'): return "TROJAN"
     return ""
-
-# ----- ПРОТОКОЛЬНАЯ ПРОВЕРКА (МАКСИМАЛЬНАЯ ТОЧНОСТЬ) -----
-def vless_handshake(host: str, port: int, timeout: float) -> Optional[float]:
-    """Точная проверка VLESS через рукопожатие"""
-    try:
-        start = time.time()
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(timeout)
-        sock.connect((host, port))
-        
-        handshake = bytes([random.randint(0, 255) for _ in range(16)])
-        sock.send(handshake)
-        
-        response = sock.recv(16)
-        sock.close()
-        
-        if len(response) == 16:
-            return (time.time() - start) * 1000
-        return None
-    except:
-        return None
-
-def vmess_handshake(host: str, port: int, timeout: float) -> Optional[float]:
-    """Точная проверка VMESS через рукопожатие"""
-    try:
-        start = time.time()
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(timeout)
-        sock.connect((host, port))
-        
-        sock.send(b'\x01' + bytes(16))
-        response = sock.recv(16)
-        sock.close()
-        
-        if len(response) > 0:
-            return (time.time() - start) * 1000
-        return None
-    except:
-        return None
-
-def trojan_handshake(host: str, port: int, timeout: float) -> Optional[float]:
-    """Точная проверка TROJAN через рукопожатие"""
-    try:
-        start = time.time()
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(timeout)
-        sock.connect((host, port))
-        
-        sock.send(b'\x0d\x0a\x0d\x0a')
-        response = sock.recv(2)
-        sock.close()
-        
-        if response == b'\x0d\x0a':
-            return (time.time() - start) * 1000
-        return None
-    except:
-        return None
-
-def verify_config(config: str, host: str, port: int, timeout: float) -> Tuple[Optional[float], bool]:
-    """Максимально точная проверка по протоколу"""
-    
-    if config.startswith('vless://'):
-        ping = vless_handshake(host, port, timeout)
-    elif config.startswith('vmess://'):
-        ping = vmess_handshake(host, port, timeout)
-    elif config.startswith('trojan://'):
-        ping = trojan_handshake(host, port, timeout)
-    else:
-        return (None, False)
-    
-    if ping is not None and ping < PING_MAX:
-        return (ping, True)
-    
-    return (None, False)
-
-def fetch_configs_from_url(url: str) -> List[str]:
-    try:
-        r = requests.get(url, timeout=10)
-        r.raise_for_status()
-        return [line.strip() for line in r.text.splitlines() 
-                if line.strip() and not line.startswith('#')]
-    except Exception as e:
-        print(f"Ошибка загрузки {url}: {e}")
-        return []
 
 def extract_host_port(config: str) -> Tuple[Optional[str], Optional[int]]:
     if config.startswith('vless://'):
@@ -230,10 +149,7 @@ def extract_host_port(config: str) -> Tuple[Optional[str], Optional[int]]:
         try:
             b64 = config[8:] + '=' * (4 - len(config[8:]) % 4)
             data = json.loads(base64.b64decode(b64))
-            host = data.get('add')
-            port = data.get('port')
-            if host and port:
-                return host, int(port)
+            return data.get('add'), int(data.get('port', 0))
         except:
             pass
     elif config.startswith('trojan://'):
@@ -242,18 +158,54 @@ def extract_host_port(config: str) -> Tuple[Optional[str], Optional[int]]:
             return match.group(1), int(match.group(2))
     return None, None
 
+def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
+    try:
+        start = time.time()
+        with socket.create_connection((host, port), timeout=timeout):
+            return (time.time() - start) * 1000
+    except:
+        return None
+
 def detect_country_by_domain(host: str) -> Tuple[str, str]:
     if not host:
         return "🏳️", "ZZ"
-    
     host_lower = host.lower()
-    sorted_domains = sorted(DOMAIN_MAP.keys(), key=len, reverse=True)
-    for domain in sorted_domains:
+    for domain, code in sorted(DOMAIN_MAP.items(), key=lambda x: len(x[0]), reverse=True):
         if host_lower.endswith(domain):
-            code = DOMAIN_MAP[domain]
-            flag = COUNTRY_FLAGS.get(code, "🏳️")
-            return flag, code
+            return COUNTRY_FLAGS.get(code, "🏳️"), code
     return "🏳️", "ZZ"
+
+def detect_country_from_name(name: str) -> Tuple[str, str]:
+    name_lower = name.lower()
+    for code, flag in COUNTRY_FLAGS.items():
+        if flag in name:
+            return flag, code
+    for code, words in KEYWORDS.items():
+        for word in words:
+            if word in name_lower:
+                return COUNTRY_FLAGS.get(code, "🏳️"), code
+    match = re.search(r'\b([A-Z]{2})\b', name)
+    if match and match.group(1) in COUNTRY_FLAGS:
+        return COUNTRY_FLAGS[match.group(1)], match.group(1)
+    return "🏳️", "ZZ"
+
+def get_country_geoip(host: str, reader) -> Tuple[str, str]:
+    try:
+        if reader:
+            response = reader.country(host)
+            if response and response.country and response.country.iso_code:
+                code = response.country.iso_code
+                return COUNTRY_FLAGS.get(code, "🏳️"), code
+    except:
+        pass
+    return "🏳️", "ZZ"
+
+def detect_city_by_ip(host: str) -> str:
+    if not re.match(r'^\d+\.\d+\.\d+\.\d+$', host):
+        return ""
+    parts = host.split('.')
+    mask = f"{parts[0]}.{parts[1]}"
+    return CITIES.get(mask, "")
 
 def get_domain_note(host: str) -> str:
     if not host:
@@ -265,49 +217,17 @@ def get_domain_note(host: str) -> str:
             return f" [{parts[-2]}.{parts[-1]}]"
     return ""
 
-def detect_country_from_name(name: str) -> Tuple[str, str]:
-    name_lower = name.lower()
-    
-    for code, flag in COUNTRY_FLAGS.items():
-        if flag in name:
-            return flag, code
-    
-    for code, words in KEYWORDS.items():
-        for word in words:
-            if word in name_lower:
-                flag = COUNTRY_FLAGS.get(code, "🏳️")
-                return flag, code
-    
-    match = re.search(r'\b([A-Z]{2})\b', name)
-    if match:
-        code = match.group(1)
-        flag = COUNTRY_FLAGS.get(code, "🏳️")
-        return flag, code
-    
-    return "🏳️", "ZZ"
-
-def get_country_geoip(host: str, reader) -> Tuple[str, str]:
+def fetch_configs_from_url(url: str) -> List[str]:
     try:
-        if reader:
-            response = reader.country(host)
-            if response and response.country and response.country.iso_code:
-                code = response.country.iso_code
-                flag = COUNTRY_FLAGS.get(code, "🏳️")
-                return flag, code
-    except Exception:
-        pass
-    return "🏳️", "ZZ"
+        r = requests.get(url, timeout=10)
+        r.raise_for_status()
+        return [line.strip() for line in r.text.splitlines() 
+                if line.strip() and not line.startswith('#')]
+    except Exception as e:
+        print(f"Ошибка загрузки {url}: {e}")
+        return []
 
-def detect_city_by_ip(host: str) -> str:
-    if not re.match(r'^\d+\.\d+\.\d+\.\d+$', host):
-        return ""
-    parts = host.split('.')
-    if len(parts) < 2:
-        return ""
-    mask = f"{parts[0]}.{parts[1]}"
-    return CITIES.get(mask, "")
-
-def process_config(config: str, reader) -> Optional[Tuple[str, str, float]]:
+def process_config(config: str, reader) -> Optional[Tuple[str, str, float, str]]:
     if 'anycast' in config.lower():
         return None
 
@@ -315,15 +235,13 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float]]:
     if not host or not port:
         return None
 
-    # Точная проверка через рукопожатие
-    ping, is_working = verify_config(config, host, port, TIMEOUT)
-    if not is_working or ping is None:
+    ping = tcp_ping(host, port, TIMEOUT)
+    if ping is None or ping > PING_MAX:
         return None
 
     name_part = config.split('#', 1)[1].strip() if '#' in config else ""
     protocol = get_protocol(config)
     
-    # Определение страны
     flag, country_code = get_country_geoip(host, reader)
     if country_code == "ZZ":
         flag, country_code = detect_country_by_domain(host)
@@ -337,24 +255,17 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float]]:
     cidr = " обход белых листов" if '[*CIDR]' in name_part else ""
     domain_note = get_domain_note(host) if country_code == "RU" else ""
 
-    # Формирование названия
     if country_code == "RU":
         parts = [f"#{flag}"]
-        if protocol:
-            parts.append(protocol)
-        if lightning:
-            parts.append(lightning)
-        if city:
-            parts.append(f"({city})")
-        if domain_note:
-            parts.append(domain_note)
+        if protocol: parts.append(protocol)
+        if lightning: parts.append(lightning)
+        if city: parts.append(f"({city})")
+        if domain_note: parts.append(domain_note)
         new_name = ' '.join(parts) + cidr
     else:
         parts = [f"#{flag}"]
-        if protocol:
-            parts.append(protocol)
-        if lightning:
-            parts.append(lightning)
+        if protocol: parts.append(protocol)
+        if lightning: parts.append(lightning)
         new_name = ' '.join(parts) + cidr
     
     new_name = re.sub(r'\s+', ' ', new_name).strip()
@@ -364,63 +275,64 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float]]:
     else:
         new_config = config + new_name
     
-    return (new_config, country_code, ping)
+    # Формируем статус для Telegram
+    status_emoji = "✅" if lightning else "❌"
+    tg_message = f"{flag} {protocol} {status_emoji}"
+    
+    return (new_config, country_code, ping, tg_message)
 
 def main():
+    send_telegram("🚀 Запуск проверки конфигов...")
+    
     if not SOURCES:
-        print("Нет источников! Проверьте sources.txt")
+        send_telegram("❌ Нет источников! Проверьте sources.txt")
         return
     
     download_geoip_db()
     reader = init_geoip_reader()
     
-    print("Загрузка конфигов...")
     all_configs = []
     for url in SOURCES:
         cfgs = fetch_configs_from_url(url)
         print(f"  {url}: {len(cfgs)} конфигов")
         all_configs.extend(cfgs)
     
-    print(f"Всего: {len(all_configs)}")
     all_configs = list(dict.fromkeys(all_configs))
-    print(f"Уникальных: {len(all_configs)}")
-    
     filtered = [c for c in all_configs if 'anycast' not in c.lower()]
-    print(f"После anycast: {len(filtered)}")
+    
+    send_telegram(f"📊 Загружено {len(filtered)} конфигов. Начинаю проверку...")
     
     results = []
+    checked = 0
+    
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         futures = [executor.submit(process_config, cfg, reader) for cfg in filtered]
-        for i, future in enumerate(concurrent.futures.as_completed(futures), 1):
+        for future in concurrent.futures.as_completed(futures):
             res = future.result()
             if res:
                 results.append(res)
-            if i % 100 == 0:
-                print(f"Обработано {i}/{len(filtered)}")
+                # Отправляем сообщение о рабочем конфиге
+                send_telegram(f"✅ {res[3]}")
+            checked += 1
+            if checked % 100 == 0:
+                send_telegram(f"📊 Проверено {checked}/{len(filtered)} конфигов. Найдено {len(results)} рабочих.")
     
-    print(f"Работоспособных: {len(results)}")
+    # Финальное сообщение
+    send_telegram(f"🎉 Готово! Найдено {len(results)} рабочих конфигов. ✅{len([r for r in results if '⚡' in r[3]])} быстрых, ❌{len([r for r in results if '⚡' not in r[3]])} обычных.")
     
-    ru_configs = [(cfg, ping) for cfg, code, ping in results if code == "RU"]
-    other_configs = [(cfg, code, ping) for cfg, code, ping in results if code != "RU"]
-    other_configs.sort(key=lambda x: x[1])
+    # Разделяем на российские и остальные
+    ru_configs = [(cfg, ping) for cfg, code, ping, _ in results if code == "RU"]
+    other_configs = [(cfg, code, ping) for cfg, code, ping, _ in results if code != "RU"]
+    other_configs.sort(key=lambda x: x[2])
     ru_configs.sort(key=lambda x: x[1])
     
-    # Создаём папку protocols
     os.makedirs("protocols", exist_ok=True)
     
-    protocol_files = {
-        "VLESS": [],
-        "VMESS": [],
-        "TROJAN": []
-    }
-    
-    for cfg, code, ping in results:
-        if cfg.startswith('vless://'):
-            protocol_files["VLESS"].append(cfg)
-        elif cfg.startswith('vmess://'):
-            protocol_files["VMESS"].append(cfg)
-        elif cfg.startswith('trojan://'):
-            protocol_files["TROJAN"].append(cfg)
+    protocol_files = {"VLESS": [], "VMESS": [], "TROJAN": []}
+    for cfg, code, ping, _ in results:
+        if cfg.startswith('vless://'): protocol_files["VLESS"].append(cfg)
+        elif cfg.startswith('vmess://'): protocol_files["VMESS"].append(cfg)
+        elif cfg.startswith('trojan://'): protocol_files["TROJAN"].append(cfg)
     
     now = datetime.now(timezone(timedelta(hours=3))).strftime("%d.%m.%Y %H:%M:%S")
     repo = os.getenv("GITHUB_REPOSITORY", "YOUR_USERNAME/YOUR_REPO")
@@ -446,14 +358,8 @@ def main():
                 f.write(f"{common_header}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/protocols/{protocol}.txt\n#profile-title: {protocol} TG@LetoVPN_Free\n\n")
                 for cfg in configs:
                     f.write(cfg + "\n")
-            print(f"  protocols/{protocol}.txt: {len(configs)} конфигов")
     
-    print(f"\nГотово!")
-    print(f"  configs.txt: {len(other_configs)} конфигов")
-    print(f"  ru.txt: {len(ru_configs)} конфигов")
-    for protocol, configs in protocol_files.items():
-        if configs:
-            print(f"  protocols/{protocol}.txt: {len(configs)} конфигов")
+    print(f"Готово! configs.txt ({len(other_configs)}), ru.txt ({len(ru_configs)})")
     
     if reader:
         reader.close()

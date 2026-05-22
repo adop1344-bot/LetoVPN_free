@@ -9,6 +9,7 @@ import os
 import re
 import gzip
 import shutil
+import random
 from datetime import datetime, timezone, timedelta
 from typing import List, Tuple, Optional
 
@@ -18,8 +19,8 @@ FLAGS_FILE = "flags.txt"
 KEYWORDS_FILE = "keywords.txt"
 CITIES_FILE = "cities.txt"
 DOMAINS_FILE = "domains.txt"
-TIMEOUT = 3.0
-MAX_WORKERS = 500
+TIMEOUT = 5.0  # Увеличил до 5 сек для HTTP проверки
+MAX_WORKERS = 300  # Уменьшил до 300, чтобы не перегружать
 PING_GOOD_THRESHOLD = 200
 PING_MAX = 10000
 RETRY_PING = True
@@ -131,8 +132,171 @@ def get_protocol(config: str) -> str:
         return "TROJAN"
     return ""
 
+# ----- ПРОВЕРКА ЧЕРЕЗ HTTP GET -----
+def check_config_http(host: str, port: int, timeout: float) -> Optional[float]:
+    """Проверяет конфиг через HTTP GET запрос"""
+    proxy_configs = [
+        f"http://{host}:{port}",
+        f"https://{host}:{port}",
+        f"socks5://{host}:{port}",
+        f"socks5h://{host}:{port}"
+    ]
+    
+    test_urls = [
+        "http://httpbin.org/get",
+        "https://httpbin.org/get",
+        "http://ip-api.com/json",
+        "https://www.google.com/generate_204"
+    ]
+    
+    for proxy_type in proxy_configs:
+        proxies = {"http": proxy_type, "https": proxy_type}
+        
+        for url in test_urls:
+            try:
+                start = time.time()
+                response = requests.get(
+                    url,
+                    proxies=proxies,
+                    timeout=timeout,
+                    headers={"User-Agent": "Mozilla/5.0"}
+                )
+                elapsed = (time.time() - start) * 1000
+                
+                if response.status_code == 200:
+                    return elapsed
+                if "httpbin" in url and response.status_code in [200, 201, 202]:
+                    return elapsed
+            except:
+                continue
+    
+    return None
+
+# ----- ПРОВЕРКА ЧЕРЕЗ VLESS РУКОПОЖАТИЕ -----
+def vless_handshake(host: str, port: int, timeout: float) -> Optional[float]:
+    """Проверяет VLESS конфиг через рукопожатие"""
+    try:
+        start = time.time()
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(timeout)
+        sock.connect((host, port))
+        
+        # VLESS рукопожатие
+        handshake = bytes([random.randint(0, 255) for _ in range(16)])
+        sock.send(handshake)
+        
+        response = sock.recv(16)
+        sock.close()
+        
+        if len(response) == 16:
+            return (time.time() - start) * 1000
+        return None
+    except:
+        return None
+
+def vmess_handshake(host: str, port: int, timeout: float) -> Optional[float]:
+    """Проверяет VMESS конфиг через рукопожатие"""
+    try:
+        start = time.time()
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(timeout)
+        sock.connect((host, port))
+        
+        sock.send(b'\x01' + bytes(16))
+        response = sock.recv(16)
+        sock.close()
+        
+        if len(response) > 0:
+            return (time.time() - start) * 1000
+        return None
+    except:
+        return None
+
+def trojan_handshake(host: str, port: int, timeout: float) -> Optional[float]:
+    """Проверяет TROJAN конфиг через рукопожатие"""
+    try:
+        start = time.time()
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(timeout)
+        sock.connect((host, port))
+        
+        sock.send(b'\x0d\x0a\x0d\x0a')
+        response = sock.recv(2)
+        sock.close()
+        
+        if response == b'\x0d\x0a':
+            return (time.time() - start) * 1000
+        return None
+    except:
+        return None
+
+def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
+    try:
+        start = time.time()
+        with socket.create_connection((host, port), timeout=timeout):
+            return (time.time() - start) * 1000
+    except:
+        return None
+
+def verify_config(config: str, host: str, port: int, timeout: float) -> Tuple[Optional[float], bool]:
+    """Проверяет конфиг (HTTP → рукопожатие → TCP)"""
+    
+    # 1. Пробуем HTTP через прокси
+    http_ping = check_config_http(host, port, timeout)
+    if http_ping is not None:
+        return (http_ping, True)
+    
+    # 2. Пробуем рукопожатие по протоколу
+    handshake_ping = None
+    if config.startswith('vless://'):
+        handshake_ping = vless_handshake(host, port, timeout)
+    elif config.startswith('vmess://'):
+        handshake_ping = vmess_handshake(host, port, timeout)
+    elif config.startswith('trojan://'):
+        handshake_ping = trojan_handshake(host, port, timeout)
+    
+    if handshake_ping is not None:
+        return (handshake_ping, True)
+    
+    # 3. Запасной вариант - TCP ping
+    tcp_ping_result = tcp_ping(host, port, timeout)
+    if tcp_ping_result is not None:
+        return (tcp_ping_result, True)
+    
+    return (None, False)
+
+def fetch_configs_from_url(url: str) -> List[str]:
+    try:
+        r = requests.get(url, timeout=10)
+        r.raise_for_status()
+        return [line.strip() for line in r.text.splitlines() 
+                if line.strip() and not line.startswith('#')]
+    except Exception as e:
+        print(f"Ошибка загрузки {url}: {e}")
+        return []
+
+def extract_host_port(config: str) -> Tuple[Optional[str], Optional[int]]:
+    if config.startswith('vless://'):
+        match = re.search(r'vless://[^@]+@([^:?#]+):(\d+)', config)
+        if match:
+            return match.group(1), int(match.group(2))
+    elif config.startswith('vmess://'):
+        try:
+            b64 = config[8:] + '=' * (4 - len(config[8:]) % 4)
+            data = json.loads(base64.b64decode(b64))
+            host = data.get('add')
+            port = data.get('port')
+            if host and port:
+                return host, int(port)
+        except:
+            pass
+    elif config.startswith('trojan://'):
+        match = re.search(r'trojan://[^@]+@([^:?#]+):(\d+)', config)
+        if match:
+            return match.group(1), int(match.group(2))
+    return None, None
+
 def detect_country_by_domain(host: str) -> Tuple[str, str]:
-    """Определяет страну по доменному окончанию хоста"""
     if not host:
         return "🏳️", "ZZ"
     
@@ -146,7 +310,6 @@ def detect_country_by_domain(host: str) -> Tuple[str, str]:
     return "🏳️", "ZZ"
 
 def get_domain_note(host: str) -> str:
-    """Возвращает заметку о домене для России (.ru)"""
     if not host:
         return ""
     host_lower = host.lower()
@@ -198,101 +361,6 @@ def detect_city_by_ip(host: str) -> str:
     mask = f"{parts[0]}.{parts[1]}"
     return CITIES.get(mask, "")
 
-# ----- СПИСОК ТЕСТОВЫХ САЙТОВ -----
-TEST_URLS = [
-    ("https://rutracker.org/forum/index.php", "rutracker"),
-    ("https://www.cloudflare.com/cdn-cgi/trace", "cloudflare"),
-    ("https://www.google.com/generate_204", "google"),
-]
-
-def check_config_real(host: str, port: int, timeout: float) -> Optional[float]:
-    """Проверяет конфиг через несколько сайтов, возвращает время ответа в мс"""
-    proxies = {
-        "http": f"socks5://{host}:{port}",
-        "https": f"socks5://{host}:{port}"
-    }
-    
-    best_time = None
-    
-    for url, name in TEST_URLS:
-        try:
-            start = time.time()
-            response = requests.get(
-                url,
-                proxies=proxies,
-                timeout=timeout,
-                allow_redirects=True
-            )
-            elapsed = (time.time() - start) * 1000
-            
-            if response.status_code == 200:
-                if best_time is None or elapsed < best_time:
-                    best_time = elapsed
-                continue
-            
-            if name == "rutracker" and "rutracker" in response.text.lower():
-                if best_time is None or elapsed < best_time:
-                    best_time = elapsed
-                continue
-        except:
-            continue
-    
-    return best_time
-
-def fetch_configs_from_url(url: str) -> List[str]:
-    try:
-        r = requests.get(url, timeout=10)
-        r.raise_for_status()
-        return [line.strip() for line in r.text.splitlines() 
-                if line.strip() and not line.startswith('#')]
-    except Exception as e:
-        print(f"Ошибка загрузки {url}: {e}")
-        return []
-
-def extract_host_port(config: str) -> Tuple[Optional[str], Optional[int]]:
-    if config.startswith('vless://'):
-        match = re.search(r'vless://[^@]+@([^:?#]+):(\d+)', config)
-        if match:
-            return match.group(1), int(match.group(2))
-    elif config.startswith('vmess://'):
-        try:
-            b64 = config[8:] + '=' * (4 - len(config[8:]) % 4)
-            data = json.loads(base64.b64decode(b64))
-            host = data.get('add')
-            port = data.get('port')
-            if host and port:
-                return host, int(port)
-        except:
-            pass
-    elif config.startswith('trojan://'):
-        match = re.search(r'trojan://[^@]+@([^:?#]+):(\d+)', config)
-        if match:
-            return match.group(1), int(match.group(2))
-    return None, None
-
-def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
-    try:
-        start = time.time()
-        with socket.create_connection((host, port), timeout=timeout):
-            return (time.time() - start) * 1000
-    except:
-        return None
-
-def verify_config(host: str, port: int, timeout: float) -> Tuple[Optional[float], bool]:
-    """Параллельная проверка: TCP + HTTP через несколько сайтов"""
-    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
-        tcp_future = executor.submit(tcp_ping, host, port, timeout)
-        http_future = executor.submit(check_config_real, host, port, timeout)
-        
-        ping = tcp_future.result()
-        http_ping = http_future.result()
-    
-    if http_ping is None:
-        return (ping, False)
-    
-    final_ping = min(p for p in [ping, http_ping] if p is not None)
-    return (final_ping, True)
-
 def process_config(config: str, reader) -> Optional[Tuple[str, str, float]]:
     if 'anycast' in config.lower():
         return None
@@ -301,13 +369,15 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float]]:
     if not host or not port:
         return None
 
-    ping, is_working = verify_config(host, port, TIMEOUT)
+    # Проверка конфига (HTTP → рукопожатие → TCP)
+    ping, is_working = verify_config(config, host, port, TIMEOUT)
     if not is_working or ping is None or ping > PING_MAX:
         return None
 
     name_part = config.split('#', 1)[1].strip() if '#' in config else ""
     protocol = get_protocol(config)
     
+    # Определение страны
     flag, country_code = get_country_geoip(host, reader)
     if country_code == "ZZ":
         flag, country_code = detect_country_by_domain(host)
@@ -321,6 +391,7 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float]]:
     cidr = " обход белых листов" if '[*CIDR]' in name_part else ""
     domain_note = get_domain_note(host) if country_code == "RU" else ""
 
+    # Формирование названия
     if country_code == "RU":
         parts = [f"#{flag}"]
         if protocol:

@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-          cache: 'pip'       # кэширует зависимости для ускорения
+          cache: 'pip'
 
       - name: Install dependencies
         run: |
@@ -34,11 +34,12 @@ jobs:
           path: |
             configs.txt
             ru.txt
+            protocols/
 
       - name: Commit and push
         run: |
           git config user.name "GitHub Action"
-          git config user.email "action@github.com"
-          git add configs.txt ru.txt
+          git config.user.email "action@github.com"
+          git add configs.txt ru.txt protocols/
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update configs $(date '+%Y-%m-%d %H:%M')"
           git push

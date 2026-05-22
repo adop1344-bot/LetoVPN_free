@@ -10,8 +10,14 @@ import re
 import gzip
 import shutil
 import random
+import warnings
+import urllib3
 from datetime import datetime, timezone, timedelta
 from typing import List, Tuple, Optional
+
+# Отключаем предупреждения
+warnings.filterwarnings("ignore")
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # ----- КОНФИГУРАЦИЯ -----
 SOURCES_FILE = "sources.txt"
@@ -19,11 +25,10 @@ FLAGS_FILE = "flags.txt"
 KEYWORDS_FILE = "keywords.txt"
 CITIES_FILE = "cities.txt"
 DOMAINS_FILE = "domains.txt"
-TIMEOUT = 5.0  # Увеличил до 5 сек для HTTP проверки
-MAX_WORKERS = 300  # Уменьшил до 300, чтобы не перегружать
+TIMEOUT = 4.0  # 4 секунды на рукопожатие
+MAX_WORKERS = 200  # 200 потоков для стабильности
 PING_GOOD_THRESHOLD = 200
 PING_MAX = 10000
-RETRY_PING = True
 GEOIP_URL = "https://cdn.jsdelivr.net/npm/geolite2-country/GeoLite2-Country.mmdb.gz"
 GEOIP_FILE = "GeoLite2-Country.mmdb"
 
@@ -132,56 +137,15 @@ def get_protocol(config: str) -> str:
         return "TROJAN"
     return ""
 
-# ----- ПРОВЕРКА ЧЕРЕЗ HTTP GET -----
-def check_config_http(host: str, port: int, timeout: float) -> Optional[float]:
-    """Проверяет конфиг через HTTP GET запрос"""
-    proxy_configs = [
-        f"http://{host}:{port}",
-        f"https://{host}:{port}",
-        f"socks5://{host}:{port}",
-        f"socks5h://{host}:{port}"
-    ]
-    
-    test_urls = [
-        "http://httpbin.org/get",
-        "https://httpbin.org/get",
-        "http://ip-api.com/json",
-        "https://www.google.com/generate_204"
-    ]
-    
-    for proxy_type in proxy_configs:
-        proxies = {"http": proxy_type, "https": proxy_type}
-        
-        for url in test_urls:
-            try:
-                start = time.time()
-                response = requests.get(
-                    url,
-                    proxies=proxies,
-                    timeout=timeout,
-                    headers={"User-Agent": "Mozilla/5.0"}
-                )
-                elapsed = (time.time() - start) * 1000
-                
-                if response.status_code == 200:
-                    return elapsed
-                if "httpbin" in url and response.status_code in [200, 201, 202]:
-                    return elapsed
-            except:
-                continue
-    
-    return None
-
-# ----- ПРОВЕРКА ЧЕРЕЗ VLESS РУКОПОЖАТИЕ -----
+# ----- ПРОТОКОЛЬНАЯ ПРОВЕРКА (МАКСИМАЛЬНАЯ ТОЧНОСТЬ) -----
 def vless_handshake(host: str, port: int, timeout: float) -> Optional[float]:
-    """Проверяет VLESS конфиг через рукопожатие"""
+    """Точная проверка VLESS через рукопожатие"""
     try:
         start = time.time()
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(timeout)
         sock.connect((host, port))
         
-        # VLESS рукопожатие
         handshake = bytes([random.randint(0, 255) for _ in range(16)])
         sock.send(handshake)
         
@@ -195,7 +159,7 @@ def vless_handshake(host: str, port: int, timeout: float) -> Optional[float]:
         return None
 
 def vmess_handshake(host: str, port: int, timeout: float) -> Optional[float]:
-    """Проверяет VMESS конфиг через рукопожатие"""
+    """Точная проверка VMESS через рукопожатие"""
     try:
         start = time.time()
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -213,7 +177,7 @@ def vmess_handshake(host: str, port: int, timeout: float) -> Optional[float]:
         return None
 
 def trojan_handshake(host: str, port: int, timeout: float) -> Optional[float]:
-    """Проверяет TROJAN конфиг через рукопожатие"""
+    """Точная проверка TROJAN через рукопожатие"""
     try:
         start = time.time()
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -230,38 +194,20 @@ def trojan_handshake(host: str, port: int, timeout: float) -> Optional[float]:
     except:
         return None
 
-def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
-    try:
-        start = time.time()
-        with socket.create_connection((host, port), timeout=timeout):
-            return (time.time() - start) * 1000
-    except:
-        return None
-
 def verify_config(config: str, host: str, port: int, timeout: float) -> Tuple[Optional[float], bool]:
-    """Проверяет конфиг (HTTP → рукопожатие → TCP)"""
+    """Максимально точная проверка по протоколу"""
     
-    # 1. Пробуем HTTP через прокси
-    http_ping = check_config_http(host, port, timeout)
-    if http_ping is not None:
-        return (http_ping, True)
-    
-    # 2. Пробуем рукопожатие по протоколу
-    handshake_ping = None
     if config.startswith('vless://'):
-        handshake_ping = vless_handshake(host, port, timeout)
+        ping = vless_handshake(host, port, timeout)
     elif config.startswith('vmess://'):
-        handshake_ping = vmess_handshake(host, port, timeout)
+        ping = vmess_handshake(host, port, timeout)
     elif config.startswith('trojan://'):
-        handshake_ping = trojan_handshake(host, port, timeout)
+        ping = trojan_handshake(host, port, timeout)
+    else:
+        return (None, False)
     
-    if handshake_ping is not None:
-        return (handshake_ping, True)
-    
-    # 3. Запасной вариант - TCP ping
-    tcp_ping_result = tcp_ping(host, port, timeout)
-    if tcp_ping_result is not None:
-        return (tcp_ping_result, True)
+    if ping is not None and ping < PING_MAX:
+        return (ping, True)
     
     return (None, False)
 
@@ -369,9 +315,9 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float]]:
     if not host or not port:
         return None
 
-    # Проверка конфига (HTTP → рукопожатие → TCP)
+    # Точная проверка через рукопожатие
     ping, is_working = verify_config(config, host, port, TIMEOUT)
-    if not is_working or ping is None or ping > PING_MAX:
+    if not is_working or ping is None:
         return None
 
     name_part = config.split('#', 1)[1].strip() if '#' in config else ""

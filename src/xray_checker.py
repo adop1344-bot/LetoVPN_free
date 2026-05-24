@@ -6,9 +6,9 @@ import json
 import tempfile
 import urllib.request
 import zipfile
-from typing import Tuple, Optional
+from typing import Optional
 
-XRAY_PATH = "xray"  # будем использовать xray из PATH или скачанный
+XRAY_AVAILABLE = False
 
 def download_xray():
     """Скачивает Xray бинарник, если его нет"""
@@ -17,7 +17,6 @@ def download_xray():
     
     print("📥 Скачиваю Xray...")
     try:
-        # Для Linux x86_64
         url = "https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip"
         urllib.request.urlretrieve(url, "xray.zip")
         
@@ -37,20 +36,21 @@ def xray_ping(config: str, timeout: int = 5) -> Optional[float]:
     Проверяет конфиг через Xray
     Возвращает пинг в мс или None
     """
+    config_path = None
     try:
         # Создаём временный конфиг для Xray
         with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+            config_path = f.name
             # Преобразуем строку конфига в формат Xray
             xray_config = convert_to_xray_config(config)
             if not xray_config:
                 return None
             json.dump(xray_config, f)
-            config_path = f.name
         
         # Запускаем Xray в режиме проверки
         start = time.time()
         result = subprocess.run(
-            [XRAY_PATH, "test", "-config", config_path],
+            ["xray", "test", "-config", config_path],
             capture_output=True,
             timeout=timeout
         )
@@ -65,17 +65,16 @@ def xray_ping(config: str, timeout: int = 5) -> Optional[float]:
         print(f"Xray error: {e}")
         return None
     finally:
-        if os.path.exists(config_path):
+        if config_path and os.path.exists(config_path):
             os.unlink(config_path)
 
 def convert_to_xray_config(config_line: str) -> dict:
     """Преобразует VLESS/VMESS строку в формат Xray"""
+    import urllib.parse
+    import re
+    
     if config_line.startswith('vless://'):
         # Парсим VLESS
-        import urllib.parse
-        import re
-        
-        # Извлекаем части URL
         match = re.search(r'vless://([^@]+)@([^:]+):(\d+)(.*)', config_line)
         if not match:
             return None
@@ -109,13 +108,13 @@ def convert_to_xray_config(config_line: str) -> dict:
                     "tlsSettings": {
                         "serverName": query.get("sni", [""])[0],
                         "fingerprint": query.get("fp", ["chrome"])[0]
-                    } if query.get("security", ["none"])[0] == "tls" else None
+                    } if query.get("security", ["none"])[0] in ["tls", "reality"] else None
                 }
             }]
         }
     
     elif config_line.startswith('vmess://'):
-        # Аналогично для VMESS
-        return None  # TODO: добавить парсинг vmess
+        # TODO: добавить парсинг vmess
+        return None
     
     return None

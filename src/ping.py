@@ -5,9 +5,17 @@ import re
 import base64
 import json
 from typing import Tuple, Optional
+from src.xray_checker import xray_ping, download_xray
+
+XRAY_AVAILABLE = False
+
+def init_xray():
+    global XRAY_AVAILABLE
+    if download_xray():
+        XRAY_AVAILABLE = True
+    return XRAY_AVAILABLE
 
 def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
-    """Простой TCP ping"""
     try:
         start = time.time()
         with socket.create_connection((host, port), timeout=timeout):
@@ -16,12 +24,19 @@ def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
         return None
 
 def verify_config(config: str, host: str, port: int, timeout: float) -> Tuple[Optional[float], bool]:
-    """Проверка конфига (только TCP)"""
+    """Проверка конфига: сначала Xray, потом TCP ping как fallback"""
+    
+    # Пробуем Xray проверку (если доступна)
+    if XRAY_AVAILABLE:
+        ping = xray_ping(config, int(timeout))
+        if ping is not None:
+            return (ping, True)
+    
+    # Fallback: TCP ping
     ping = tcp_ping(host, port, timeout)
     return (ping, ping is not None)
 
 def extract_host_port(config: str) -> Tuple[Optional[str], Optional[int]]:
-    """Извлекает хост и порт из конфига"""
     if config.startswith('vless://'):
         match = re.search(r'vless://[^@]+@([^:?#]+):(\d+)', config)
         if match:

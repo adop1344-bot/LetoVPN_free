@@ -5,14 +5,20 @@ import re
 import base64
 import json
 from typing import Tuple, Optional
-from src.xray_checker import xray_ping, download_xray
 
 XRAY_AVAILABLE = False
 
 def init_xray():
     global XRAY_AVAILABLE
-    if download_xray():
-        XRAY_AVAILABLE = True
+    try:
+        from src.xray_checker import download_xray, xray_ping
+        if download_xray():
+            XRAY_AVAILABLE = True
+            print("✅ Xray готов к использованию")
+        else:
+            print("⚠️ Xray не установлен, использую TCP ping")
+    except Exception as e:
+        print(f"⚠️ Ошибка инициализации Xray: {e}")
     return XRAY_AVAILABLE
 
 def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
@@ -28,9 +34,13 @@ def verify_config(config: str, host: str, port: int, timeout: float) -> Tuple[Op
     
     # Пробуем Xray проверку (если доступна)
     if XRAY_AVAILABLE:
-        ping = xray_ping(config, int(timeout))
-        if ping is not None:
-            return (ping, True)
+        try:
+            from src.xray_checker import xray_ping
+            ping = xray_ping(config, int(timeout))
+            if ping is not None:
+                return (ping, True)
+        except Exception as e:
+            print(f"Xray проверка не удалась: {e}")
     
     # Fallback: TCP ping
     ping = tcp_ping(host, port, timeout)

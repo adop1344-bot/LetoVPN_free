@@ -10,31 +10,77 @@ import urllib3
 from datetime import datetime, timezone, timedelta
 from typing import List, Tuple, Optional
 
-# Импорт модулей
+# Импорт модулей из src
 from src.config import (
-    SOURCES_FILE, FLAGS_FILE, KEYWORDS_FILE, CITIES_FILE, DOMAINS_FILE,
     TIMEOUT, MAX_WORKERS, PING_GOOD_THRESHOLD, PING_MAX,
     GEOIP_URL, GEOIP_FILE,
-    load_sources, load_flags, load_keywords, load_cities, load_domains,
-    COUNTRY_FLAGS, KEYWORDS, CITIES, DOMAIN_MAP
+    load_sources, load_flags, load_keywords, load_cities, load_domains
 )
 from src.ping import verify_config, extract_host_port, get_protocol
-from src.geo import (
-    get_country_geoip, detect_country_by_domain, detect_country_from_name,
-    detect_city_by_ip, get_domain_note
-)
 from src.tg import TelegramBot
 
 # Отключаем предупреждения
 warnings.filterwarnings("ignore")
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-# Загружаем настройки
+# Загружаем данные
 SOURCES = load_sources()
 COUNTRY_FLAGS = load_flags()
 KEYWORDS = load_keywords()
 CITIES = load_cities()
 DOMAIN_MAP = load_domains()
+
+# ----- ФУНКЦИИ ГЕО (встроены, чтобы не зависеть от geo.py) -----
+def detect_country_by_domain(host: str) -> Tuple[str, str]:
+    if not host:
+        return "🏳️", "ZZ"
+    host_lower = host.lower()
+    for domain, code in sorted(DOMAIN_MAP.items(), key=lambda x: len(x[0]), reverse=True):
+        if host_lower.endswith(domain):
+            return COUNTRY_FLAGS.get(code, "🏳️"), code
+    return "🏳️", "ZZ"
+
+def detect_country_from_name(name: str) -> Tuple[str, str]:
+    name_lower = name.lower()
+    for code, flag in COUNTRY_FLAGS.items():
+        if flag in name:
+            return flag, code
+    for code, words in KEYWORDS.items():
+        for word in words:
+            if word in name_lower:
+                return COUNTRY_FLAGS.get(code, "🏳️"), code
+    match = re.search(r'\b([A-Z]{2})\b', name)
+    if match and match.group(1) in COUNTRY_FLAGS:
+        return COUNTRY_FLAGS[match.group(1)], match.group(1)
+    return "🏳️", "ZZ"
+
+def get_country_geoip(host: str, reader) -> Tuple[str, str]:
+    try:
+        if reader:
+            response = reader.country(host)
+            if response and response.country and response.country.iso_code:
+                code = response.country.iso_code
+                return COUNTRY_FLAGS.get(code, "🏳️"), code
+    except:
+        pass
+    return "🏳️", "ZZ"
+
+def detect_city_by_ip(host: str) -> str:
+    if not re.match(r'^\d+\.\d+\.\d+\.\d+$', host):
+        return ""
+    parts = host.split('.')
+    mask = f"{parts[0]}.{parts[1]}"
+    return CITIES.get(mask, "")
+
+def get_domain_note(host: str) -> str:
+    if not host:
+        return ""
+    host_lower = host.lower()
+    if host_lower.endswith('.ru') or host_lower.endswith('.рф') or host_lower.endswith('.su'):
+        parts = host_lower.split('.')
+        if len(parts) >= 2:
+            return f" [{parts[-2]}.{parts[-1]}]"
+    return ""
 
 # ----- ЗАГРУЗКА GEOIP -----
 def download_geoip_db():
@@ -97,7 +143,7 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
     
     lightning = "⚡" if ping < PING_GOOD_THRESHOLD else ""
     city = detect_city_by_ip(host) if country_code == "RU" else ""
-    cidr = " обход белых листов" if '[*CIDR]' in name_part else ""
+    # Убрана проверка CIDR (обход белых листов)
     domain_note = get_domain_note(host) if country_code == "RU" else ""
 
     if country_code == "RU":
@@ -106,12 +152,12 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
         if lightning: parts.append(lightning)
         if city: parts.append(f"({city})")
         if domain_note: parts.append(domain_note)
-        new_name = ' '.join(parts) + cidr
+        new_name = ' '.join(parts)  # CIDR убран
     else:
         parts = [f"#{flag}"]
         if protocol: parts.append(protocol)
         if lightning: parts.append(lightning)
-        new_name = ' '.join(parts) + cidr
+        new_name = ' '.join(parts)
     
     new_name = re.sub(r'\s+', ' ', new_name).strip()
     

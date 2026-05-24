@@ -1,4 +1,4 @@
-name: Hourly start
+name: Hourly VPN config test
 
 on:
   schedule:
@@ -23,6 +23,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
+      - name: Install Xray
+        run: |
+          curl -L -o xray.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip
+          unzip -j xray.zip xray -d .
+          chmod +x xray
+          sudo mv xray /usr/local/bin/
+          rm xray.zip
+          xray version
 
       - name: Run config tester
         run: python -m src.app

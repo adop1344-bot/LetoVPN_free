@@ -1,20 +1,20 @@
-#announce: Обновлено: 27.05.2026 21:25:22, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#announce: Обновлено: 28.05.2026 00:52:16, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
-trojan://77b19c69-9840-443d-a66b-f08c81b6950a@141.193.213.107:443?sni=sgeofho04.bpsg2026.top&type=ws&host=sgeofho04.bpsg2026.top&path=/images#🇺🇸 TROJAN ⚡ [TCP]
-trojan://77b19c69-9840-443d-a66b-f08c81b6950a@141.193.213.199:443?sni=ehofhoe.bpuk2026.top&type=ws&host=ehofhoe.bpuk2026.top&path=/images#🇺🇸 TROJAN ⚡ [TCP]
-trojan://77b19c69-9840-443d-a66b-f08c81b6950a@141.193.213.199:443?sni=ehofhoe.bpuk2026.top&type=ws&host=ehofhoe.bpuk2026.top&path=/images#🇺🇸 TROJAN ⚡ [TCP]
-trojan://gcuCpQfaiVeDBdWG@jpbgp.netvigor.cc:19128?security=tls&sni=yazhou10.dynu.net#🇺🇸 TROJAN [TCP]
-trojan://77b19c69-9840-443d-a66b-f08c81b6950a@888.cloudflare.182682.xyz:443?sni=goog0419.bpusfaster2.top&type=ws&host=goog0419.bpusfaster2.top&path=/images#🇺🇸 TROJAN [TCP]
+trojan://gcuCpQfaiVeDBdWG@211.76.176.98:19128?security=tls&sni=yazhou10.dynu.net&type=tcp&headerType=none#🇹🇼 TROJAN ⚡ [TCP]
+trojan://gcuCpQfaiVeDBdWG@211.76.176.99:19128?security=tls&sni=yazhou10.dynu.net&type=tcp&headerType=none#🇹🇼 TROJAN ⚡ [TCP]
 trojan://gcuCpQfaiVeDBdWG@211.76.176.98:19128?security=tls&sni=yazhou10.dynu.net&type=tcp&headerType=none#🇹🇼 TROJAN [TCP]
-trojan://77b19c69-9840-443d-a66b-f08c81b6950a@141.193.213.107:443?sni=sgeofho04.bpsg2026.top&type=ws&host=sgeofho04.bpsg2026.top&path=/images#🇺🇸 TROJAN ⚡ [TCP]
 trojan://77b19c69-9840-443d-a66b-f08c81b6950a@888.cloudflare.182682.xyz:443?sni=goog0419.bpusfaster2.top&type=ws&host=goog0419.bpusfaster2.top&path=/images#🇺🇸 TROJAN [TCP]
-trojan://b49df800-061e-3282-a34c-70c864c83e8a@ntnt2.x2k8m9q3.top:65302?security=tls&sni=cdnjp.douyinvod.com&insecure=1&allowInsecure=1&type=tcp&headerType=none#🇯🇵 TROJAN [TCP]
+trojan://77b19c69-9840-443d-a66b-f08c81b6950a@141.193.213.107:443?sni=sgeofho04.bpsg2026.top&type=ws&host=sgeofho04.bpsg2026.top&path=/images#🇺🇸 TROJAN ⚡ [TCP]
+trojan://77b19c69-9840-443d-a66b-f08c81b6950a@141.193.213.107:443?sni=sgeofho04.bpsg2026.top&type=ws&host=sgeofho04.bpsg2026.top&path=/images#🇺🇸 TROJAN ⚡ [TCP]
+trojan://77b19c69-9840-443d-a66b-f08c81b6950a@141.193.213.199:443?sni=ehofhoe.bpuk2026.top&type=ws&host=ehofhoe.bpuk2026.top&path=/images#🇺🇸 TROJAN ⚡ [TCP]
+trojan://77b19c69-9840-443d-a66b-f08c81b6950a@888.cloudflare.182682.xyz:443?sni=goog0419.bpusfaster2.top&type=ws&host=goog0419.bpusfaster2.top&path=/images#🇺🇸 TROJAN [TCP]
+trojan://77b19c69-9840-443d-a66b-f08c81b6950a@141.193.213.199:443?sni=ehofhoe.bpuk2026.top&type=ws&host=ehofhoe.bpuk2026.top&path=/images#🇺🇸 TROJAN ⚡ [TCP]
 trojan://humanity@104.17.177.143:443?path=/assignment&amp%3Bsecurity=tls&amp%3Binsecure=0&amp%3Bhost=www.ignitelimit.com&amp%3Btype=ws&amp%3BallowInsecure=0&amp%3Bsni=www.ignitelimit.com#🇫🇷 TROJAN ⚡ [TCP]
+trojan://humanity@104.20.6.134:443?path=%2Fassignment&security=tls&alpn=http%2F1.1&insecure=0&host=www.calmloud.com&fp=chrome&type=ws&allowInsecure=0&sni=www.calmloud.com#🇫🇷 TROJAN ⚡ [TCP]
+trojan://humanity@v1.dabache.top:443?security=tls&type=ws&sni=www.multiplydose.com&path=/assignment&host=www.multiplydose.com#🇳🇱 TROJAN [TCP]
 trojan://humanity@104.18.32.47:443?path=%2Fassignment&security=tls&insecure=1&host=www.multiplydose.com&type=ws&allowInsecure=1&sni=www.multiplydose.com#🇳🇱 TROJAN ⚡ [TCP]
-trojan://humanity@8.6.112.6:443?path=%2Fassignment&amp;security=tls&amp;host=www.calmloud.com&amp;fp=chrome&amp;type=ws&amp;sni=www.calmloud.com#🇫🇷 TROJAN ⚡ [TCP]
-trojan://b49df800-061e-3282-a34c-70c864c83e8a@ascjp.ntt1.ccddn4.icu:65302?security=tls&sni=cdnjp.douyinvod.com&insecure=1&allowInsecure=1&type=tcp&headerType=none#🇯🇵 TROJAN [TCP]

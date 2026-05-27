@@ -7,6 +7,7 @@ import json
 from typing import Tuple, Optional
 
 XRAY_AVAILABLE = False
+USE_TCP_FALLBACK = True  # TCP как запасной
 
 def init_xray():
     global XRAY_AVAILABLE
@@ -14,9 +15,9 @@ def init_xray():
         from src.xray_checker import download_xray, xray_ping
         if download_xray():
             XRAY_AVAILABLE = True
-            print("✅ Xray готов к использованию")
+            print("✅ Xray готов к использованию (основной метод)")
         else:
-            print("⚠️ Xray не установлен, использую TCP ping")
+            print("⚠️ Xray не установлен, использую только TCP ping")
     except Exception as e:
         print(f"⚠️ Ошибка инициализации Xray: {e}")
     return XRAY_AVAILABLE
@@ -29,22 +30,32 @@ def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
     except:
         return None
 
-def verify_config(config: str, host: str, port: int, timeout: float) -> Tuple[Optional[float], bool]:
-    """Проверка конфига: сначала Xray, потом TCP ping как fallback"""
+def verify_config(config: str, host: str, port: int, timeout: float) -> Tuple[Optional[float], bool, bool]:
+    """
+    Проверка конфига:
+    - Xray (основной)
+    - TCP fallback (запасной)
+    Возвращает (пинг, успех, использован_ли_Xray)
+    """
     
-    # Пробуем Xray проверку (если доступна)
+    # 1. Пробуем Xray (если доступен)
     if XRAY_AVAILABLE:
         try:
             from src.xray_checker import xray_ping
             ping = xray_ping(config, int(timeout))
             if ping is not None:
-                return (ping, True)
+                return (ping, True, True)  # Xray успешен
         except Exception as e:
-            print(f"Xray проверка не удалась: {e}")
+            print(f"Xray ошибка: {e}")
     
-    # Fallback: TCP ping
-    ping = tcp_ping(host, port, timeout)
-    return (ping, ping is not None)
+    # 2. Fallback: TCP ping (если включён)
+    if USE_TCP_FALLBACK:
+        ping = tcp_ping(host, port, timeout)
+        if ping is not None:
+            return (ping, True, False)  # TCP fallback
+        return (None, False, False)
+    
+    return (None, False, False)
 
 def extract_host_port(config: str) -> Tuple[Optional[str], Optional[int]]:
     if config.startswith('vless://'):

@@ -17,7 +17,7 @@ from src.config import (
     GEOIP_URL, GEOIP_FILE,
     load_sources, load_flags, load_keywords, load_cities, load_domains
 )
-from src.ping import verify_config, extract_host_port, get_protocol, init_xray
+from src.ping import verify_config, extract_host_port, get_protocol, init_xray, USE_TCP_FALLBACK
 from src.tg import TelegramBot
 
 # Отключаем предупреждения
@@ -127,12 +127,17 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
     if not host or not port:
         return None
 
-    ping, is_working = verify_config(config, host, port, TIMEOUT)
+    ping, is_working, used_xray = verify_config(config, host, port, TIMEOUT)
     if not is_working or ping is None or ping > PING_MAX:
         return None
 
     name_part = config.split('#', 1)[1].strip() if '#' in config else ""
     protocol = get_protocol(config)
+    
+    # Добавляем метку TCP если использован fallback
+    tcp_label = ""
+    if not used_xray and USE_TCP_FALLBACK:
+        tcp_label = " [TCP]"
     
     flag, country_code = get_country_geoip(host, reader)
     if country_code == "ZZ":
@@ -150,6 +155,7 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
         parts = [f"#{flag}"]
         if protocol: parts.append(protocol)
         if lightning: parts.append(lightning)
+        if tcp_label: parts.append(tcp_label)
         if city: parts.append(f"({city})")
         if domain_note: parts.append(domain_note)
         new_name = ' '.join(parts)
@@ -157,6 +163,7 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
         parts = [f"#{flag}"]
         if protocol: parts.append(protocol)
         if lightning: parts.append(lightning)
+        if tcp_label: parts.append(tcp_label)
         new_name = ' '.join(parts)
     
     new_name = re.sub(r'\s+', ' ', new_name).strip()

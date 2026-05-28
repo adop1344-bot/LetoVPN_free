@@ -6,6 +6,7 @@ import re
 import gzip
 import shutil
 import time
+import json
 import warnings
 import urllib3
 from datetime import datetime, timezone, timedelta
@@ -139,11 +140,28 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
     if not used_xray and USE_TCP_FALLBACK:
         tcp_label = " [TCP]"
     
+    # Определяем страну через GeoIP (приоритет)
     flag, country_code = get_country_geoip(host, reader)
+    
+    # Если GeoIP не определил, пробуем по домену
     if country_code == "ZZ":
         flag, country_code = detect_country_by_domain(host)
-    if country_code == "ZZ":
+    
+    # Особый случай: домен .ru
+    is_ru_domain = host and host.lower().endswith('.ru')
+    ru_domain_note = ""
+    
+    if is_ru_domain and country_code != "RU":
+        # Если домен .ru, но страна не Россия → помечаем [?] и отправляем в общий файл
+        flag = "🏳️"
+        country_code = "??"
+        ru_domain_note = " [?]"
+    
+    # Если страна всё ещё не определена (и не .ru домен) — используем название
+    if country_code == "ZZ" and not is_ru_domain:
         flag, country_code = detect_country_from_name(name_part)
+    
+    # Если страна не определилась — пропускаем
     if country_code == "ZZ" or flag == "🏳️":
         return None
     
@@ -164,6 +182,7 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
         if protocol: parts.append(protocol)
         if lightning: parts.append(lightning)
         if tcp_label: parts.append(tcp_label)
+        if ru_domain_note: parts.append(ru_domain_note)
         new_name = ' '.join(parts)
     
     new_name = re.sub(r'\s+', ' ', new_name).strip()
@@ -232,7 +251,9 @@ def main():
     
     # Разделяем на российские и остальные
     ru_configs = [(cfg, ping) for cfg, code, ping, _, _ in results if code == "RU"]
-    other_configs = [(cfg, code, ping) for cfg, code, ping, _, _ in results if code != "RU"]
+    other_configs = [(cfg, code, ping) for cfg, code, ping, _, _ in results if code != "RU" and code != "??"]
+    
+    # Конфиги с доменом .ru но не Россия (??) идут в other_configs
     other_configs.sort(key=lambda x: x[2])
     ru_configs.sort(key=lambda x: x[1])
     
@@ -240,12 +261,14 @@ def main():
     
     protocol_files = {"VLESS": [], "VMESS": [], "TROJAN": []}
     for cfg, code, ping, _, _ in results:
+        if code == "??":
+            continue  # пропускаем в протокольных файлах
         if cfg.startswith('vless://'): protocol_files["VLESS"].append(cfg)
         elif cfg.startswith('vmess://'): protocol_files["VMESS"].append(cfg)
         elif cfg.startswith('trojan://'): protocol_files["TROJAN"].append(cfg)
     
     now = datetime.now(timezone(timedelta(hours=3))).strftime("%d.%m.%Y %H:%M:%S")
-    repo = os.getenv("GITHUB_REPOSITORY", "YOUR_USERNAME/YOUR_REPO")
+    repo = os.getenv("GITHUB_REPOSITORY", "adop1344-bot/LetoVPN_free")
     common_header = f"""#announce: Обновлено: {now}, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1

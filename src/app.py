@@ -275,6 +275,7 @@ def main():
 
 """
     
+    # --- ФАЙЛЫ С ЗАГОЛОВКАМИ (для просмотра) ---
     with open("configs.txt", "w", encoding="utf-8") as f:
         f.write(f"{common_header}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/configs.txt\n#profile-title: TG@LetoVPN_Free\n\n")
         for cfg, _, _ in other_configs:
@@ -285,6 +286,18 @@ def main():
         for cfg, _ in ru_configs:
             f.write(cfg + "\n")
     
+    # --- ЧИСТЫЕ ФАЙЛЫ ДЛЯ HIDDIFY (без заголовков) ---
+    with open("configs_hiddify.txt", "w", encoding="utf-8") as f:
+        for cfg, _, _ in other_configs:
+            f.write(cfg + "\n")
+    print(f"  configs_hiddify.txt: {len(other_configs)} конфигов")
+    
+    with open("ru_hiddify.txt", "w", encoding="utf-8") as f:
+        for cfg, _ in ru_configs:
+            f.write(cfg + "\n")
+    print(f"  ru_hiddify.txt: {len(ru_configs)} конфигов")
+    
+    # --- ПРОТОКОЛЫ ---
     for protocol, configs in protocol_files.items():
         if configs:
             with open(f"protocols/{protocol}.txt", "w", encoding="utf-8") as f:
@@ -292,7 +305,11 @@ def main():
                 for cfg in configs:
                     f.write(cfg + "\n")
     
-    print(f"\nГотово! configs.txt ({len(other_configs)}), ru.txt ({len(ru_configs)})")
+    print(f"\nГотово!")
+    print(f"  configs.txt: {len(other_configs)} конфигов (с заголовками)")
+    print(f"  configs_hiddify.txt: {len(other_configs)} конфигов (чистый)")
+    print(f"  ru.txt: {len(ru_configs)} конфигов (с заголовками)")
+    print(f"  ru_hiddify.txt: {len(ru_configs)} конфигов (чистый)")
     
     if reader:
         reader.close()

@@ -1,10 +1,3 @@
-#announce: Обновлено: 23.06.2026 00:46:50, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
-#support-url: https://t.me/@why_im_gay
-#profile-update-interval: 1
-
-#profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/ru.txt
-#profile-title: ru TG@LetoVPN_Free
-
 vless://f9255507-1b65-433f-bfd8-193b35e068e2@45.8.211.140:80/?type=ws&encryption=none&flow=&host=s5.868001.xyz&path=Telegram @VPNine1#🇷🇺 VLESS ⚡ [TCP]
 vless://f9255507-1b65-433f-bfd8-193b35e068e2@185.148.104.140:80?host=s5.868001.xyz&path=%2FTelegram%F0%9F%87%A8%F0%9F%87%B3%2B%40WangCai2&security=none&type=ws#🇷🇺 VLESS ⚡ [TCP]
 vless://f9255507-1b65-433f-bfd8-193b35e068e2@45.142.120.140:80/?type=ws&encryption=none&flow=&host=s5.868001.xyz&path=Telegram%F0%9F%87%A8%F0%9F%87%B3%20%40WangCai2#🇷🇺 VLESS ⚡ [TCP]

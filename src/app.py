@@ -222,11 +222,10 @@ def main():
     filtered = [c for c in all_configs if 'anycast' not in c.lower()]
     
     print(f"Всего конфигов: {len(filtered)}")
-    bot.send_start(len(filtered))
     
     results = []
     checked = 0
-    top_configs = []
+    start_sent = False
     
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         futures = [executor.submit(process_config, cfg, reader) for cfg in filtered]
@@ -235,19 +234,22 @@ def main():
             if res:
                 new_config, country_code, ping, tg_display, raw_ping = res
                 results.append(res)
-                top_configs.append(tg_display)
-                top_configs.sort(key=lambda x: x[2])
-                top_configs = top_configs[:10]
             
             checked += 1
-            if checked % 10 == 0 or checked == len(filtered):
-                bot.update(checked, len(filtered), len(results), top_configs, time.time() - start_time)
             
+            # Отправляем стартовое сообщение (один раз)
+            if not start_sent:
+                bot.send_start()
+                start_sent = True
+            
+            # Логи в консоль (без Telegram)
             if checked % 100 == 0:
                 print(f"Обработано {checked}/{len(filtered)}. Найдено {len(results)}")
     
     fast_count = len([r for r in results if r[2] < PING_GOOD_THRESHOLD])
-    bot.send_final(len(filtered), len(results), fast_count, time.time() - start_time, top_configs)
+    
+    # Финальное сообщение
+    bot.send_final(len(filtered), len(results), fast_count, time.time() - start_time)
     
     # Разделяем на российские и остальные
     ru_configs = [(cfg, ping) for cfg, code, ping, _, _ in results if code == "RU"]

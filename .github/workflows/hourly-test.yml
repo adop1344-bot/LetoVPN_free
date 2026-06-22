@@ -53,7 +53,7 @@ jobs:
       - name: Commit and push
         run: |
           git config user.name "GitHub Action"
-          git config.user.email "action@github.com"
+          git config user.email "action@github.com"
           git add configs.txt ru.txt configs_hiddify.txt ru_hiddify.txt protocols/
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update configs $(date '+%Y-%m-%d %H:%M')"
           git push

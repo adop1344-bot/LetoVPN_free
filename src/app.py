@@ -18,7 +18,7 @@ from src.config import (
     GEOIP_URL, GEOIP_FILE,
     load_sources, load_flags, load_keywords, load_cities, load_domains
 )
-from src.ping import verify_config, extract_host_port, get_protocol, init_xray, USE_TCP_FALLBACK
+from src.ping import verify_config, extract_host_port, get_protocol, init_xray
 from src.tg import TelegramBot
 
 # Отключаем предупреждения
@@ -120,7 +120,7 @@ def fetch_configs_from_url(url: str) -> List[str]:
         print(f"Ошибка загрузки {url}: {e}")
         return []
 
-def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple, float]]:
+def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple, float, float]]:
     if 'anycast' in config.lower():
         return None
 
@@ -128,17 +128,27 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
     if not host or not port:
         return None
 
-    # Двухступенчатая проверка: TCP → Xray
-    ping, is_working, used_xray = verify_config(config, host, port, TIMEOUT)
+    # Проверка с измерением скорости
+    ping, is_working, used_xray, speed_mbps = verify_config(config, host, port, TIMEOUT)
     if not is_working or ping is None or ping > PING_MAX:
         return None
 
     name_part = config.split('#', 1)[1].strip() if '#' in config else ""
     protocol = get_protocol(config)
     
-    # Метка, если использован TCP fallback
+    # Метка скорости (если есть)
+    speed_label = ""
+    if speed_mbps is not None and speed_mbps > 1:
+        speed_label = f" {speed_mbps:.0f}Mbps"
+    
+    # Метка Xray (если использован)
+    xray_label = ""
+    if used_xray:
+        xray_label = " [X]"
+    
+    # Метка TCP (если использован TCP fallback и нет скорости)
     tcp_label = ""
-    if not used_xray and USE_TCP_FALLBACK:
+    if not used_xray and speed_mbps is None:
         tcp_label = " [TCP]"
     
     # Определяем страну через GeoIP (приоритет)
@@ -169,10 +179,13 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
     city = detect_city_by_ip(host) if country_code == "RU" else ""
     domain_note = get_domain_note(host) if country_code == "RU" else ""
 
+    # Формируем название
     if country_code == "RU":
         parts = [f"#{flag}"]
         if protocol: parts.append(protocol)
         if lightning: parts.append(lightning)
+        if speed_label: parts.append(speed_label)
+        if xray_label: parts.append(xray_label)
         if tcp_label: parts.append(tcp_label)
         if city: parts.append(f"({city})")
         if domain_note: parts.append(domain_note)
@@ -181,6 +194,8 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
         parts = [f"#{flag}"]
         if protocol: parts.append(protocol)
         if lightning: parts.append(lightning)
+        if speed_label: parts.append(speed_label)
+        if xray_label: parts.append(xray_label)
         if tcp_label: parts.append(tcp_label)
         if ru_domain_note: parts.append(ru_domain_note)
         new_name = ' '.join(parts)
@@ -195,12 +210,12 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
     # Для Telegram
     tg_display = (flag, protocol, ping, lightning == "⚡")
     
-    return (new_config, country_code, ping, tg_display, ping)
+    return (new_config, country_code, ping, tg_display, ping, speed_mbps)
 
 def main():
     start_time = time.time()
     
-    # Инициализируем Xray
+    # Инициализируем Xray (запасной метод)
     init_xray()
     
     if not SOURCES:
@@ -232,7 +247,7 @@ def main():
         for future in concurrent.futures.as_completed(futures):
             res = future.result()
             if res:
-                new_config, country_code, ping, tg_display, raw_ping = res
+                new_config, country_code, ping, tg_display, raw_ping, speed_mbps = res
                 results.append(res)
             
             checked += 1
@@ -247,20 +262,18 @@ def main():
     fast_count = len([r for r in results if r[2] < PING_GOOD_THRESHOLD])
     bot.send_final(len(filtered), len(results), fast_count, time.time() - start_time)
     
-    # --- СОРТИРОВКА ПО СТРАНАМ ---
     # Разделяем на российские и остальные
-    ru_configs = [(cfg, ping) for cfg, code, ping, _, _ in results if code == "RU"]
-    other_configs = [(cfg, code, ping) for cfg, code, ping, _, _ in results if code != "RU" and code != "??"]
+    ru_configs = [(cfg, ping) for cfg, code, ping, _, _, _ in results if code == "RU"]
+    other_configs = [(cfg, code, ping) for cfg, code, ping, _, _, _ in results if code != "RU" and code != "??"]
     
     # Сортируем по странам (по коду)
-    other_configs.sort(key=lambda x: x[1])  # сортировка по коду страны
-    ru_configs.sort(key=lambda x: x[1])      # сортировка по пингу (для ru.txt)
+    other_configs.sort(key=lambda x: x[1])
+    ru_configs.sort(key=lambda x: x[1])
     
-    # --- СОЗДАЁМ ФАЙЛЫ ---
     os.makedirs("protocols", exist_ok=True)
     
     protocol_files = {"VLESS": [], "VMESS": [], "TROJAN": []}
-    for cfg, code, ping, _, _ in results:
+    for cfg, code, ping, _, _, _ in results:
         if code == "??":
             continue
         if cfg.startswith('vless://'): protocol_files["VLESS"].append(cfg)
@@ -275,7 +288,7 @@ def main():
 
 """
     
-    # --- ФАЙЛЫ С ЗАГОЛОВКАМИ ---
+    # ФАЙЛЫ С ЗАГОЛОВКАМИ
     with open("configs.txt", "w", encoding="utf-8") as f:
         f.write(f"{common_header}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/configs.txt\n#profile-title: TG@LetoVPN_Free\n\n")
         for cfg, _, _ in other_configs:
@@ -286,7 +299,7 @@ def main():
         for cfg, _ in ru_configs:
             f.write(cfg + "\n")
     
-    # --- ЧИСТЫЕ ФАЙЛЫ ДЛЯ HIDDIFY ---
+    # ЧИСТЫЕ ФАЙЛЫ ДЛЯ HIDDIFY
     with open("configs_hiddify.txt", "w", encoding="utf-8") as f:
         for cfg, _, _ in other_configs:
             f.write(cfg + "\n")
@@ -297,7 +310,7 @@ def main():
             f.write(cfg + "\n")
     print(f"  ru_hiddify.txt: {len(ru_configs)} конфигов")
     
-    # --- ПРОТОКОЛЫ ---
+    # ПРОТОКОЛЫ
     for protocol, configs in protocol_files.items():
         if configs:
             with open(f"protocols/{protocol}.txt", "w", encoding="utf-8") as f:
@@ -306,9 +319,9 @@ def main():
                     f.write(cfg + "\n")
     
     print(f"\nГотово!")
-    print(f"  configs.txt: {len(other_configs)} конфигов (с заголовками, отсортировано по странам)")
+    print(f"  configs.txt: {len(other_configs)} конфигов (отсортировано по странам)")
     print(f"  configs_hiddify.txt: {len(other_configs)} конфигов (чистый)")
-    print(f"  ru.txt: {len(ru_configs)} конфигов (с заголовками)")
+    print(f"  ru.txt: {len(ru_configs)} конфигов")
     print(f"  ru_hiddify.txt: {len(ru_configs)} конфигов (чистый)")
     
     if reader:

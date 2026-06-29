@@ -128,6 +128,7 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
     if not host or not port:
         return None
 
+    # Двухступенчатая проверка: TCP → Xray
     ping, is_working, used_xray = verify_config(config, host, port, TIMEOUT)
     if not is_working or ping is None or ping > PING_MAX:
         return None
@@ -135,7 +136,7 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
     name_part = config.split('#', 1)[1].strip() if '#' in config else ""
     protocol = get_protocol(config)
     
-    # Добавляем метку TCP если использован fallback
+    # Метка, если использован TCP fallback
     tcp_label = ""
     if not used_xray and USE_TCP_FALLBACK:
         tcp_label = " [TCP]"
@@ -152,7 +153,6 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
     ru_domain_note = ""
     
     if is_ru_domain and country_code != "RU":
-        # Если домен .ru, но страна не Россия → помечаем [?] и отправляем в общий файл
         flag = "🏳️"
         country_code = "??"
         ru_domain_note = " [?]"
@@ -237,34 +237,32 @@ def main():
             
             checked += 1
             
-            # Отправляем стартовое сообщение (один раз)
             if not start_sent:
                 bot.send_start()
                 start_sent = True
             
-            # Логи в консоль (без Telegram)
             if checked % 100 == 0:
                 print(f"Обработано {checked}/{len(filtered)}. Найдено {len(results)}")
     
     fast_count = len([r for r in results if r[2] < PING_GOOD_THRESHOLD])
-    
-    # Финальное сообщение
     bot.send_final(len(filtered), len(results), fast_count, time.time() - start_time)
     
+    # --- СОРТИРОВКА ПО СТРАНАМ ---
     # Разделяем на российские и остальные
     ru_configs = [(cfg, ping) for cfg, code, ping, _, _ in results if code == "RU"]
     other_configs = [(cfg, code, ping) for cfg, code, ping, _, _ in results if code != "RU" and code != "??"]
     
-    # Конфиги с доменом .ru но не Россия (??) идут в other_configs
-    other_configs.sort(key=lambda x: x[2])
-    ru_configs.sort(key=lambda x: x[1])
+    # Сортируем по странам (по коду)
+    other_configs.sort(key=lambda x: x[1])  # сортировка по коду страны
+    ru_configs.sort(key=lambda x: x[1])      # сортировка по пингу (для ru.txt)
     
+    # --- СОЗДАЁМ ФАЙЛЫ ---
     os.makedirs("protocols", exist_ok=True)
     
     protocol_files = {"VLESS": [], "VMESS": [], "TROJAN": []}
     for cfg, code, ping, _, _ in results:
         if code == "??":
-            continue  # пропускаем в протокольных файлах
+            continue
         if cfg.startswith('vless://'): protocol_files["VLESS"].append(cfg)
         elif cfg.startswith('vmess://'): protocol_files["VMESS"].append(cfg)
         elif cfg.startswith('trojan://'): protocol_files["TROJAN"].append(cfg)
@@ -277,7 +275,7 @@ def main():
 
 """
     
-    # --- ФАЙЛЫ С ЗАГОЛОВКАМИ (для просмотра) ---
+    # --- ФАЙЛЫ С ЗАГОЛОВКАМИ ---
     with open("configs.txt", "w", encoding="utf-8") as f:
         f.write(f"{common_header}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/configs.txt\n#profile-title: TG@LetoVPN_Free\n\n")
         for cfg, _, _ in other_configs:
@@ -288,7 +286,7 @@ def main():
         for cfg, _ in ru_configs:
             f.write(cfg + "\n")
     
-    # --- ЧИСТЫЕ ФАЙЛЫ ДЛЯ HIDDIFY (без заголовков) ---
+    # --- ЧИСТЫЕ ФАЙЛЫ ДЛЯ HIDDIFY ---
     with open("configs_hiddify.txt", "w", encoding="utf-8") as f:
         for cfg, _, _ in other_configs:
             f.write(cfg + "\n")
@@ -308,7 +306,7 @@ def main():
                     f.write(cfg + "\n")
     
     print(f"\nГотово!")
-    print(f"  configs.txt: {len(other_configs)} конфигов (с заголовками)")
+    print(f"  configs.txt: {len(other_configs)} конфигов (с заголовками, отсортировано по странам)")
     print(f"  configs_hiddify.txt: {len(other_configs)} конфигов (чистый)")
     print(f"  ru.txt: {len(ru_configs)} конфигов (с заголовками)")
     print(f"  ru_hiddify.txt: {len(ru_configs)} конфигов (чистый)")

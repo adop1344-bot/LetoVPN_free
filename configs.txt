@@ -1,4 +1,4 @@
-#announce: Обновлено: 30.06.2026 01:55:07, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#announce: Обновлено: 30.06.2026 05:57:30, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 

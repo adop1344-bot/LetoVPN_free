@@ -1,9 +1,9 @@
-name: config test LOL 67
+name: Hourly VPN config test
 
 on:
   schedule:
-    - cron: '0 */2 * * *'   # каждые 2 часа
-  workflow_dispatch:         # ручной запуск
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
 
 jobs:
   test:
@@ -33,6 +33,11 @@ jobs:
           rm xray.zip
           xray version
 
+      - name: Download GeoIP database
+        run: |
+          curl -L -o GeoLite2-Country.mmdb.gz https://cdn.jsdelivr.net/npm/geolite2-country/GeoLite2-Country.mmdb.gz
+          gzip -d GeoLite2-Country.mmdb.gz
+
       - name: Run config tester
         run: python -m src.app
         env:
@@ -48,12 +53,13 @@ jobs:
             ru.txt
             configs_hiddify.txt
             ru_hiddify.txt
+            checked*.txt
             protocols/
 
       - name: Commit and push
         run: |
           git config user.name "GitHub Action"
-          git config user.email "action@github.com"
-          git add configs.txt ru.txt configs_hiddify.txt ru_hiddify.txt protocols/
+          git config.user.email "action@github.com"
+          git add configs.txt ru.txt configs_hiddify.txt ru_hiddify.txt checked*.txt protocols/
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update configs $(date '+%Y-%m-%d %H:%M')"
           git push

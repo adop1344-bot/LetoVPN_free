@@ -84,6 +84,16 @@ def get_domain_note(host: str) -> str:
             return f" [{parts[-2]}.{parts[-1]}]"
     return ""
 
+# ----- ФИЛЬТР БЕЗОПАСНОСТИ -----
+def is_secure_config(config: str) -> bool:
+    """Проверяет, есть ли в конфиге insecure или none параметры"""
+    config_lower = config.lower()
+    if 'allowinsecure=1' in config_lower or 'insecure=1' in config_lower:
+        return False
+    if 'security=none' in config_lower or 'tls=none' in config_lower:
+        return False
+    return True
+
 # ----- ЗАГРУЗКА GEOIP -----
 def download_geoip_db():
     if os.path.exists(GEOIP_FILE):
@@ -121,6 +131,10 @@ def fetch_configs_from_url(url: str) -> List[str]:
         return []
 
 def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple, float, float]]:
+    # Фильтр безопасности
+    if not is_secure_config(config):
+        return None
+    
     if 'anycast' in config.lower():
         return None
 
@@ -128,7 +142,6 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
     if not host or not port:
         return None
 
-    # Проверка с измерением скорости
     ping, is_working, used_xray, speed_mbps = verify_config(config, host, port, TIMEOUT)
     if not is_working or ping is None or ping > PING_MAX:
         return None
@@ -136,86 +149,79 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
     name_part = config.split('#', 1)[1].strip() if '#' in config else ""
     protocol = get_protocol(config)
     
-    # Метка скорости (если есть)
-    speed_label = ""
-    if speed_mbps is not None and speed_mbps > 1:
-        speed_label = f" {speed_mbps:.0f}Mbps"
-    
-    # Метка Xray (если использован)
-    xray_label = ""
-    if used_xray:
-        xray_label = " [X]"
-    
-    # Метка TCP (если использован TCP fallback и нет скорости)
-    tcp_label = ""
-    if not used_xray and speed_mbps is None:
-        tcp_label = " [TCP]"
+    # Извлекаем SNI
+    sni_match = re.search(r'sni=([^&]+)', config)
+    sni = sni_match.group(1) if sni_match else ""
     
     # Определяем страну через GeoIP (приоритет)
     flag, country_code = get_country_geoip(host, reader)
     
-    # Если GeoIP не определил, пробуем по домену
     if country_code == "ZZ":
         flag, country_code = detect_country_by_domain(host)
     
-    # Особый случай: домен .ru
     is_ru_domain = host and host.lower().endswith('.ru')
-    ru_domain_note = ""
     
     if is_ru_domain and country_code != "RU":
         flag = "🏳️"
         country_code = "??"
-        ru_domain_note = " [?]"
     
-    # Если страна всё ещё не определена (и не .ru домен) — используем название
     if country_code == "ZZ" and not is_ru_domain:
         flag, country_code = detect_country_from_name(name_part)
     
-    # Если страна не определилась — пропускаем
     if country_code == "ZZ" or flag == "🏳️":
         return None
     
-    lightning = "⚡" if ping < PING_GOOD_THRESHOLD else ""
-    city = detect_city_by_ip(host) if country_code == "RU" else ""
-    domain_note = get_domain_note(host) if country_code == "RU" else ""
-
-    # Формируем название
-    if country_code == "RU":
-        parts = [f"#{flag}"]
-        if protocol: parts.append(protocol)
-        if lightning: parts.append(lightning)
-        if speed_label: parts.append(speed_label)
-        if xray_label: parts.append(xray_label)
-        if tcp_label: parts.append(tcp_label)
-        if city: parts.append(f"({city})")
-        if domain_note: parts.append(domain_note)
-        new_name = ' '.join(parts)
-    else:
-        parts = [f"#{flag}"]
-        if protocol: parts.append(protocol)
-        if lightning: parts.append(lightning)
-        if speed_label: parts.append(speed_label)
-        if xray_label: parts.append(xray_label)
-        if tcp_label: parts.append(tcp_label)
-        if ru_domain_note: parts.append(ru_domain_note)
-        new_name = ' '.join(parts)
+    # Скорость
+    speed_str = ""
+    if speed_mbps is not None and speed_mbps > 1:
+        speed_str = f"{speed_mbps:.0f}Mbps"
     
-    new_name = re.sub(r'\s+', ' ', new_name).strip()
+    # Название страны
+    country_names = {
+        "RU": "Россия", "US": "США", "DE": "Германия", "FR": "Франция",
+        "NL": "Нидерланды", "GB": "Великобритания", "JP": "Япония",
+        "SG": "Сингапур", "CA": "Канада", "AU": "Австралия",
+        "BR": "Бразилия", "IN": "Индия", "IT": "Италия", "ES": "Испания",
+        "CH": "Швейцария", "AT": "Австрия", "BE": "Бельгия",
+        "DK": "Дания", "FI": "Финляндия", "NO": "Норвегия",
+        "SE": "Швеция", "PL": "Польша", "CZ": "Чехия",
+        "HU": "Венгрия", "RO": "Румыния", "BG": "Болгария",
+        "GR": "Греция", "PT": "Португалия", "IE": "Ирландия",
+        "TR": "Турция", "IL": "Израиль", "AE": "ОАЭ",
+        "SA": "Саудовская Аравия", "ZA": "ЮАР", "MX": "Мексика",
+        "AR": "Аргентина", "CL": "Чили", "CO": "Колумбия",
+        "MY": "Малайзия", "VN": "Вьетнам", "TH": "Таиланд",
+        "PH": "Филиппины", "ID": "Индонезия", "PK": "Пакистан",
+        "EG": "Египет", "NG": "Нигерия", "MA": "Марокко",
+        "KE": "Кения", "NZ": "Новая Зеландия"
+    }
+    country_name_ru = country_names.get(country_code, country_code)
+    
+    # Формируем новое название: 🇺🇸 США 45Mbps sni=ya.ru
+    parts = []
+    parts.append(f"{flag}")
+    parts.append(country_name_ru)
+    if speed_str:
+        parts.append(speed_str)
+    if sni:
+        parts.append(f"sni={sni}")
+    else:
+        parts.append("sni=no-sni")
+    
+    new_name = ' '.join(parts)
     
     if '#' in config:
         new_config = config.split('#', 1)[0] + new_name
     else:
         new_config = config + new_name
     
-    # Для Telegram
-    tg_display = (flag, protocol, ping, lightning == "⚡")
+    tg_display = (flag, protocol, ping, ping < PING_GOOD_THRESHOLD)
     
     return (new_config, country_code, ping, tg_display, ping, speed_mbps)
 
 def main():
     start_time = time.time()
     
-    # Инициализируем Xray (запасной метод)
     init_xray()
     
     if not SOURCES:
@@ -247,7 +253,6 @@ def main():
         for future in concurrent.futures.as_completed(futures):
             res = future.result()
             if res:
-                new_config, country_code, ping, tg_display, raw_ping, speed_mbps = res
                 results.append(res)
             
             checked += 1
@@ -266,7 +271,6 @@ def main():
     ru_configs = [(cfg, ping) for cfg, code, ping, _, _, _ in results if code == "RU"]
     other_configs = [(cfg, code, ping) for cfg, code, ping, _, _, _ in results if code != "RU" and code != "??"]
     
-    # Сортируем по странам (по коду)
     other_configs.sort(key=lambda x: x[1])
     ru_configs.sort(key=lambda x: x[1])
     
@@ -288,7 +292,6 @@ def main():
 
 """
     
-    # ФАЙЛЫ С ЗАГОЛОВКАМИ
     with open("configs.txt", "w", encoding="utf-8") as f:
         f.write(f"{common_header}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/configs.txt\n#profile-title: TG@LetoVPN_Free\n\n")
         for cfg, _, _ in other_configs:
@@ -299,7 +302,7 @@ def main():
         for cfg, _ in ru_configs:
             f.write(cfg + "\n")
     
-    # ЧИСТЫЕ ФАЙЛЫ ДЛЯ HIDDIFY
+    # Чистые файлы для Hiddify
     with open("configs_hiddify.txt", "w", encoding="utf-8") as f:
         for cfg, _, _ in other_configs:
             f.write(cfg + "\n")
@@ -310,7 +313,6 @@ def main():
             f.write(cfg + "\n")
     print(f"  ru_hiddify.txt: {len(ru_configs)} конфигов")
     
-    # ПРОТОКОЛЫ
     for protocol, configs in protocol_files.items():
         if configs:
             with open(f"protocols/{protocol}.txt", "w", encoding="utf-8") as f:
@@ -319,7 +321,7 @@ def main():
                     f.write(cfg + "\n")
     
     print(f"\nГотово!")
-    print(f"  configs.txt: {len(other_configs)} конфигов (отсортировано по странам)")
+    print(f"  configs.txt: {len(other_configs)} конфигов")
     print(f"  configs_hiddify.txt: {len(other_configs)} конфигов (чистый)")
     print(f"  ru.txt: {len(ru_configs)} конфигов")
     print(f"  ru_hiddify.txt: {len(ru_configs)} конфигов (чистый)")

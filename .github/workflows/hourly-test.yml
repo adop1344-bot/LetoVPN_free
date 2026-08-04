@@ -2,7 +2,7 @@ name: Hourly VPN config test
 
 on:
   schedule:
-    - cron: '0 */9 * * *'
+    - cron: '9 */23 9 * *'
   workflow_dispatch:
 
 jobs:

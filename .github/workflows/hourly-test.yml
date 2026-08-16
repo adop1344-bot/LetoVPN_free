@@ -1,8 +1,8 @@
-name: Hourly VPN config test
+name: Daily VPN config test
 
 on:
   schedule:
-    - cron: '0 */9 * * *'
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 jobs:
@@ -60,7 +60,7 @@ jobs:
         run: |
           git config user.name "GitHub Action"
           git config user.email "action@github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git remote set-url origin https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
           git add configs.txt ru.txt configs_hiddify.txt ru_hiddify.txt checked*.txt protocols/
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update configs $(date '+%Y-%m-%d %H:%M')"
           git push

@@ -16,7 +16,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from src.config import load_sources, COUNTRY_FLAGS, load_keywords, load_cities, load_domains
+from src.config import COUNTRY_FLAGS, KEYWORDS, CITIES, DOMAIN_MAP, SOURCES
 from src.ping import tcp_ping, extract_host_port, get_protocol
 from src.geo import (
     detect_country_by_domain, detect_country_from_name,
@@ -27,12 +27,6 @@ import time
 import concurrent.futures
 import re
 from datetime import datetime, timezone, timedelta
-
-# Загружаем настройки
-SOURCES = load_sources()
-KEYWORDS = load_keywords()
-CITIES = load_cities()
-DOMAIN_MAP = load_domains()
 
 # Названия стран на русском
 COUNTRY_NAMES = {

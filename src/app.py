@@ -210,10 +210,11 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
     
     new_name = ' '.join(parts)
     
+    # Исправлено: добавляем # перед new_name
     if '#' in config:
-        new_config = config.split('#', 1)[0] + new_name
+        new_config = config.split('#', 1)[0] + '#' + new_name
     else:
-        new_config = config + new_name
+        new_config = config + '#' + new_name
     
     tg_display = (flag, protocol, ping, ping < PING_GOOD_THRESHOLD)
     

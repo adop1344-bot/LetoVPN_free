@@ -14,8 +14,8 @@ from typing import List, Tuple, Optional
 # Импорт модулей из src
 from src.config import (
     TIMEOUT, MAX_WORKERS, PING_GOOD_THRESHOLD, PING_MAX,
-    GEOIP_URL, GEOIP_FILE, COUNTRY_FLAGS,
-    load_sources, load_flags, load_keywords, load_cities, load_domains
+    GEOIP_URL, GEOIP_FILE,
+    COUNTRY_FLAGS, KEYWORDS, CITIES, DOMAIN_MAP, SOURCES
 )
 from src.ping import verify_config, extract_host_port, get_protocol, init_xray
 from src.tg import TelegramBot
@@ -27,12 +27,6 @@ from src.geo import (
 # Отключаем предупреждения
 warnings.filterwarnings("ignore")
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
-# Загружаем данные
-SOURCES = load_sources()
-KEYWORDS = load_keywords()
-CITIES = load_cities()
-DOMAIN_MAP = load_domains()
 
 # Названия стран на русском
 COUNTRY_NAMES = {
@@ -158,8 +152,8 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, float
     # Добавляем # перед new_name
     new_config = config.split('#', 1)[0] + '#' + new_name
 
-    # Возвращаем: (config, country_code, ping, ping, speed_mbps) — без tg_display
     return (new_config, country_code, ping, ping, speed_mbps)
+
 
 def main():
     start_time = time.time()

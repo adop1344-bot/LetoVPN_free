@@ -77,5 +77,8 @@ def load_domains() -> Dict[str, str]:
         pass
     return domain_to_country
 
-# Экспортируем загруженные данные (однократная загрузка при импорте)
+# Экспортируем загруженные данные — однократная загрузка при импорте
 COUNTRY_FLAGS = load_flags()
+KEYWORDS = load_keywords()
+CITIES = load_cities()
+DOMAIN_MAP = load_domains()

@@ -2,7 +2,7 @@
 import os
 import json
 import re
-from typing import List, Dict
+from typing import List, Dict, Tuple
 
 # ----- КОНСТАНТЫ -----
 SOURCES_FILE = "sources.txt"
@@ -19,7 +19,7 @@ PING_MAX = 100000
 GEOIP_URL = "https://cdn.jsdelivr.net/npm/geolite2-country/GeoLite2-Country.mmdb.gz"
 GEOIP_FILE = "GeoLite2-Country.mmdb"
 
-# ----- ЗАГРУЗКА ФАЙЛОВ -----
+# ----- ЗАГРУЗКА ФАЙЛОВ (однократно при импорте) -----
 def load_sources() -> List[str]:
     try:
         with open(SOURCES_FILE, "r", encoding="utf-8") as f:
@@ -76,3 +76,6 @@ def load_domains() -> Dict[str, str]:
     except:
         pass
     return domain_to_country
+
+# Экспортируем загруженные данные (однократная загрузка при импорте)
+COUNTRY_FLAGS = load_flags()

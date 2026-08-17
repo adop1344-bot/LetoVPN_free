@@ -4,15 +4,14 @@ import time
 import re
 import base64
 import json
-import random
 import shutil
 import subprocess
 import os
-import signal
 import urllib.request
 from typing import Tuple, Optional
 
 XRAY_AVAILABLE = False
+REAL_PING_URL = "https://www.gstatic.com/generate_204"
 
 def init_xray():
     """Проверяет, доступен ли Xray в системе"""
@@ -38,7 +37,6 @@ def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
         start = time.time()
         sock = socket.create_connection((host, port), timeout=timeout)
         
-        # Отправляем тестовый байт и проверяем ответ
         sock.settimeout(1.0)
         try:
             sock.send(b"\x00")
@@ -47,7 +45,6 @@ def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
                 sock.close()
                 return None
         except socket.timeout:
-            # Таймаут на ответ - сервер может быть жив, но молчит
             pass
         except:
             sock.close()
@@ -62,6 +59,7 @@ def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
 def xray_check(config: str, host: str, port: int, timeout: int) -> Optional[float]:
     """
     Проверяет конфиг через Xray с реальным HTTP запросом через SOCKS5
+    по ссылке https://www.gstatic.com/generate_204
     """
     if not XRAY_AVAILABLE:
         return None
@@ -79,7 +77,6 @@ def xray_check(config: str, host: str, port: int, timeout: int) -> Optional[floa
             json_lib.dump(xray_config, f)
             config_path = f.name
         
-        # Запускаем Xray в фоне
         start = time.time()
         process = subprocess.Popen(
             ["xray", "run", "-config", config_path],
@@ -87,10 +84,9 @@ def xray_check(config: str, host: str, port: int, timeout: int) -> Optional[floa
             stderr=subprocess.DEVNULL
         )
         
-        # Ждём немного чтобы Xray запустился
         time.sleep(0.5)
         
-        # Пробуем сделать HTTP запрос через SOCKS5 прокси Xray
+        # Реальный HTTP запрос через SOCKS5 прокси Xray
         try:
             proxy_handler = urllib.request.ProxyHandler({
                 "http": "socks5://127.0.0.1:1080",
@@ -98,8 +94,7 @@ def xray_check(config: str, host: str, port: int, timeout: int) -> Optional[floa
             })
             opener = urllib.request.build_opener(proxy_handler)
             
-            test_url = "http://cp.cloudflare.com/generate_204"
-            response = opener.open(test_url, timeout=timeout)
+            response = opener.open(REAL_PING_URL, timeout=timeout)
             
             if response.getcode() in [200, 204, 301, 302]:
                 elapsed = (time.time() - start) * 1000
@@ -113,7 +108,6 @@ def xray_check(config: str, host: str, port: int, timeout: int) -> Optional[floa
         except:
             pass
         
-        # Если запрос не удался - убиваем Xray
         process.kill()
         process.wait()
         try:
@@ -280,21 +274,21 @@ def convert_to_xray_config(config_line: str) -> Optional[dict]:
 def verify_config(config: str, host: str, port: int, timeout: float) -> Tuple[Optional[float], bool, bool, Optional[float]]:
     """
     Проверка конфига:
-    1. TCP ping с проверкой ответа
-    2. Xray (если доступен) - реальный HTTP запрос через SOCKS5
+    1. TCP ping (быстрый отсев мёртвых)
+    2. Xray с real ping на https://www.gstatic.com/generate_204
     Возвращает: (пинг, успех, использован_Xray, скорость_Мбит/с)
     """
-    # ШАГ 1: TCP ping с проверкой ответа
+    # ШАГ 1: TCP ping — быстрый отсев
     ping = tcp_ping(host, port, timeout)
     if ping is None:
         return (None, False, False, None)
     
-    # ШАГ 2: Xray — реальная проверка протокола
+    # ШАГ 2: Xray — реальный HTTP запрос через конфиг
     if XRAY_AVAILABLE:
         xray_ping = xray_check(config, host, port, int(timeout))
         if xray_ping is not None:
             return (xray_ping, True, True, None)
-        # Xray не смог = конфиг скорее всего нерабочий
+        # Xray не смог пройти = конфиг нерабочий
         return (None, False, False, None)
     
     # ШАГ 3: Fallback — TCP ping (если Xray не установлен)

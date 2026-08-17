@@ -11,9 +11,9 @@ KEYWORDS_FILE = "keywords.txt"
 CITIES_FILE = "cities.txt"
 DOMAINS_FILE = "domains.txt"
 
-TIMEOUT = 4.0
-MAX_WORKERS = 200
-PING_GOOD_THRESHOLD = 200
+TIMEOUT = 6.0
+MAX_WORKERS = 300
+PING_GOOD_THRESHOLD = 300
 PING_MAX = 100000
 
 GEOIP_URL = "https://cdn.jsdelivr.net/npm/geolite2-country/GeoLite2-Country.mmdb.gz"

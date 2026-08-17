@@ -4,16 +4,17 @@ import time
 import re
 import base64
 import json
-import random
 import shutil
 import subprocess
 import os
+import urllib.request
 from typing import Tuple, Optional
 
 XRAY_AVAILABLE = False
+REAL_PING_URL = "https://www.gstatic.com/generate_204"
 
 def init_xray():
-    """Проверяет, доступен ли Xray в системе (запасной метод)"""
+    """Проверяет, доступен ли Xray в системе"""
     global XRAY_AVAILABLE
     
     xray_path = shutil.which("xray")
@@ -22,28 +23,48 @@ def init_xray():
             result = subprocess.run(["xray", "version"], capture_output=True, timeout=5)
             if result.returncode == 0:
                 XRAY_AVAILABLE = True
-                print(f"✅ Xray доступен как запасной метод ({xray_path})")
+                print(f"✅ Xray доступен ({xray_path})")
                 return True
         except Exception as e:
-            print(f"⚠️ Xray найден, но не работает: {e}")
+            print(f"⚠️ Xray не работает: {e}")
     
     print("⚠️ Xray не найден, использую TCP ping")
     return False
 
 def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
-    """Быстрый TCP ping"""
+    """TCP ping с проверкой ответа от сервера"""
     try:
         start = time.time()
-        with socket.create_connection((host, port), timeout=timeout):
-            return (time.time() - start) * 1000
+        sock = socket.create_connection((host, port), timeout=timeout)
+        
+        sock.settimeout(1.0)
+        try:
+            sock.send(b"\x00")
+            data = sock.recv(16)
+            if not data:
+                sock.close()
+                return None
+        except socket.timeout:
+            pass
+        except:
+            sock.close()
+            return None
+        
+        elapsed = (time.time() - start) * 1000
+        sock.close()
+        return elapsed
     except:
         return None
 
 def xray_check(config: str, host: str, port: int, timeout: int) -> Optional[float]:
-    """Проверяет конфиг через Xray (запасной метод)"""
+    """
+    Проверяет конфиг через Xray с реальным HTTP запросом через SOCKS5
+    по ссылке https://www.gstatic.com/generate_204
+    """
     if not XRAY_AVAILABLE:
         return None
     
+    config_path = None
     try:
         import tempfile
         import json as json_lib
@@ -57,26 +78,50 @@ def xray_check(config: str, host: str, port: int, timeout: int) -> Optional[floa
             config_path = f.name
         
         start = time.time()
-        result = subprocess.run(
+        process = subprocess.Popen(
             ["xray", "run", "-config", config_path],
-            capture_output=True,
-            timeout=timeout
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
         )
         
-        os.unlink(config_path)
+        time.sleep(0.5)
         
-        # Если xray запустился без ошибок - конфиг рабочий
-        if result.returncode == 0 or "Xray" in result.stderr.decode():
-            return (time.time() - start) * 1000
-        return None
-    except subprocess.TimeoutExpired:
-        # Таймаут = xray запустился и работал = конфиг валидный
+        # Реальный HTTP запрос через SOCKS5 прокси Xray
+        try:
+            proxy_handler = urllib.request.ProxyHandler({
+                "http": "socks5://127.0.0.1:1080",
+                "https": "socks5://127.0.0.1:1080"
+            })
+            opener = urllib.request.build_opener(proxy_handler)
+            
+            response = opener.open(REAL_PING_URL, timeout=timeout)
+            
+            if response.getcode() in [200, 204, 301, 302]:
+                elapsed = (time.time() - start) * 1000
+                process.kill()
+                process.wait()
+                try:
+                    os.unlink(config_path)
+                except:
+                    pass
+                return elapsed
+        except:
+            pass
+        
+        process.kill()
+        process.wait()
         try:
             os.unlink(config_path)
         except:
             pass
-        return timeout * 1000  # возвращаем пинг = timeout (примерно)
+        return None
+        
     except Exception as e:
+        if config_path:
+            try:
+                os.unlink(config_path)
+            except:
+                pass
         return None
 
 def convert_to_xray_config(config_line: str) -> Optional[dict]:
@@ -101,7 +146,6 @@ def convert_to_xray_config(config_line: str) -> Optional[dict]:
             "security": query.get("security", ["none"])[0],
         }
         
-        # TLS/Reality настройки
         security = query.get("security", ["none"])[0]
         if security in ["tls", "reality"]:
             stream_settings["tlsSettings"] = {
@@ -230,23 +274,24 @@ def convert_to_xray_config(config_line: str) -> Optional[dict]:
 def verify_config(config: str, host: str, port: int, timeout: float) -> Tuple[Optional[float], bool, bool, Optional[float]]:
     """
     Проверка конфига:
-    1. TCP ping (быстрый отсев)
-    2. Xray (если доступен, проверяет реальную работу протокола)
+    1. TCP ping (быстрый отсев мёртвых)
+    2. Xray с real ping на https://www.gstatic.com/generate_204
     Возвращает: (пинг, успех, использован_Xray, скорость_Мбит/с)
     """
-    # ШАГ 1: TCP ping — быстрый отсев мёртвых серверов
+    # ШАГ 1: TCP ping — быстрый отсев
     ping = tcp_ping(host, port, timeout)
     if ping is None:
         return (None, False, False, None)
     
-    # ШАГ 2: Xray — если доступен, пробуем проверить реальный протокол
+    # ШАГ 2: Xray — реальный HTTP запрос через конфиг
     if XRAY_AVAILABLE:
         xray_ping = xray_check(config, host, port, int(timeout))
         if xray_ping is not None:
             return (xray_ping, True, True, None)
-        # Если Xray не сработал — не страшно, используем TCP ping
+        # Xray не смог пройти = конфиг нерабочий
+        return (None, False, False, None)
     
-    # ШАГ 3: Fallback — TCP ping (сервер жив, порт открыт)
+    # ШАГ 3: Fallback — TCP ping (если Xray не установлен)
     return (ping, True, False, None)
 
 def extract_host_port(config: str) -> Tuple[Optional[str], Optional[int]]:

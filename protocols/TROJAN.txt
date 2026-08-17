@@ -1,36 +1,41 @@
-#announce: Обновлено: 17.08.2026 03:58:08, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#announce: Обновлено: 17.08.2026 09:44:37, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
+trojan://5e19b3c8-c1dc-4163-95e2-895319c15d6c@ru.techdatacloud.org:8443?type=tcp&security=reality&pbk=jaZRUO7x7awSXNBlvKp3nXdm2gBEsEgmNbbYs7RRQlw&fp=firefox&sni=cloud.mail.ru&sid=8c3785d47c2017ec&spx=%2F#🇺🇸 США sni=cloud.mail.ru
+trojan://HaZLUMP__fVySm7WzxFcnk7Nm8-f1CCK@ru-5b7331.atlanta-games.com:443?mode=gun&security=tls&alpn=h2&insecure=0&fp=chrome&type=grpc&serviceName=ajv&allowInsecure=0&sni=ru-5b7331.atlanta-games.com#🇺🇸 США sni=ru-5b7331.atlanta-games.com#%F0%9F%87%AA%F0%9F%87%AA%20Estonia%20%5B%2ACIDR%5D
 trojan://HaZLUMP__fVySm7WzxFcnk7Nm8-f1CCK@ru-5b7331.atlanta-games.com:443?security=tls&type=grpc&sni=ru-5b7331.atlanta-games.com&fp=edge&alpn=h2&serviceName=ajv&mode=gun#🇺🇸 США sni=ru-5b7331.atlanta-games.com
-trojan://ON38567014@13.38.35.46:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=lucky-marmot.rooster465.autos#🇫🇷 Франция sni=lucky-marmot.rooster465.autos#🇫🇷[openproxylist.com] trojan-FR
-trojan://ON38567014@one-quail.rooster465.autos:443?security=tls&sni=one-quail.rooster465.autos#🇫🇷 Франция sni=one-quail.rooster465.autos#🇫🇷[openproxylist.com] trojan-FR
-trojan://FC60532879@faithful-panther.rooster465.autos:443?security=tls&sni=faithful-panther.rooster465.autos#🇸🇬 Сингапур sni=faithful-panther.rooster465.autos#🇸🇬[openproxylist.com] trojan-SG
-trojan://IQ68037294@cheerful-swan.rooster465.autos:443?security=tls&sni=cheerful-swan.rooster465.autos#🇳🇱 Нидерланды sni=cheerful-swan.rooster465.autos#🇳🇱[openproxylist.com] trojan-NL
-trojan://UZ15382649@moral-dolphin.rooster465.autos:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=moral-dolphin.rooster465.autos#🇫🇷 Франция sni=moral-dolphin.rooster465.autos#🇫🇷[openproxylist.com] trojan-FR
-trojan://KV63147582@legible-possum.rooster465.autos:443?security=tls&sni=legible-possum.rooster465.autos#🇵🇱 Польша sni=legible-possum.rooster465.autos#🇵🇱[openproxylist.com] trojan-PL
-trojan://IQ68037294@patient-gannet.rooster465.autos:443?security=tls&sni=patient-gannet.rooster465.autos#🇵🇱 Польша sni=patient-gannet.rooster465.autos#🇵🇱[openproxylist.com] trojan-PL
-trojan://FC60532879@true-alpaca.rooster465.autos:443?security=tls&sni=true-alpaca.rooster465.autos#🇸🇬 Сингапур sni=true-alpaca.rooster465.autos#🇸🇬[openproxylist.com] trojan-SG
-trojan://IQ68037294@brave-cattle.rooster465.autos:443?security=tls&sni=brave-cattle.rooster465.autos#🇸🇬 Сингапур sni=brave-cattle.rooster465.autos#🇸🇬[openproxylist.com] trojan-SG
-trojan://PD07395842@fast-ghost.rooster465.autos:443?security=tls&sni=fast-ghost.rooster465.autos#🇵🇱 Польша sni=fast-ghost.rooster465.autos#🇵🇱[openproxylist.com] trojan-PL
-trojan://IQ68037294@meet-doe.rooster465.autos:443?security=tls&sni=meet-doe.rooster465.autos#🇸🇬 Сингапур sni=meet-doe.rooster465.autos#🇸🇬[openproxylist.com] trojan-SG
-trojan://FC60532879@outgoing-ladybird.rooster465.autos:443?security=tls&sni=outgoing-ladybird.rooster465.autos#🇰🇷 KR sni=outgoing-ladybird.rooster465.autos#🇰🇷[openproxylist.com] trojan-KR
-trojan://IQ68037294@eternal-frog.rooster465.autos:443?security=tls&sni=eternal-frog.rooster465.autos#🇦🇺 Австралия sni=eternal-frog.rooster465.autos#🇦🇺[openproxylist.com] trojan-AU
-trojan://IQ68037294@sterling-fowl.rooster465.autos:443?security=tls&sni=sterling-fowl.rooster465.autos#🇸🇬 Сингапур sni=sterling-fowl.rooster465.autos#🇸🇬[openproxylist.com] trojan-SG
+trojan://HaZLUMP__fVySm7WzxFcnk7Nm8-f1CCK@ru-5b7331.atlanta-games.com:443?security=tls&type=grpc&sni=ru-5b7331.atlanta-games.com&fp=edge&alpn=h2&serviceName=ajv&mode=gun#🇺🇸 США sni=ru-5b7331.atlanta-games.com
 trojan://FC60532879@classic-pug.rooster465.autos:443?security=tls&sni=classic-pug.rooster465.autos#🇰🇷 KR sni=classic-pug.rooster465.autos#🇰🇷[openproxylist.com] trojan-KR
 trojan://FC60532879@actual-chicken.rooster465.autos:443?security=tls&sni=actual-chicken.rooster465.autos#🇸🇬 Сингапур sni=actual-chicken.rooster465.autos#🇸🇬[openproxylist.com] trojan-SG
+trojan://FC60532879@faithful-panther.rooster465.autos:443?security=tls&sni=faithful-panther.rooster465.autos#🇸🇬 Сингапур sni=faithful-panther.rooster465.autos#🇸🇬[openproxylist.com] trojan-SG
+trojan://FC60532879@true-alpaca.rooster465.autos:443?security=tls&sni=true-alpaca.rooster465.autos#🇸🇬 Сингапур sni=true-alpaca.rooster465.autos#🇸🇬[openproxylist.com] trojan-SG
+trojan://FC60532879@outgoing-ladybird.rooster465.autos:443?security=tls&sni=outgoing-ladybird.rooster465.autos#🇰🇷 KR sni=outgoing-ladybird.rooster465.autos#🇰🇷[openproxylist.com] trojan-KR
+trojan://IQ68037294@brave-cattle.rooster465.autos:443?security=tls&sni=brave-cattle.rooster465.autos#🇸🇬 Сингапур sni=brave-cattle.rooster465.autos#🇸🇬[openproxylist.com] trojan-SG
+trojan://IQ68037294@eternal-frog.rooster465.autos:443?security=tls&sni=eternal-frog.rooster465.autos#🇦🇺 Австралия sni=eternal-frog.rooster465.autos#🇦🇺[openproxylist.com] trojan-AU
+trojan://IQ68037294@cheerful-swan.rooster465.autos:443?security=tls&sni=cheerful-swan.rooster465.autos#🇳🇱 Нидерланды sni=cheerful-swan.rooster465.autos#🇳🇱[openproxylist.com] trojan-NL
+trojan://IQ68037294@meet-doe.rooster465.autos:443?security=tls&sni=meet-doe.rooster465.autos#🇸🇬 Сингапур sni=meet-doe.rooster465.autos#🇸🇬[openproxylist.com] trojan-SG
 trojan://IQ68037294@neat-duck.rooster465.autos:443?security=tls&sni=neat-duck.rooster465.autos#🇸🇬 Сингапур sni=neat-duck.rooster465.autos#🇸🇬[openproxylist.com] trojan-SG
+trojan://IQ68037294@desired-tahr.rooster465.autos:443?security=tls&sni=desired-tahr.rooster465.autos#🇭🇰 HK sni=desired-tahr.rooster465.autos#🇭🇰[openproxylist.com] trojan-HK
 trojan://IQ68037294@eternal-swift.rooster465.autos:443?security=tls&sni=eternal-swift.rooster465.autos#🇵🇱 Польша sni=eternal-swift.rooster465.autos#🇵🇱[openproxylist.com] trojan-PL
 trojan://IQ68037294@open-eel.rooster465.autos:443?security=tls&sni=open-eel.rooster465.autos#🇸🇬 Сингапур sni=open-eel.rooster465.autos#🇸🇬[openproxylist.com] trojan-SG
+trojan://IQ68037294@sterling-fowl.rooster465.autos:443?security=tls&sni=sterling-fowl.rooster465.autos#🇸🇬 Сингапур sni=sterling-fowl.rooster465.autos#🇸🇬[openproxylist.com] trojan-SG
+trojan://IQ68037294@patient-gannet.rooster465.autos:443?security=tls&sni=patient-gannet.rooster465.autos#🇵🇱 Польша sni=patient-gannet.rooster465.autos#🇵🇱[openproxylist.com] trojan-PL
+trojan://ON38567014@13.38.35.46:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=lucky-marmot.rooster465.autos#🇫🇷 Франция sni=lucky-marmot.rooster465.autos#🇫🇷[openproxylist.com] trojan-FR
+trojan://KV63147582@legible-possum.rooster465.autos:443?security=tls&sni=legible-possum.rooster465.autos#🇵🇱 Польша sni=legible-possum.rooster465.autos#🇵🇱[openproxylist.com] trojan-PL
+trojan://ON38567014@one-quail.rooster465.autos:443?security=tls&sni=one-quail.rooster465.autos#🇫🇷 Франция sni=one-quail.rooster465.autos#🇫🇷[openproxylist.com] trojan-FR
+trojan://PD07395842@fast-ghost.rooster465.autos:443?security=tls&sni=fast-ghost.rooster465.autos#🇵🇱 Польша sni=fast-ghost.rooster465.autos#🇵🇱[openproxylist.com] trojan-PL
 trojan://ON38567014@strong-haddock.rooster465.autos:443?security=tls&sni=strong-haddock.rooster465.autos#🇵🇱 Польша sni=strong-haddock.rooster465.autos#🇵🇱[openproxylist.com] trojan-PL
-trojan://IQ68037294@desired-tahr.rooster465.autos:443?security=tls&sni=desired-tahr.rooster465.autos#🇭🇰 HK sni=desired-tahr.rooster465.autos#🇭🇰[openproxylist.com] trojan-HK
+trojan://UZ15382649@moral-dolphin.rooster465.autos:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=moral-dolphin.rooster465.autos#🇫🇷 Франция sni=moral-dolphin.rooster465.autos#🇫🇷[openproxylist.com] trojan-FR
+trojan://5e19b3c8-c1dc-4163-95e2-895319c15d6c@pl.techdatacloud.org:2053?type=tcp&security=reality&pbk=uiFSTSOSNKBLju8qnTOyZdM1WyTwOFVr3-RXUYk9nEM&fp=firefox&sni=cloud.mail.ru&sid=23572794d5ffc9fd&spx=%2F#🇺🇸 США sni=cloud.mail.ru
+trojan://5e19b3c8-c1dc-4163-95e2-895319c15d6c@gb.techdatacloud.org:2053?type=tcp&security=reality&pbk=uiFSTSOSNKBLju8qnTOyZdM1WyTwOFVr3-RXUYk9nEM&fp=firefox&sni=cloud.mail.ru&sid=23572794d5ffc9fd&spx=%2F#🇺🇸 США sni=cloud.mail.ru
 trojan://kkzh2prsyr2ik47as615@64.94.95.115:57142?sni=static.rutube.ru&peer=static.rutube.ru&security=tls#🇺🇸 США sni=static.rutube.ru
 trojan://ba07a8af-5544-48ac-ab62-3b6c00a44fa6@157.254.38.210:20004?security=tls&sni=hk.catxstar.com&fp=ios#🇺🇸 США sni=hk.catxstar.com
-trojan://ba07a8af-5544-48ac-ab62-3b6c00a44fa6@157.254.38.210:20004?security=tls&sni=hk.catxstar.com&fp=qq#🇺🇸 США sni=hk.catxstar.com
 trojan://ba07a8af-5544-48ac-ab62-3b6c00a44fa6@157.254.38.210:20004?security=tls&sni=hk.catxstar.com&fp=safari#🇺🇸 США sni=hk.catxstar.com
+trojan://ba07a8af-5544-48ac-ab62-3b6c00a44fa6@157.254.38.210:20004?security=tls&sni=hk.catxstar.com&fp=qq#🇺🇸 США sni=hk.catxstar.com
 trojan://ba07a8af-5544-48ac-ab62-3b6c00a44fa6@oplosgru-c.catcat321.com:20004/?type=tcp&security=tls&sni=hk.catxstar.com#🇺🇸 США sni=hk.catxstar.com#%F0%9F%87%AF%F0%9F%87%B5%20Japan%2C%20Shibuya%20City%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D
 trojan://41c406e2-12b5-41f2-a329-d0621052d675@hkdcrtc-e.catcat321.com:20066?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=hk.catxstar.com#🇺🇸 США sni=hk.catxstar.com#.%F0%96%A5%94%20%DD%81%20%CB%96%D6%B4%F0%9F%9B%B8%E0%BC%84%CB%96%C2%B0.%20%7C%20%5BBL%5D
 trojan://ba07a8af-5544-48ac-ab62-3b6c00a44fa6@157.254.38.210:20004?security=tls&sni=hk.catxstar.com&fp=qq#🇺🇸 США sni=hk.catxstar.com

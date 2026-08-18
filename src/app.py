@@ -158,6 +158,33 @@ COUNTRY_NAMES = {
     "LV": "Латвия", "LT": "Литва"
 }
 
+def get_config_id(config: str) -> str:
+    """
+    Возвращает уникальный ID конфига: протокол@host:port
+    Два конфига с одинаковым ID считаются дубликатами
+    """
+    protocol = get_protocol(config)
+    host, port = extract_host_port(config)
+    if not host or not port:
+        return config  # fallback на полную строку
+    return f"{protocol}@{host}:{port}"
+
+def remove_duplicates(configs: List[str]) -> List[str]:
+    """Удаляет дубликаты конфигов по host:port + протокол"""
+    seen = {}
+    result = []
+    dups = 0
+    for cfg in configs:
+        cid = get_config_id(cfg)
+        if cid not in seen:
+            seen[cid] = True
+            result.append(cfg)
+        else:
+            dups += 1
+    if dups > 0:
+        print(f"  🗑 Удалено дубликатов: {dups}")
+    return result
+
 def process_config(config: str, reader) -> Optional[Tuple]:
     """
     Проверяет конфиг.
@@ -250,10 +277,12 @@ def main():
         print(f"  {url}: {len(cfgs)} конфигов")
         all_configs.extend(cfgs)
 
+    # Удаляем дубликаты (сначала полные строки, потом по host:port)
     all_configs = list(dict.fromkeys(all_configs))
-    filtered = [c for c in all_configs if 'anycast' not in c.lower()]
+    filtered = remove_duplicates(all_configs)
+    filtered = [c for c in filtered if 'anycast' not in c.lower()]
     total_count = len(filtered)
-    print(f"\n📊 Всего уникальных: {total_count}")
+    print(f"📊 Всего после дедупликации: {total_count}")
 
     # ===== ПЕРВЫЙ ПРОХОД =====
     print(f"\n🔍 1-й проход: поиск рабочих конфигов...")
@@ -278,8 +307,7 @@ def main():
 
     # ===== ВТОРОЙ ПРОХОД (double check) =====
     if first_results:
-        # Берём оригиналы конфигов из первого прохода
-        originals = [r[0] for r in first_results]  # r[0] = original_config
+        originals = [r[0] for r in first_results]
         print(f"\n🔍 2-й проход: перепроверка {len(originals)} конфигов...")
 
         second_results = []
@@ -297,10 +325,6 @@ def main():
 
         print(f"  ✅ 2-й проход: {len(second_results)} конфигов подтверждено")
 
-        # Берём те, что прошли оба прохода
-        # r[0] = original_config из первого прохода
-        # r[0] = original_config из второго прохода
-        # Сравниваем по оригиналу
         passed_originals = set(r[0] for r in second_results)
         results = [r for r in first_results if r[0] in passed_originals]
 
@@ -309,10 +333,7 @@ def main():
         results = []
 
     # ===== СОРТИРУЕМ И СОХРАНЯЕМ =====
-    # results = [(original, new_config, country_code, ping, tg_display, speed_mbps), ...]
-
-    # Достаём поля для сортировки и сохранения
-    ru_configs = [(r[1], r[3]) for r in results if r[2] == "RU"]  # [(new_config, ping)]
+    ru_configs = [(r[1], r[3]) for r in results if r[2] == "RU"]
     other_configs = [(r[1], r[2], r[3]) for r in results if r[2] != "RU" and r[2] != "??"]
 
     def sort_key(item):
@@ -323,13 +344,9 @@ def main():
     other_configs.sort(key=sort_key)
     ru_configs.sort(key=lambda x: x[1])
 
-    # Статистика
     fast_count = len([r for r in results if r[3] < PING_GOOD_THRESHOLD])
-
-    # Отправляем в Telegram
     bot.send_final(total_count, len(results), fast_count, time.time() - start_time)
 
-    # ===== СОХРАНЯЕМ ФАЙЛЫ =====
     os.makedirs("protocols", exist_ok=True)
 
     protocol_files = {"VLESS": [], "VMESS": [], "TROJAN": []}
@@ -349,26 +366,21 @@ def main():
 
 """
 
-    # configs.txt
     with open("configs.txt", "w", encoding="utf-8") as f:
         f.write(f"{common_header}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/configs.txt\n#profile-title: TG@LetoVPN_Free\n\n")
         for cfg, _, _ in other_configs:
             f.write(cfg + "\n")
     print(f"  configs.txt: {len(other_configs)} конфигов")
 
-    # configs1.txt, configs2.txt...
     other_simple = [cfg for cfg, _, _ in other_configs]
-    # save_chunked_files принимает список строк
     save_chunked_files(other_simple, "configs", 200)
 
-    # ru.txt
     with open("ru.txt", "w", encoding="utf-8") as f:
         f.write(f"{common_header}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/ru.txt\n#profile-title: ru TG@LetoVPN_Free\n\n")
         for cfg, _ in ru_configs:
             f.write(cfg + "\n")
     print(f"  ru.txt: {len(ru_configs)} конфигов")
 
-    # Чистые файлы для Hiddify
     with open("configs_hiddify.txt", "w", encoding="utf-8") as f:
         for cfg, _, _ in other_configs:
             f.write(cfg + "\n")

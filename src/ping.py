@@ -25,24 +25,8 @@ def init_xray():
                 return True
         except:
             pass
-    print("Xray not found, using TCP ping")
+    print("Xray not found, VPN check disabled")
     return False
-
-def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
-    try:
-        start = time.time()
-        sock = socket.create_connection((host, port), timeout=timeout)
-        sock.settimeout(0.5)
-        try:
-            sock.send(b"\x00")
-            sock.recv(16)
-        except:
-            pass
-        elapsed = (time.time() - start) * 1000
-        sock.close()
-        return elapsed
-    except:
-        return None
 
 def xray_check(config: str, timeout: int) -> Optional[float]:
     if not XRAY_AVAILABLE:
@@ -115,16 +99,13 @@ def convert_to_xray_config(line: str) -> Optional[dict]:
         return {"log": {"loglevel": "none"}, "inbounds": [{"port": 1080, "listen": "127.0.0.1", "protocol": "socks", "settings": {"udp": True}}], "outbounds": [{"protocol": "trojan", "settings": {"servers": [{"address": h, "port": p, "password": pw}]}, "streamSettings": ss}]}
     return None
 
-def verify_config(config: str, host: str, port: int, timeout: float, use_xray: bool = True) -> Tuple[Optional[float], bool, bool, Optional[float]]:
-    ping = tcp_ping(host, port, timeout)
-    if ping is None:
+def verify_config(config: str, timeout: float) -> Tuple[Optional[float], bool, bool, Optional[float]]:
+    if not XRAY_AVAILABLE:
         return (None, False, False, None)
-    if XRAY_AVAILABLE and use_xray:
-        xray_ping = xray_check(config, int(timeout))
-        if xray_ping is not None:
-            return (xray_ping, True, True, None)
-        return (None, False, False, None)
-    return (ping, True, False, None)
+    xray_ping = xray_check(config, int(timeout))
+    if xray_ping is not None:
+        return (xray_ping, True, True, None)
+    return (None, False, False, None)
 
 def extract_host_port(config: str) -> Tuple[Optional[str], Optional[int]]:
     if config.startswith('vless://'):

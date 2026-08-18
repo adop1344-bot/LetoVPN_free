@@ -14,302 +14,130 @@ XRAY_AVAILABLE = False
 REAL_PING_URL = "https://www.gstatic.com/generate_204"
 
 def init_xray():
-    """Проверяет, доступен ли Xray в системе"""
     global XRAY_AVAILABLE
-    
     xray_path = shutil.which("xray")
     if xray_path:
         try:
             result = subprocess.run(["xray", "version"], capture_output=True, timeout=5)
             if result.returncode == 0:
                 XRAY_AVAILABLE = True
-                print(f"✅ Xray доступен ({xray_path})")
+                print(f"Xray available ({xray_path})")
                 return True
-        except Exception as e:
-            print(f"⚠️ Xray не работает: {e}")
-    
-    print("⚠️ Xray не найден, использую TCP ping")
+        except:
+            pass
+    print("Xray not found, using TCP ping")
     return False
 
 def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
-    """TCP ping с проверкой ответа от сервера"""
     try:
         start = time.time()
         sock = socket.create_connection((host, port), timeout=timeout)
-        
-        sock.settimeout(1.0)
+        sock.settimeout(0.5)
         try:
             sock.send(b"\x00")
-            data = sock.recv(16)
-            if not data:
-                sock.close()
-                return None
-        except socket.timeout:
-            pass
+            sock.recv(16)
         except:
-            sock.close()
-            return None
-        
+            pass
         elapsed = (time.time() - start) * 1000
         sock.close()
         return elapsed
     except:
         return None
 
-def xray_check(config: str, host: str, port: int, timeout: int) -> Optional[float]:
-    """
-    Проверяет конфиг через Xray с реальным HTTP запросом через SOCKS5
-    по ссылке https://www.gstatic.com/generate_204
-    """
+def xray_check(config: str, timeout: int) -> Optional[float]:
     if not XRAY_AVAILABLE:
         return None
-    
     config_path = None
     try:
-        import tempfile
-        import json as json_lib
-        
+        import tempfile, json as json_lib
         xray_config = convert_to_xray_config(config)
         if not xray_config:
             return None
-        
         with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
             json_lib.dump(xray_config, f)
             config_path = f.name
-        
         start = time.time()
-        process = subprocess.Popen(
-            ["xray", "run", "-config", config_path],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
-        )
-        
-        time.sleep(0.5)
-        
-        # Реальный HTTP запрос через SOCKS5 прокси Xray
+        process = subprocess.Popen(["xray", "run", "-config", config_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        time.sleep(0.2)
         try:
-            proxy_handler = urllib.request.ProxyHandler({
-                "http": "socks5://127.0.0.1:1080",
-                "https": "socks5://127.0.0.1:1080"
-            })
+            proxy_handler = urllib.request.ProxyHandler({"http": "socks5://127.0.0.1:1080", "https": "socks5://127.0.0.1:1080"})
             opener = urllib.request.build_opener(proxy_handler)
-            
             response = opener.open(REAL_PING_URL, timeout=timeout)
-            
             if response.getcode() in [200, 204, 301, 302]:
                 elapsed = (time.time() - start) * 1000
-                process.kill()
-                process.wait()
-                try:
-                    os.unlink(config_path)
-                except:
-                    pass
+                process.kill(); process.wait()
+                try: os.unlink(config_path)
+                except: pass
                 return elapsed
         except:
             pass
-        
-        process.kill()
-        process.wait()
-        try:
-            os.unlink(config_path)
-        except:
-            pass
+        process.kill(); process.wait()
+        try: os.unlink(config_path)
+        except: pass
         return None
-        
-    except Exception as e:
+    except:
         if config_path:
-            try:
-                os.unlink(config_path)
-            except:
-                pass
+            try: os.unlink(config_path)
+            except: pass
         return None
 
-def convert_to_xray_config(config_line: str) -> Optional[dict]:
-    """Преобразует VLESS/VMESS/TROJAN строку в формат Xray"""
+def convert_to_xray_config(line: str) -> Optional[dict]:
     import urllib.parse
-    
-    if config_line.startswith('vless://'):
-        match = re.search(r'vless://([^@]+)@([^:]+):(\d+)(.*)', config_line)
-        if not match:
-            return None
-        
-        uuid = match.group(1)
-        host = match.group(2)
-        port = int(match.group(3))
-        params = match.group(4)
-        
-        parsed = urllib.parse.urlparse("?" + params.lstrip("?#&"))
-        query = urllib.parse.parse_qs(parsed.query)
-        
-        stream_settings = {
-            "network": query.get("type", ["tcp"])[0],
-            "security": query.get("security", ["none"])[0],
-        }
-        
-        security = query.get("security", ["none"])[0]
-        if security in ["tls", "reality"]:
-            stream_settings["tlsSettings"] = {
-                "serverName": query.get("sni", [host])[0],
-                "fingerprint": query.get("fp", ["chrome"])[0] if query.get("fp") else "chrome",
-            }
-            if security == "reality":
-                stream_settings["tlsSettings"]["show"] = False
-                stream_settings["tlsSettings"]["publicKey"] = query.get("pbk", [""])[0]
-                stream_settings["tlsSettings"]["shortId"] = query.get("sid", [""])[0]
-                stream_settings["tlsSettings"]["spiderX"] = query.get("spx", ["/"])[0]
-        
-        return {
-            "log": {"loglevel": "none"},
-            "inbounds": [{
-                "port": 1080,
-                "listen": "127.0.0.1",
-                "protocol": "socks",
-                "settings": {"udp": True}
-            }],
-            "outbounds": [{
-                "protocol": "vless",
-                "settings": {
-                    "vnext": [{
-                        "address": host,
-                        "port": port,
-                        "users": [{
-                            "id": uuid,
-                            "encryption": query.get("encryption", ["none"])[0],
-                            "flow": query.get("flow", [""])[0]
-                        }]
-                    }]
-                },
-                "streamSettings": stream_settings
-            }]
-        }
-    
-    elif config_line.startswith('vmess://'):
+    if line.startswith('vless://'):
+        m = re.search(r'vless://([^@]+)@([^:]+):(\d+)(.*)', line)
+        if not m: return None
+        u, h, p, qs = m.group(1), m.group(2), int(m.group(3)), m.group(4)
+        q = urllib.parse.parse_qs(urllib.parse.urlparse("?" + qs.lstrip("?#&")).query)
+        ss = {"network": q.get("type", ["tcp"])[0], "security": q.get("security", ["none"])[0]}
+        sec = q.get("security", ["none"])[0]
+        if sec in ["tls", "reality"]:
+            ss["tlsSettings"] = {"serverName": q.get("sni", [h])[0], "fingerprint": q.get("fp", ["chrome"])[0] if q.get("fp") else "chrome"}
+            if sec == "reality":
+                ss["tlsSettings"]["show"] = False
+                ss["tlsSettings"]["publicKey"] = q.get("pbk", [""])[0]
+                ss["tlsSettings"]["shortId"] = q.get("sid", [""])[0]
+                ss["tlsSettings"]["spiderX"] = q.get("spx", ["/"])[0]
+        return {"log": {"loglevel": "none"}, "inbounds": [{"port": 1080, "listen": "127.0.0.1", "protocol": "socks", "settings": {"udp": True}}], "outbounds": [{"protocol": "vless", "settings": {"vnext": [{"address": h, "port": p, "users": [{"id": u, "encryption": q.get("encryption", ["none"])[0], "flow": q.get("flow", [""])[0]}]}]}, "streamSettings": ss}]}
+    elif line.startswith('vmess://'):
         try:
-            b64 = config_line[8:] + '=' * (4 - len(config_line[8:]) % 4)
-            data = json.loads(base64.b64decode(b64))
-            
-            stream_settings = {
-                "network": data.get("net", "tcp"),
-                "security": data.get("tls", "none"),
-            }
-            
-            if data.get("tls") == "tls":
-                stream_settings["tlsSettings"] = {
-                    "serverName": data.get("sni", data.get("host", data.get("add", ""))),
-                    "fingerprint": data.get("fp", "chrome"),
-                }
-            
-            return {
-                "log": {"loglevel": "none"},
-                "inbounds": [{
-                    "port": 1080,
-                    "listen": "127.0.0.1",
-                    "protocol": "socks",
-                    "settings": {"udp": True}
-                }],
-                "outbounds": [{
-                    "protocol": "vmess",
-                    "settings": {
-                        "vnext": [{
-                            "address": data.get("add", ""),
-                            "port": int(data.get("port", 0)),
-                            "users": [{
-                                "id": data.get("id", ""),
-                                "alterId": int(data.get("aid", 0)),
-                                "security": data.get("scy", "auto"),
-                            }]
-                        }]
-                    },
-                    "streamSettings": stream_settings
-                }]
-            }
-        except:
-            return None
-    
-    elif config_line.startswith('trojan://'):
-        match = re.search(r'trojan://([^@]+)@([^:]+):(\d+)(.*)', config_line)
-        if not match:
-            return None
-        
-        password = match.group(1)
-        host = match.group(2)
-        port = int(match.group(3))
-        params = match.group(4) if match.group(4) else ""
-        
-        parsed = urllib.parse.urlparse("?" + params.lstrip("?#&"))
-        query = urllib.parse.parse_qs(parsed.query)
-        
-        stream_settings = {
-            "network": query.get("type", ["tcp"])[0],
-            "security": "tls",
-            "tlsSettings": {
-                "serverName": query.get("sni", [host])[0],
-                "fingerprint": query.get("fp", ["chrome"])[0] if query.get("fp") else "chrome",
-            }
-        }
-        
-        return {
-            "log": {"loglevel": "none"},
-            "inbounds": [{
-                "port": 1080,
-                "listen": "127.0.0.1",
-                "protocol": "socks",
-                "settings": {"udp": True}
-            }],
-            "outbounds": [{
-                "protocol": "trojan",
-                "settings": {
-                    "servers": [{
-                        "address": host,
-                        "port": port,
-                        "password": password,
-                    }]
-                },
-                "streamSettings": stream_settings
-            }]
-        }
-    
+            d = json.loads(base64.b64decode(line[8:] + '=' * (4 - len(line[8:]) % 4)))
+            ss = {"network": d.get("net", "tcp"), "security": d.get("tls", "none")}
+            if d.get("tls") == "tls":
+                ss["tlsSettings"] = {"serverName": d.get("sni", d.get("host", d.get("add", ""))), "fingerprint": d.get("fp", "chrome")}
+            return {"log": {"loglevel": "none"}, "inbounds": [{"port": 1080, "listen": "127.0.0.1", "protocol": "socks", "settings": {"udp": True}}], "outbounds": [{"protocol": "vmess", "settings": {"vnext": [{"address": d.get("add", ""), "port": int(d.get("port", 0)), "users": [{"id": d.get("id", ""), "alterId": int(d.get("aid", 0)), "security": d.get("scy", "auto")}]}]}, "streamSettings": ss}]}
+        except: return None
+    elif line.startswith('trojan://'):
+        m = re.search(r'trojan://([^@]+)@([^:]+):(\d+)(.*)', line)
+        if not m: return None
+        pw, h, p, qs = m.group(1), m.group(2), int(m.group(3)), m.group(4) or ""
+        q = urllib.parse.parse_qs(urllib.parse.urlparse("?" + qs.lstrip("?#&")).query)
+        ss = {"network": q.get("type", ["tcp"])[0], "security": "tls", "tlsSettings": {"serverName": q.get("sni", [h])[0], "fingerprint": q.get("fp", ["chrome"])[0] if q.get("fp") else "chrome"}}
+        return {"log": {"loglevel": "none"}, "inbounds": [{"port": 1080, "listen": "127.0.0.1", "protocol": "socks", "settings": {"udp": True}}], "outbounds": [{"protocol": "trojan", "settings": {"servers": [{"address": h, "port": p, "password": pw}]}, "streamSettings": ss}]}
     return None
 
-def verify_config(config: str, host: str, port: int, timeout: float) -> Tuple[Optional[float], bool, bool, Optional[float]]:
-    """
-    Проверка конфига:
-    1. TCP ping (быстрый отсев мёртвых)
-    2. Xray с real ping на https://www.gstatic.com/generate_204
-    Возвращает: (пинг, успех, использован_Xray, скорость_Мбит/с)
-    """
-    # ШАГ 1: TCP ping — быстрый отсев
+def verify_config(config: str, host: str, port: int, timeout: float, use_xray: bool = True) -> Tuple[Optional[float], bool, bool, Optional[float]]:
     ping = tcp_ping(host, port, timeout)
     if ping is None:
         return (None, False, False, None)
-    
-    # ШАГ 2: Xray — реальный HTTP запрос через конфиг
-    if XRAY_AVAILABLE:
-        xray_ping = xray_check(config, host, port, int(timeout))
+    if XRAY_AVAILABLE and use_xray:
+        xray_ping = xray_check(config, int(timeout))
         if xray_ping is not None:
             return (xray_ping, True, True, None)
-        # Xray не смог пройти = конфиг нерабочий
         return (None, False, False, None)
-    
-    # ШАГ 3: Fallback — TCP ping (если Xray не установлен)
     return (ping, True, False, None)
 
 def extract_host_port(config: str) -> Tuple[Optional[str], Optional[int]]:
     if config.startswith('vless://'):
-        match = re.search(r'vless://[^@]+@([^:?#]+):(\d+)', config)
-        if match:
-            return match.group(1), int(match.group(2))
+        m = re.search(r'vless://[^@]+@([^:?#]+):(\d+)', config)
+        if m: return m.group(1), int(m.group(2))
     elif config.startswith('vmess://'):
         try:
-            b64 = config[8:] + '=' * (4 - len(config[8:]) % 4)
-            data = json.loads(base64.b64decode(b64))
-            return data.get('add'), int(data.get('port', 0))
-        except:
-            pass
+            d = json.loads(base64.b64decode(config[8:] + '=' * (4 - len(config[8:]) % 4)))
+            return d.get('add'), int(d.get('port', 0))
+        except: pass
     elif config.startswith('trojan://'):
-        match = re.search(r'trojan://[^@]+@([^:?#]+):(\d+)', config)
-        if match:
-            return match.group(1), int(match.group(2))
+        m = re.search(r'trojan://[^@]+@([^:?#]+):(\d+)', config)
+        if m: return m.group(1), int(m.group(2))
     return None, None
 
 def get_protocol(config: str) -> str:

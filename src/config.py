@@ -4,22 +4,20 @@ import json
 import re
 from typing import List, Dict
 
-# ----- КОНСТАНТЫ -----
 SOURCES_FILE = "sources.txt"
 FLAGS_FILE = "flags.txt"
 KEYWORDS_FILE = "keywords.txt"
 CITIES_FILE = "cities.txt"
 DOMAINS_FILE = "domains.txt"
 
-TIMEOUT = 6.0
-MAX_WORKERS = 300
+TIMEOUT = 5.0
+MAX_WORKERS = 150
 PING_GOOD_THRESHOLD = 300
 PING_MAX = 100000
 
 GEOIP_URL = "https://cdn.jsdelivr.net/npm/geolite2-country/GeoLite2-Country.mmdb.gz"
 GEOIP_FILE = "GeoLite2-Country.mmdb"
 
-# ----- ЗАГРУЗКА ФАЙЛОВ -----
 def load_sources() -> List[str]:
     try:
         with open(SOURCES_FILE, "r", encoding="utf-8") as f:

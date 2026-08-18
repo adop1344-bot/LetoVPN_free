@@ -1,28 +1,29 @@
-#announce: Обновлено: 18.08.2026 09:37:13, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#announce: Обновлено: 18.08.2026 12:45:34, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
-trojan://FH72359861@aware-coyote.rooster465.autos:443?security=tls#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://FH72359861@apt-whippet.rooster465.autos:443?security=tls#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://AE62539071@54.95.128.248:443?security=tls&sni=engaged-ram.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
-trojan://FH72359861@adapted-quetzal.rooster465.autos:443?security=tls&sni=adapted-quetzal.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
-trojan://FH72359861@bright-quagga.rooster465.autos:443?security=tls&sni=bright-quagga.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
-trojan://HC04361579@key-barnacle.rooster465.autos:443?security=tls&sni=key-barnacle.rooster465.autos#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://FH72359861@square-pheasant.rooster465.autos:443?security=tls#🇦🇺 Австралия t.me/letovpn_free
-trojan://FH72359861@sacred-shepherd.rooster465.autos:443?security=tls&sni=sacred-shepherd.rooster465.autos&fp=chrome&type=tcp&path=/#🇯🇵 Япония t.me/letovpn_free
+trojan://FH72359861@good-hound.rooster465.autos:443?security=tls&sni=good-hound.rooster465.autos#🇰🇷 Южная Корея t.me/letovpn_free
+trojan://FH72359861@absolute-bobcat.rooster465.autos:443?security=tls&sni=absolute-bobcat.rooster465.autos#🇰🇷 Южная Корея t.me/letovpn_free
+trojan://AE62539071@grateful-crawdad.rooster465.autos:443?security=tls#🇯🇵 Япония t.me/letovpn_free
+trojan://FH72359861@renewed-porpoise.rooster465.autos:443?security=tls#🇩🇪 Германия t.me/letovpn_free
+trojan://FH72359861@touching-ostrich.rooster465.autos:443?security=tls&sni=touching-ostrich.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
 trojan://FH72359861@pro-crane.rooster465.autos:443?security=tls#🇳🇱 Нидерланды t.me/letovpn_free
-trojan://FH72359861@one-dove.rooster465.autos:443?security=tls#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://FH72359861@magnetic-caiman.rooster465.autos:443?security=tls&sni=magnetic-caiman.rooster465.autos#🇵🇱 Польша t.me/letovpn_free
-trojan://FH72359861@light-filly.rooster465.autos:443?security=tls#🇯🇵 Япония t.me/letovpn_free
-trojan://FH72359861@helping-shark.rooster465.autos:443?security=tls&sni=helping-shark.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
+trojan://FH72359861@many-pangolin.rooster465.autos:443?security=tls&sni=many-pangolin.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
+trojan://FH72359861@charming-ox.rooster465.autos:443?security=tls&headerType=&type=tcp&sni=charming-ox.rooster465.autos#🇸🇬 Сингапур t.me/letovpn_free
+trojan://FH72359861@primary-leech.rooster465.autos:443?security=tls&sni=primary-leech.rooster465.autos#🇵🇱 Польша t.me/letovpn_free
+trojan://oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1@109.206.241.10:449?security=tls&amp;insecure=0&amp;headerType=none&amp;type=tcp&amp;allowInsecure=0&amp;sni=russiapower.accesscam.org#🇪🇪 Эстония t.me/letovpn_free
+trojan://FH72359861@bright-quagga.rooster465.autos:443?security=tls&sni=bright-quagga.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
+trojan://AE62539071@skilled-monster.rooster465.autos:443?security=tls#🇰🇷 Южная Корея t.me/letovpn_free
 trojan://FH72359861@great-wasp.rooster465.autos:443?security=tls&sni=great-wasp.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
-trojan://AE62539071@13.114.122.131:443?security=tls&sni=whole-grub.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
-trojan://8bS8vVC5CQ2GsckhMh8IT1jv@193.124.46.65:443?type=raw&security=tls&sni=193.124.46.65&fp=chrome&alpn=http/1.1#🇹🇷 Турция t.me/letovpn_free
-trojan://5e19b3c8-c1dc-4163-95e2-895319c15d6c@ru.techdatacloud.org:8443?type=tcp&security=reality&pbk=jaZRUO7x7awSXNBlvKp3nXdm2gBEsEgmNbbYs7RRQlw&fp=chrome&sni=cloud.mail.ru&sid=8c3785d47c2017ec&spx=/#🇺🇸 США t.me/letovpn_free
+trojan://FH72359861@darling-mongrel.rooster465.autos:443?security=tls&sni=darling-mongrel.rooster465.autos#🇮🇪 Ирландия t.me/letovpn_free
+trojan://FH72359861@emerging-porpoise.rooster465.autos:443?security=tls&sni=emerging-porpoise.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
+trojan://AE62539071@grand-grub.rooster465.autos:443?security=tls#🇰🇷 Южная Корея t.me/letovpn_free
+trojan://AE62539071@52.68.175.30:443?security=tls&sni=on-roughy.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
+trojan://FH72359861@adapted-quetzal.rooster465.autos:443?security=tls&sni=adapted-quetzal.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
+trojan://FH72359861@trusting-elf.rooster465.autos:443?security=tls#🇯🇵 Япония t.me/letovpn_free
 trojan://FH72359861@classic-pug.rooster465.autos:443?security=tls&sni=classic-pug.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
-trojan://AE62539071@firm-krill.rooster465.autos:443?security=tls&sni=firm-krill.rooster465.autos#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://AE62539071@maximum-elk.rooster465.autos:443?security=tls&sni=maximum-elk.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
-trojan://AE62539071@humorous-llama.rooster465.autos:443?security=tls&sni=humorous-llama.rooster465.autos#🇦🇺 Австралия t.me/letovpn_free
+trojan://FH72359861@casual-stallion.rooster465.autos:443?security=tls&sni=casual-stallion.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
+trojan://FH72359861@welcome-owl.rooster465.autos:443?security=tls&sni=welcome-owl.rooster465.autos#🇯🇵 Япония t.me/letovpn_free

@@ -158,8 +158,12 @@ COUNTRY_NAMES = {
     "LV": "Латвия", "LT": "Литва"
 }
 
-def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple, float, float]]:
-    """Проверяет конфиг и возвращает результат"""
+def process_config(config: str, reader) -> Optional[Tuple]:
+    """
+    Проверяет конфиг.
+    Возвращает (original_config, new_config, country_code, ping, tg_display, speed_mbps)
+    или None
+    """
     if not is_secure_config(config):
         return None
     if 'anycast' in config.lower():
@@ -201,14 +205,10 @@ def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple
     parts.append("t.me/letovpn_free")
 
     new_name = ' '.join(parts)
-
-    if '#' in config:
-        new_config = config.split('#', 1)[0] + '#' + new_name
-    else:
-        new_config = config + '#' + new_name
+    new_config = config.split('#', 1)[0] + '#' + new_name
 
     tg_display = (flag, protocol, ping, ping < PING_GOOD_THRESHOLD)
-    return (new_config, country_code, ping, tg_display, ping, speed_mbps)
+    return (config, new_config, country_code, ping, tg_display, speed_mbps)
 
 
 def save_chunked_files(configs_list, base_name, chunk_size=200):
@@ -226,38 +226,9 @@ def save_chunked_files(configs_list, base_name, chunk_size=200):
         chunk = configs_list[i:i+chunk_size]
         file_num = i // chunk_size + 1
         with open(f"{base_name}{file_num}.txt", "w", encoding="utf-8") as f:
-            for cfg, _ in chunk:
+            for cfg in chunk:
                 f.write(cfg + "\n")
         print(f"  {base_name}{file_num}.txt: {len(chunk)} конфигов")
-
-
-def run_check(configs: List[str], reader, label: str, bot) -> List[Tuple]:
-    """Запускает проверку конфигов, возвращает результаты"""
-    if not configs:
-        return []
-
-    total = len(configs)
-    results = []
-    checked = 0
-    start_sent = False
-
-    print(f"\n🔍 {label}: {total} конфигов")
-
-    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        futures = [executor.submit(process_config, cfg, reader) for cfg in configs]
-        for future in concurrent.futures.as_completed(futures):
-            res = future.result()
-            if res:
-                results.append(res)
-            checked += 1
-            if not start_sent and label == "1-й проход":
-                bot.send_start()
-                start_sent = True
-            if checked % 50 == 0:
-                print(f"  {checked}/{total}. Найдено {len(results)}")
-
-    print(f"  ✅ {label}: {len(results)} рабочих")
-    return results
 
 
 def main():
@@ -272,7 +243,7 @@ def main():
     download_geoip_db()
     reader = init_geoip_reader()
 
-    # Собираем все конфиги из источников
+    # Собираем все конфиги
     all_configs = []
     for url in SOURCES:
         cfgs = fetch_configs_from_url(url)
@@ -281,29 +252,144 @@ def main():
 
     all_configs = list(dict.fromkeys(all_configs))
     filtered = [c for c in all_configs if 'anycast' not in c.lower()]
-    print(f"\n📊 Всего уникальных: {len(filtered)}")
+    total_count = len(filtered)
+    print(f"\n📊 Всего уникальных: {total_count}")
 
-    # ПЕРВЫЙ ПРОХОД — ищем рабочие конфиги
-    first_results = run_check(filtered, reader, "1-й проход", bot)
+    # ===== ПЕРВЫЙ ПРОХОД =====
+    print(f"\n🔍 1-й проход: поиск рабочих конфигов...")
+    first_results = []
+    checked = 0
+    start_sent = False
 
-    # ВТОРОЙ ПРОХОД — перепроверяем найденные (только оригиналы)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        futures = [executor.submit(process_config, cfg, reader) for cfg in filtered]
+        for future in concurrent.futures.as_completed(futures):
+            res = future.result()
+            if res:
+                first_results.append(res)
+            checked += 1
+            if not start_sent:
+                bot.send_start()
+                start_sent = True
+            if checked % 50 == 0:
+                print(f"  {checked}/{total_count}. Найдено {len(first_results)}")
+
+    print(f"  ✅ 1-й проход: {len(first_results)} рабочих конфигов")
+
+    # ===== ВТОРОЙ ПРОХОД (double check) =====
     if first_results:
-        # Восстанавливаем оригинальные конфиги из результатов
-        # Результат: (new_config, country_code, ping, ...)
-        # Оригинал был config.split('#', 1)[0] + '#' + old_name
-        # Но мы не сохранили оригинал... Нужно восстановить из URL части
-        # Просто передадим оригиналы через отдельный список
-        
-        # На самом деле, мы можем взять все оригиналы из first_results
-        # Но они уже изменены (new_config). 
-        # Давайте сохраняли оригиналы? Нет, не сохраняли.
-        
-        # Решение: берём из filtered те конфиги, которые прошли
-        # Для этого нужно сохранить маппинг
-        pass
+        # Берём оригиналы конфигов из первого прохода
+        originals = [r[0] for r in first_results]  # r[0] = original_config
+        print(f"\n🔍 2-й проход: перепроверка {len(originals)} конфигов...")
 
-    # Сохраняем результаты
-    # ... (тут будет сохранение)
+        second_results = []
+        checked2 = 0
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+            futures = [executor.submit(process_config, cfg, reader) for cfg in originals]
+            for future in concurrent.futures.as_completed(futures):
+                res = future.result()
+                if res:
+                    second_results.append(res)
+                checked2 += 1
+                if checked2 % 20 == 0:
+                    print(f"  {checked2}/{len(originals)}. Подтверждено {len(second_results)}")
+
+        print(f"  ✅ 2-й проход: {len(second_results)} конфигов подтверждено")
+
+        # Берём те, что прошли оба прохода
+        # r[0] = original_config из первого прохода
+        # r[0] = original_config из второго прохода
+        # Сравниваем по оригиналу
+        passed_originals = set(r[0] for r in second_results)
+        results = [r for r in first_results if r[0] in passed_originals]
+
+        print(f"  📊 Итого после double check: {len(results)} из {len(first_results)}")
+    else:
+        results = []
+
+    # ===== СОРТИРУЕМ И СОХРАНЯЕМ =====
+    # results = [(original, new_config, country_code, ping, tg_display, speed_mbps), ...]
+
+    # Достаём поля для сортировки и сохранения
+    ru_configs = [(r[1], r[3]) for r in results if r[2] == "RU"]  # [(new_config, ping)]
+    other_configs = [(r[1], r[2], r[3]) for r in results if r[2] != "RU" and r[2] != "??"]
+
+    def sort_key(item):
+        cfg, code, ping = item
+        order = COUNTRY_SORT_ORDER.get(code, 50)
+        return (order, ping)
+
+    other_configs.sort(key=sort_key)
+    ru_configs.sort(key=lambda x: x[1])
+
+    # Статистика
+    fast_count = len([r for r in results if r[3] < PING_GOOD_THRESHOLD])
+
+    # Отправляем в Telegram
+    bot.send_final(total_count, len(results), fast_count, time.time() - start_time)
+
+    # ===== СОХРАНЯЕМ ФАЙЛЫ =====
+    os.makedirs("protocols", exist_ok=True)
+
+    protocol_files = {"VLESS": [], "VMESS": [], "TROJAN": []}
+    for r in results:
+        cfg, new_cfg, code, ping, _, _ = r
+        if code == "??":
+            continue
+        if new_cfg.startswith('vless://'): protocol_files["VLESS"].append(new_cfg)
+        elif new_cfg.startswith('vmess://'): protocol_files["VMESS"].append(new_cfg)
+        elif new_cfg.startswith('trojan://'): protocol_files["TROJAN"].append(new_cfg)
+
+    now = datetime.now(timezone(timedelta(hours=3))).strftime("%d.%m.%Y %H:%M:%S")
+    repo = os.getenv("GITHUB_REPOSITORY", "adop1344-bot/LetoVPN_free")
+    common_header = f"""#announce: Обновлено: {now}, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#support-url: https://t.me/@why_im_gay
+#profile-update-interval: 1
+
+"""
+
+    # configs.txt
+    with open("configs.txt", "w", encoding="utf-8") as f:
+        f.write(f"{common_header}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/configs.txt\n#profile-title: TG@LetoVPN_Free\n\n")
+        for cfg, _, _ in other_configs:
+            f.write(cfg + "\n")
+    print(f"  configs.txt: {len(other_configs)} конфигов")
+
+    # configs1.txt, configs2.txt...
+    other_simple = [cfg for cfg, _, _ in other_configs]
+    # save_chunked_files принимает список строк
+    save_chunked_files(other_simple, "configs", 200)
+
+    # ru.txt
+    with open("ru.txt", "w", encoding="utf-8") as f:
+        f.write(f"{common_header}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/ru.txt\n#profile-title: ru TG@LetoVPN_Free\n\n")
+        for cfg, _ in ru_configs:
+            f.write(cfg + "\n")
+    print(f"  ru.txt: {len(ru_configs)} конфигов")
+
+    # Чистые файлы для Hiddify
+    with open("configs_hiddify.txt", "w", encoding="utf-8") as f:
+        for cfg, _, _ in other_configs:
+            f.write(cfg + "\n")
+    print(f"  configs_hiddify.txt: {len(other_configs)} конфигов")
+
+    with open("ru_hiddify.txt", "w", encoding="utf-8") as f:
+        for cfg, _ in ru_configs:
+            f.write(cfg + "\n")
+    print(f"  ru_hiddify.txt: {len(ru_configs)} конфигов")
+
+    for protocol, configs in protocol_files.items():
+        if configs:
+            with open(f"protocols/{protocol}.txt", "w", encoding="utf-8") as f:
+                f.write(f"{common_header}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/protocols/{protocol}.txt\n#profile-title: {protocol} TG@LetoVPN_Free\n\n")
+                for cfg in configs:
+                    f.write(cfg + "\n")
+
+    print(f"\nГотово!")
+    print(f"  configs.txt: {len(other_configs)} конфигов")
+    print(f"  ru.txt: {len(ru_configs)} конфигов")
+    print(f"⏱ Время: {time.time() - start_time:.1f} сек")
 
     if reader:
         reader.close()

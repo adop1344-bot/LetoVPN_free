@@ -1,23 +1,20 @@
-#announce: Обновлено: 19.08.2026 15:38:47, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#announce: Обновлено: 19.08.2026 21:29:50, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
-trojan://AE62539071@13.114.122.131:443?security=tls&sni=whole-grub.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
-trojan://FH72359861@champion-panther.rooster465.autos:443?security=tls&sni=champion-panther.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
-trojan://FH72359861@funny-squid.rooster465.autos:443?security=tls#🇯🇵 Япония t.me/letovpn_free
-trojan://FH72359861@communal-troll.rooster465.autos:443?security=tls&sni=communal-troll.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
-trojan://AE62539071@exciting-grizzly.rooster465.autos:443?security=tls&sni=exciting-grizzly.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
-trojan://FH72359861@endless-kiwi.rooster465.autos:443?security=tls&sni=endless-kiwi.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
-trojan://AE62539071@52.68.175.30:443?security=tls&sni=on-roughy.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
-trojan://FH72359861@35.159.21.7:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=summary-lemming.rooster465.autos#🇩🇪 Германия t.me/letovpn_free
-trojan://AE62539071@54.95.128.248:443?security=tls&sni=engaged-ram.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
 trojan://AE62539071@up-dinosaur.rooster465.autos:443?security=tls&insecure=0&headerType=&type=tcp&allowInsecure=0#🇩🇪 Германия t.me/letovpn_free
-trojan://AE62539071@maximum-elk.rooster465.autos:443?security=tls&sni=maximum-elk.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
-trojan://FH72359861@balanced-heron.rooster465.autos:443?security=tls&headerType=&type=tcp&sni=balanced-heron.rooster465.autos#🇮🇪 Ирландия t.me/letovpn_free
-trojan://FH72359861@square-pheasant.rooster465.autos:443?security=tls#🇦🇺 Австралия t.me/letovpn_free
-trojan://FH72359861@sterling-fowl.rooster465.autos:443?security=tls&sni=sterling-fowl.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
+trojan://AE62539071@13.229.94.200:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=massive-terrapin.rooster465.autos#🇸🇬 Сингапур t.me/letovpn_free
+trojan://FH72359861@casual-stallion.rooster465.autos:443?security=tls&sni=casual-stallion.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
 trojan://FH72359861@many-pangolin.rooster465.autos:443?security=tls&sni=many-pangolin.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
-trojan://74e37bfc-205e-200c-cc51-d8da9c731d43@rvg-production-c349.up.railway.app:443?security=tls&sni=rvg-production-c349.up.railway.app&fp=chrome&alpn=h2,http/1.1&type=xhttp&host=rvg-production-c349.up.railway.app&path=/txhttp-siz10/stream-up/74e37bfc-205e-200c-cc51-d8da9c731d43&mode=stream-up#🇺🇸 США t.me/letovpn_free
+trojan://AE62539071@13.114.122.131:443?security=tls&sni=whole-grub.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
+trojan://FH72359861@worthy-perch.rooster465.autos:443?security=tls&sni=worthy-perch.rooster465.autos#🇸🇬 Сингапур t.me/letovpn_free
+trojan://FH72359861@bright-quagga.rooster465.autos:443?security=tls&sni=bright-quagga.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
+trojan://AE62539071@clear-heron.rooster465.autos:443?security=tls&sni=clear-heron.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
+trojan://FH72359861@touching-ostrich.rooster465.autos:443?security=tls&sni=touching-ostrich.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
+trojan://AE62539071@humorous-llama.rooster465.autos:443?security=tls&sni=humorous-llama.rooster465.autos#🇦🇺 Австралия t.me/letovpn_free
+trojan://FH72359861@endless-kiwi.rooster465.autos:443?security=tls&sni=endless-kiwi.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
+trojan://FH72359861@helping-shark.rooster465.autos:443?security=tls&sni=helping-shark.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
+trojan://FH72359861@communal-troll.rooster465.autos:443?security=tls&sni=communal-troll.rooster465.autos#🇯🇵 Япония t.me/letovpn_free

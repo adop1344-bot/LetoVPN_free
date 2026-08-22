@@ -11,3 +11,4 @@ https://raw.githubusercontent.com/ByeWhiteLists/ByeWhiteLists2/refs/heads/main/B
 https://raw.githubusercontent.com/VAL41K/bypass-rkn-blocks/refs/heads/main/configs/obhod_WL
 https://raw.githubusercontent.com/VAL41K/bypass-rkn-blocks/refs/heads/main/configs/obhod_BL
 https://raw.githubusercontent.com/luxxuria/harvester/refs/heads/main/top_600.txt
+https://gbr.mydan.online/configs

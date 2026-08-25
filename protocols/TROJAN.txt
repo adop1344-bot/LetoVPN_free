@@ -1,8 +1,12 @@
-#announce: Обновлено: 25.08.2026 15:40:42, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#announce: Обновлено: 25.08.2026 21:35:46, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
-trojan://ba07a8af-5544-48ac-ab62-3b6c00a44fa6@157.254.38.210:20004?security=tls&sni=hk.catxstar.com&fp=ios#🇺🇸 США t.me/letovpn_free
+trojan://5e19b3c8-c1dc-4163-95e2-895319c15d6c@ru.techdatacloud.org:8443?type=tcp&security=reality&pbk=jaZRUO7x7awSXNBlvKp3nXdm2gBEsEgmNbbYs7RRQlw&fp=chrome&sni=cloud.mail.ru&sid=8c3785d47c2017ec&spx=/#🇺🇸 США t.me/letovpn_free
+trojan://FH72359861@primary-leech.rooster465.autos:443?security=tls&sni=primary-leech.rooster465.autos#🇵🇱 Польша t.me/letovpn_free
+trojan://oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1@109.206.241.10:449?security=tls&amp;insecure=0&amp;headerType=none&amp;type=tcp&amp;allowInsecure=0&amp;sni=russiapower.accesscam.org#🇪🇪 Эстония t.me/letovpn_free
+trojan://AE62539071@humorous-llama.rooster465.autos:443?security=tls&sni=humorous-llama.rooster465.autos#🇦🇺 Австралия t.me/letovpn_free
+trojan://FH72359861@natural-swan.rooster465.autos:443?security=tls#🇭🇰 Гонконг t.me/letovpn_free

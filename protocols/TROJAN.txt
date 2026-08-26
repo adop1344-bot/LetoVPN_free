@@ -1,9 +1,8 @@
-#announce: Обновлено: 26.08.2026 04:01:42, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#announce: Обновлено: 26.08.2026 09:42:13, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
-trojan://8qCNZU2XdtefT7uB4uPxgRR839btqMG8@lv01.botovod.space:510?type=xhttp&path=%2F&mode=auto&security=reality&sni=www.icloud.com&pbk=KA8M8E0vMaIPkIEghc6Vcr0_mD84cGp4rcYWGhk2PhI&sid=3ab3b8b1e5&fp=safari#🇺🇸 США t.me/letovpn_free
-trojan://AE62539071@13.229.94.200:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=massive-terrapin.rooster465.autos#🇸🇬 Сингапур t.me/letovpn_free
+trojan://ba07a8af-5544-48ac-ab62-3b6c00a44fa6@157.254.38.210:20004?security=tls&sni=hk.catxstar.com&fp=safari#🇺🇸 США t.me/letovpn_free

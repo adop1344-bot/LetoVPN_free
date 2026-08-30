@@ -1,8 +1,8 @@
-#announce: Обновлено: 30.08.2026 06:12:01, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#announce: Обновлено: 30.08.2026 23:28:31, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VMESS.txt
 #profile-title: VMESS TG@LetoVPN_Free
 
-vmess://eyJ2IjoiMiIsInBzIjoi8J+HtfCfh60gUGhpbGlwcGluZXMsIFBhc2lnIHwgW0JMXSIsImFkZCI6IjYxLjI0NS4xMS42MCIsInBvcnQiOiI4MCIsImlkIjoiYTNlM2E3MTAtNzlmOC00YWUwLWI4M2MtNjA3YWFiNDBkMTk3IiwibmV0Ijoid3MiLCJ0eXBlIjoibm9uZSIsImhvc3QiOiI2MS4yNDUuMTEuNjAiLCJwYXRoIjoiL3ZtZXNzLyIsImFpZCI6IjAiLCJzY3kiOiJhdXRvIiwidGxzIjoiIiwic25pIjoiIiwiYWxwbiI6IiIsImZwIjoiIn0=#🇵🇭 Филиппины t.me/letovpn_free
+vmess://eyJ2IjoiMiIsInBzIjoiXHVkODNjXHVkZGY4XHVkODNjXHVkZGVjW29wZW5wcm94eWxpc3QuY29tXSB2bWVzcy1TRyIsImFkZCI6IjE0MC44My41Ny4yMCIsInBvcnQiOiIxMzExOCIsImlkIjoiMWYwMWUzODktZmJjYi00OTRjLWU0NmEtMjEwZWMzNjMyOWMyIiwiYWlkIjoiMCIsInNjeSI6ImF1dG8iLCJuZXQiOiJ3cyIsInR5cGUiOiIiLCJob3N0Ijoic2cuMTExNjAzMjEuZGU1Lm5ldCIsInBhdGgiOiJcLyIsInRscyI6InRscyIsInNuaSI6InNnLjExMTYwMzIxLmRlNS5uZXQiLCJ0ZXN0X25hbWUiOiI5Iiwic2tpcC1jZXJ0LXZlcmlmeSI6dHJ1ZX0=#🇯🇵 Япония t.me/letovpn_free

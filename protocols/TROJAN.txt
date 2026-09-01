@@ -1,10 +1,9 @@
-#announce: Обновлено: 01.09.2026 06:10:57, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#announce: Обновлено: 01.09.2026 13:59:49, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
-trojan://47SXGr72f1wpGNkZzLUUExRDHuVQypaW@90.156.218.126:2223?type=tcp&security=tls&sni=vkc7.secured-by-tenzo.sbs&alpn=h2%2Chttp%2F1.1&fp=android#🇷🇺 Россия t.me/letovpn_free
-trojan://47SXGr72f1wpGNkZzLUUExRDHuVQypaW@90.156.218.126:2223?type=tcp&security=tls&sni=vkc7.secured-by-tenzo.sbs&alpn=h2%2Chttp%2F1.1&fp=chrome#🇷🇺 Россия t.me/letovpn_free
-trojan://AE62539071@up-dinosaur.rooster465.autos:443?security=tls&insecure=0&headerType=&type=tcp&allowInsecure=0#🇩🇪 Германия t.me/letovpn_free
+trojan://AE62539071@13.229.94.200:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=massive-terrapin.rooster465.autos#🇸🇬 Сингапур t.me/letovpn_free
+trojan://47SXGr72f1wpGNkZzLUUExRDHuVQypaW@90.156.218.126:2223?security=tls&sni=vkc7.secured-by-tenzo.sbs#🇷🇺 Россия t.me/letovpn_free

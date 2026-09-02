@@ -1,13 +1,8 @@
-#announce: Обновлено: 02.09.2026 05:30:01, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#announce: Обновлено: 02.09.2026 13:28:21, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
-trojan://FH72359861@absolute-bobcat.rooster465.autos:443?security=tls&sni=absolute-bobcat.rooster465.autos#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://AE62539071@viable-serval.rooster465.autos:443?security=tls#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://FH72359861@noted-cougar.rooster465.autos:443?security=tls&sni=noted-cougar.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
-trojan://FH72359861@darling-mongrel.rooster465.autos:443?security=tls&sni=darling-mongrel.rooster465.autos#🇮🇪 Ирландия t.me/letovpn_free
-trojan://FH72359861@trusting-elf.rooster465.autos:443?security=tls#🇯🇵 Япония t.me/letovpn_free
-trojan://AE62539071@eager-camel.rooster465.autos:443?security=tls&sni=eager-camel.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
+trojan://FH72359861@good-hound.rooster465.autos:443?security=tls&sni=good-hound.rooster465.autos#🇰🇷 Южная Корея t.me/letovpn_free

@@ -1,9 +1,11 @@
-#announce: Обновлено: 04.09.2026 13:26:33, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#announce: Обновлено: 04.09.2026 18:40:07, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/ru.txt
 #profile-title: ru TG@LetoVPN_Free
 
-vless://935ed92d-68c3-42c7-8c32-2db2595737e6@histo.medic-ml.ru:443?fp=qq&path=%2Fapi%2Fv2%2Ftelemetry&pbk=660bDah5b-PtCfAbQ3g2tJySO41zsfaXCPb7L3nQCQc&security=reality&sid=e1ac2faf5e5f309e&sni=histo.medic-ml.ru&type=xhttp#🇷🇺 Россия t.me/letovpn_free
-vless://1e9fe9f0-0954-4d17-80c3-fe824b49f689@84.201.157.100:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=api-maps.yandex.ru&fp=chrome&pbk=dTsRKJN6v03ir1RDMk-DglS9TKiGXRPh1HYbbZXZuUQ&sid=46761921684ac921&packetEncoding=xudp#🇷🇺 Россия t.me/letovpn_free
+vless://873f1046-0210-4b2e-a0ec-dc1826886071@95.163.250.241:8442?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=TRB-7JE8MNZDBFSduYp9syU1AdpLez1MJ7dPrHeGFwg&security=reality&sid=a7f9106ba66e4796&sni=max.ru&type=raw#🇷🇺 Россия t.me/letovpn_free
+vless://b8783764-ad60-58bb-b2c9-349bfd373a72@51.250.69.41:443?encryption=none&security=reality&sni=ads.x5.ru&fp=chrome&pbk=U5CjlIXh-AGr8xxyqy8y8vH_oroqHYfwGKrk3O6WdjE&sid=7bb04fb6&type=tcp&headerType=none#🇷🇺 Россия t.me/letovpn_free
+vless://c6037cf7-d931-4027-af06-6bfb0f10684c@sv9.jarvesitw.ru:443?flow=xtls-rprx-vision&fp=firefox&pbk=QMkh_UZF6wTVrYukjoZTbrRUziZxT-s0Oj8zVP_RuH0&security=reality&sid=b0ffeec3&sni=apiv91.jarvesitw.ru&spx=%2F#🇷🇺 Россия t.me/letovpn_free
+vless://d7ff1a6d-529e-4260-aa46-3c8a7fd681f4@178.72.167.151:443?mode=auto&path=%2FeCuiEa7kedJ1UIGB3Gbgdt3XeUd&security=reality&alpn=h2&encryption=none&pbk=54p7hD_YYV5f2ATL7rTBk4NG_KhStO76-1_tSKmXah8&host=2gis.ru&fp=chrome&type=xhttp&sni=2gis.ru&sid=d45603#🇷🇺 Россия t.me/letovpn_free

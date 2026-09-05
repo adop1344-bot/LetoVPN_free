@@ -1,8 +1,7 @@
-#announce: Обновлено: 05.09.2026 17:27:30, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#announce: Обновлено: 05.09.2026 22:51:16, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/ru.txt
 #profile-title: ru TG@LetoVPN_Free
 
-vless://b3a11068-1a7e-4643-85de-7c82cce46943@51.250.98.44:33743?encryption=none&pbk=wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY&security=reality&serviceName=TunService&sni=www.google.com&type=grpc&fp=safari#🇷🇺 Россия t.me/letovpn_free

@@ -1,7 +1,11 @@
-#announce: Обновлено: 06.09.2026 17:49:36, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#announce: Обновлено: 06.09.2026 22:55:48, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/ru.txt
 #profile-title: ru TG@LetoVPN_Free
 
+vless://c4854b1a-ec0f-4c5e-940b-f23c8fd39253@194.135.36.163:443?encryption=none&flow=xtls-rprx-vision&pbk=07XXjhQmPu0cnXX7IRDc65movxzd0XWV2v0W62Xoqgc&security=reality&sid=6340e9067e86efaf&sni=ru-srv-yt.meow.ac&type=tcp&fp=ios#🇷🇺 Россия t.me/letovpn_free
+vless://5cb2ed02-47da-49fc-8781-1226a9e3e9bc@80.66.79.193:8443?type=tcp&headerType=none&security=reality&encryption=none&sni=rus.yt.xanka.best&pbk=9SK0qHj03aO6mpT2Vzoyr4jQqB15OkT7PurI4OxaMH0&sid=780dc377&flow=xtls-rprx-vision&fp=firefox#🇷🇺 Россия t.me/letovpn_free
+vless://5cb2ed02-47da-49fc-8781-1226a9e3e9bc@80.66.79.193:8443?type=tcp&headerType=none&security=reality&encryption=none&sni=rus.yt.xanka.best&pbk=9SK0qHj03aO6mpT2Vzoyr4jQqB15OkT7PurI4OxaMH0&sid=780dc377&flow=xtls-rprx-vision&fp=safari#🇷🇺 Россия t.me/letovpn_free
+vless://9548b005-fe1f-4c9c-a45f-3fa6f271a036@195.78.48.159:1337?type=tcp&headerType=none&security=reality&encryption=none&sni=eng.xanka.best&pbk=MKoeqrRMeryTxhSbcrPmoMZKKtd9268vwsiZ22w2Gig&sid=be901ea3&flow=xtls-rprx-vision&fp=ios#🇷🇺 Россия t.me/letovpn_free

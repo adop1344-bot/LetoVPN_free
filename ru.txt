@@ -1,14 +1,11 @@
-#announce: Обновлено: 07.09.2026 14:24:46, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#announce: Обновлено: 07.09.2026 20:07:13, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/ru.txt
 #profile-title: ru TG@LetoVPN_Free
 
-vless://14f4be39-cb89-4f2b-8200-704666b6fa4e@185.71.67.149:443?alpn=http%2F1.1&encryption=none&fp=safari&path=api%2Fv2%2Fstream%2Fshamik&security=tls&sni=stream.benz.ink&type=ws#🇷🇺 Россия t.me/letovpn_free
-vless://c16d9e4c-738d-40cc-b3c8-8510f9945682@213.219.214.33:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=PL09r78ubjFaOILv5x6HPsCZeTdwhlRb3tuDY5vASwQ&security=reality&sni=yandex.ru&type=raw#🇷🇺 Россия t.me/letovpn_free
-vless://423cb984-5f34-4da3-a279-eb7a65f0527f@84.201.178.175:443?security=reality&encryption=none&pbk=Ec54Eop0jZft7rcJsPN4RHc4xG9smXhtenM52pJFUQI&headerType=none&fp=random&spx=%2F&type=tcp&flow=xtls-rprx-vision&sni=yandex.ru&sid=27e53bbcab7593d7#🇷🇺 Россия t.me/letovpn_free
-vless://ecf728d9-1555-4e12-b178-1d8bd98465e4@217.19.122.47:443?flow=xtls-rprx-vision&fp=firefox&pbk=0UUWi4Ds_Rp889_u0YNOX9PAiP10MLzetKrxS_Nhejc&security=reality&sni=rulte.horizonless.pro&spx=%2F&type=tcp#🇷🇺 Россия t.me/letovpn_free
-vless://f22c9b63-f93b-4650-80d7-937c5422c471@51.250.86.102:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=api-maps.yandex.ru&fp=chrome&pbk=FkmYFobwxLMLEktYXywmjthuEYCZggITsxwPNasTKUg&sid=4b523a98e1bbd15b&packetEncoding=xudp#🇷🇺 Россия t.me/letovpn_free
-vless://88ce17fc-7c6c-43a7-98a4-33fb59697b17@95.163.214.43:443?fp=chrome&host=vk.com&path=%2Fapi%2Fv1%2Fe0163615&pbk=VdG4ntV15FfNWV4rvSny2mvOTSXfOUVKHNC0dOyXY2s&security=reality&sid=864fbb122f15b43d&sni=ok.ru&type=xhttp#🇷🇺 Россия t.me/letovpn_free
-vless://af9c2bcf-fe68-4379-9c78-6e5f1b4af0e2@217.16.31.162:443?encryption=none&flow=xtls-rprx-vision&fp=safari&pbk=SHIYN7zN9aFVxwKK-bIvDbhUgtHvlBhDi1qSl2sWwRw&security=reality&sid=e7&sni=max.ru&type=raw#🇷🇺 Россия t.me/letovpn_free
+vless://0764541b-3e57-4b47-954b-51e996fae5fc@78.159.247.123:7444?type=tcp&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=-P8DgKISSG4jnLuj6ihZDqZs1_zt-juBrhVhTylHiAo&sni=akamai.com&packetEncoding=none#🇷🇺 Россия t.me/letovpn_free
+vless://1e8a04c0-77fb-45de-9c56-8c84dc194a03@185.229.9.137:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&pbk=8lw0A9bkJwt3sX_Jgb5RzieKlqojPg-6RV9Wj1ewtg4&security=reality&sid=27e53bbcab7593d7&sni=max.ru&spx=%2F&type=raw#🇷🇺 Россия t.me/letovpn_free
+vless://6bd3e20b-4be0-41df-a1e0-5c147cc8fbfc@77.222.53.158:4100?type=ws&sni=live.ok.ru#🇷🇺 Россия t.me/letovpn_free
+vless://0cfee0f7-de6d-4d72-95c5-bb5d35094974@194.55.239.164:443?type=raw&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=sdnD0vxmj8kHBOoVM8TE9IyBCGwnKNB8hZVaHp_Zfjk&sid=2cd5&sni=ads.vk.ru#🇷🇺 Россия t.me/letovpn_free

@@ -1,8 +1,8 @@
-#announce: Обновлено: 06.09.2026 13:09:33, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#announce: Обновлено: 07.09.2026 05:29:44, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
-trojan://FH72359861@apt-whippet.rooster465.autos:443?security=tls#🇰🇷 Южная Корея t.me/letovpn_free
+trojan://FH72359861@massive-ocelot.rooster465.autos:443?security=tls#🇰🇷 Южная Корея t.me/letovpn_free

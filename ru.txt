@@ -1,14 +1,8 @@
-#announce: Обновлено: 09.09.2026 18:49:39, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#announce: Обновлено: 09.09.2026 23:21:00, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/ru.txt
 #profile-title: ru TG@LetoVPN_Free
 
-vless://c6037cf7-d931-4027-af06-6bfb0f10684c@sv11.jarvesitw.ru:443?security=reality&encryption=none&pbk=tTXroX_MhV9m5MsLiAEncsC4u9VoV4fiHC01reGCv0k&headerType=none&fp=firefox&spx=%2F&type=tcp&flow=xtls-rprx-vision&sni=apiv11.jarvesitw.ru&sid=7c9d968a#🇷🇺 Россия t.me/letovpn_free
-vless://d4719d52-c3fc-4651-98e1-535dbd77dbcf@cdn2.24lider.ru:443?security=tls&encryption=none&insecure=0&headerType=none&type=tcp&allowInsecure=0&flow=xtls-rprx-vision&sni=cdn2.24lider.ru&fp=qq#🇷🇺 Россия t.me/letovpn_free
-vless://eaf8abff-0fbf-4b64-8d8f-18c1757c75df@188.130.209.185:443?type=tcp&security=reality&sni=images.mycdn-io.ru&fp=firefox&flow=xtls-rprx-vision&pbk=vrtWpW_N3rBs9WEoV1Yz4uOYsci3Kpe7HitaYr4oQGc&sid=fbe42a5d4788bacc#🇷🇺 Россия t.me/letovpn_free
-vless://b3a11068-1a7e-4643-85de-7c82cce46943@51.250.98.44:33743?encryption=none&pbk=wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY&security=reality&serviceName=TunService&sni=www.google.com&type=grpc&fp=chrome#🇷🇺 Россия t.me/letovpn_free
-vless://7ab9fe4f-6699-427f-a828-9fcf2496d714@83.147.245.109:24443?serviceName=9d30d49278&type=grpc&security=reality&pbk=s2uiu3GQA2SlZzsr86Z5Dav97eAFTPf7Nvr-zqzzRgg&sid=72ccd4a7563c2953&sni=www.cloudflare.com&freeinternet=kizyak_vpn1788935439880&fp=ios#cloudflare 🇷🇺 Россия t.me/letovpn_free
-vless://76186f1e-3062-4a2b-98c2-fab3c61a9511@82.202.143.37:9830?type=grpc&security=reality&pbk=bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU&sni=dl.google.com&serviceName=grpc-tunnel&fp=ios#🇷🇺 Россия t.me/letovpn_free
-vless://76186f1e-3062-4a2b-98c2-fab3c61a9511@82.202.143.37:9830?type=grpc&security=reality&pbk=bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU&sid=aabb&sni=dl.google.com&serviceName=grpc-tunnel&fp=ios#🇷🇺 Россия t.me/letovpn_free
+vless://0764541b-3e57-4b47-954b-51e996fae5fc@78.159.247.153:443?type=raw&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=-P8DgKISSG4jnLuj6ihZDqZs1_zt-juBrhVhTylHiAo&sni=on.mcufa.pro#🇷🇺 Россия t.me/letovpn_free

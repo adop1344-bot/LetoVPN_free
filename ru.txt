@@ -1,14 +1,11 @@
-#announce: Обновлено: 10.09.2026 18:44:33, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
+#announce: Обновлено: 10.09.2026 23:23:09, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/ru.txt
 #profile-title: ru TG@LetoVPN_Free
 
-vless://851ed0d8-a37b-452d-8ef2-5b6c2d28a060@158.160.15.114:443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=rZgu2lJcC2yrYnx66znee-Z75mW6m4TRfWt7_neoEVI&sid=1c74cf626ef50bb3&sni=mts01.edge-mwsru01.live#🇷🇺 Россия t.me/letovpn_free
-vless://329f5c49-c8a1-46e0-8e4d-79b0bebdc59e@158.160.184.220:443?type=tcp&security=reality&sni=ads.x5.ru&fp=firefox&flow=xtls-rprx-vision&pbk=kEbS3y2rg40AjY6QHVVBMt4f-XIQUA1ewCq7ywQWPhA&sid=D1aaddff4f#🇷🇺 Россия t.me/letovpn_free
-vless://4e358a16-f113-4779-8691-d88acd1d2395@201.24.117.25:19210?type=tcp&security=reality&sni=travel.yandex.com&fp=firefox&flow=xtls-rprx-vision&pbk=rvcGpldftiQ1_SD8XFNLq2L9VkU0yME0YYgTw6guHhE&sid=5b#🇷🇺 Россия t.me/letovpn_free
-vless://c6037cf7-d931-4027-af06-6bfb0f10684c@sv11.jarvesitw.ru:443?security=reality&encryption=none&pbk=tTXroX_MhV9m5MsLiAEncsC4u9VoV4fiHC01reGCv0k&headerType=none&fp=firefox&spx=%2F&type=tcp&flow=xtls-rprx-vision&sni=apiv11.jarvesitw.ru&sid=7c9d968a#🇷🇺 Россия t.me/letovpn_free
-vless://88ce17fc-7c6c-43a7-98a4-33fb59697b17@95.163.214.43:443?__rand=8b48a579&host=vk.com&nonce=CqUay3_-&path=%2Fapi%2Fv1%2Fe0163615&pbk=VdG4ntV15FfNWV4rvSny2mvOTSXfOUVKHNC0dOyXY2s&security=reality&seq=you_are_beautiful3210&sid=864fbb122f15b43d&sni=ok.ru&type=xhttp&fp=chrome#🇷🇺 Россия t.me/letovpn_free
-vless://88ce17fc-7c6c-43a7-98a4-33fb59697b17@95.163.214.43:443?_t=9043f908&burmalda=30d995b5&descriptions=%D0%A1%D0%B2%D0%BE%D0%B1%D0%BE%D0%B4%D1%83%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%83386&freeinternet=kizyak_vpn1789028515156&nonce=bidK1mvs&path=%2Fapi%2Fv1%2Fe0163615&pbk=VdG4ntV15FfNWV4rvSny2mvOTSXfOUVKHNC0dOyXY2s&security=reality&sid=864fbb122f15b43d&sni=ok.ru&type=xhttp&fp=safari#🇷🇺 Россия t.me/letovpn_free
-vless://b3a11068-1a7e-4643-85de-7c82cce46943@51.250.98.44:33743?encryption=none&fp=qq&mode=gun&pbk=wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY&security=reality&serviceName=TunService&sni=www.google.com&type=grpc#🇷🇺 Россия t.me/letovpn_free
+vless://5d16ac22-6eea-426f-b778-6f4c2961faef@80.90.185.80:9892?type=grpc&security=reality&pbk=Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0&sni=dl.google.com&serviceName=grpc-tunnel&fp=chrome#🇷🇺 Россия t.me/letovpn_free
+vless://5d16ac22-6eea-426f-b778-6f4c2961faef@80.90.185.80:9892?type=grpc&security=reality&pbk=Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0&sni=dl.google.com&serviceName=grpc-tunnel&fp=edge#🇷🇺 Россия t.me/letovpn_free
+vless://82282910-54a0-0032-b2df-86bfbce8ed36@135.106.142.209:443?type=xhttp&headerType=none&security=reality&encryption=none&sni=alfastat.ru&pbk=fz_xpZfQks3oa9c_d1OSokmTgmJuGbvFMkyK0Qt8w3I&sid=0066a7326f06d426&path=%2Fassets&fp=ios#🇷🇺 Россия t.me/letovpn_free
+vless://5d16ac22-6eea-426f-b778-6f4c2961faef@80.90.185.80:9892?authority=%2F%3FTELEGRAM--MARAMBASHI--MARAMBASHI&encryption=none&pbk=Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0&security=reality&serviceName=grpc-tunnel&sid=aa&sni=dl.google.com&type=grpc&fp=chrome#🇷🇺 Россия t.me/letovpn_free

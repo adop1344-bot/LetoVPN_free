@@ -2,13 +2,16 @@
 import os
 import requests
 import json
-import sqlite3
 import time
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from typing import Optional, List
 
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+MSK_TZ = timezone(timedelta(hours=3))
+
+def now_msk():
+    return datetime.now(MSK_TZ)
 
 class TelegramBot:
     def __init__(self):
@@ -33,22 +36,15 @@ class TelegramBot:
         return None
     
     def send_start(self):
-        """Отправляет стартовое сообщение"""
-        now = datetime.now().strftime("%H:%M")
+        now = now_msk().strftime("%H:%M")
         msg = f"🚀 <b>LetoVPN</b>\n<i>test started... {now}</i>"
         self.start_time = time.time()
         return self.send(msg)
     
     def send_final(self, total: int, found: int, fast: int, elapsed: float):
-        """Отправляет финальное сообщение"""
-        # Форматируем время
         minutes = int(elapsed // 60)
         seconds = int(elapsed % 60)
-        
-        if minutes > 0:
-            time_str = f"{minutes} min {seconds} sec"
-        else:
-            time_str = f"{seconds} sec"
+        time_str = f"{minutes} min {seconds} sec" if minutes > 0 else f"{seconds} sec"
         
         msg = (
             f"<b>✅ LetoVPN</b>\n\n"
@@ -58,7 +54,6 @@ class TelegramBot:
             f"⏱ <b>Время заняло:</b> {time_str}"
         )
         
-        # Добавляем ссылки на файлы
         repo = os.getenv("GITHUB_REPOSITORY", "adop1344-bot/LetoVPN_free")
         msg += f"\n\n📁 <b>Скачать:</b>\n"
         msg += f"• <a href='https://raw.githubusercontent.com/{repo}/main/configs_hiddify.txt'>configs_hiddify.txt</a>\n"

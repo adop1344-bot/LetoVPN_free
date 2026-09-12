@@ -1,14 +1,17 @@
-https://raw.githubusercontent.com/GoldCaviar/vpn-configs-for-russia/refs/heads/main/Vless-Reality-White-Lists-Rus-Mobile.txt
-https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/WHITE-CIDR-RU-checked.txt
-https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS_mobile.txt
-https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/WhiteKeys
+https://raw.githubusercontent.com/GoldCaviar/vpn-configs-for-russia/refs/heads/main/Vless-Reality-White-Lists-Rus-Mobile.txt #whitelist
+https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/WHITE-CIDR-RU-checked.txt #whitelist
+https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS_mobile.txt #blacklist
+https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/WhiteKeys #whitelist
 https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/4Thur
 https://github.com/nikita29a/FreeProxyList/raw/refs/heads/main/mirror/6.txt
-https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/WHITE-SNI-RU-all.txt
+https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/WHITE-SNI-RU-all.txt #whitelist
 https://raw.githubusercontent.com/zieng2/wl/refs/heads/main/vless_universal.txt
 https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
-https://raw.githubusercontent.com/ByeWhiteLists/ByeWhiteLists2/refs/heads/main/ByeWhiteLists2.txt
-https://raw.githubusercontent.com/VAL41K/bypass-rkn-blocks/refs/heads/main/configs/obhod_WL
-https://raw.githubusercontent.com/VAL41K/bypass-rkn-blocks/refs/heads/main/configs/obhod_BL
+https://raw.githubusercontent.com/ByeWhiteLists/ByeWhiteLists2/refs/heads/main/ByeWhiteLists2.txt #whitelist
+https://raw.githubusercontent.com/VAL41K/bypass-rkn-blocks/refs/heads/main/configs/obhod_WL #whitelist
+https://raw.githubusercontent.com/VAL41K/bypass-rkn-blocks/refs/heads/main/configs/obhod_BL #blacklist
 https://raw.githubusercontent.com/luxxuria/harvester/refs/heads/main/top_600.txt
-https://gbr.mydan.online/configs
+https://raw.githubusercontent.com/RKPchannel/RKP_bypass_configs/refs/heads/main/whitelist.txt #whitelist
+# свои проверенные
+https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/configs.txt
+https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/ru.txt

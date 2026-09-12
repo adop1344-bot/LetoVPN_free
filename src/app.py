@@ -1,21 +1,9 @@
 #!/usr/bin/env python3
-import requests
-import concurrent.futures
-import os
-import re
-import gzip
-import shutil
-import time
-import warnings
-import urllib3
+import requests, concurrent.futures, os, re, gzip, shutil, time, warnings, urllib3
 from datetime import datetime, timezone, timedelta
 from typing import List, Tuple, Optional
 
-from src.config import (
-    TIMEOUT, MAX_WORKERS, PING_GOOD_THRESHOLD, PING_MAX,
-    GEOIP_URL, GEOIP_FILE,
-    load_sources, load_flags, load_keywords, load_cities, load_domains
-)
+from src.config import TIMEOUT, MAX_WORKERS, PING_GOOD_THRESHOLD, PING_MAX, GEOIP_URL, GEOIP_FILE, load_sources, load_flags, load_keywords, load_cities, load_domains
 from src.ping import verify_config, extract_host_port, get_protocol, init_xray
 from src.tg import TelegramBot
 
@@ -27,325 +15,224 @@ COUNTRY_FLAGS = load_flags()
 KEYWORDS = load_keywords()
 CITIES = load_cities()
 DOMAIN_MAP = load_domains()
-
 WHITE_FLAG = "\U0001F9F3"
 
+COUNTRY_SORT_ORDER = {"NL":0,"DE":1,"FI":2,"US":3,"GB":4,"FR":5,"SG":6,"CA":7,"JP":8,
+    "AU":9,"CH":10,"AT":11,"BE":12,"DK":13,"SE":14,"NO":15,"PL":16,"CZ":17,
+    "EE":18,"LV":19,"LT":20,"IE":21,"IT":22,"ES":23,"PT":24,"GR":25,"RO":26,
+    "BG":27,"HU":28,"TR":29,"IL":30,"AE":31,"ZA":32,"BR":33,"IN":34,"MY":35,
+    "VN":36,"TH":37,"PH":38,"ID":39,"HK":40,"KR":41,"TW":42,"RU":99}
+
+COUNTRY_NAMES = {"RU":"Россия","US":"США","DE":"Германия","FR":"Франция","NL":"Нидерланды",
+    "GB":"Великобритания","JP":"Япония","SG":"Сингапур","CA":"Канада","AU":"Австралия",
+    "BR":"Бразилия","IN":"Индия","IT":"Италия","ES":"Испания","CH":"Швейцария",
+    "AT":"Австрия","BE":"Бельгия","DK":"Дания","FI":"Финляндия","NO":"Норвегия",
+    "SE":"Швеция","PL":"Польша","CZ":"Чехия","HU":"Венгрия","RO":"Румыния",
+    "BG":"Болгария","GR":"Греция","PT":"Португалия","IE":"Ирландия","TR":"Турция",
+    "IL":"Израиль","AE":"ОАЭ","SA":"Саудовская Аравия","ZA":"ЮАР","MX":"Мексика",
+    "AR":"Аргентина","CL":"Чили","CO":"Колумбия","MY":"Малайзия","VN":"Вьетнам",
+    "TH":"Таиланд","PH":"Филиппины","ID":"Индонезия","PK":"Пакистан","EG":"Египет",
+    "NG":"Нигерия","MA":"Марокко","KE":"Кения","NZ":"Новая Зеландия","HK":"Гонконг",
+    "KR":"Южная Корея","TW":"Тайвань","EE":"Эстония","LV":"Латвия","LT":"Литва"}
+
 def detect_country_by_domain(host: str) -> Tuple[str, str]:
-    if not host:
-        return WHITE_FLAG, "ZZ"
-    host_lower = host.lower()
-    for domain, code in sorted(DOMAIN_MAP.items(), key=lambda x: len(x[0]), reverse=True):
-        if host_lower.endswith(domain):
-            return COUNTRY_FLAGS.get(code, WHITE_FLAG), code
+    if not host: return WHITE_FLAG, "ZZ"
+    hl = host.lower()
+    for d, c in sorted(DOMAIN_MAP.items(), key=lambda x: len(x[0]), reverse=True):
+        if hl.endswith(d): return COUNTRY_FLAGS.get(c, WHITE_FLAG), c
     return WHITE_FLAG, "ZZ"
 
 def detect_country_from_name(name: str) -> Tuple[str, str]:
-    name_lower = name.lower()
-    for code, flag in COUNTRY_FLAGS.items():
-        if flag in name:
-            return flag, code
-    for code, words in KEYWORDS.items():
-        for word in words:
-            if word in name_lower:
-                return COUNTRY_FLAGS.get(code, WHITE_FLAG), code
-    match = re.search(r'\b([A-Z]{2})\b', name)
-    if match and match.group(1) in COUNTRY_FLAGS:
-        return COUNTRY_FLAGS[match.group(1)], match.group(1)
+    nl = name.lower()
+    for c, f in COUNTRY_FLAGS.items():
+        if f in name: return f, c
+    for c, ws in KEYWORDS.items():
+        for w in ws:
+            if w in nl: return COUNTRY_FLAGS.get(c, WHITE_FLAG), c
+    m = re.search(r'\b([A-Z]{2})\b', name)
+    if m and m.group(1) in COUNTRY_FLAGS: return COUNTRY_FLAGS[m.group(1)], m.group(1)
     return WHITE_FLAG, "ZZ"
 
 def get_country_geoip(host: str, reader) -> Tuple[str, str]:
     try:
         if reader:
-            response = reader.country(host)
-            if response and response.country and response.country.iso_code:
-                code = response.country.iso_code
-                return COUNTRY_FLAGS.get(code, WHITE_FLAG), code
-    except:
-        pass
+            r = reader.country(host)
+            if r and r.country and r.country.iso_code:
+                return COUNTRY_FLAGS.get(r.country.iso_code, WHITE_FLAG), r.country.iso_code
+    except: pass
     return WHITE_FLAG, "ZZ"
 
-def detect_city_by_ip(host: str) -> str:
-    if not re.match(r'^\d+\.\d+\.\d+\.\d+$', host):
-        return ""
-    parts = host.split('.')
-    mask = f"{parts[0]}.{parts[1]}"
-    return CITIES.get(mask, "")
-
-def get_domain_note(host: str) -> str:
-    if not host:
-        return ""
-    host_lower = host.lower()
-    if host_lower.endswith('.ru') or host_lower.endswith('.рф') or host_lower.endswith('.su'):
-        parts = host_lower.split('.')
-        if len(parts) >= 2:
-            return f" [{parts[-2]}.{parts[-1]}]"
-    return ""
-
-def is_secure_config(config: str) -> bool:
-    config_lower = config.lower()
-    if 'allowinsecure=1' in config_lower or 'insecure=1' in config_lower:
-        return False
-    if 'security=none' in config_lower or 'tls=none' in config_lower:
-        return False
-    return True
-
 def download_geoip_db():
-    if os.path.exists(GEOIP_FILE):
-        return True
+    if os.path.exists(GEOIP_FILE): return True
     try:
-        r = requests.get(GEOIP_URL, timeout=30)
-        r.raise_for_status()
-        with open(GEOIP_FILE + ".gz", "wb") as f:
-            f.write(r.content)
-        with gzip.open(GEOIP_FILE + ".gz", "rb") as f_in:
-            with open(GEOIP_FILE, "wb") as f_out:
-                shutil.copyfileobj(f_in, f_out)
-        os.remove(GEOIP_FILE + ".gz")
-        return True
-    except:
-        return False
+        r = requests.get(GEOIP_URL, timeout=30); r.raise_for_status()
+        with open(GEOIP_FILE + ".gz", "wb") as f: f.write(r.content)
+        with gzip.open(GEOIP_FILE + ".gz", "rb") as fi:
+            with open(GEOIP_FILE, "wb") as fo: shutil.copyfileobj(fi, fo)
+        os.remove(GEOIP_FILE + ".gz"); return True
+    except: return False
 
 def init_geoip_reader():
     try:
         import geoip2.database
-        if os.path.exists(GEOIP_FILE):
-            return geoip2.database.Reader(GEOIP_FILE)
-    except:
-        pass
+        if os.path.exists(GEOIP_FILE): return geoip2.database.Reader(GEOIP_FILE)
+    except: pass
     return None
 
 def fetch_configs_from_url(url: str) -> List[str]:
     try:
-        r = requests.get(url, timeout=10)
-        r.raise_for_status()
-        return [line.strip() for line in r.text.splitlines()
-                if line.strip() and not line.startswith('#')]
+        r = requests.get(url, timeout=15); r.raise_for_status()
+        return [l.strip() for l in r.text.splitlines() if l.strip() and not l.startswith('#')]
     except Exception as e:
-        print(f"Ошибка загрузки {url}: {e}")
-        return []
+        print(f"Error {url}: {e}"); return []
 
-COUNTRY_SORT_ORDER = {
-    "NL": 0, "DE": 1, "FI": 2,
-    "US": 3, "GB": 4, "FR": 5, "SG": 6, "CA": 7, "JP": 8,
-    "AU": 9, "CH": 10, "AT": 11, "BE": 12, "DK": 13,
-    "SE": 14, "NO": 15, "PL": 16, "CZ": 17, "EE": 18,
-    "LV": 19, "LT": 20, "IE": 21, "IT": 22, "ES": 23,
-    "PT": 24, "GR": 25, "RO": 26, "BG": 27, "HU": 28,
-    "TR": 29, "IL": 30, "AE": 31, "ZA": 32, "BR": 33,
-    "IN": 34, "MY": 35, "VN": 36, "TH": 37, "PH": 38,
-    "ID": 39, "HK": 40, "KR": 41, "TW": 42, "RU": 99
-}
+def is_secure_config(c: str) -> bool:
+    cl = c.lower()
+    if 'allowinsecure=1' in cl or 'insecure=1' in cl: return False
+    if 'security=none' in cl or 'tls=none' in cl: return False
+    return True
 
-COUNTRY_NAMES = {
-    "RU": "Россия", "US": "США", "DE": "Германия", "FR": "Франция",
-    "NL": "Нидерланды", "GB": "Великобритания", "JP": "Япония",
-    "SG": "Сингапур", "CA": "Канада", "AU": "Австралия",
-    "BR": "Бразилия", "IN": "Индия", "IT": "Италия", "ES": "Испания",
-    "CH": "Швейцария", "AT": "Австрия", "BE": "Бельгия",
-    "DK": "Дания", "FI": "Финляндия", "NO": "Норвегия",
-    "SE": "Швеция", "PL": "Польша", "CZ": "Чехия",
-    "HU": "Венгрия", "RO": "Румыния", "BG": "Болгария",
-    "GR": "Греция", "PT": "Португалия", "IE": "Ирландия",
-    "TR": "Турция", "IL": "Израиль", "AE": "ОАЭ",
-    "SA": "Саудовская Аравия", "ZA": "ЮАР", "MX": "Мексика",
-    "AR": "Аргентина", "CL": "Чили", "CO": "Колумбия",
-    "MY": "Малайзия", "VN": "Вьетнам", "TH": "Таиланд",
-    "PH": "Филиппины", "ID": "Индонезия", "PK": "Пакистан",
-    "EG": "Египет", "NG": "Нигерия", "MA": "Марокко",
-    "KE": "Кения", "NZ": "Новая Зеландия",
-    "HK": "Гонконг", "KR": "Южная Корея",
-    "TW": "Тайвань", "EE": "Эстония",
-    "LV": "Латвия", "LT": "Литва"
-}
+def get_config_id(config: str) -> str:
+    proto = get_protocol(config); h, p = extract_host_port(config)
+    if not h or not p: return config
+    return f"{proto}@{h}:{p}"
 
-def process_config(config: str, reader) -> Optional[Tuple[str, str, float, tuple, float, float]]:
-    if not is_secure_config(config):
-        return None
-    if 'anycast' in config.lower():
-        return None
-
+def process_config(config: str, tag: str, reader) -> Optional[Tuple]:
+    if not is_secure_config(config) or 'anycast' in config.lower(): return None
     host, port = extract_host_port(config)
-    if not host or not port:
-        return None
-
-    ping, is_working, used_xray, speed_mbps = verify_config(config, host, port, TIMEOUT)
-    if not is_working or ping is None or ping > PING_MAX:
-        return None
+    if not host or not port: return None
+    ping, ok, _, _ = verify_config(config, TIMEOUT)
+    if not ok or ping is None or ping > PING_MAX: return None
 
     name_part = config.split('#', 1)[1].strip() if '#' in config else ""
-    protocol = get_protocol(config)
+    sni = (re.search(r'sni=([^&]+)', config) or [None, None]).group(1) or ""
 
-    sni_match = re.search(r'sni=([^&]+)', config)
-    sni = sni_match.group(1) if sni_match else ""
+    flag, cc = get_country_geoip(host, reader)
+    if cc == "ZZ": flag, cc = detect_country_by_domain(host)
+    if host and host.lower().endswith('.ru') and cc != "RU": flag, cc = WHITE_FLAG, "??"
+    if cc == "ZZ" and not (host and host.lower().endswith('.ru')):
+        flag, cc = detect_country_from_name(name_part)
+    if cc == "ZZ" or flag == WHITE_FLAG: return None
 
-    flag, country_code = get_country_geoip(host, reader)
-    if country_code == "ZZ":
-        flag, country_code = detect_country_by_domain(host)
-    is_ru_domain = host and host.lower().endswith('.ru')
-    if is_ru_domain and country_code != "RU":
-        flag = WHITE_FLAG
-        country_code = "??"
-    if country_code == "ZZ" and not is_ru_domain:
-        flag, country_code = detect_country_from_name(name_part)
-    if country_code == "ZZ" or flag == WHITE_FLAG:
-        return None
-
-    country_name_ru = COUNTRY_NAMES.get(country_code, country_code)
-
-    # Формируем название
     parts = []
-    if sni and "cloudflare" in sni.lower():
-        parts.append("cloudflare")
-    parts.append(flag)
-    parts.append(country_name_ru)
-    parts.append("t.me/letovpn_free")
+    if tag: parts.append(tag)
+    if sni and "cloudflare" in sni.lower(): parts.append("cloudflare")
+    parts += [flag, COUNTRY_NAMES.get(cc, cc), "t.me/letovpn_free"]
+    new_cfg = config.split('#', 1)[0] + '#' + ' '.join(parts)
+    return (config, new_cfg, cc, ping, (flag, get_protocol(config), ping, ping < PING_GOOD_THRESHOLD), None)
 
-    new_name = ' '.join(parts)
-
-    if '#' in config:
-        new_config = config.split('#', 1)[0] + '#' + new_name
-    else:
-        new_config = config + '#' + new_name
-
-    tg_display = (flag, protocol, ping, ping < PING_GOOD_THRESHOLD)
-    return (new_config, country_code, ping, tg_display, ping, speed_mbps)
-
-
-def save_chunked_files(configs_list, base_name, chunk_size=200):
-    """Сохраняет конфиги в файлы по chunk_size штук"""
-    total = len(configs_list)
-    if total == 0:
-        return
-
+def save_chunked(lst, bn, sz=200):
+    if not lst: return
     i = 1
-    while os.path.exists(f"{base_name}{i}.txt"):
-        os.remove(f"{base_name}{i}.txt")
-        i += 1
-
-    for i in range(0, total, chunk_size):
-        chunk = configs_list[i:i+chunk_size]
-        file_num = i // chunk_size + 1
-        with open(f"{base_name}{file_num}.txt", "w", encoding="utf-8") as f:
-            for cfg, _ in chunk:
-                f.write(cfg + "\n")
-        print(f"  {base_name}{file_num}.txt: {len(chunk)} конфигов")
-
+    while os.path.exists(f"{bn}{i}.txt"): os.remove(f"{bn}{i}.txt"); i += 1
+    for i in range(0, len(lst), sz):
+        fn = i // sz + 1
+        with open(f"{bn}{fn}.txt", "w", encoding="utf-8") as f:
+            for c in lst[i:i+sz]: f.write(c + "\n")
+        print(f"  {bn}{fn}.txt: {len(lst[i:i+sz])}")
 
 def main():
-    start_time = time.time()
+    start = time.time()
     init_xray()
-
-    if not SOURCES:
-        print("Нет источников! Проверьте sources.txt")
-        return
+    if not SOURCES: print("No sources!"); return
 
     bot = TelegramBot()
     download_geoip_db()
     reader = init_geoip_reader()
 
-    all_configs = []
-    for url in SOURCES:
+    tagged = []
+    for url, tag in SOURCES:
         cfgs = fetch_configs_from_url(url)
-        print(f"  {url}: {len(cfgs)} конфигов")
-        all_configs.extend(cfgs)
+        print(f"  {url}: {len(cfgs)} [{tag}]")
+        for c in cfgs: tagged.append((c, tag))
 
-    all_configs = list(dict.fromkeys(all_configs))
-    filtered = [c for c in all_configs if 'anycast' not in c.lower()]
-    print(f"Всего конфигов: {len(filtered)}")
+    seen, unique = {}, []
+    for c, t in tagged:
+        cid = get_config_id(c)
+        if cid not in seen and 'anycast' not in c.lower():
+            seen[cid] = True; unique.append((c, t))
+    total = len(unique)
+    print(f"Total: {total}")
 
-    results = []
-    checked = 0
-    start_sent = False
+    msg_id = bot.send_start()
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        futures = [executor.submit(process_config, cfg, reader) for cfg in filtered]
-        for future in concurrent.futures.as_completed(futures):
-            res = future.result()
-            if res:
-                results.append(res)
+    print("\nPass 1...")
+    first = []; checked = 0
+    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
+        fs = {ex.submit(process_config, c, t, reader): (c, t) for c, t in unique}
+        for f in concurrent.futures.as_completed(fs):
+            r = f.result()
+            if r: first.append(r)
             checked += 1
-            if not start_sent:
-                bot.send_start()
-                start_sent = True
-            if checked % 100 == 0:
-                print(f"Обработано {checked}/{len(filtered)}. Найдено {len(results)}")
+            if msg_id and checked % 5 == 0:
+                bot.update_progress(msg_id, checked, total, len(first), time.time() - start)
+            if checked % 10 == 0:
+                print(f"  {checked}/{total}. Found: {len(first)}")
+    print(f"  Pass 1: {len(first)}")
 
-    fast_count = len([r for r in results if r[2] < PING_GOOD_THRESHOLD])
-    bot.send_final(len(filtered), len(results), fast_count, time.time() - start_time)
+    pass1_count = len(first)
+    if first:
+        print("\nPass 2...")
+        second = []; checked2 = 0
+        with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
+            fs = [ex.submit(process_config, r[0], "", reader) for r in first]
+            for f in concurrent.futures.as_completed(fs):
+                r = f.result()
+                if r: second.append(r)
+                checked2 += 1
+                if msg_id and checked2 % 5 == 0:
+                    bot.update_progress(msg_id, total + checked2, total + pass1_count, len(second), time.time() - start)
+        print(f"  Pass 2: {len(second)} confirmed")
+        passed = set(r[0] for r in second)
+        results = [r for r in first if r[0] in passed]
+        print(f"  After double check: {len(results)}/{len(first)}")
+    else:
+        results = []
 
-    ru_configs = [(cfg, ping) for cfg, code, ping, _, _, _ in results if code == "RU"]
-    other_configs = [(cfg, code, ping) for cfg, code, ping, _, _, _ in results if code != "RU" and code != "??"]
+    ru = [(r[1], r[3]) for r in results if r[2] == "RU"]
+    other = [(r[1], r[2], r[3]) for r in results if r[2] != "RU" and r[2] != "??"]
+    other.sort(key=lambda x: (COUNTRY_SORT_ORDER.get(x[1], 50), x[2]))
+    ru.sort(key=lambda x: x[1])
+    fast = len([r for r in results if r[3] < PING_GOOD_THRESHOLD])
 
-    def sort_key(item):
-        cfg, code, ping = item
-        order = COUNTRY_SORT_ORDER.get(code, 50)
-        return (order, ping)
-
-    other_configs.sort(key=sort_key)
-    ru_configs.sort(key=lambda x: x[1])
+    bot.send_final(total, len(results), fast, time.time() - start, pass1_count, len(second) if first else 0)
 
     os.makedirs("protocols", exist_ok=True)
-
-    protocol_files = {"VLESS": [], "VMESS": [], "TROJAN": []}
-    for cfg, code, ping, _, _, _ in results:
-        if code == "??":
-            continue
-        if cfg.startswith('vless://'): protocol_files["VLESS"].append(cfg)
-        elif cfg.startswith('vmess://'): protocol_files["VMESS"].append(cfg)
-        elif cfg.startswith('trojan://'): protocol_files["TROJAN"].append(cfg)
+    pf = {"VLESS": [], "VMESS": [], "TROJAN": []}
+    for r in results:
+        if r[2] == "??": continue
+        nc = r[1]
+        if nc.startswith('vless://'): pf["VLESS"].append(nc)
+        elif nc.startswith('vmess://'): pf["VMESS"].append(nc)
+        elif nc.startswith('trojan://'): pf["TROJAN"].append(nc)
 
     now = datetime.now(timezone(timedelta(hours=3))).strftime("%d.%m.%Y %H:%M:%S")
     repo = os.getenv("GITHUB_REPOSITORY", "adop1344-bot/LetoVPN_free")
-    common_header = f"""#announce: Обновлено: {now}, больше в телеграм канале @LetoVPN_free! Обновляется каждый +- час
-#support-url: https://t.me/@why_im_gay
-#profile-update-interval: 1
+    h = f"#announce: Updated: {now}\n#support-url: https://t.me/@why_im_gay\n#profile-update-interval: 1\n\n"
 
-"""
-
-    # configs.txt - все конфиги (кроме RU)
     with open("configs.txt", "w", encoding="utf-8") as f:
-        f.write(f"{common_header}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/configs.txt\n#profile-title: TG@LetoVPN_Free\n\n")
-        for cfg, _, _ in other_configs:
-            f.write(cfg + "\n")
-    print(f"  configs.txt: {len(other_configs)} конфигов")
+        f.write(f"{h}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/configs.txt\n#profile-title: TG@LetoVPN_Free\n\n")
+        for cfg, _, _ in other: f.write(cfg + "\n")
+    print(f"  configs.txt: {len(other)}")
+    save_chunked([c for c, _, _ in other], "configs", 200)
 
-    # configs1.txt, configs2.txt... по 200 конфигов
-    other_simple = [(cfg, ping) for cfg, _, ping in other_configs]
-    save_chunked_files(other_simple, "configs", 200)
-
-    # ru.txt
     with open("ru.txt", "w", encoding="utf-8") as f:
-        f.write(f"{common_header}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/ru.txt\n#profile-title: ru TG@LetoVPN_Free\n\n")
-        for cfg, _ in ru_configs:
-            f.write(cfg + "\n")
-    print(f"  ru.txt: {len(ru_configs)} конфигов")
-
-    # Чистые файлы для Hiddify
+        f.write(f"{h}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/ru.txt\n#profile-title: ru TG@LetoVPN_Free\n\n")
+        for c, _ in ru: f.write(c + "\n")
+    print(f"  ru.txt: {len(ru)}")
     with open("configs_hiddify.txt", "w", encoding="utf-8") as f:
-        for cfg, _, _ in other_configs:
-            f.write(cfg + "\n")
-    print(f"  configs_hiddify.txt: {len(other_configs)} конфигов")
-
+        for c, _, _ in other: f.write(c + "\n")
     with open("ru_hiddify.txt", "w", encoding="utf-8") as f:
-        for cfg, _ in ru_configs:
-            f.write(cfg + "\n")
-    print(f"  ru_hiddify.txt: {len(ru_configs)} конфигов")
+        for c, _ in ru: f.write(c + "\n")
 
-    for protocol, configs in protocol_files.items():
-        if configs:
-            with open(f"protocols/{protocol}.txt", "w", encoding="utf-8") as f:
-                f.write(f"{common_header}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/protocols/{protocol}.txt\n#profile-title: {protocol} TG@LetoVPN_Free\n\n")
-                for cfg in configs:
-                    f.write(cfg + "\n")
+    for proto, cs in pf.items():
+        if cs:
+            with open(f"protocols/{proto}.txt", "w", encoding="utf-8") as f:
+                f.write(f"{h}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/protocols/{proto}.txt\n#profile-title: {proto} TG@LetoVPN_Free\n\n")
+                for c in cs: f.write(c + "\n")
 
-    print(f"\nГотово!")
-    print(f"  configs.txt: {len(other_configs)} конфигов")
-    print(f"  configs_hiddify.txt: {len(other_configs)} конфигов (чистый)")
-    print(f"  ru.txt: {len(ru_configs)} конфигов")
-    print(f"  ru_hiddify.txt: {len(ru_configs)} конфигов (чистый)")
-
-    if reader:
-        reader.close()
+    print(f"\nDone! {time.time()-start:.1f}s")
+    if reader: reader.close()
 
 if __name__ == "__main__":
     main()

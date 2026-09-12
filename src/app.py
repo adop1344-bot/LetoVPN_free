@@ -166,7 +166,7 @@ def main():
             checked += 1
             if msg_id and checked % 5 == 0:
                 bot.update_progress(msg_id, checked, total, len(first), time.time() - start)
-            if checked % 10 == 0:
+            if checked % 50 == 0:
                 print(f"  {checked}/{total}. Found: {len(first)}")
     print(f"  Pass 1: {len(first)}")
 

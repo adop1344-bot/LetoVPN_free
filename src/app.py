@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
-import requests
-import concurrent.futures
-import os
-import re
-import gzip
-import shutil
-import time
-import warnings
-import urllib3
+import requests, concurrent.futures, os, re, gzip, shutil, time, warnings, urllib3
 from datetime import datetime, timezone, timedelta
 from typing import List, Tuple, Optional
 
@@ -18,12 +10,30 @@ from src.tg import TelegramBot
 warnings.filterwarnings("ignore")
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-SOURCES = load_sources()  # List[(url, tag)]
+SOURCES = load_sources()
 COUNTRY_FLAGS = load_flags()
 KEYWORDS = load_keywords()
 CITIES = load_cities()
 DOMAIN_MAP = load_domains()
 WHITE_FLAG = "\U0001F9F3"
+
+COUNTRY_SORT_ORDER = {"NL":0,"DE":1,"FI":2,"US":3,"GB":4,"FR":5,"SG":6,"CA":7,"JP":8,
+    "AU":9,"CH":10,"AT":11,"BE":12,"DK":13,"SE":14,"NO":15,"PL":16,"CZ":17,
+    "EE":18,"LV":19,"LT":20,"IE":21,"IT":22,"ES":23,"PT":24,"GR":25,"RO":26,
+    "BG":27,"HU":28,"TR":29,"IL":30,"AE":31,"ZA":32,"BR":33,"IN":34,"MY":35,
+    "VN":36,"TH":37,"PH":38,"ID":39,"HK":40,"KR":41,"TW":42,"RU":99}
+
+COUNTRY_NAMES = {"RU":"Россия","US":"США","DE":"Германия","FR":"Франция","NL":"Нидерланды",
+    "GB":"Великобритания","JP":"Япония","SG":"Сингапур","CA":"Канада","AU":"Австралия",
+    "BR":"Бразилия","IN":"Индия","IT":"Италия","ES":"Испания","CH":"Швейцария",
+    "AT":"Австрия","BE":"Бельгия","DK":"Дания","FI":"Финляндия","NO":"Норвегия",
+    "SE":"Швеция","PL":"Польша","CZ":"Чехия","HU":"Венгрия","RO":"Румыния",
+    "BG":"Болгария","GR":"Греция","PT":"Португалия","IE":"Ирландия","TR":"Турция",
+    "IL":"Израиль","AE":"ОАЭ","SA":"Саудовская Аравия","ZA":"ЮАР","MX":"Мексика",
+    "AR":"Аргентина","CL":"Чили","CO":"Колумбия","MY":"Малайзия","VN":"Вьетнам",
+    "TH":"Таиланд","PH":"Филиппины","ID":"Индонезия","PK":"Пакистан","EG":"Египет",
+    "NG":"Нигерия","MA":"Марокко","KE":"Кения","NZ":"Новая Зеландия","HK":"Гонконг",
+    "KR":"Южная Корея","TW":"Тайвань","EE":"Эстония","LV":"Латвия","LT":"Литва"}
 
 def detect_country_by_domain(host: str) -> Tuple[str, str]:
     if not host: return WHITE_FLAG, "ZZ"
@@ -70,30 +80,11 @@ def init_geoip_reader():
     return None
 
 def fetch_configs_from_url(url: str) -> List[str]:
-    """Загружает конфиги по URL"""
     try:
         r = requests.get(url, timeout=15); r.raise_for_status()
         return [l.strip() for l in r.text.splitlines() if l.strip() and not l.startswith('#')]
     except Exception as e:
         print(f"Error {url}: {e}"); return []
-
-COUNTRY_SORT_ORDER = {"NL":0,"DE":1,"FI":2,"US":3,"GB":4,"FR":5,"SG":6,"CA":7,"JP":8,
-    "AU":9,"CH":10,"AT":11,"BE":12,"DK":13,"SE":14,"NO":15,"PL":16,"CZ":17,
-    "EE":18,"LV":19,"LT":20,"IE":21,"IT":22,"ES":23,"PT":24,"GR":25,"RO":26,
-    "BG":27,"HU":28,"TR":29,"IL":30,"AE":31,"ZA":32,"BR":33,"IN":34,"MY":35,
-    "VN":36,"TH":37,"PH":38,"ID":39,"HK":40,"KR":41,"TW":42,"RU":99}
-
-COUNTRY_NAMES = {"RU":"Россия","US":"США","DE":"Германия","FR":"Франция","NL":"Нидерланды",
-    "GB":"Великобритания","JP":"Япония","SG":"Сингапур","CA":"Канада","AU":"Австралия",
-    "BR":"Бразилия","IN":"Индия","IT":"Италия","ES":"Испания","CH":"Швейцария",
-    "AT":"Австрия","BE":"Бельгия","DK":"Дания","FI":"Финляндия","NO":"Норвегия",
-    "SE":"Швеция","PL":"Польша","CZ":"Чехия","HU":"Венгрия","RO":"Румыния",
-    "BG":"Болгария","GR":"Греция","PT":"Португалия","IE":"Ирландия","TR":"Турция",
-    "IL":"Израиль","AE":"ОАЭ","SA":"Саудовская Аравия","ZA":"ЮАР","MX":"Мексика",
-    "AR":"Аргентина","CL":"Чили","CO":"Колумбия","MY":"Малайзия","VN":"Вьетнам",
-    "TH":"Таиланд","PH":"Филиппины","ID":"Индонезия","PK":"Пакистан","EG":"Египет",
-    "NG":"Нигерия","MA":"Марокко","KE":"Кения","NZ":"Новая Зеландия","HK":"Гонконг",
-    "KR":"Южная Корея","TW":"Тайвань","EE":"Эстония","LV":"Латвия","LT":"Литва"}
 
 def is_secure_config(c: str) -> bool:
     cl = c.lower()
@@ -115,24 +106,7 @@ def remove_duplicates(configs: List[str]) -> List[str]:
     if d: print(f"  Removed {d} duplicates")
     return res
 
-def check_configs(configs_with_tags, reader, label):
-    """Проверяет список (config, tag), возвращает результаты"""
-    if not configs_with_tags: return []
-    total = len(configs_with_tags)
-    print(f"\n{label}: {total} configs...")
-    results, checked = [], 0
-    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
-        fs = [ex.submit(process_config, c, tag, reader) for c, tag in configs_with_tags]
-        for f in concurrent.futures.as_completed(fs):
-            r = f.result()
-            if r: results.append(r)
-            checked += 1
-            if checked % 10 == 0: print(f"  {checked}/{total}. Working: {len(results)}")
-    print(f"  {label}: {len(results)} working")
-    return results
-
 def process_config(config: str, tag: str, reader) -> Optional[Tuple]:
-    """tag = whitelist/blacklist/"""
     if not is_secure_config(config) or 'anycast' in config.lower(): return None
     host, port = extract_host_port(config)
     if not host or not port: return None
@@ -150,7 +124,7 @@ def process_config(config: str, tag: str, reader) -> Optional[Tuple]:
     if cc == "ZZ" or flag == WHITE_FLAG: return None
 
     parts = []
-    if tag: parts.append(tag)  # whitelist/blacklist в начало
+    if tag: parts.append(tag)
     if sni and "cloudflare" in sni.lower(): parts.append("cloudflare")
     parts += [flag, COUNTRY_NAMES.get(cc, cc), "t.me/letovpn_free"]
     new_cfg = config.split('#', 1)[0] + '#' + ' '.join(parts)
@@ -166,6 +140,21 @@ def save_chunked(lst, bn, sz=200):
             for c in lst[i:i+sz]: f.write(c + "\n")
         print(f"  {bn}{fn}.txt: {len(lst[i:i+sz])}")
 
+def run_pass(configs_with_tags, reader, label):
+    if not configs_with_tags: return []
+    total = len(configs_with_tags)
+    print(f"\n{label}: {total}...")
+    results, checked = [], 0
+    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
+        fs = [ex.submit(process_config, c, t, reader) for c, t in configs_with_tags]
+        for f in concurrent.futures.as_completed(fs):
+            r = f.result()
+            if r: results.append(r)
+            checked += 1
+            if checked % 10 == 0: print(f"  {checked}/{total}. Working: {len(results)}")
+    print(f"  {label}: {len(results)} working")
+    return results
+
 def main():
     start = time.time()
     init_xray()
@@ -175,37 +164,35 @@ def main():
     download_geoip_db()
     reader = init_geoip_reader()
 
-    # Собираем конфиги с тегами: List[(config, tag)]
-    all_tagged = []
+    # Собираем (config, tag)
+    tagged = []
     for url, tag in SOURCES:
         cfgs = fetch_configs_from_url(url)
         print(f"  {url}: {len(cfgs)} [{tag}]")
-        for c in cfgs:
-            all_tagged.append((c, tag))
+        for c in cfgs: tagged.append((c, tag))
 
-    # Дедупликация по ID, сохраняем первый тег
-    seen, unique_tagged = {}, []
-    for c, tag in all_tagged:
+    # Дедупликация
+    seen, unique = {}, []
+    for c, t in tagged:
         cid = get_config_id(c)
-        if cid not in seen:
-            seen[cid] = True
-            if 'anycast' not in c.lower():
-                unique_tagged.append((c, tag))
-    print(f"Total unique: {len(unique_tagged)}")
+        if cid not in seen and 'anycast' not in c.lower():
+            seen[cid] = True; unique.append((c, t))
+    total = len(unique)
+    print(f"Total: {total}")
 
-    # PASS 1
-    first = check_configs(unique_tagged, reader, "Pass 1")
+    # Pass 1
+    first = run_pass(unique, reader, "Pass 1")
 
-    # PASS 2 (double check)
+    # Pass 2
     if first:
-        second = check_configs([(r[0], "") for r in first], reader, "Pass 2")
+        second = run_pass([(r[0], "") for r in first], reader, "Pass 2")
         passed = set(r[0] for r in second)
         results = [r for r in first if r[0] in passed]
         print(f"\nAfter double check: {len(results)}/{len(first)}")
     else:
         results = []
 
-    # Sort & save
+    # Sort
     ru = [(r[1], r[3]) for r in results if r[2] == "RU"]
     other = [(r[1], r[2], r[3]) for r in results if r[2] != "RU" and r[2] != "??"]
     other.sort(key=lambda x: (COUNTRY_SORT_ORDER.get(x[1], 50), x[2]))

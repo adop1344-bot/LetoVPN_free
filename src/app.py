@@ -71,7 +71,7 @@ def init_geoip_reader():
 
 def fetch_configs_from_url(url: str) -> List[str]:
     try:
-        r = requests.get(url, timeout=10); r.raise_for_status()
+        r = requests.get(url, timeout=15); r.raise_for_status()
         return [l.strip() for l in r.text.splitlines() if l.strip() and not l.startswith('#')]
     except Exception as e:
         print(f"Error {url}: {e}"); return []
@@ -95,7 +95,7 @@ COUNTRY_NAMES = {"RU":"Россия","US":"США","DE":"Германия","FR":
     "KR":"Южная Корея","TW":"Тайвань","EE":"Эстония","LV":"Латвия","LT":"Литва"}
 
 def is_secure_config(c: str) -> bool:
-    cl = c.lower();
+    cl = c.lower()
     if 'allowinsecure=1' in cl or 'insecure=1' in cl: return False
     if 'security=none' in cl or 'tls=none' in cl: return False
     return True
@@ -113,6 +113,22 @@ def remove_duplicates(configs: List[str]) -> List[str]:
         else: d += 1
     if d: print(f"  Removed {d} duplicates")
     return res
+
+def check_configs(configs, reader, label):
+    """Проверяет список конфигов, возвращает результаты"""
+    if not configs: return []
+    total = len(configs)
+    print(f"\n{label}: {total} configs...")
+    results, checked = [], 0
+    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
+        fs = [ex.submit(process_config, c, reader) for c in configs]
+        for f in concurrent.futures.as_completed(fs):
+            r = f.result()
+            if r: results.append(r)
+            checked += 1
+            if checked % 10 == 0: print(f"  {checked}/{total}. Working: {len(results)}")
+    print(f"  {label}: {len(results)} working")
+    return results
 
 def process_config(config: str, reader) -> Optional[Tuple]:
     if not is_secure_config(config) or 'anycast' in config.lower(): return None
@@ -144,7 +160,7 @@ def save_chunked(lst, bn, sz=200):
         fn = i // sz + 1
         with open(f"{bn}{fn}.txt", "w", encoding="utf-8") as f:
             for c in lst[i:i+sz]: f.write(c + "\n")
-        print(f"  {bn}{fn}.txt: {len(lst[i:i+sz])} configs")
+        print(f"  {bn}{fn}.txt: {len(lst[i:i+sz])}")
 
 def main():
     start = time.time()
@@ -164,20 +180,21 @@ def main():
     filtered = remove_duplicates(all_c)
     filtered = [c for c in filtered if 'anycast' not in c.lower()]
     total = len(filtered)
-    print(f"Total: {total}")
+    print(f"Total unique: {total}")
 
-    print("\nChecking configs...")
-    results, checked, sent = [], 0, False
-    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
-        fs = [ex.submit(process_config, c, reader) for c in filtered]
-        for f in concurrent.futures.as_completed(fs):
-            r = f.result()
-            if r: results.append(r)
-            checked += 1
-            if not sent: bot.send_start(); sent = True
-            if checked % 20 == 0: print(f"  {checked}/{total}. Working: {len(results)}")
-    print(f"Working configs: {len(results)}")
+    # PASS 1
+    first = check_configs(filtered, reader, "Pass 1")
 
+    # PASS 2 (double check)
+    if first:
+        second = check_configs([r[0] for r in first], reader, "Pass 2 (verify)")
+        passed = set(r[0] for r in second)
+        results = [r for r in first if r[0] in passed]
+        print(f"\nAfter double check: {len(results)}/{len(first)}")
+    else:
+        results = []
+
+    # Sort & save
     ru = [(r[1], r[3]) for r in results if r[2] == "RU"]
     other = [(r[1], r[2], r[3]) for r in results if r[2] != "RU" and r[2] != "??"]
     other.sort(key=lambda x: (COUNTRY_SORT_ORDER.get(x[1], 50), x[2]))
@@ -197,7 +214,7 @@ def main():
 
     now = datetime.now(timezone(timedelta(hours=3))).strftime("%d.%m.%Y %H:%M:%S")
     repo = os.getenv("GITHUB_REPOSITORY", "adop1344-bot/LetoVPN_free")
-    h = f"#announce: Updated: {now}, more at @LetoVPN_free!\n#support-url: https://t.me/@why_im_gay\n#profile-update-interval: 1\n\n"
+    h = f"#announce: Updated: {now}\n#support-url: https://t.me/@why_im_gay\n#profile-update-interval: 1\n\n"
 
     with open("configs.txt", "w", encoding="utf-8") as f:
         f.write(f"{h}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/configs.txt\n#profile-title: TG@LetoVPN_Free\n\n")
@@ -209,12 +226,10 @@ def main():
         f.write(f"{h}#profile-web-page-url: https://raw.githubusercontent.com/{repo}/main/ru.txt\n#profile-title: ru TG@LetoVPN_Free\n\n")
         for c, _ in ru: f.write(c + "\n")
     print(f"  ru.txt: {len(ru)}")
-
     with open("configs_hiddify.txt", "w", encoding="utf-8") as f:
         for c, _, _ in other: f.write(c + "\n")
     with open("ru_hiddify.txt", "w", encoding="utf-8") as f:
         for c, _ in ru: f.write(c + "\n")
-    print(f"  hiddify files saved")
 
     for proto, cs in pf.items():
         if cs:

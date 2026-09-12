@@ -1,14 +1,5 @@
 #!/usr/bin/env python3
-import socket
-import time
-import re
-import base64
-import json
-import shutil
-import subprocess
-import os
-import urllib.request
-import random
+import socket, time, re, base64, json, shutil, subprocess, os, urllib.request, random
 from typing import Tuple, Optional
 
 XRAY_AVAILABLE = False
@@ -16,46 +7,51 @@ REAL_PING_URL = "https://www.gstatic.com/generate_204"
 
 def init_xray():
     global XRAY_AVAILABLE
-    xray_path = shutil.which("xray")
-    if xray_path:
+    if shutil.which("xray"):
         try:
             subprocess.run(["xray", "version"], capture_output=True, timeout=5)
-            XRAY_AVAILABLE = True
-            print("Xray ready")
-            return True
+            XRAY_AVAILABLE = True; print("Xray ready"); return True
         except: pass
-    print("Xray not found")
-    return False
+    print("Xray not found"); return False
 
 def xray_check(config: str, timeout: int) -> Optional[float]:
     if not XRAY_AVAILABLE: return None
     config_path = None
-    sock_port = random.randint(10000, 60000)
+    sock_port = random.randint(20000, 50000)
     try:
         import tempfile, json as j
         xc = convert_to_xray_config(config, sock_port)
         if not xc: return None
         with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
             j.dump(xc, f); config_path = f.name
+        
         start = time.time()
         proc = subprocess.Popen(["xray", "run", "-config", config_path],
                                  stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        time.sleep(1.0)
-        try:
-            ph = urllib.request.ProxyHandler({"http": f"socks5://127.0.0.1:{sock_port}",
-                                               "https": f"socks5://127.0.0.1:{sock_port}"})
-            opener = urllib.request.build_opener(ph)
-            resp = opener.open(REAL_PING_URL, timeout=timeout)
-            if resp.getcode() in [200, 204, 301, 302]:
-                elapsed = (time.time() - start) * 1000
-                proc.kill(); proc.wait()
-                try: os.unlink(config_path)
-                except: pass
-                return elapsed
-        except: pass
+        time.sleep(2.0)  # ждём пока Xray инициализируется
+        
+        # Пробуем запрос
+        success = False
+        for attempt in range(2):  # retry 1 раз
+            try:
+                ph = urllib.request.ProxyHandler({
+                    "http": f"socks5://127.0.0.1:{sock_port}",
+                    "https": f"socks5://127.0.0.1:{sock_port}"
+                })
+                opener = urllib.request.build_opener(ph)
+                resp = opener.open(REAL_PING_URL, timeout=timeout)
+                if resp.getcode() in [200, 204, 301, 302]:
+                    elapsed = (time.time() - start) * 1000
+                    success = True
+                    break
+            except: 
+                time.sleep(0.5)  # перед retry
+        
         proc.kill(); proc.wait()
         try: os.unlink(config_path)
         except: pass
+        
+        if success: return elapsed
         return None
     except:
         if config_path:

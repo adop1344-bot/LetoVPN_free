@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-import os
-import json
-import re
+import os, json, re
 from typing import List, Dict
 
 SOURCES_FILE = "sources.txt"
@@ -10,8 +8,8 @@ KEYWORDS_FILE = "keywords.txt"
 CITIES_FILE = "cities.txt"
 DOMAINS_FILE = "domains.txt"
 
-TIMEOUT = 5.0
-MAX_WORKERS = 15
+TIMEOUT = 10.0
+MAX_WORKERS = 5
 PING_GOOD_THRESHOLD = 500
 PING_MAX = 100000
 
@@ -21,7 +19,7 @@ GEOIP_FILE = "GeoLite2-Country.mmdb"
 def load_sources() -> List[str]:
     try:
         with open(SOURCES_FILE, "r", encoding="utf-8") as f:
-            return [line.strip() for line in f if line.strip() and not line.startswith('#')]
+            return [l.strip() for l in f if l.strip() and not l.startswith('#')]
     except: return []
 
 def load_flags() -> Dict[str, str]:

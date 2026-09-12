@@ -1,62 +1,34 @@
 #!/usr/bin/env python3
 import socket, time, re, base64, json, shutil, subprocess, os, random
-import sys
-
-try:
-    import socks
-    print("PySocks loaded")
-except ImportError:
-    print("PySocks NOT available, trying alternative...")
-    try:
-        import sockshandler
-        print("sockshandler loaded")
-    except:
-        print("No SOCKS library available!")
-        socks = None
-
+import socks
 from typing import Tuple, Optional
 
 XRAY_AVAILABLE = False
 
 def init_xray():
     global XRAY_AVAILABLE
-    xray_path = shutil.which("xray")
-    if xray_path:
+    if shutil.which("xray"):
         try:
-            r = subprocess.run(["xray", "version"], capture_output=True, timeout=5)
-            if r.returncode == 0:
-                XRAY_AVAILABLE = True
-                print(f"Xray OK: {r.stdout.decode(errors='ignore')[:50]}")
-                return True
-            else:
-                print(f"Xray version failed: {r.stderr.decode(errors='ignore')[:100]}")
-        except Exception as e:
-            print(f"Xray error: {e}")
-    else:
-        print("xray binary not found in PATH")
-    return False
+            subprocess.run(["xray", "version"], capture_output=True, timeout=5)
+            XRAY_AVAILABLE = True; print("Xray ready"); return True
+        except: pass
+    print("Xray not found"); return False
 
 def xray_check(config: str) -> Optional[float]:
-    if not XRAY_AVAILABLE:
-        return None
-    if socks is None:
-        print("Skipping Xray check: no SOCKS library")
-        return None
-    
+    if not XRAY_AVAILABLE: return None
     config_path = None
     sock_port = random.randint(30000, 50000)
     try:
         import tempfile, json as j
         xc = convert_to_xray_config(config, sock_port)
-        if not xc:
-            return None
+        if not xc: return None
         with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
             j.dump(xc, f); config_path = f.name
 
         start = time.time()
         proc = subprocess.Popen(["xray", "run", "-config", config_path],
                                  stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        time.sleep(3.0)
+        time.sleep(1.5)
 
         if proc.poll() is not None:
             try: os.unlink(config_path)
@@ -64,7 +36,7 @@ def xray_check(config: str) -> Optional[float]:
             return None
 
         try:
-            s = socket.create_connection(("127.0.0.1", sock_port), timeout=2)
+            s = socket.create_connection(("127.0.0.1", sock_port), timeout=1)
             s.close()
         except:
             proc.kill(); proc.wait()
@@ -75,7 +47,7 @@ def xray_check(config: str) -> Optional[float]:
         try:
             s = socks.socksocket()
             s.set_proxy(socks.SOCKS5, "127.0.0.1", sock_port)
-            s.settimeout(5.0)
+            s.settimeout(4.0)
             s.connect(("www.gstatic.com", 443))
             import ssl
             ctx = ssl.create_default_context()
@@ -90,14 +62,13 @@ def xray_check(config: str) -> Optional[float]:
                 try: os.unlink(config_path)
                 except: pass
                 return elapsed
-        except Exception as e:
-            pass
+        except: pass
 
         proc.kill(); proc.wait()
         try: os.unlink(config_path)
         except: pass
         return None
-    except Exception as e:
+    except:
         if config_path:
             try: os.unlink(config_path)
             except: pass

@@ -105,7 +105,8 @@ def process_config(config: str, tag: str, reader) -> Optional[Tuple]:
     if not ok or ping is None or ping > PING_MAX: return None
 
     name_part = config.split('#', 1)[1].strip() if '#' in config else ""
-    sni = (re.search(r'sni=([^&]+)', config) or [None, None]).group(1) or ""
+    sni_m = re.search(r'sni=([^&]+)', config)
+    sni = sni_m.group(1) if sni_m else ""
 
     flag, cc = get_country_geoip(host, reader)
     if cc == "ZZ": flag, cc = detect_country_by_domain(host)

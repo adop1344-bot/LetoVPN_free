@@ -18,7 +18,7 @@ from src.tg import TelegramBot
 warnings.filterwarnings("ignore")
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-SOURCES = load_sources()
+SOURCES = load_sources()  # List[(url, tag)]
 COUNTRY_FLAGS = load_flags()
 KEYWORDS = load_keywords()
 CITIES = load_cities()
@@ -70,6 +70,7 @@ def init_geoip_reader():
     return None
 
 def fetch_configs_from_url(url: str) -> List[str]:
+    """Загружает конфиги по URL"""
     try:
         r = requests.get(url, timeout=15); r.raise_for_status()
         return [l.strip() for l in r.text.splitlines() if l.strip() and not l.startswith('#')]
@@ -114,14 +115,14 @@ def remove_duplicates(configs: List[str]) -> List[str]:
     if d: print(f"  Removed {d} duplicates")
     return res
 
-def check_configs(configs, reader, label):
-    """Проверяет список конфигов, возвращает результаты"""
-    if not configs: return []
-    total = len(configs)
+def check_configs(configs_with_tags, reader, label):
+    """Проверяет список (config, tag), возвращает результаты"""
+    if not configs_with_tags: return []
+    total = len(configs_with_tags)
     print(f"\n{label}: {total} configs...")
     results, checked = [], 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
-        fs = [ex.submit(process_config, c, reader) for c in configs]
+        fs = [ex.submit(process_config, c, tag, reader) for c, tag in configs_with_tags]
         for f in concurrent.futures.as_completed(fs):
             r = f.result()
             if r: results.append(r)
@@ -130,7 +131,8 @@ def check_configs(configs, reader, label):
     print(f"  {label}: {len(results)} working")
     return results
 
-def process_config(config: str, reader) -> Optional[Tuple]:
+def process_config(config: str, tag: str, reader) -> Optional[Tuple]:
+    """tag = whitelist/blacklist/"""
     if not is_secure_config(config) or 'anycast' in config.lower(): return None
     host, port = extract_host_port(config)
     if not host or not port: return None
@@ -147,7 +149,9 @@ def process_config(config: str, reader) -> Optional[Tuple]:
         flag, cc = detect_country_from_name(name_part)
     if cc == "ZZ" or flag == WHITE_FLAG: return None
 
-    parts = ["cloudflare"] if (sni and "cloudflare" in sni.lower()) else []
+    parts = []
+    if tag: parts.append(tag)  # whitelist/blacklist в начало
+    if sni and "cloudflare" in sni.lower(): parts.append("cloudflare")
     parts += [flag, COUNTRY_NAMES.get(cc, cc), "t.me/letovpn_free"]
     new_cfg = config.split('#', 1)[0] + '#' + ' '.join(parts)
     return (config, new_cfg, cc, ping, (flag, get_protocol(config), ping, ping < PING_GOOD_THRESHOLD), None)
@@ -171,23 +175,30 @@ def main():
     download_geoip_db()
     reader = init_geoip_reader()
 
-    all_c = []
-    for url in SOURCES:
-        cfgs = fetch_configs_from_url(url); print(f"  {url}: {len(cfgs)}")
-        all_c.extend(cfgs)
+    # Собираем конфиги с тегами: List[(config, tag)]
+    all_tagged = []
+    for url, tag in SOURCES:
+        cfgs = fetch_configs_from_url(url)
+        print(f"  {url}: {len(cfgs)} [{tag}]")
+        for c in cfgs:
+            all_tagged.append((c, tag))
 
-    all_c = list(dict.fromkeys(all_c))
-    filtered = remove_duplicates(all_c)
-    filtered = [c for c in filtered if 'anycast' not in c.lower()]
-    total = len(filtered)
-    print(f"Total unique: {total}")
+    # Дедупликация по ID, сохраняем первый тег
+    seen, unique_tagged = {}, []
+    for c, tag in all_tagged:
+        cid = get_config_id(c)
+        if cid not in seen:
+            seen[cid] = True
+            if 'anycast' not in c.lower():
+                unique_tagged.append((c, tag))
+    print(f"Total unique: {len(unique_tagged)}")
 
     # PASS 1
-    first = check_configs(filtered, reader, "Pass 1")
+    first = check_configs(unique_tagged, reader, "Pass 1")
 
     # PASS 2 (double check)
     if first:
-        second = check_configs([r[0] for r in first], reader, "Pass 2 (verify)")
+        second = check_configs([(r[0], "") for r in first], reader, "Pass 2")
         passed = set(r[0] for r in second)
         results = [r for r in first if r[0] in passed]
         print(f"\nAfter double check: {len(results)}/{len(first)}")

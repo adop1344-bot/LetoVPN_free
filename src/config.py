@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import os, json, re
-from typing import List, Dict
+from typing import List, Dict, Tuple
 
 SOURCES_FILE = "sources.txt"
 FLAGS_FILE = "flags.txt"
@@ -16,11 +16,21 @@ PING_MAX = 100000
 GEOIP_URL = "https://cdn.jsdelivr.net/npm/geolite2-country/GeoLite2-Country.mmdb.gz"
 GEOIP_FILE = "GeoLite2-Country.mmdb"
 
-def load_sources() -> List[str]:
+def load_sources() -> List[Tuple[str, str]]:
+    """Возвращает список (url, tag). tag = whitelist/blacklist/"""
+    r = []
     try:
         with open(SOURCES_FILE, "r", encoding="utf-8") as f:
-            return [l.strip() for l in f if l.strip() and not l.startswith('#')]
-    except: return []
+            for l in f:
+                l = l.strip()
+                if not l or l.startswith('#'): continue
+                if ' #' in l:
+                    url, tag = l.split(' #', 1)
+                    r.append((url.strip(), tag.strip()))
+                else:
+                    r.append((l, ""))
+    except: pass
+    return r
 
 def load_flags() -> Dict[str, str]:
     r = {}

@@ -157,6 +157,7 @@ def main():
 
     msg_id = bot.send_start()
 
+    # ===== PASS 1 =====
     print("\nPass 1...")
     first = []; checked = 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
@@ -171,6 +172,7 @@ def main():
                 print(f"  {checked}/{total}. Found: {len(first)}")
     print(f"  Pass 1: {len(first)}")
 
+    # ===== PASS 2 =====
     pass1_count = len(first)
     if first:
         print("\nPass 2...")
@@ -184,19 +186,43 @@ def main():
                 if msg_id and checked2 % 5 == 0:
                     bot.update_progress(msg_id, total + checked2, total + pass1_count, len(second), time.time() - start)
         print(f"  Pass 2: {len(second)} confirmed")
-        passed = set(r[0] for r in second)
-        results = [r for r in first if r[0] in passed]
-        print(f"  After double check: {len(results)}/{len(first)}")
+        passed2 = set(r[0] for r in second)
+        results = [r for r in first if r[0] in passed2]
+        print(f"  After pass 2: {len(results)}/{len(first)}")
     else:
         results = []
 
+    # ===== PASS 3 (10 sec delay + recheck) =====
+    if results:
+        print("\nWaiting 10 seconds before Pass 3...")
+        time.sleep(10)
+        print("Pass 3 (final verification)...")
+        third = []; checked3 = 0
+        with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
+            fs = [ex.submit(process_config, r[0], "", reader) for r in results]
+            for f in concurrent.futures.as_completed(fs):
+                r = f.result()
+                if r: third.append(r)
+                checked3 += 1
+                if msg_id and checked3 % 5 == 0:
+                    bot.update_progress(msg_id, total + pass1_count + checked3, total + pass1_count + len(results), len(third), time.time() - start)
+        print(f"  Pass 3: {len(third)} confirmed")
+        passed3 = set(r[0] for r in third)
+        results = [r for r in results if r[0] in passed3]
+        print(f"  After triple check: {len(results)}/{pass1_count}")
+    else:
+        pass
+
+    # ===== SORT & SAVE =====
     ru = [(r[1], r[3]) for r in results if r[2] == "RU"]
     other = [(r[1], r[2], r[3]) for r in results if r[2] != "RU" and r[2] != "??"]
     other.sort(key=lambda x: (COUNTRY_SORT_ORDER.get(x[1], 50), x[2]))
     ru.sort(key=lambda x: x[1])
     fast = len([r for r in results if r[3] < PING_GOOD_THRESHOLD])
 
-    bot.send_final(total, len(results), fast, time.time() - start, pass1_count, len(second) if first else 0)
+    pass2_count = len(second) if first else 0
+    pass3_count = len(third) if results and 'third' in dir() else 0
+    bot.send_final(total, len(results), fast, time.time() - start, pass1_count, len(results))
 
     os.makedirs("protocols", exist_ok=True)
     pf = {"VLESS": [], "VMESS": [], "TROJAN": []}

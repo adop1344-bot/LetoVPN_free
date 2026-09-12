@@ -97,15 +97,6 @@ def get_config_id(config: str) -> str:
     if not h or not p: return config
     return f"{proto}@{h}:{p}"
 
-def remove_duplicates(configs: List[str]) -> List[str]:
-    seen, res, d = {}, [], 0
-    for c in configs:
-        cid = get_config_id(c)
-        if cid not in seen: seen[cid] = True; res.append(c)
-        else: d += 1
-    if d: print(f"  Removed {d} duplicates")
-    return res
-
 def process_config(config: str, tag: str, reader) -> Optional[Tuple]:
     if not is_secure_config(config) or 'anycast' in config.lower(): return None
     host, port = extract_host_port(config)
@@ -140,21 +131,6 @@ def save_chunked(lst, bn, sz=200):
             for c in lst[i:i+sz]: f.write(c + "\n")
         print(f"  {bn}{fn}.txt: {len(lst[i:i+sz])}")
 
-def run_pass(configs_with_tags, reader, label):
-    if not configs_with_tags: return []
-    total = len(configs_with_tags)
-    print(f"\n{label}: {total}...")
-    results, checked = [], 0
-    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
-        fs = [ex.submit(process_config, c, t, reader) for c, t in configs_with_tags]
-        for f in concurrent.futures.as_completed(fs):
-            r = f.result()
-            if r: results.append(r)
-            checked += 1
-            if checked % 10 == 0: print(f"  {checked}/{total}. Working: {len(results)}")
-    print(f"  {label}: {len(results)} working")
-    return results
-
 def main():
     start = time.time()
     init_xray()
@@ -164,14 +140,12 @@ def main():
     download_geoip_db()
     reader = init_geoip_reader()
 
-    # Собираем (config, tag)
     tagged = []
     for url, tag in SOURCES:
         cfgs = fetch_configs_from_url(url)
         print(f"  {url}: {len(cfgs)} [{tag}]")
         for c in cfgs: tagged.append((c, tag))
 
-    # Дедупликация
     seen, unique = {}, []
     for c, t in tagged:
         cid = get_config_id(c)
@@ -180,26 +154,55 @@ def main():
     total = len(unique)
     print(f"Total: {total}")
 
-    # Pass 1
-    first = run_pass(unique, reader, "Pass 1")
+    # Стартуем бота
+    msg_id = bot.send_start()
 
-    # Pass 2
+    # PASS 1
+    print("\nPass 1...")
+    first = []
+    checked = 0
+    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
+        fs = {ex.submit(process_config, c, t, reader): (c, t) for c, t in unique}
+        for f in concurrent.futures.as_completed(fs):
+            r = f.result()
+            if r: first.append(r)
+            checked += 1
+            if msg_id and checked % 5 == 0:
+                bot.update_progress(msg_id, checked, total, len(first), time.time() - start)
+            if checked % 10 == 0:
+                print(f"  {checked}/{total}. Found: {len(first)}")
+    print(f"  Pass 1: {len(first)}")
+
+    # PASS 2
+    pass1_count = len(first)
     if first:
-        second = run_pass([(r[0], "") for r in first], reader, "Pass 2")
+        print("\nPass 2...")
+        second = []
+        checked2 = 0
+        with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
+            fs = [ex.submit(process_config, r[0], "", reader) for r in first]
+            for f in concurrent.futures.as_completed(fs):
+                r = f.result()
+                if r: second.append(r)
+                checked2 += 1
+                if msg_id and checked2 % 5 == 0:
+                    bot.update_progress(msg_id, total + checked2, total + pass1_count, len(second), time.time() - start)
+        print(f"  Pass 2: {len(second)} confirmed")
         passed = set(r[0] for r in second)
         results = [r for r in first if r[0] in passed]
-        print(f"\nAfter double check: {len(results)}/{len(first)}")
+        print(f"  After double check: {len(results)}/{len(first)}")
     else:
         results = []
+        pass2_count = 0
 
     # Sort
     ru = [(r[1], r[3]) for r in results if r[2] == "RU"]
     other = [(r[1], r[2], r[3]) for r in results if r[2] != "RU" and r[2] != "??"]
     other.sort(key=lambda x: (COUNTRY_SORT_ORDER.get(x[1], 50), x[2]))
     ru.sort(key=lambda x: x[1])
-
     fast = len([r for r in results if r[3] < PING_GOOD_THRESHOLD])
-    bot.send_final(total, len(results), fast, time.time() - start)
+
+    bot.send_final(total, len(results), fast, time.time() - start, pass1_count, len(second) if first else 0)
 
     os.makedirs("protocols", exist_ok=True)
     pf = {"VLESS": [], "VMESS": [], "TROJAN": []}

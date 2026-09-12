@@ -8,7 +8,7 @@ KEYWORDS_FILE = "keywords.txt"
 CITIES_FILE = "cities.txt"
 DOMAINS_FILE = "domains.txt"
 
-TIMEOUT = 10.0
+TIMEOUT = 5.0
 MAX_WORKERS = 5
 PING_GOOD_THRESHOLD = 500
 PING_MAX = 100000
@@ -17,7 +17,6 @@ GEOIP_URL = "https://cdn.jsdelivr.net/npm/geolite2-country/GeoLite2-Country.mmdb
 GEOIP_FILE = "GeoLite2-Country.mmdb"
 
 def load_sources() -> List[Tuple[str, str]]:
-    """Возвращает список (url, tag). tag = whitelist/blacklist/"""
     r = []
     try:
         with open(SOURCES_FILE, "r", encoding="utf-8") as f:
@@ -27,8 +26,7 @@ def load_sources() -> List[Tuple[str, str]]:
                 if ' #' in l:
                     url, tag = l.split(' #', 1)
                     r.append((url.strip(), tag.strip()))
-                else:
-                    r.append((l, ""))
+                else: r.append((l, ""))
     except: pass
     return r
 

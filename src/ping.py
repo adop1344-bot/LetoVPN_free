@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 import socket, time, re, base64, json, shutil, subprocess, os, random
-import socks  # PySocks
+import socks
 from typing import Tuple, Optional
 
 XRAY_AVAILABLE = False
-REAL_PING_URL = "https://www.gstatic.com/generate_204"
 
 def init_xray():
     global XRAY_AVAILABLE
@@ -15,7 +14,8 @@ def init_xray():
         except: pass
     print("Xray not found"); return False
 
-def xray_check(config: str, timeout: int) -> Optional[float]:
+def xray_check(config: str) -> Optional[float]:
+    """Проверка конфига через Xray. sleep 5s, timeout 5s"""
     if not XRAY_AVAILABLE: return None
     config_path = None
     sock_port = random.randint(30000, 50000)
@@ -29,15 +29,15 @@ def xray_check(config: str, timeout: int) -> Optional[float]:
         start = time.time()
         proc = subprocess.Popen(["xray", "run", "-config", config_path],
                                  stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        time.sleep(3.0)
+        time.sleep(5.0)
 
-        # Проверяем что Xray жив
+        # Xray жив?
         if proc.poll() is not None:
             try: os.unlink(config_path)
             except: pass
             return None
 
-        # Проверяем что порт реально слушается
+        # Порт слушается?
         try:
             s = socket.create_connection(("127.0.0.1", sock_port), timeout=2)
             s.close()
@@ -47,26 +47,23 @@ def xray_check(config: str, timeout: int) -> Optional[float]:
             except: pass
             return None
 
-        # Делаем запрос через SOCKS5
+        # Запрос через SOCKS5 (таймаут 5 сек)
         try:
-            orig = socket.socket
             s = socks.socksocket()
             s.set_proxy(socks.SOCKS5, "127.0.0.1", sock_port)
-            s.settimeout(timeout)
+            s.settimeout(5.0)
             s.connect(("www.gstatic.com", 443))
-            
-            # SSL handshake
+
             import ssl
             ctx = ssl.create_default_context()
             ctx.check_hostname = False
             ctx.verify_mode = ssl.CERT_NONE
             ss = ctx.wrap_socket(s, server_hostname="www.gstatic.com")
-            
-            # HTTP GET
+
             ss.send(b"GET /generate_204 HTTP/1.1\r\nHost: www.gstatic.com\r\nConnection: close\r\n\r\n")
             resp = ss.recv(1024).decode(errors='ignore')
             ss.close()
-            
+
             if '204' in resp[:50] or '200' in resp[:50]:
                 elapsed = (time.time() - start) * 1000
                 proc.kill(); proc.wait()
@@ -141,7 +138,7 @@ def convert_to_xray_config(line: str, sock_port: int = 1080) -> Optional[dict]:
 
 def verify_config(config: str, timeout: float) -> Tuple[Optional[float], bool, bool, Optional[float]]:
     if not XRAY_AVAILABLE: return (None, False, False, None)
-    x = xray_check(config, int(timeout))
+    x = xray_check(config)
     if x is not None: return (x, True, True, None)
     return (None, False, False, None)
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-import socket, time, re, base64, json, shutil, subprocess, os, urllib.request, random
+import socket, time, re, base64, json, shutil, subprocess, os, random
+import socks  # PySocks
 from typing import Tuple, Optional
 
 XRAY_AVAILABLE = False
@@ -17,41 +18,67 @@ def init_xray():
 def xray_check(config: str, timeout: int) -> Optional[float]:
     if not XRAY_AVAILABLE: return None
     config_path = None
-    sock_port = random.randint(20000, 50000)
+    sock_port = random.randint(30000, 50000)
     try:
         import tempfile, json as j
         xc = convert_to_xray_config(config, sock_port)
         if not xc: return None
         with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
             j.dump(xc, f); config_path = f.name
-        
+
         start = time.time()
         proc = subprocess.Popen(["xray", "run", "-config", config_path],
                                  stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        time.sleep(2.0)  # ждём пока Xray инициализируется
-        
-        # Пробуем запрос
-        success = False
-        for attempt in range(2):  # retry 1 раз
-            try:
-                ph = urllib.request.ProxyHandler({
-                    "http": f"socks5://127.0.0.1:{sock_port}",
-                    "https": f"socks5://127.0.0.1:{sock_port}"
-                })
-                opener = urllib.request.build_opener(ph)
-                resp = opener.open(REAL_PING_URL, timeout=timeout)
-                if resp.getcode() in [200, 204, 301, 302]:
-                    elapsed = (time.time() - start) * 1000
-                    success = True
-                    break
-            except: 
-                time.sleep(0.5)  # перед retry
-        
+        time.sleep(3.0)
+
+        # Проверяем что Xray жив
+        if proc.poll() is not None:
+            try: os.unlink(config_path)
+            except: pass
+            return None
+
+        # Проверяем что порт реально слушается
+        try:
+            s = socket.create_connection(("127.0.0.1", sock_port), timeout=2)
+            s.close()
+        except:
+            proc.kill(); proc.wait()
+            try: os.unlink(config_path)
+            except: pass
+            return None
+
+        # Делаем запрос через SOCKS5
+        try:
+            orig = socket.socket
+            s = socks.socksocket()
+            s.set_proxy(socks.SOCKS5, "127.0.0.1", sock_port)
+            s.settimeout(timeout)
+            s.connect(("www.gstatic.com", 443))
+            
+            # SSL handshake
+            import ssl
+            ctx = ssl.create_default_context()
+            ctx.check_hostname = False
+            ctx.verify_mode = ssl.CERT_NONE
+            ss = ctx.wrap_socket(s, server_hostname="www.gstatic.com")
+            
+            # HTTP GET
+            ss.send(b"GET /generate_204 HTTP/1.1\r\nHost: www.gstatic.com\r\nConnection: close\r\n\r\n")
+            resp = ss.recv(1024).decode(errors='ignore')
+            ss.close()
+            
+            if '204' in resp[:50] or '200' in resp[:50]:
+                elapsed = (time.time() - start) * 1000
+                proc.kill(); proc.wait()
+                try: os.unlink(config_path)
+                except: pass
+                return elapsed
+        except:
+            pass
+
         proc.kill(); proc.wait()
         try: os.unlink(config_path)
         except: pass
-        
-        if success: return elapsed
         return None
     except:
         if config_path:
@@ -62,7 +89,6 @@ def xray_check(config: str, timeout: int) -> Optional[float]:
 def convert_to_xray_config(line: str, sock_port: int = 1080) -> Optional[dict]:
     import urllib.parse
     def ib(p): return [{"port": p, "listen": "127.0.0.1", "protocol": "socks", "settings": {"udp": True}}]
-    
     if line.startswith('vless://'):
         m = re.search(r'vless://([^@]+)@([^:]+):(\d+)(.*)', line)
         if not m: return None

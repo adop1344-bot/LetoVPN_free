@@ -44,6 +44,6 @@ jobs:
           git add configs.txt configs*.txt ru.txt configs_hiddify.txt ru_hiddify.txt protocols/
           if [ -n "$(git diff --cached)" ]; then
             git commit -m "auto-update $(date '+%Y-%m-%d %H:%M')"
-            git pull --rebase
+            git pull --rebase --autostash
             git push
           fi

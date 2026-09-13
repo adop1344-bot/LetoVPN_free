@@ -1,7 +1,10 @@
-#announce: Updated: 12.09.2026 18:26:44
+#announce: Updated: 13.09.2026 12:36:34
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/ru.txt
 #profile-title: ru TG@LetoVPN_Free
 
+vless://97ecaad4-452c-45ec-b591-d68d3308aad4@plan.api3-max.ru:443?Telegram=@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad&security=tls&alpn=h2%2Chttp%2F1.1&encryption=none&insecure=0&headerType=none&fp=firefox&type=tcp&allowInsecure=0&flow=xtls-rprx-vision&sni=#blacklist 🇷🇺 Россия t.me/letovpn_free
+vless://97ecaad4-452c-45ec-b591-d68d3308aad4@kama4.api3-max.ru:443?security=tls&encryption=none&sni=kama4.api3-max.ru&alpn=http/1.1%2Ch2&fp=firefox&flow=xtls-rprx-vision#blacklist 🇷🇺 Россия t.me/letovpn_free
+vless://97ecaad4-452c-45ec-b591-d68d3308aad4@posa8.api3-max.ru:443?security=tls&alpn=h3&encryption=none&insecure=0&headerType=none&type=tcp&allowInsecure=0&flow=xtls-rprx-vision&sni=posa8.api3-max.ru&fp=firefox#🇷🇺 Россия t.me/letovpn_free

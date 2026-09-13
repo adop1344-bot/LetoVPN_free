@@ -34,7 +34,12 @@ COUNTRY_NAMES = {"RU":"Россия","US":"США","DE":"Германия","FR":
     "KE":"Кения","NZ":"Новая Зеландия","HK":"Гонконг","KR":"Южная Корея","TW":"Тайвань",
     "EE":"Эстония","LV":"Латвия","LT":"Литва"}
 
-def detect_country_by_domain(host): return WHITE_FLAG, "ZZ" if not host else next((COUNTRY_FLAGS.get(c,WHITE_FLAG),c) for d,c in sorted(DOMAIN_MAP.items(),key=lambda x:len(x[0]),reverse=True) if host.lower().endswith(d)) or (WHITE_FLAG,"ZZ")
+def detect_country_by_domain(host):
+    if not host: return WHITE_FLAG, "ZZ"
+    hl = host.lower()
+    for d, c in sorted(DOMAIN_MAP.items(), key=lambda x: len(x[0]), reverse=True):
+        if hl.endswith(d): return COUNTRY_FLAGS.get(c, WHITE_FLAG), c
+    return WHITE_FLAG, "ZZ"
 
 def detect_country_from_name(name):
     nl = name.lower()
@@ -136,8 +141,7 @@ def main():
         print(f"  {url}: {len(cfgs)} [{tag}]")
         for c in cfgs: tagged.append((c,tag))
 
-    seen,unique = {},\
-    []
+    seen,unique = {},[]
     for c,t in tagged:
         cid = get_config_id(c)
         if cid not in seen and 'anycast' not in c.lower():
@@ -146,7 +150,6 @@ def main():
     print(f"Total: {total}")
     msg_id = bot.send_start()
 
-    # PASS 1
     print("\nPass 1...")
     first,checked = [],0
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
@@ -159,7 +162,6 @@ def main():
             if checked%50==0: print(f"  {checked}/{total}. Found: {len(first)}")
     print(f"  Pass 1: {len(first)}")
 
-    # PASS 2
     if first:
         print("\nPass 2...")
         second,checked2 = [],0
@@ -174,8 +176,7 @@ def main():
         passed = set(r[0] for r in second)
         results = [r for r in first if r[0] in passed]
         print(f"  Final: {len(results)}/{len(first)}")
-    else:
-        results = []
+    else: results = []
 
     ru = [(r[1],r[3]) for r in results if r[2]=="RU"]
     other = [(r[1],r[2],r[3]) for r in results if r[2]!="RU" and r[2]!="??"]

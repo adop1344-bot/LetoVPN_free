@@ -1,2 +1,0 @@
-vless://97ecaad4-452c-45ec-b591-d68d3308aad4@plan.api3-max.ru:443?Telegram=@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad&security=tls&alpn=h2%2Chttp%2F1.1&encryption=none&insecure=0&headerType=none&fp=firefox&type=tcp&allowInsecure=0&flow=xtls-rprx-vision&sni=#blacklist 🇷🇺 Россия t.me/letovpn_free
-vless://97ecaad4-452c-45ec-b591-d68d3308aad4@posa6.api3-max.ru:443?type=tcp&security=tls&flow=xtls-rprx-vision&fp=chrome&sni=posa6.api3-max.ru#🇷🇺 Россия t.me/letovpn_free

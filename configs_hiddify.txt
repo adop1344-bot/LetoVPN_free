@@ -1,12 +1,9 @@
-vless://cd477134-ffce-473a-8dca-8ce5fc6eb3eb@216.167.54.75:47212?#🇺🇸 США t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@150.241.72.76:443?type=tcp&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=austria-2.moritech.net#🇺🇸 США t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@150.241.72.86:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=austria-3.moritech.net&type=tcp#whitelist 🇺🇸 США t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@austria-2.moritech.net:443?type=tcp&security=tls&sni=austria-2.moritech.net&flow=xtls-rprx-vision&allowInsecure=0&insecure=0&fp=firefox#🇺🇸 США t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@150.241.72.86:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=austria-3.moritech.net&type=tcp#whitelist 🇺🇸 США t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@austria-3.moritech.net:443?type=tcp&headerType=none&security=tls&encryption=none&flow=xtls-rprx-vision&fp=safari#🇺🇸 США t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@roma2.moritech.net:443?type=tcp&security=tls&sni=roma2.moritech.net&flow=xtls-rprx-vision&allowInsecure=0&insecure=0#🇺🇸 США t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@roma3.moritech.net:443?security=tls&alpn=v2rayNplus--v2rayNplus--v2rayNplus--v2rayNplus--v2rayNplus--v2rayNplus--v2rayNplus--v2rayNplus&encryption=none&insecure=0&headerType=none&fp=qq&type=tcp&allowInsecure=0&flow=xtls-rprx-vision&sni=roma3.moritech.net#🇺🇸 США t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@roma2.moritech.net:443?type=tcp&security=tls&sni=roma2.moritech.net&flow=xtls-rprx-vision&allowInsecure=0&insecure=0#🇺🇸 США t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@194.5.248.93:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=roma1.moritech.net&type=tcp#🇷🇴 Румыния t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@194.5.248.88:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=roma2.moritech.net&type=tcp#🇷🇴 Румыния t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@194.5.248.70:443?type=tcp&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=roma3.moritech.net#🇷🇴 Румыния t.me/letovpn_free
-vmess://eyJhZGQiOiIxNTYuMjQ1LjIzMi4yMzkiLCJhaWQiOiIwIiwiaG9zdCI6IiIsImlkIjoiYjE1ZTQ4MWQtMTdlNC00MWE4LTg0YzItMjNkNGYwNTE0ZDlhIiwibmV0Ijoid3MiLCJwYXRoIjoiXC8iLCJwb3J0IjoiMzUwNDMiLCJwcyI6Ilx1ZDgzY1x1ZGRlZFx1ZDgzY1x1ZGRmMFtvcGVucHJveHlsaXN0LmNvbV0gdm1lc3MtSEsiLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=#🇭🇰 Гонконг t.me/letovpn_free
-vless://c450727a-3a1f-4260-9bb4-1c668b45314c@dev.speciq.co:2086?encryption=none&type=xhttp#whitelist 🇨🇴 Колумбия t.me/letovpn_free

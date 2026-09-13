@@ -62,5 +62,4 @@ jobs:
           git config user.email "action@github.com"
           git remote set-url origin https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
           git add configs.txt configs*.txt ru.txt configs_hiddify.txt ru_hiddify.txt protocols/
-          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update configs $(date '+%Y-%m-%d %H:%M')"
-          git push
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update configs $(date '+%Y-%m-%d %H:%M')" && git pull --rebase --autostash && git push)

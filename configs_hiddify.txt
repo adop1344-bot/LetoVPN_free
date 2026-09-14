@@ -1,5 +1,4 @@
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@austria-2.moritech.net:443?type=tcp&security=tls&sni=austria-2.moritech.net&flow=xtls-rprx-vision&allowInsecure=0&insecure=0&fp=firefox#🇺🇸 США t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@austria-3.moritech.net:443?type=tcp&headerType=none&security=tls&encryption=none&flow=xtls-rprx-vision&fp=safari#🇺🇸 США t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@150.241.72.76:443?type=tcp&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=austria-2.moritech.net#🇺🇸 США t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@austria-2.moritech.net:443?type=tcp&security=tls&sni=austria-2.moritech.net&flow=xtls-rprx-vision&allowInsecure=0&insecure=0&fp=firefox#🇺🇸 США t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@150.241.72.86:443?type=tcp&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=austria-3.moritech.net#🇺🇸 США t.me/letovpn_free
-vless://c450727a-3a1f-4260-9bb4-1c668b45314c@dev.speciq.co:2086?encryption=none&type=xhttp#whitelist 🇨🇴 Колумбия t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@austria-3.moritech.net:443?type=tcp&headerType=none&security=tls&encryption=none&flow=xtls-rprx-vision&fp=safari#🇺🇸 США t.me/letovpn_free

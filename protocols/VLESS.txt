@@ -1,4 +1,4 @@
-#announce: Updated: 14.09.2026 20:37:33
+#announce: Updated: 15.09.2026 00:29:29
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
@@ -6,6 +6,6 @@
 #profile-title: VLESS TG@LetoVPN_Free
 
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@austria-2.moritech.net:443?type=tcp&security=tls&sni=austria-2.moritech.net&flow=xtls-rprx-vision&allowInsecure=0&insecure=0&fp=firefox#🇺🇸 США t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@150.241.72.76:443?type=tcp&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=austria-2.moritech.net#🇺🇸 США t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@150.241.72.86:443?type=tcp&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=austria-3.moritech.net#🇺🇸 США t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@austria-3.moritech.net:443?type=tcp&headerType=none&security=tls&encryption=none&flow=xtls-rprx-vision&fp=safari#🇺🇸 США t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@150.241.72.76:443?type=tcp&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=austria-2.moritech.net#🇺🇸 США t.me/letovpn_free

@@ -1,12 +1,17 @@
-#announce: Updated: 15.09.2026 00:29:29
+#announce: Updated: 15.09.2026 06:09:19
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/configs.txt
 #profile-title: TG@LetoVPN_Free
 
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@150.241.72.86:443?type=tcp&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=austria-3.moritech.net#🇺🇸 США t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@austria-3.moritech.net:443?type=tcp&headerType=none&security=tls&encryption=none&flow=xtls-rprx-vision&fp=safari#🇺🇸 США t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@austria-2.moritech.net:443?type=tcp&security=tls&sni=austria-2.moritech.net&flow=xtls-rprx-vision&allowInsecure=0&insecure=0&fp=firefox#🇺🇸 США t.me/letovpn_free
+vless://783c7211-5349-4c26-8f8f-85f0f4c93ae8@88.99.125.243:15036?headertype=&security=&type=tcp#🇩🇪 Германия t.me/letovpn_free
+vless://d005cde6-263f-48ac-8b13-74ebf7f3f8ef@91.98.96.59:40017?headertype=&security=&type=tcp#🇩🇪 Германия t.me/letovpn_free
+vless://35a6c37b-5df7-4d7f-b338-f9092d3be2e9@91.98.96.59:80?sni=91.98.96.59&type=ws#🇩🇪 Германия t.me/letovpn_free
+vless://e081da45-9fae-4687-9376-f9a6a0dbbe83@e33xr.qzz.io:80?encryption=none&path=/id-amz&type=ws#whitelist 🇺🇸 США t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@150.241.72.76:443?type=tcp&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=austria-2.moritech.net#🇺🇸 США t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@150.241.72.86:443?type=tcp&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=austria-3.moritech.net#🇺🇸 США t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@austria-2.moritech.net:443?type=tcp&security=tls&sni=austria-2.moritech.net&flow=xtls-rprx-vision&allowInsecure=0&insecure=0&fp=firefox#🇺🇸 США t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@austria-3.moritech.net:443?type=tcp&headerType=none&security=tls&encryption=none&flow=xtls-rprx-vision&fp=safari#🇺🇸 США t.me/letovpn_free
+vless://ea50b1a3-3a98-4c5e-a150-48ada40d68d7@cf-vless-4cf55824.aimall.fr:443?encryption=none&fp=chrome&host=cf-vless-4cf55824.aimall.fr&path=/connect&security=tls&type=ws#whitelist 🇫🇷 Франция t.me/letovpn_free
 vmess://eyJhZGQiOiIxNTYuMjQ1LjIzMi4yMzkiLCJhaWQiOiIwIiwiaG9zdCI6IiIsImlkIjoiYjE1ZTQ4MWQtMTdlNC00MWE4LTg0YzItMjNkNGYwNTE0ZDlhIiwibmV0Ijoid3MiLCJwYXRoIjoiXC8iLCJwb3J0IjoiMzUwNDMiLCJwcyI6Ilx1ZDgzY1x1ZGRlZFx1ZDgzY1x1ZGRmMFtvcGVucHJveHlsaXN0LmNvbV0gdm1lc3MtSEsiLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=#🇭🇰 Гонконг t.me/letovpn_free

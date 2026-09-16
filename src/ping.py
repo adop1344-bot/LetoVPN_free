@@ -14,6 +14,16 @@ def init_xray():
         except: pass
     print("Xray not found"); return False
 
+def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
+    """Быстрый TCP ping"""
+    try:
+        start = time.time()
+        sock = socket.create_connection((host, port), timeout=timeout)
+        elapsed = (time.time() - start) * 1000
+        sock.close()
+        return elapsed
+    except: return None
+
 def xray_check(config: str) -> Optional[float]:
     if not XRAY_AVAILABLE: return None
     config_path = None
@@ -127,9 +137,28 @@ def convert_to_xray_config(line: str, sock_port: int = 1080) -> Optional[dict]:
     return None
 
 def verify_config(config: str, timeout: float) -> Tuple[Optional[float], bool, bool, Optional[float]]:
-    if not XRAY_AVAILABLE: return (None, False, False, None)
-    x = xray_check(config)
-    if x is not None: return (x, True, True, None)
+    """
+    1. Быстрый TCP ping (отсев мёртвых серверов)
+    2. Xray real ping (точная проверка протокола)
+    Если Xray не доступен -> только TCP
+    """
+    host, port = extract_host_port(config)
+    if not host or not port:
+        return (None, False, False, None)
+    
+    # ШАГ 1: TCP ping (быстрый, 3 сек)
+    tcp_ms = tcp_ping(host, port, min(timeout, 3.0))
+    if tcp_ms is None:
+        return (None, False, False, None)
+    
+    # ШАГ 2: Xray (если доступен)
+    if XRAY_AVAILABLE:
+        x = xray_check(config)
+        if x is not None:
+            return (x, True, True, None)
+        return (None, False, False, None)
+    
+    # ШАГ 3: Fallback (только TCP, без Xray)
     return (None, False, False, None)
 
 def extract_host_port(config: str) -> Tuple[Optional[str], Optional[int]]:

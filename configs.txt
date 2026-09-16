@@ -1,14 +1,10 @@
-#announce: Updated: 16.09.2026 14:17:23
+#announce: Updated: 16.09.2026 19:10:30
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/configs.txt
 #profile-title: TG@LetoVPN_Free
 
-vless://5fc7563b-552d-417f-9409-08ef92284599@192.248.182.183:39244?type=tcp#🇩🇪 Германия t.me/letovpn_free
-vless://awlix_ir@87.58.159.20:443?security=none&type=tcp&encryption=mlkem768x25519plus.native.0rtt.CCIZgZeeCX8na60UXi9II-iduj3OFxtj-fuh_4AWiUU&headerType=none&seq=you_are_beautiful1675#🇫🇮 Финляндия t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.249.172:443?type=tcp&headerType=none&security=tls&encryption=none&sni=pl-dedic-3.failspace.top&fp=firefox&flow=xtls-rprx-vision#🇵🇱 Польша t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.248.237:443?type=tcp&headerType=none&security=tls&encryption=none&sni=pl-new-dedic.failspace.top&fp=firefox&flow=xtls-rprx-vision#🇵🇱 Польша t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.249.181:443?type=tcp&headerType=none&security=tls&encryption=none&sni=pl-dedic-2.failspace.top&fp=firefox&flow=xtls-rprx-vision#🇵🇱 Польша t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@ir-new.failspace.top:443?type=tcp&security=tls&sni=ir-new.failspace.top&fp=firefox&alpn=h2&encryption=none&flow=xtls-rprx-vision#🇦🇪 ОАЭ t.me/letovpn_free
 vmess://eyJhZGQiOiIxNTYuMjQ1LjIzMi4yMzkiLCJhaWQiOiIwIiwiaG9zdCI6IiIsImlkIjoiYjE1ZTQ4MWQtMTdlNC00MWE4LTg0YzItMjNkNGYwNTE0ZDlhIiwibmV0Ijoid3MiLCJwYXRoIjoiXC8iLCJwb3J0IjoiMzUwNDMiLCJwcyI6Ilx1ZDgzY1x1ZGRlZFx1ZDgzY1x1ZGRmMFtvcGVucHJveHlsaXN0LmNvbV0gdm1lc3MtSEsiLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=#🇭🇰 Гонконг t.me/letovpn_free
+vless://c450727a-3a1f-4260-9bb4-1c668b45314c@dev.speciq.co:2086?encryption=none&type=xhttp#whitelist 🇨🇴 Колумбия t.me/letovpn_free

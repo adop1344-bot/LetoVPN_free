@@ -1,9 +1,12 @@
-#announce: Updated: 16.09.2026 19:10:30
+#announce: Updated: 16.09.2026 23:58:44
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.248.237:443?security=tls&type=tcp&packetEncoding=xudp&sni=pl-new-dedic.failspace.top&fp=firefox&flow=xtls-rprx-vision-udp443#🇵🇱 Польша t.me/letovpn_free
+vless://8fb65472-5957-4f64-ba2d-b5812b2f155a@92.5.201.43:62145?&type=tcp&headerType=none&path=%2F#whitelist 🇳🇱 Нидерланды t.me/letovpn_free
+vless://5aaa5259-f924-4682-a4a3-149d472a9dcc@8.148.237.121:52683?type=tcp#whitelist 🇨🇳 CN t.me/letovpn_free
 vless://c450727a-3a1f-4260-9bb4-1c668b45314c@dev.speciq.co:2086?encryption=none&type=xhttp#whitelist 🇨🇴 Колумбия t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@ir-new.failspace.top:443?type=tcp&security=tls&sni=ir-new.failspace.top&fp=firefox&alpn=h2&encryption=none&flow=xtls-rprx-vision#🇦🇪 ОАЭ t.me/letovpn_free

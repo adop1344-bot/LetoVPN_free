@@ -1,0 +1,2 @@
+trojan://eZwp12tXna8-s_ysszXnXq25rv1c8w@37.9.4.182:8443?type=tcp&security=tls&sni=denode201.velox-network.org&alpn=h2%2Chttp%2F1.1&fp=edge#whitelist 🇷🇺 Россия t.me/letovpn_free
+trojan://eZwp12tXna8-s_ysszXnXq25rv1c8w@194.55.239.108:443?type=tcp&security=tls&sni=api-v2.captaingold.app&alpn=h2%2Chttp%2F1.1&fp=chrome#whitelist 🇷🇺 Россия t.me/letovpn_free

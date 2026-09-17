@@ -1,19 +1,16 @@
-#announce: Updated: 17.09.2026 06:11:54
+#announce: Updated: 17.09.2026 14:02:37
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.36.29:443?type=tcp&security=tls&flow=xtls-rprx-vision&sni=at-dedic-2.failspace.top&fp=firefox#🇺🇸 США t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@ir-new.failspace.top:443?type=tcp&security=tls&flow=xtls-rprx-vision&sni=ir-new.failspace.top&fp=safari#🇦🇪 ОАЭ t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.248.237:443?security=tls&type=tcp&packetEncoding=xudp&sni=pl-new-dedic.failspace.top&fp=firefox&flow=xtls-rprx-vision-udp443#🇵🇱 Польша t.me/letovpn_free
-vless://5f00ca4e-3f26-473e-ad1c-414112abb0a3@95.179.169.44:53224?security=&encryption=none&headerType=none&type=tcp#🇩🇪 Германия t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.197.204:443?type=tcp&security=tls&flow=xtls-rprx-vision&sni=hub.failspace.top&fp=ios#🇬🇧 Великобритания t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.182.21:443?security=tls&type=tcp&packetEncoding=xudp&sni=nether.failspace.top&fp=firefox&flow=xtls-rprx-vision#whitelist 🇺🇸 США t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.227.251:443?security=tls&type=tcp&packetEncoding=xudp&sni=uk-dedic-new-1.failspace.top&fp=firefox&flow=xtls-rprx-vision#whitelist 🇺🇸 США t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.249.187:443?security=tls&type=tcp&packetEncoding=xudp&sni=poland-new-dedic-2.failspace.top&fp=firefox&flow=xtls-rprx-vision#whitelist 🇵🇱 Польша t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.37.157:443?security=tls&type=tcp&packetEncoding=xudp&sni=at-dedic.failspace.top&fp=firefox&flow=xtls-rprx-vision#whitelist 🇺🇸 США t.me/letovpn_free
-vless://e081da45-9fae-4687-9376-f9a6a0dbbe83@e33xr.qzz.io:80?encryption=none&path=/id-amz&type=ws#whitelist 🇺🇸 США t.me/letovpn_free
-vless://ea50b1a3-3a98-4c5e-a150-48ada40d68d7@cf-vless-4cf55824.aimall.fr:443?encryption=none&fp=chrome&host=cf-vless-4cf55824.aimall.fr&path=/connect&security=tls&type=ws#whitelist 🇫🇷 Франция t.me/letovpn_free
-vless://e4514801-0d5a-42ba-869f-39bd605aef9e@15.237.34.168:22222?headertype=&security=&type=tcp#🇫🇷 Франция t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@ir-new.failspace.top:443?type=tcp&security=tls&flow=xtls-rprx-vision&sni=ir-new.failspace.top&fp=safari#🇦🇪 ОАЭ t.me/letovpn_free
+vless://5f00ca4e-3f26-473e-ad1c-414112abb0a3@95.179.169.44:53224?security=&encryption=none&headerType=none&type=tcp#🇩🇪 Германия t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.182.21:443?security=tls&type=tcp&packetEncoding=xudp&sni=nether.failspace.top&fp=firefox&flow=xtls-rprx-vision#🇺🇸 США t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.227.251:443?security=tls&type=tcp&packetEncoding=xudp&sni=uk-dedic-new-1.failspace.top&fp=firefox&flow=xtls-rprx-vision#🇺🇸 США t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.249.187:443?security=tls&type=tcp&packetEncoding=xudp&sni=poland-new-dedic-2.failspace.top&fp=firefox&flow=xtls-rprx-vision#🇵🇱 Польша t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.248.237:443?security=tls&type=tcp&packetEncoding=xudp&sni=pl-new-dedic.failspace.top&fp=firefox&flow=xtls-rprx-vision-udp443#🇵🇱 Польша t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.37.157:443?security=tls&type=tcp&packetEncoding=xudp&sni=at-dedic.failspace.top&fp=firefox&flow=xtls-rprx-vision#🇺🇸 США t.me/letovpn_free
+vless://8fb65472-5957-4f64-ba2d-b5812b2f155a@157.137.226.173:62145?packetencoding=none&type=tcp#🇨🇴 Колумбия t.me/letovpn_free

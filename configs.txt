@@ -1,12 +1,9 @@
-#announce: Updated: 18.09.2026 05:58:44
+#announce: Updated: 18.09.2026 13:37:31
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/configs.txt
 #profile-title: TG@LetoVPN_Free
 
-vless://e081da45-9fae-4687-9376-f9a6a0dbbe83@e33xr.qzz.io:80?encryption=none&path=/id-amz&type=ws#whitelist 🇺🇸 США t.me/letovpn_free
-vless://ea50b1a3-3a98-4c5e-a150-48ada40d68d7@cf-vless-4cf55824.aimall.fr:443?encryption=none&fp=chrome&host=cf-vless-4cf55824.aimall.fr&path=/connect&security=tls&type=ws#whitelist 🇫🇷 Франция t.me/letovpn_free
-vmess://eyJhZGQiOiI5MS4yMjguMjI3LjIxMSIsImlkIjoiOTI5ODdhYjgtMGE1My00YTE2LThkNmMtMjk1ZDVkZjg2NDA0IiwicG9ydCI6IjIzOTU3Iiwic2N5IjoiYXV0byIsInYiOiIyIiwibmV0IjoicmF3IiwidHlwZSI6Im5vbmUiLCJ0bHMiOiJub25lIiwicHMiOiLwn4e58J+HtyBUdXJrZXkgfCDwn4yQIHwgW0JMXSIsImFpZCI6IjAiLCJob3N0IjoiIiwicGF0aCI6IiIsInNuaSI6IiIsImFscG4iOiIiLCJmcCI6IiJ9#blacklist 🇹🇷 Турция t.me/letovpn_free
+vless://5fc7563b-552d-417f-9409-08ef92284599@192.248.182.183:39244?path=%2F#🇩🇪 Германия t.me/letovpn_free
 vless://c450727a-3a1f-4260-9bb4-1c668b45314c@dev.speciq.co:2086?encryption=none&type=xhttp#whitelist 🇨🇴 Колумбия t.me/letovpn_free
-vmess://eyJ2IjoiMiIsInBzIjoi8J+MkCBBbnljYXN0LUlQIHwg8J+HufCfh7wgfCBbQkxdIiwiYWRkIjoiN2RiYTgxZmMzYTBiLm95bGZteHouY24iLCJwb3J0IjoiNDQzIiwiaWQiOiJkOTBlNDA3Ny1iYzdlLTQxNGQtYTY1MC03MGJmMWJhYWU0ZDYiLCJhaWQiOiIwIiwic2N5IjoiYXV0byIsIm5ldCI6IndzIiwiaG9zdCI6IjdkYmE4MWZjM2EwYi5veWxmbXh6LmNuIiwicGF0aCI6Ii8iLCJ0bHMiOiJ0bHMiLCJzbmkiOiI3ZGJhODFmYzNhMGIub3lsZm14ei5jbiIsInR5cGUiOiJub25lIiwiYWxwbiI6IiIsImZwIjoiIn0=#blacklist 🇨🇳 CN t.me/letovpn_free

@@ -1,2 +1,5 @@
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.120.162:443?sni=nl-dedic-mori.failspace.top&flow=xtls-rprx-vision-udp443&fp=chrome&security=tls#whitelist 🇳🇱 Нидерланды t.me/letovpn_free
 vless://5fc7563b-552d-417f-9409-08ef92284599@192.248.182.183:39244?path=%2F#🇩🇪 Германия t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.248.237:443?security=tls&type=tcp&packetEncoding=xudp&sni=pl-new-dedic.failspace.top&fp=firefox&flow=xtls-rprx-vision-udp443#🇵🇱 Польша t.me/letovpn_free
+vless://5561acfb-0adc-4c76-bfbf-767a76c7cbf0@87.120.196.212:443?type=tcp&headerType=none&security=tls&encryption=none&sni=holo-stream.videocactus.xyz&flow=xtls-rprx-vision&fp=chrome#blacklist 🇧🇬 Болгария t.me/letovpn_free
 vless://c450727a-3a1f-4260-9bb4-1c668b45314c@dev.speciq.co:2086?encryption=none&type=xhttp#whitelist 🇨🇴 Колумбия t.me/letovpn_free

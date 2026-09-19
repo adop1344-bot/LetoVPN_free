@@ -1,9 +1,9 @@
-#announce: Updated: 18.09.2026 00:04:55
+#announce: Updated: 19.09.2026 13:22:18
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
-trojan://eZwp12tXna8-s_ysszXnXq25rv1c8w@37.9.4.182:8443?type=tcp&security=tls&sni=denode201.velox-network.org&alpn=h2%2Chttp%2F1.1&fp=edge#whitelist 🇷🇺 Россия t.me/letovpn_free
-trojan://eZwp12tXna8-s_ysszXnXq25rv1c8w@194.55.239.108:443?type=tcp&security=tls&sni=api-v2.captaingold.app&alpn=h2%2Chttp%2F1.1&fp=chrome#whitelist 🇷🇺 Россия t.me/letovpn_free
+trojan://s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z@46.229.243.154:4443?security=tls&sni=grape-turbo-fr.roxa.org&fp=random&type=tcp#blacklist 🇳🇱 Нидерланды t.me/letovpn_free
+trojan://d5bee0afdbc500b8cda02d80@nl2.pleiades.codes:2053?security=tls&sni=nl2.pleiades.codes&alpn=h2%2Chttp%2F1.1&fp=random&type=tcp#blacklist 🇺🇸 США t.me/letovpn_free

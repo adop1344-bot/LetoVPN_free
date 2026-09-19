@@ -1,18 +1,12 @@
-#announce: Updated: 19.09.2026 18:25:18
+#announce: Updated: 19.09.2026 23:08:00
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/configs.txt
 #profile-title: TG@LetoVPN_Free
 
-vless://8fb65472-5957-4f64-ba2d-b5812b2f155a@158.101.205.217:62145?&type=tcp&headerType=none&path=%2F#🇳🇱 Нидерланды t.me/letovpn_free
-trojan://s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z@46.229.243.154:4443?security=tls&sni=grape-turbo-fr.roxa.org&fp=random&type=tcp#🇳🇱 Нидерланды t.me/letovpn_free
-vless://7a947ca5-28fc-4a8b-a0a7-df28ba87e40b@178.105.233.111:80?path=%2F&security=&encryption=none&type=ws#🇩🇪 Германия t.me/letovpn_free
-vless://173b81b8-0ccc-48e8-b363-95e6c0e59b06@167.233.177.42:80?path=%2F&security=&encryption=none&type=ws#🇩🇪 Германия t.me/letovpn_free
 vless://b2593749-691c-428c-9481-14979cba3446@66.235.200.122:443?security=tls&sni=xi.tbv.ccwu.cc&type=ws&host=xi.tbv.ccwu.cc&path=%2Fproxyip%3Dus.xiabibi.cf&fp=chrome#🇺🇸 США t.me/letovpn_free
 vless://86c50e3a-5b87-49dd-bd20-03c7f2735e40@www.epicgames.com:443?fp=chrome&host=cnmfangbinxingnmsl.asshole.us.ci&path=%2F&security=tls&sni=cnmfangbinxingnmsl.asshole.us.ci&type=ws#blacklist 🇺🇸 США t.me/letovpn_free
-vless://86c50e3a-5b87-49dd-bd20-03c7f2735e40@www.wto.org:443?fp=chrome&host=cnmfangbinxingnmsl.asshole.us.ci&path=%2F&security=tls&sni=cnmfangbinxingnmsl.asshole.us.ci&type=ws#blacklist 🇺🇸 США t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.227.252:443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=uk-dedic.failspace.top&type=tcp&fp=edge#blacklist 🇺🇸 США t.me/letovpn_free
-vmess://eyJhZGQiOiIxNTYuMjQ1LjIzMi4yMzkiLCJhaWQiOiIwIiwiaG9zdCI6IiIsImlkIjoiYjE1ZTQ4MWQtMTdlNC00MWE4LTg0YzItMjNkNGYwNTE0ZDlhIiwibmV0Ijoid3MiLCJwYXRoIjoiXC8iLCJwb3J0IjoiMzUwNDMiLCJwcyI6Ilx1ZDgzY1x1ZGRlZFx1ZDgzY1x1ZGRmMFtvcGVucHJveHlsaXN0LmNvbV0gdm1lc3MtSEsiLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=#🇭🇰 Гонконг t.me/letovpn_free
+vless://6a32736d-4b7f-4c35-a1cf-4489d49f2cfb@fi.alpheratzz.org:443?allowInsecure=0&alpn=h2&encryption=none&extra=%7B%22xmux%22%3A%7B%22maxConnections%22%3A1%2C%22maxReuseTimes%22%3A0%7D%7D&insecure=0&mode=stream-one&path=%2F&security=tls&sni=6a32736d.ferrin.uk&type=xhttp&fp=chrome#whitelist 🇺🇸 США t.me/letovpn_free
 vless://c450727a-3a1f-4260-9bb4-1c668b45314c@dev.speciq.co:2086?encryption=none&type=xhttp#whitelist 🇨🇴 Колумбия t.me/letovpn_free
-vmess://eyJ2IjoiMiIsInBzIjoi8J+MkCBBbnljYXN0LUlQIHwg8J+HufCfh7wgfCBbQkxdIiwiYWRkIjoiZGVlMjMwOWRiNHNlM2c1czFkNjVnNjcyYzY2NDFlMjUub3lsZm14ei5jbiIsInBvcnQiOiI0NDMiLCJpZCI6ImQ5MGU0MDc3LWJjN2UtNDE0ZC1hNjUwLTcwYmYxYmFhZTRkNiIsImFpZCI6IjAiLCJzY3kiOiJhdXRvIiwibmV0Ijoid3MiLCJ0eXBlIjoibm9uZSIsImhvc3QiOiJkZWUyMzA5ZGI0c2UzZzVzMWQ2NWc2NzJjNjY0MWUyNS5veWxmbXh6LmNuIiwicGF0aCI6Ii8iLCJ0bHMiOiJ0bHMiLCJzbmkiOiJkZWUyMzA5ZGI0c2UzZzVzMWQ2NWc2NzJjNjY0MWUyNS5veWxmbXh6LmNuIiwiYWxwbiI6IiIsImZwIjoiIn0=#blacklist 🇨🇳 CN t.me/letovpn_free

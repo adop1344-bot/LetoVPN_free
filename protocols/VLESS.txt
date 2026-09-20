@@ -1,16 +1,10 @@
-#announce: Updated: 20.09.2026 06:10:19
+#announce: Updated: 20.09.2026 13:40:27
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
-vless://151077fd-f4a0-4622-bfd2-1ee2c121a544@66.90.90.13:8443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=dsapi-v2-6aaeee8a.adhil.uk&type=tcp&fp=qq#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.227.252:443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=uk-dedic.failspace.top&type=tcp&fp=qq#🇺🇸 США t.me/letovpn_free
-vless://ea50b1a3-3a98-4c5e-a150-48ada40d68d7@cf-vless-4cf55824.aimall.fr:443?encryption=none&fp=chrome&host=cf-vless-4cf55824.aimall.fr&path=/connect&security=tls&type=ws#whitelist 🇫🇷 Франция t.me/letovpn_free
+vless://65d3f9b3-d289-4a8e-9c87-90bba156de30@ld.235231.xyz:443?security=tls&type=ws&path=%2F&packetEncoding=xudp&sni=ld.235231.xyz&fp=chrome#whitelist 🇺🇸 США t.me/letovpn_free
 vless://c450727a-3a1f-4260-9bb4-1c668b45314c@dev.speciq.co:2086?encryption=none&type=xhttp#whitelist 🇨🇴 Колумбия t.me/letovpn_free
-vless://8fb65472-5957-4f64-ba2d-b5812b2f155a@158.101.194.120:62145?type=tcp&headerType=none#🇳🇱 Нидерланды t.me/letovpn_free
-vless://8fb65472-5957-4f64-ba2d-b5812b2f155a@92.5.225.155:62145?type=tcp#🇳🇱 Нидерланды t.me/letovpn_free
-vless://e4514801-0d5a-42ba-869f-39bd605aef9e@35.180.179.100:22223?type=tcp#🇫🇷 Франция t.me/letovpn_free
 vless://b2593749-691c-428c-9481-14979cba3446@66.235.200.122:443?security=tls&sni=xi.tbv.ccwu.cc&type=ws&host=xi.tbv.ccwu.cc&path=%2Fproxyip%3Dus.xiabibi.cf&fp=chrome#🇺🇸 США t.me/letovpn_free
-vless://86c50e3a-5b87-49dd-bd20-03c7f2735e40@www.epicgames.com:443?fp=chrome&host=cnmfangbinxingnmsl.asshole.us.ci&path=%2F&security=tls&sni=cnmfangbinxingnmsl.asshole.us.ci&type=ws#🇺🇸 США t.me/letovpn_free

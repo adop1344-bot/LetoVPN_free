@@ -1,4 +1,4 @@
-#announce: Updated: 20.09.2026 18:29:29
+#announce: Updated: 20.09.2026 23:22:50
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
@@ -6,6 +6,7 @@
 #profile-title: VLESS TG@LetoVPN_Free
 
 vless://65d3f9b3-d289-4a8e-9c87-90bba156de30@ld.235231.xyz:443?security=tls&type=ws&path=%2F&packetEncoding=xudp&sni=ld.235231.xyz&fp=chrome#whitelist 🇺🇸 США t.me/letovpn_free
-vless://b8d8a5b0-867f-4491-b4e4-30edc04bb10e@104.16.111.193:443?security=tls&type=ws&path=%2F&host=u.srilankangrill.online&packetEncoding=xudp&sni=u.srilankangrill.online&fp=chrome#🇸🇬 Сингапур t.me/letovpn_free
+vless://c450727a-3a1f-4260-9bb4-1c668b45314c@dev.speciq.co:2086?encryption=none&type=xhttp#whitelist 🇨🇴 Колумбия t.me/letovpn_free
 vless://b8d8a5b0-867f-4491-b4e4-30edc04bb10e@104.16.10.189:443?type=ws&security=tls&fp=chrome&sni=u.srilankangrill.online#🇸🇬 Сингапур t.me/letovpn_free
+vless://b8d8a5b0-867f-4491-b4e4-30edc04bb10e@104.16.111.193:443?security=tls&type=ws&path=%2F&host=u.srilankangrill.online&packetEncoding=xudp&sni=u.srilankangrill.online&fp=chrome#🇸🇬 Сингапур t.me/letovpn_free
 vless://b2593749-691c-428c-9481-14979cba3446@66.235.200.122:443?security=tls&sni=xi.tbv.ccwu.cc&type=ws&host=xi.tbv.ccwu.cc&path=%2Fproxyip%3Dus.xiabibi.cf&fp=chrome#🇺🇸 США t.me/letovpn_free

@@ -1,12 +1,19 @@
-#announce: Updated: 20.09.2026 23:22:50
+#announce: Updated: 21.09.2026 06:06:52
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/configs.txt
 #profile-title: TG@LetoVPN_Free
 
+vless://8fb65472-5957-4f64-ba2d-b5812b2f155a@152.70.56.174:62145#🇳🇱 Нидерланды t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.120.202:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=nl-dedic-mori-2.failspace.top&type=tcp#blacklist 🇳🇱 Нидерланды t.me/letovpn_free
+vless://e081da45-9fae-4687-9376-f9a6a0dbbe83@e33xr.qzz.io:80?encryption=none&path=/id-amz&type=ws#whitelist 🇺🇸 США t.me/letovpn_free
 vless://b2593749-691c-428c-9481-14979cba3446@66.235.200.122:443?security=tls&sni=xi.tbv.ccwu.cc&type=ws&host=xi.tbv.ccwu.cc&path=%2Fproxyip%3Dus.xiabibi.cf&fp=chrome#🇺🇸 США t.me/letovpn_free
 vless://65d3f9b3-d289-4a8e-9c87-90bba156de30@ld.235231.xyz:443?security=tls&type=ws&path=%2F&packetEncoding=xudp&sni=ld.235231.xyz&fp=chrome#whitelist 🇺🇸 США t.me/letovpn_free
+vless://cdd6bfce-781a-4454-b7d5-4778abb5c24f@107.181.134.85:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=roskaa6.api3-max.ru&type=tcp#blacklist 🇬🇧 Великобритания t.me/letovpn_free
+vless://ea50b1a3-3a98-4c5e-a150-48ada40d68d7@cf-vless-4cf55824.aimall.fr:443?encryption=none&fp=chrome&host=cf-vless-4cf55824.aimall.fr&path=/connect&security=tls&type=ws#whitelist 🇫🇷 Франция t.me/letovpn_free
+vless://e4514801-0d5a-42ba-869f-39bd605aef9e@15.224.194.93:22224#🇫🇷 Франция t.me/letovpn_free
 vless://b8d8a5b0-867f-4491-b4e4-30edc04bb10e@104.16.10.189:443?type=ws&security=tls&fp=chrome&sni=u.srilankangrill.online#🇸🇬 Сингапур t.me/letovpn_free
 vless://b8d8a5b0-867f-4491-b4e4-30edc04bb10e@104.16.111.193:443?security=tls&type=ws&path=%2F&host=u.srilankangrill.online&packetEncoding=xudp&sni=u.srilankangrill.online&fp=chrome#🇸🇬 Сингапур t.me/letovpn_free
+vmess://eyJhZGQiOiIxNTYuMjQ1LjIzMi4yMzkiLCJhaWQiOiIwIiwiaG9zdCI6IiIsImlkIjoiYjE1ZTQ4MWQtMTdlNC00MWE4LTg0YzItMjNkNGYwNTE0ZDlhIiwibmV0Ijoid3MiLCJwYXRoIjoiXC8iLCJwb3J0IjoiMzUwNDMiLCJwcyI6Ilx1ZDgzY1x1ZGRlZFx1ZDgzY1x1ZGRmMFtvcGVucHJveHlsaXN0LmNvbV0gdm1lc3MtSEsiLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=#🇭🇰 Гонконг t.me/letovpn_free
 vless://c450727a-3a1f-4260-9bb4-1c668b45314c@dev.speciq.co:2086?encryption=none&type=xhttp#whitelist 🇨🇴 Колумбия t.me/letovpn_free

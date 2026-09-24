@@ -1,4 +1,4 @@
 vless://de5906f3-df38-4463-aa9d-2b01320cc6ea@31.76.76.28:8443?security=tls&encryption=none&insecure=0&host=/?&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=neth4.lckdwn.ru#🇳🇱 Нидерланды t.me/letovpn_free
 vless://a4bec43e-8073-4725-b307-47edad331fee@xuius.907737.xyz:37379?security=tls&type=xhttp&path=%2F&sni=xuius.907737.xyz&fp=chrome&mode=auto&encryption=none#🇺🇸 США t.me/letovpn_free
 vless://06c4e938-2954-478f-a870-ca1b163e30e9@94.183.170.135:8443?type=tcp&security=tls&encryption=none&fp=firefox&sni=estproxy4.lockdwn.com#🇪🇪 Эстония t.me/letovpn_free
-vless://c450727a-3a1f-4260-9bb4-1c668b45314c@dev.speciq.co:2086?encryption=none&type=xhttp#whitelist 🇨🇴 Колумбия t.me/letovpn_free
+vmess://eyJhZGQiOiIxNTYuMjQ1LjIzMi4yMzkiLCJhaWQiOiIwIiwiaG9zdCI6IiIsImlkIjoiYjE1ZTQ4MWQtMTdlNC00MWE4LTg0YzItMjNkNGYwNTE0ZDlhIiwibmV0Ijoid3MiLCJwYXRoIjoiXC8iLCJwb3J0IjoiMzUwNDMiLCJwcyI6Ilx1ZDgzY1x1ZGRlZFx1ZDgzY1x1ZGRmMFtvcGVucHJveHlsaXN0LmNvbV0gdm1lc3MtSEsiLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=#🇭🇰 Гонконг t.me/letovpn_free

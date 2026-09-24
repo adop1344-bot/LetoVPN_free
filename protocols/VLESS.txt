@@ -1,10 +1,11 @@
-#announce: Updated: 24.09.2026 14:10:01
+#announce: Updated: 24.09.2026 19:32:34
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
+vless://c450727a-3a1f-4260-9bb4-1c668b45314c@dev.speciq.co:2086?encryption=none&type=xhttp#whitelist 🇨🇴 Колумбия t.me/letovpn_free
 vless://de5906f3-df38-4463-aa9d-2b01320cc6ea@31.76.76.28:8443?security=tls&encryption=none&insecure=0&host=/?&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=neth4.lckdwn.ru#🇳🇱 Нидерланды t.me/letovpn_free
-vless://06c4e938-2954-478f-a870-ca1b163e30e9@94.183.170.135:8443?type=tcp&security=tls&encryption=none&fp=firefox&sni=estproxy4.lockdwn.com#🇪🇪 Эстония t.me/letovpn_free
 vless://a4bec43e-8073-4725-b307-47edad331fee@xuius.907737.xyz:37379?security=tls&type=xhttp&path=%2F&sni=xuius.907737.xyz&fp=chrome&mode=auto&encryption=none#🇺🇸 США t.me/letovpn_free
+vless://06c4e938-2954-478f-a870-ca1b163e30e9@94.183.170.135:8443?type=tcp&security=tls&encryption=none&fp=firefox&sni=estproxy4.lockdwn.com#🇪🇪 Эстония t.me/letovpn_free

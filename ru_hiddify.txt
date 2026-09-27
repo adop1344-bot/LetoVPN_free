@@ -1,0 +1,1 @@
+vless://dc0d27ba-34d2-4c8b-9cba-9ddbbb632748@161.104.107.198:43?type=tcp&headerType=none&security=tls&encryption=none&sni=1bs-abs-more.ru&fp=firefox&flow=xtls-rprx-vision#blacklist 🇷🇺 Россия t.me/letovpn_free

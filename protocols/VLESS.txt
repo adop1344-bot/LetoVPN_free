@@ -1,38 +1,38 @@
-#announce: Updated: 28.09.2026 15:54:07
+#announce: Updated: 29.09.2026 02:05:08
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
-vless://nasnet@57.129.96.67:443?security=tls&type=tcp&packetEncoding=xudp&sni=nasnet-571299667-direct.mbghalibaf.com&fp=chrome&flow=xtls-rprx-vision#🇩🇪 Германия t.me/letovpn_free
-vless://2787849c-1a49-4457-9db7-efcdb2578268@192.248.179.81:80?path=/&security=&encryption=none&type=ws#🇩🇪 Германия t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.197.206:443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=hub-mori-new.failspace.top&type=tcp&fp=edge#🇬🇧 Великобритания t.me/letovpn_free
+vless://bc659d88-a1e0-4c65-a49a-7b51b26a7a7f@87.192.47.10:52006?encryption=none&type=tcp&security=tls&sni=grok.setlisting.ru&alpn=h2%2Chttp%2F1.1&flow=xtls-rprx-vision&allowInsecure=0#blacklist 🇬🇧 Великобритания t.me/letovpn_free
+vless://bc659d88-a1e0-4c65-a49a-7b51b26a7a7f@188.255.236.14:52006?encryption=none&type=tcp&security=tls&sni=chatgpt.fastaichat.ru&alpn=h2%2Chttp%2F1.1&flow=xtls-rprx-vision&allowInsecure=0#blacklist 🇪🇪 Эстония t.me/letovpn_free
+vless://8b1fca23-94f3-498d-b161-c99828ccc8f1@165.231.170.34:443?encryption=none&type=xhttp&security=tls&path=%2F&sni=cab-6aba08bf.ferrin.uk&alpn=h2&allowInsecure=0#blacklist 🇫🇮 Финляндия t.me/letovpn_free
 vless://nasnet@nasnet-162191099-direct.mbghalibaf.com:443?security=tls&alpn=h2&encryption=none&insecure=0&host=v2rayNplus--v2rayNplus--v2rayNplus&headerType=none&fp=chrome&type=tcp&allowInsecure=0&flow=xtls-rprx-vision&sni=nasnet-162191099-direct.mbghalibaf.com#🇺🇸 США t.me/letovpn_free
-vless://e8b1500b-e9e8-5492-8312-f4eadf7d0767@nasnet-571299667-direct.mbghalibaf.com:443?security=tls&type=tcp&packetEncoding=xudp&sni=nasnet-571299667-direct.mbghalibaf.com&fp=chrome&flow=xtls-rprx-vision&encryption=none#🇺🇸 США t.me/letovpn_free
-vless://fdc48be3-a615-41ac-8bd1-ed844c931048@143.198.213.40:443?type=ws&security=tls&path=/&sni=edgetunnel-4uw.pages.dev&fp=chrome#🇸🇬 Сингапур t.me/letovpn_free
 vless://fdc48be3-a615-41ac-8bd1-ed844c931048@141.11.87.48:8443?type=ws&security=tls&path=/&sni=edgetunnel-4uw.pages.dev&fp=chrome#🇹🇼 Тайвань t.me/letovpn_free
+vless://fdc48be3-a615-41ac-8bd1-ed844c931048@143.198.213.40:443?type=ws&security=tls&path=/&sni=edgetunnel-4uw.pages.dev&fp=chrome#🇸🇬 Сингапур t.me/letovpn_free
 vless://e8b1500b-e9e8-5492-8312-f4eadf7d0767@162.19.10.99:443?security=tls&alpn=h2&encryption=none&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&flow=xtls-rprx-vision&sni=nasnet-162191099-direct.mbghalibaf.com#🇫🇷 Франция t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@cf.877774.xyz:443?security=tls&type=ws&path=%2F&host=ccc.010304.xyz&packetEncoding=xudp&sni=ccc.010304.xyz&fp=chrome#🇺🇸 США t.me/letovpn_free
-vless://fdc48be3-a615-41ac-8bd1-ed844c931048@cf.877774.xyz:2053?type=ws&security=tls&path=/&sni=edgetunnel-4uw.pages.dev&fp=chrome#🇺🇸 США t.me/letovpn_free
 vless://fdc48be3-a615-41ac-8bd1-ed844c931048@40.116.88.35:443?&security=tls&fp=chrome&sni=edgetunnel-4uw.pages.dev&type=ws&headerType=none&host=edgetunnel-4uw.pages.dev&path=/#🇺🇸 США t.me/letovpn_free
 vless://fdc48be3-a615-41ac-8bd1-ed844c931048@2.26.30.216:443?type=ws&security=tls&path=/&sni=edgetunnel-4uw.pages.dev&fp=chrome#🇩🇪 Германия t.me/letovpn_free
 vless://fdc48be3-a615-41ac-8bd1-ed844c931048@173.242.63.235:8443?type=ws&security=tls&path=/&sni=edgetunnel-4uw.pages.dev&fp=chrome#🇺🇦 UA t.me/letovpn_free
-vless://fdc48be3-a615-41ac-8bd1-ed844c931048@cf.877774.xyz:8443?&security=tls&fp=chrome&sni=edgetunnel-4uw.pages.dev&type=ws&headerType=none&host=edgetunnel-4uw.pages.dev&path=/#🇺🇸 США t.me/letovpn_free
 vless://fdc48be3-a615-41ac-8bd1-ed844c931048@45.192.202.199:443?type=ws&security=tls&path=/&sni=edgetunnel-4uw.pages.dev&fp=chrome#🇯🇵 Япония t.me/letovpn_free
+vless://fdc48be3-a615-41ac-8bd1-ed844c931048@cf.877774.xyz:8443?&security=tls&fp=chrome&sni=edgetunnel-4uw.pages.dev&type=ws&headerType=none&host=edgetunnel-4uw.pages.dev&path=/#🇺🇸 США t.me/letovpn_free
 vless://fdc48be3-a615-41ac-8bd1-ed844c931048@216.23.122.125:443?&security=tls&fp=chrome&sni=edgetunnel-4uw.pages.dev&type=ws&headerType=none&host=edgetunnel-4uw.pages.dev&path=/#whitelist 🇯🇵 Япония t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@144.31.2.33:443?security=tls&alpn=h2&encryption=none&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=pl3.moritech.net#whitelist 🇵🇱 Польша t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@144.31.5.3:443?alpn=h2&encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=pl4.moritech.net&type=tcp#whitelist 🇵🇱 Польша t.me/letovpn_free
+vless://fdc48be3-a615-41ac-8bd1-ed844c931048@45.152.65.100:443?&security=tls&fp=chrome&sni=edgetunnel-4uw.pages.dev&type=ws&headerType=none&host=edgetunnel-4uw.pages.dev&path=/#whitelist 🇬🇧 Великобритания t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@pl3.moritech.net:443?Telegram=@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad&security=tls&alpn=h2&encryption=none&insecure=0&headerType=none&fp=firefox&type=tcp&allowInsecure=0&flow=xtls-rprx-vision&sni=#whitelist 🇺🇸 США t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@144.31.5.3:443?alpn=h2&encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=pl4.moritech.net&type=tcp#whitelist 🇵🇱 Польша t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@144.31.2.33:443?security=tls&alpn=h2&encryption=none&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=pl3.moritech.net#whitelist 🇵🇱 Польша t.me/letovpn_free
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@pl4.moritech.net:443?alpn=h2&flow=xtls-rprx-vision&fp=chrome&security=tls&type=tcp#whitelist 🇺🇸 США t.me/letovpn_free
 vless://3d08ed67-5a47-42d3-a948-ebc7d2eb21f7@free.sahanwickramasinghe.me:443?security=tls&type=tcp&sni=free.sahanwickramasinghe.me&fp=chrome&encryption=none#whitelist 🇺🇸 США t.me/letovpn_free
 vless://9ef61079-6f7d-4911-9608-943da85d8e6f@test.keoplentuio.xyz:2053?security=&encryption=none&headerType=&type=tcp#whitelist 🇺🇸 США t.me/letovpn_free
 vless://fdc48be3-a615-41ac-8bd1-ed844c931048@43.174.192.1:443?security=tls&type=ws&path=%2F&host=edgetunnel-4uw.pages.dev&packetEncoding=xudp&sni=edgetunnel-4uw.pages.dev&fp=chrome&encryption=none#whitelist 🇸🇬 Сингапур t.me/letovpn_free
 vless://408fbae6-a40b-4f0b-9723-0b4ce8e3d035@onhit.shalana.xyz:443?security=tls&type=tcp&packetEncoding=xudp&sni=onhit.shalana.xyz&fp=chrome#whitelist 🇺🇸 США t.me/letovpn_free
-vless://fdc48be3-a615-41ac-8bd1-ed844c931048@2.26.10.137:443?security=tls&type=ws&path=%2F&host=edgetunnel-4uw.pages.dev&packetEncoding=xudp&sni=edgetunnel-4uw.pages.dev&fp=chrome#whitelist 🇺🇸 США t.me/letovpn_free
 vless://fdc48be3-a615-41ac-8bd1-ed844c931048@23.175.201.2:8443?security=tls&type=ws&path=%2F&host=edgetunnel-4uw.pages.dev&packetEncoding=xudp&sni=edgetunnel-4uw.pages.dev&fp=chrome#whitelist 🇭🇰 Гонконг t.me/letovpn_free
+vless://fdc48be3-a615-41ac-8bd1-ed844c931048@2.26.10.137:443?security=tls&type=ws&path=%2F&host=edgetunnel-4uw.pages.dev&packetEncoding=xudp&sni=edgetunnel-4uw.pages.dev&fp=chrome#whitelist 🇺🇸 США t.me/letovpn_free
+vless://fdc48be3-a615-41ac-8bd1-ed844c931048@23.141.12.134:8443?security=tls&type=ws&path=%2F&host=edgetunnel-4uw.pages.dev&packetEncoding=xudp&sni=edgetunnel-4uw.pages.dev&fp=chrome#whitelist 🇺🇸 США t.me/letovpn_free
 vless://fdc48be3-a615-41ac-8bd1-ed844c931048@45.8.173.250:443?security=tls&type=ws&path=%2F&host=edgetunnel-4uw.pages.dev&packetEncoding=xudp&sni=edgetunnel-4uw.pages.dev&fp=chrome#whitelist 🇯🇵 Япония t.me/letovpn_free
 vless://fdc48be3-a615-41ac-8bd1-ed844c931048@43.174.195.1:443?security=tls&type=ws&path=%2F&host=edgetunnel-4uw.pages.dev&packetEncoding=xudp&sni=edgetunnel-4uw.pages.dev&fp=chrome&encryption=none#whitelist 🇸🇬 Сингапур t.me/letovpn_free
+vless://eb8613e3-8393-4cff-a3ad-6501fd4adc63@152.69.195.67:47878?allowInsecure=0&sni=152.69.195.67#whitelist 🇯🇵 Япония t.me/letovpn_free
 vless://fdc48be3-a615-41ac-8bd1-ed844c931048@208.68.180.204:443?&security=tls&fp=chrome&sni=edgetunnel-4uw.pages.dev&type=ws&headerType=none&host=edgetunnel-4uw.pages.dev&path=/#whitelist 🇺🇸 США t.me/letovpn_free
-vless://c450727a-3a1f-4260-9bb4-1c668b45314c@dev.speciq.co:2086?encryption=none&type=xhttp#whitelist 🇨🇴 Колумбия t.me/letovpn_free
 vless://06c4e938-2954-478f-a870-ca1b163e30e9@94.183.170.135:8443?type=tcp&security=tls&encryption=none&fp=firefox&sni=estproxy4.lockdwn.com#🇪🇪 Эстония t.me/letovpn_free
-vless://8fb65472-5957-4f64-ba2d-b5812b2f155a@157.137.224.224:62145?type=tcp&headerType=none&path=%2F#🇨🇴 Колумбия t.me/letovpn_free

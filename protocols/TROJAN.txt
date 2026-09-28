@@ -1,4 +1,4 @@
-#announce: Updated: 28.09.2026 15:54:07
+#announce: Updated: 29.09.2026 02:05:08
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
@@ -6,5 +6,4 @@
 #profile-title: TROJAN TG@LetoVPN_Free
 
 trojan://XuMweB2PWs@2.27.109.179:45464?sni=2.27.109.179.sslip.io&fp=chrome&type=tcp&path=/#🇭🇰 Гонконг t.me/letovpn_free
-trojan://M7v%w11Se*@tttyder.wsone.icu:443?sni=tttyder.wsone.icu&type=raw&fp=chrome#🇦🇪 ОАЭ t.me/letovpn_free
 trojan://87d1bfd4-574e-4c96-ad42-0426f27461ff@join.my.telegram.channel.cmliussss.to.unlock.more.premium.nodes.cf.090227.xyz:443?sni=_acme-challenge.sb.cloudns.biz&type=ws&path=%2F&fp=chrome#🇺🇸 США t.me/letovpn_free

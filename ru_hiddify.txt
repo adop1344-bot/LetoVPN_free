@@ -1,2 +1,0 @@
-vless://1b719dea-8174-4c27-ae5b-d0d41e227da0@139.100.239.104:501?type=tcp&encryption=none#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://cdd6bfce-781a-4454-b7d5-4778abb5c24f@gustav9.api3-max.ru:443?security=tls&flow=xtls-rprx-vision&fp=firefox&sni=gustav9.api3-max.ru#🇷🇺 Россия t.me/letovpn_free

@@ -1,11 +1,12 @@
-#announce: Updated: 01.10.2026 00:59:30
+#announce: Updated: 01.10.2026 06:53:24
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
-trojan://UX82473651@actual-squid.rooster465.autos:443?sni=actual-squid.rooster465.autos&peer=actual-squid.rooster465.autos&security=tls#🇩🇪 Германия t.me/letovpn_free
+trojan://8GXLP3dEzm7T8wP5Jx0Ufg@199.107.164.105:443?host=quictest.burncommunity.ru&path=%2F&security=tls&sni=quictest.burncommunity.ru&type=ws#blacklist 🇺🇸 США t.me/letovpn_free
 trojan://UX82473651@alive-flea.rooster465.autos:443?sni=alive-flea.rooster465.autos&peer=alive-flea.rooster465.autos&security=tls#🇺🇸 США t.me/letovpn_free
+trojan://UX82473651@actual-squid.rooster465.autos:443?sni=actual-squid.rooster465.autos&peer=actual-squid.rooster465.autos&security=tls#🇩🇪 Германия t.me/letovpn_free
 trojan://87d1bfd4-574e-4c96-ad42-0426f27461ff@join.my.telegram.channel.cmliussss.to.unlock.more.premium.nodes.cf.090227.xyz:443?sni=_acme-challenge.sb.cloudns.biz&type=ws&path=%2F&fp=chrome#🇺🇸 США t.me/letovpn_free
 trojan://XuMweB2PWs@2.27.109.179:45464?sni=2.27.109.179.sslip.io&fp=chrome&type=tcp&path=/#🇭🇰 Гонконг t.me/letovpn_free

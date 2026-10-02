@@ -1,4 +1,4 @@
-#announce: Updated: 02.10.2026 01:27:50
+#announce: Updated: 02.10.2026 06:52:47
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
@@ -6,13 +6,14 @@
 #profile-title: VLESS TG@LetoVPN_Free
 
 vless://0c1b7949-fe09-43d9-863f-2c031f66bfc1@77.42.20.51:1085?type=tcp#🇫🇮 Финляндия t.me/letovpn_free
+vless://0c1b7949-fe09-43d9-863f-2c031f66bfc1@188.245.25.223:1085?type=tcp#🇩🇪 Германия t.me/letovpn_free
 vless://9ef61079-6f7d-4911-9608-943da85d8e6f@178.83.46.216:2053?security=&encryption=none&headerType=none&type=tcp#🇩🇪 Германия t.me/letovpn_free
-vless://92d67828-4c56-4795-af5a-f387651380dc@140.245.120.16:443?type=ws&security=tls&fp=firefox&sni=trackydev.site&host=trackydev.site#whitelist 🇸🇬 Сингапур t.me/letovpn_free
-vless://c450727a-3a1f-4260-9bb4-1c668b45314c@dev.speciq.co:2086?encryption=none&type=xhttp#whitelist 🇨🇴 Колумбия t.me/letovpn_free
-vless://bc659d88-a1e0-4c65-a49a-7b51b26a7a7f@87.192.47.10:52006?type=tcp&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=grok.setlisting.ru#🇬🇧 Великобритания t.me/letovpn_free
+vless://e081da45-9fae-4687-9376-f9a6a0dbbe83@e33xr.qzz.io:80?encryption=none&path=/id-amz&type=ws#whitelist 🇺🇸 США t.me/letovpn_free
+vless://ea50b1a3-3a98-4c5e-a150-48ada40d68d7@cf-vless-4cf55824.aimall.fr:443?encryption=none&fp=chrome&host=cf-vless-4cf55824.aimall.fr&path=/connect&security=tls&type=ws#whitelist 🇫🇷 Франция t.me/letovpn_free
+vless://8fb65472-5957-4f64-ba2d-b5812b2f155a@144.21.40.187:62145?security=&encryption=none&headerType=none&type=tcp#🇳🇱 Нидерланды t.me/letovpn_free
+vless://55af8466-53cd-46f4-aef9-5378f5ac34a4@n2.akan1.ir:8443?mode=auto&path=%2F&security=tls&alpn=h2%2Chttp%2F1.1%2Ch3&encryption=none&extra=%7B%22mode%22%3A%22auto%22%2C%22xPaddingBytes%22%3A%22100-1000%22%7D&host=home.akan1.ir&fp=chrome&type=xhttp&sni=home.akan1.ir#🇫🇮 Финляндия t.me/letovpn_free
 vless://67a171fb-a31d-49f3-a9d6-98de350763e8@107.189.18.145:443?type=tcp&security=tls&fp=firefox&sni=restnet.duckdns.org#🇳🇱 Нидерланды t.me/letovpn_free
 vless://bc659d88-a1e0-4c65-a49a-7b51b26a7a7f@31.77.227.10:52006?encryption=none&type=tcp&security=tls&sni=fr.setlisting.ru&alpn=h2%2Chttp%2F1.1&flow=xtls-rprx-vision&allowInsecure=0#🇺🇸 США t.me/letovpn_free
-vless://3d08ed67-5a47-42d3-a948-ebc7d2eb21f7@51.75.67.209:443?security=tls&type=tcp&sni=free.sahanwickramasinghe.me&fp=firefox#🇩🇪 Германия t.me/letovpn_free
 vless://bc659d88-a1e0-076c-a49a-7b51b26a7a7f@31.77.227.6:52006?security=tls&type=tcp&packetEncoding=xudp&sni=bigdick.gamegrow.ru&fp=chrome&flow=xtls-rprx-vision#🇺🇸 США t.me/letovpn_free
-vless://3d08ed67-5a47-42d3-a948-ebc7d2eb21f7@free.sahanwickramasinghe.me:443?security=tls&type=tcp&sni=free.sahanwickramasinghe.me&fp=chrome#🇺🇸 США t.me/letovpn_free
+vless://bc659d88-a1e0-4c65-a49a-7b51b26a7a7f@87.192.47.10:52006?type=tcp&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=grok.setlisting.ru#🇬🇧 Великобритания t.me/letovpn_free
 vless://06c4e938-2954-478f-a870-ca1b163e30e9@94.183.170.135:8443?type=tcp&security=tls&encryption=none&fp=firefox&sni=estproxy4.lockdwn.com#🇪🇪 Эстония t.me/letovpn_free

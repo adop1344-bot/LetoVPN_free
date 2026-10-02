@@ -1,16 +1,10 @@
-#announce: Updated: 02.10.2026 01:27:50
+#announce: Updated: 02.10.2026 06:52:47
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
-trojan://ymk9eBP4Ams3-ncYCV4kDAezUzBfkR8x@31.129.42.164:6443?security=tls&alpn=h2%2Chttp%2F1.1&insecure=0&headerType=none&fp=firefox&type=tcp&allowInsecure=0&sni=node111.ichost.cloud#whitelist 🇷🇺 Россия t.me/letovpn_free
-trojan://ymk9eBP4Ams3-ncYCV4kDAezUzBfkR8x@37.9.4.182:8443?security=tls&alpn=h2%2Chttp%2F1.1&insecure=0&headerType=none&fp=firefox&type=tcp&allowInsecure=0&sni=denode201.velox-network.org#whitelist 🇷🇺 Россия t.me/letovpn_free
-trojan://ymk9eBP4Ams3-ncYCV4kDAezUzBfkR8x@185.91.53.251:8443?security=tls&alpn=h2%2Chttp%2F1.1&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=sw-one.quickgo.cc&fp=android#whitelist 🇷🇺 Россия t.me/letovpn_free
-trojan://ymk9eBP4Ams3-ncYCV4kDAezUzBfkR8x@185.91.52.139:443?security=tls&alpn=h2%2Chttp%2F1.1&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=isq.ichost.cloud&fp=android#whitelist 🇷🇺 Россия t.me/letovpn_free
 trojan://UX82473651@3.120.109.26:443?sni=actual-squid.rooster465.autos&peer=actual-squid.rooster465.autos&security=tls#🇩🇪 Германия t.me/letovpn_free
-trojan://87d1bfd4-574e-4c96-ad42-0426f27461ff@join.my.telegram.channel.cmliussss.to.unlock.more.premium.nodes.cf.090227.xyz:443?sni=_acme-challenge.sb.cloudns.biz&type=ws&path=%2F&fp=chrome#🇺🇸 США t.me/letovpn_free
 trojan://UX82473651@cheerful-swan.rooster465.autos:443?sni=cheerful-swan.rooster465.autos&peer=cheerful-swan.rooster465.autos&security=tls#🇵🇱 Польша t.me/letovpn_free
-trojan://8GXLP3dEzm7T8wP5Jx0Ufg@199.107.164.105:443?host=quictest.burncommunity.ru&path=%2F&security=tls&sni=quictest.burncommunity.ru&type=ws#🇺🇸 США t.me/letovpn_free
 trojan://XuMweB2PWs@2.27.109.179:45464?sni=2.27.109.179.sslip.io&fp=chrome&type=tcp&path=/#🇭🇰 Гонконг t.me/letovpn_free

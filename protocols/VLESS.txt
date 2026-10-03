@@ -1,13 +1,16 @@
-#announce: Updated: 03.10.2026 18:48:03
+#announce: Updated: 03.10.2026 23:41:34
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.160.250:443?type=tcp&security=tls&flow=xtls-rprx-vision&sni=chubby0.failspace.top&fp=chrome#blacklist 🇺🇸 США t.me/letovpn_free
+vless://24f9d11d-ceca-4f75-93ca-ad143ca18b28@23.237.202.250:443?encryption=none&extra=%7B%22xmux%22%3A%7B%22maxConnections%22%3A1%2C%22maxReuseTimes%22%3A0%7D%7D&host=us.vmagnum.win&security=tls&sni=24f9d11d.ferrin.uk&type=xhttp&fp=chrome#blacklist 🇺🇸 США t.me/letovpn_free
 vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@chubby0.failspace.top:443?type=tcp&security=tls&flow=xtls-rprx-vision&sni=chubby0.failspace.top&fp=chrome#blacklist 🇺🇸 США t.me/letovpn_free
+vless://51a1fd52-fd88-4905-a976-35e44be28e4b@pl.flen-vpn.xyz:8443?type=tcp&headerType=none&security=tls&encryption=none&sni=pl.flen-vpn.xyz&alpn=http%2F1.1&fp=chrome#blacklist 🇺🇸 США t.me/letovpn_free
+vless://eb8613e3-8393-4cff-a3ad-6501fd4adc63@152.69.195.67:47878?allowInsecure=0&sni=152.69.195.67#whitelist 🇯🇵 Япония t.me/letovpn_free
 vless://67a171fb-a31d-49f3-a9d6-98de350763e8@107.189.18.145:443?type=tcp&security=tls&fp=firefox&sni=restnet.duckdns.org#🇳🇱 Нидерланды t.me/letovpn_free
-vless://bc659d88-a1e0-076c-a49a-7b51b26a7a7f@31.77.227.6:52006?security=tls&type=tcp&packetEncoding=xudp&sni=bigdick.gamegrow.ru&fp=chrome&flow=xtls-rprx-vision#🇺🇸 США t.me/letovpn_free
-vless://bc659d88-a1e0-4c65-a49a-7b51b26a7a7f@87.192.47.10:52006?encryption=none&flow=xtls-rprx-vision&security=tls&sni=grok.setlisting.ru&type=tcp&headerType=none&fp=chrome#🇬🇧 Великобритания t.me/letovpn_free
 vless://bc659d88-a1e0-4c65-a49a-7b51b26a7a7f@31.77.227.10:52006?encryption=none&type=tcp&security=tls&sni=fr.setlisting.ru&alpn=h2%2Chttp%2F1.1&flow=xtls-rprx-vision&allowInsecure=0#🇺🇸 США t.me/letovpn_free
-vless://51a1fd52-fd88-4905-a976-35e44be28e4b@pl.flen-vpn.xyz:8443?type=tcp&headerType=none&security=tls&encryption=none&sni=pl.flen-vpn.xyz&fp=chrome&alpn=http%2F1.1#🇺🇸 США t.me/letovpn_free
+vless://bc659d88-a1e0-4c65-a49a-7b51b26a7a7f@87.192.47.10:52006?encryption=none&flow=xtls-rprx-vision&security=tls&sni=grok.setlisting.ru&type=tcp&headerType=none&fp=chrome#🇬🇧 Великобритания t.me/letovpn_free
+vless://bc659d88-a1e0-076c-a49a-7b51b26a7a7f@31.77.227.6:52006?security=tls&type=tcp&packetEncoding=xudp&sni=bigdick.gamegrow.ru&fp=chrome&flow=xtls-rprx-vision#🇺🇸 США t.me/letovpn_free

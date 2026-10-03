@@ -1,11 +1,11 @@
-#announce: Updated: 03.10.2026 00:56:11
+#announce: Updated: 03.10.2026 06:37:39
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
-trojan://UX82473651@cheerful-swan.rooster465.autos:443?sni=cheerful-swan.rooster465.autos&peer=cheerful-swan.rooster465.autos&security=tls#🇵🇱 Польша t.me/letovpn_free
 trojan://UX82473651@3.120.109.26:443?sni=actual-squid.rooster465.autos&type=tcp&fp=chrome#🇩🇪 Германия t.me/letovpn_free
 trojan://UX82473651@actual-squid.rooster465.autos:443?sni=actual-squid.rooster465.autos&peer=actual-squid.rooster465.autos&security=tls#🇩🇪 Германия t.me/letovpn_free
+trojan://UX82473651@cheerful-swan.rooster465.autos:443?sni=cheerful-swan.rooster465.autos&peer=cheerful-swan.rooster465.autos&security=tls#🇵🇱 Польша t.me/letovpn_free
 trojan://XuMweB2PWs@2.27.109.179:45464?sni=2.27.109.179.sslip.io&fp=chrome&type=tcp&path=/#🇭🇰 Гонконг t.me/letovpn_free

@@ -1,38 +1,32 @@
-#announce: Updated: 04.10.2026 19:31:55
+#announce: Updated: 04.10.2026 23:59:47
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
-trojan://UX82473651@loved-shark.rooster465.autos:443?sni=loved-shark.rooster465.autos&peer=loved-shark.rooster465.autos&security=tls#🇮🇪 Ирландия t.me/letovpn_free
-trojan://UX82473651@pleased-albacore.rooster465.autos:443?sni=pleased-albacore.rooster465.autos&peer=pleased-albacore.rooster465.autos&security=tls#🇩🇪 Германия t.me/letovpn_free
-trojan://UX82473651@happy-gibbon.rooster465.autos:443?sni=happy-gibbon.rooster465.autos&peer=happy-gibbon.rooster465.autos&security=tls#🇺🇸 США t.me/letovpn_free
-trojan://UX82473651@winning-marten.rooster465.autos:443?sni=winning-marten.rooster465.autos&peer=winning-marten.rooster465.autos&security=tls#🇯🇵 Япония t.me/letovpn_free
-trojan://UX82473651@obliging-louse.rooster465.autos:443?sni=obliging-louse.rooster465.autos&peer=obliging-louse.rooster465.autos&security=tls#🇯🇵 Япония t.me/letovpn_free
-trojan://UX82473651@18.143.92.167:443?sni=glowing-marmoset.rooster465.autos&type=tcp&fp=chrome#🇸🇬 Сингапур t.me/letovpn_free
-trojan://UX82473651@promoted-rattler.rooster465.autos:443?sni=promoted-rattler.rooster465.autos&peer=promoted-rattler.rooster465.autos&security=tls#🇯🇵 Япония t.me/letovpn_free
-trojan://UX82473651@guided-ferret.rooster465.autos:443?sni=guided-ferret.rooster465.autos&peer=guided-ferret.rooster465.autos&security=tls#🇺🇸 США t.me/letovpn_free
-trojan://UX82473651@balanced-stag.rooster465.autos:443?sni=balanced-stag.rooster465.autos&peer=balanced-stag.rooster465.autos&security=tls#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://UX82473651@kind-stork.rooster465.autos:443?sni=kind-stork.rooster465.autos&peer=kind-stork.rooster465.autos&security=tls#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://UX82473651@pretty-rat.rooster465.autos:443?sni=pretty-rat.rooster465.autos&peer=pretty-rat.rooster465.autos&security=tls#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://UX82473651@desired-boxer.rooster465.autos:443?sni=desired-boxer.rooster465.autos&peer=desired-boxer.rooster465.autos&security=tls#🇸🇬 Сингапур t.me/letovpn_free
-trojan://UX82473651@real-cardinal.rooster465.autos:443?sni=real-cardinal.rooster465.autos&peer=real-cardinal.rooster465.autos&security=tls#🇸🇬 Сингапур t.me/letovpn_free
-trojan://UX82473651@organic-caribou.rooster465.autos:443?sni=organic-caribou.rooster465.autos&peer=organic-caribou.rooster465.autos&security=tls#🇯🇵 Япония t.me/letovpn_free
-trojan://UX82473651@engaging-toucan.rooster465.autos:443?sni=engaging-toucan.rooster465.autos&peer=engaging-toucan.rooster465.autos&security=tls#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://UX82473651@glowing-marmoset.rooster465.autos:443?sni=glowing-marmoset.rooster465.autos&peer=glowing-marmoset.rooster465.autos&security=tls#🇸🇬 Сингапур t.me/letovpn_free
-trojan://UX82473651@main-fawn.rooster465.autos:443?sni=main-fawn.rooster465.autos&peer=main-fawn.rooster465.autos&security=tls#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://UX82473651@concrete-aardvark.rooster465.autos:443?sni=concrete-aardvark.rooster465.autos&peer=concrete-aardvark.rooster465.autos&security=tls#🇯🇵 Япония t.me/letovpn_free
-trojan://UX82473651@evolving-platypus.rooster465.autos:443?sni=evolving-platypus.rooster465.autos&peer=evolving-platypus.rooster465.autos&security=tls#🇯🇵 Япония t.me/letovpn_free
-trojan://UX82473651@comic-poodle.rooster465.autos:443?sni=comic-poodle.rooster465.autos&peer=comic-poodle.rooster465.autos&security=tls#🇯🇵 Япония t.me/letovpn_free
-trojan://UX82473651@44.255.123.205:443?sni=happy-gibbon.rooster465.autos&type=tcp&fp=chrome#🇺🇸 США t.me/letovpn_free
-trojan://UX82473651@noted-cougar.rooster465.autos:443?sni=noted-cougar.rooster465.autos&peer=noted-cougar.rooster465.autos&security=tls#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://UX82473651@liked-eft.rooster465.autos:443?sni=liked-eft.rooster465.autos&peer=liked-eft.rooster465.autos&security=tls#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://UX82473651@evolving-ewe.rooster465.autos:443?sni=evolving-ewe.rooster465.autos&peer=evolving-ewe.rooster465.autos&security=tls#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://UX82473651@52.192.217.187:443?sni=evolving-platypus.rooster465.autos&type=tcp&fp=chrome#🇯🇵 Япония t.me/letovpn_free
-trojan://UX82473651@13.125.69.162:443?sni=engaging-toucan.rooster465.autos&type=tcp&fp=chrome#🇰🇷 Южная Корея t.me/letovpn_free
+trojan://UX82473651@loved-shark.rooster465.autos:443?sni=loved-shark.rooster465.autos&type=tcp&fp=chrome#🇦🇪 ОАЭ t.me/letovpn_free
+trojan://UX82473651@3.253.106.233:443?sni=loved-shark.rooster465.autos&type=tcp&fp=chrome#🇮🇪 Ирландия t.me/letovpn_free
+trojan://UX82473651@63.178.198.94:443?sni=pleased-albacore.rooster465.autos&type=tcp&fp=chrome#🇩🇪 Германия t.me/letovpn_free
 trojan://UX82473651@13.230.139.12:443?sni=brief-glider.rooster465.autos&type=tcp&fp=chrome#🇯🇵 Япония t.me/letovpn_free
+trojan://s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z@77.74.123.106:4443?fp=firefox&security=tls&sni=grape-test-italy.dynuddns.net&type=tcp#🇷🇴 Румыния t.me/letovpn_free
+trojan://UX82473651@52.192.217.187:443?sni=evolving-platypus.rooster465.autos&type=tcp&fp=chrome#🇯🇵 Япония t.me/letovpn_free
+trojan://UX82473651@18.143.92.167:443?sni=glowing-marmoset.rooster465.autos&type=tcp&fp=chrome#🇸🇬 Сингапур t.me/letovpn_free
+trojan://UX82473651@18.176.61.69:443?sni=intense-sole.rooster465.autos&type=tcp&fp=chrome#🇯🇵 Япония t.me/letovpn_free
+trojan://UX82473651@13.125.69.162:443?sni=engaging-toucan.rooster465.autos&type=tcp&fp=chrome#🇰🇷 Южная Корея t.me/letovpn_free
 trojan://UX82473651@43.201.252.164:443?sni=balanced-stag.rooster465.autos&type=tcp&fp=chrome#🇰🇷 Южная Корея t.me/letovpn_free
+trojan://UX82473651@3.35.207.188:443?sni=main-fawn.rooster465.autos&type=tcp&fp=chrome#🇰🇷 Южная Корея t.me/letovpn_free
+trojan://UX82473651@3.34.131.153:443?sni=pretty-rat.rooster465.autos&type=tcp&fp=chrome#🇰🇷 Южная Корея t.me/letovpn_free
+trojan://UX82473651@winning-marten.rooster465.autos:443?security=tls&sni=winning-marten.rooster465.autos#🇯🇵 Япония t.me/letovpn_free
+trojan://UX82473651@sacred-anemone.rooster465.autos:443?sni=sacred-anemone.rooster465.autos&type=tcp&fp=chrome#🇦🇪 ОАЭ t.me/letovpn_free
+trojan://UX82473651@44.255.123.205:443?sni=happy-gibbon.rooster465.autos&type=tcp&fp=chrome#🇺🇸 США t.me/letovpn_free
+trojan://UX82473651@guided-ferret.rooster465.autos:443?security=tls&sni=guided-ferret.rooster465.autos#🇺🇸 США t.me/letovpn_free
+trojan://UX82473651@liked-eft.rooster465.autos:443?security=tls&sni=liked-eft.rooster465.autos#🇰🇷 Южная Корея t.me/letovpn_free
+trojan://UX82473651@glowing-marmoset.rooster465.autos:443?sni=glowing-marmoset.rooster465.autos&peer=glowing-marmoset.rooster465.autos&security=tls#🇸🇬 Сингапур t.me/letovpn_free
 trojan://UX82473651@43.207.198.39:443?sni=fancy-javelin.rooster465.autos&type=tcp&fp=chrome#🇯🇵 Япония t.me/letovpn_free
 trojan://UX82473651@54.249.36.167:443?sni=comic-poodle.rooster465.autos&type=tcp&fp=chrome#🇯🇵 Япония t.me/letovpn_free
+trojan://UX82473651@evolving-platypus.rooster465.autos:443?sni=evolving-platypus.rooster465.autos&peer=evolving-platypus.rooster465.autos&security=tls#🇯🇵 Япония t.me/letovpn_free
+trojan://UX82473651@promoted-rattler.rooster465.autos:443?sni=promoted-rattler.rooster465.autos&peer=promoted-rattler.rooster465.autos&security=tls#🇯🇵 Япония t.me/letovpn_free
+trojan://UX82473651@desired-boxer.rooster465.autos:443?sni=desired-boxer.rooster465.autos&peer=desired-boxer.rooster465.autos&security=tls#🇸🇬 Сингапур t.me/letovpn_free
 trojan://UX82473651@cheerful-swan.rooster465.autos:443?sni=cheerful-swan.rooster465.autos&peer=cheerful-swan.rooster465.autos&security=tls#🇵🇱 Польша t.me/letovpn_free
+trojan://UX82473651@main-fawn.rooster465.autos:443?sni=main-fawn.rooster465.autos&peer=main-fawn.rooster465.autos&security=tls#🇰🇷 Южная Корея t.me/letovpn_free

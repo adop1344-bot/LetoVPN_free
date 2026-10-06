@@ -1,0 +1,1 @@
+vless://20ef7310-0b50-4943-98a6-3d0856b383b1@196.240.125.253:8443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=vusr-6ac431f4.adhil.uk&type=tcp&fp=chrome#whitelist 🇷🇺 Россия t.me/letovpn_free

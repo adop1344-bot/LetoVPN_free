@@ -1,4 +1,4 @@
-#announce: Updated: 06.10.2026 02:49:28
+#announce: Updated: 06.10.2026 07:38:15
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
@@ -6,13 +6,9 @@
 #profile-title: VLESS TG@LetoVPN_Free
 
 vless://bc659d88-a1e0-4c65-a49a-7b51b26a7a7f@87.192.47.10:52006?encryption=none&flow=xtls-rprx-vision&security=tls&sni=grok.setlisting.ru&type=tcp&headerType=none#blacklist 🇬🇧 Великобритания t.me/letovpn_free
-vless://a853e120-3570-462b-aec1-e8f3d4f92d24@170.114.52.22:443?type=ws&security=tls&fp=chrome&sni=asia.csmaster.site&host=asia.csmaster.site#blacklist 🇺🇸 США t.me/letovpn_free
-vless://29c3dd6b-b164-40ca-a0d5-f06aca52a8b2@141.193.213.21:8443?encryption=none&security=tls&sni=u.srilankangrill.online&type=ws&host=u.srilankangrill.online&path=%2F#blacklist 🇺🇸 США t.me/letovpn_free
+vless://29c3dd6b-b164-40ca-a0d5-f06aca52a8b2@141.193.213.20:8443?encryption=none&security=tls&sni=u.srilankangrill.online&type=ws&host=u.srilankangrill.online&path=%2F#blacklist 🇺🇸 США t.me/letovpn_free
 vless://806fa224-44f7-4c1b-b7a3-05bfdfdfbf87@iiproxy88.iiproxy.com:8443?encryption=none&fp=chrome&host=iiproxy88.iiproxy.com&security=tls&sni=iiproxy88.iiproxy.com&type=ws#🇺🇸 США t.me/letovpn_free
-vless://c4394e27-baeb-422d-8905-a93f8e01126f@cdn2.alihapp.com:443?mode=auto&path=/&security=tls&alpn=h2,http/1.1&encryption=none&insecure=0&host=cdn2.alihapp.com&fp=chrome&type=xhttp&allowInsecure=0&sni=cdn2.alihapp.com#🇺🇸 США t.me/letovpn_free
-vless://c4394e27-baeb-422d-8905-a93f8e01126f@cdn6.alihapp.com:443?mode=auto&path=/&security=tls&alpn=h2,http/1.1&encryption=none&insecure=0&host=cdn6.alihapp.com&fp=chrome&type=xhttp&allowInsecure=0&sni=cdn6.alihapp.com#🇺🇸 США t.me/letovpn_free
-vless://88360a6d-0fd7-49ef-ad06-6397fc7a80e5@www.chatgpt.com:2083?security=tls&type=ws&path=%2F&host=azki.dearhossein-taktaz.ir&sni=azki.dearhossein-taktaz.ir&fp=chrome&encryption=none#whitelist 🇺🇸 США t.me/letovpn_free
-vless://c4394e27-baeb-422d-8905-a93f8e01126f@cdn10.alihapp.com:443?mode=auto&path=/&security=tls&alpn=h2,http/1.1&encryption=none&insecure=0&host=cdn10.alihapp.com&fp=chrome&type=xhttp&allowInsecure=0&sni=cdn10.alihapp.com#whitelist 🇺🇸 США t.me/letovpn_free
-vless://c450727a-3a1f-4260-9bb4-1c668b45314c@dev.speciq.co:2086?encryption=none&type=xhttp#whitelist 🇨🇴 Колумбия t.me/letovpn_free
+vless://e081da45-9fae-4687-9376-f9a6a0dbbe83@e33xr.qzz.io:80?encryption=none&path=/id-amz&type=ws#whitelist 🇺🇸 США t.me/letovpn_free
 vless://bc659d88-a1e0-4c65-a49a-7b51b26a7a7f@31.77.227.10:52006?encryption=none&type=tcp&security=tls&sni=fr.setlisting.ru&alpn=h2%2Chttp%2F1.1&flow=xtls-rprx-vision&allowInsecure=0#🇺🇸 США t.me/letovpn_free
 vless://806fa224-44f7-4c1b-b7a3-05bfdfdfbf87@iiproxy888.iiproxy.com:8443?security=tls&type=ws&path=%2F&host=iiproxy888.iiproxy.com&packetEncoding=xudp&alpn=h2%2Chttp%2F1.1&sni=iiproxy888.iiproxy.com&fp=chrome&encryption=none#🇺🇸 США t.me/letovpn_free
+vless://29c3dd6b-b164-40ca-a0d5-f06aca52a8b2@141.193.213.21:8443?encryption=none&security=tls&sni=u.srilankangrill.online&type=ws&host=u.srilankangrill.online&path=%2F#🇺🇸 США t.me/letovpn_free

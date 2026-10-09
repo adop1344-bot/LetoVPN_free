@@ -1,4 +1,4 @@
-#announce: Updated: 09.10.2026 15:40:07
+#announce: Updated: 10.10.2026 01:21:24
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
@@ -7,8 +7,9 @@
 
 vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@162.159.130.234:443?path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40public-vpn-200.opengw.net%3A443%3Fed%3D2560%23Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET&security=tls&encryption=none&insecure=0&host=snip.edgeoneai.cc.cd&type=ws&allowInsecure=0&sni=snip.edgeoneai.cc.cd#🇺🇸 США t.me/letovpn_free
 vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@162.159.135.234:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&type=ws&host=snip.edgeoneai.cc.cd&path=%2F#🇺🇸 США t.me/letovpn_free
-vless://595a6246-d7b0-48bc-a5f0-17068aec2e88@alb1.keepverify.net:8443?security=tls&encryption=none&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&flow=xtls-rprx-vision#🇺🇸 США t.me/letovpn_free
 vless://tyxyrytyro@51.255.165.170:443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=tyxyrytyro-51255165170-direct.araghchy.com&fp=firefox&type=tcp&headerType=none#🇫🇷 Франция t.me/letovpn_free
+vless://c08f0056-7a6d-4931-813b-aaa3cdd00aed@51.38.71.147:8443?type=tcp&security=tls&fp=firefox&sni=node-uk.connectsuite.org#whitelist 🇬🇧 Великобритания t.me/letovpn_free
+vless://c450727a-3a1f-4260-9bb4-1c668b45314c@dev.speciq.co:2086?encryption=none&type=xhttp#whitelist 🇨🇴 Колумбия t.me/letovpn_free
 vless://tyxyrytyro@tyxyrytyro-51255165170-direct.araghchy.com:443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=tyxyrytyro-51255165170-direct.araghchy.com&fp=chrome&alpn=h2&type=tcp&headerType=none&host=tyxyrytyro-51255165170-direct.araghchy.com&path=%2F#🇺🇸 США t.me/letovpn_free
 vless://a853e120-3570-462b-aec1-e8f3d4f92d24@47.251.95.178:443?security=tls&type=ws&path=%2F&host=asia.csmaster.site&sni=asia.csmaster.site&fp=chrome&encryption=none#🇺🇸 США t.me/letovpn_free
 vless://ee0a38e3-d148-48ac-ba99-5133446c2377@95.85.253.241:2053?security=tls&encryption=none&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=95.85.253.241#🇵🇱 Польша t.me/letovpn_free

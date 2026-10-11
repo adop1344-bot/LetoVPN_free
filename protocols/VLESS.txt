@@ -1,18 +1,24 @@
-#announce: Updated: 11.10.2026 20:42:28
+#announce: Updated: 12.10.2026 00:36:19
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
-vless://1bda2ae7-b597-4704-95a8-29c0f76324ba@196.240.125.251:8443?alpn=h2&encryption=none&flow=xtls-rprx-vision&security=tls&sni=api-v1-6aca6fae.vmagnum.win&type=raw&fp=firefox#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://1bda2ae7-b597-4704-95a8-29c0f76324ba@196.240.125.5:8443?encryption=none&flow=xtls-rprx-vision&fp=chrome&security=tls&sni=api-v1-6aca6fae.vmagnum.win&type=raw#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://1bda2ae7-b597-4704-95a8-29c0f76324ba@nl.alpheratzz.org:8443?security=tls&sni=api-v1-6aca6fae.vmagnum.win&alpn=h2&flow=xtls-rprx-vision&type=tcp&encryption=none&fp=chrome#whitelist 🇺🇸 США t.me/letovpn_free
-vless://fc87e0d6-0f6a-423a-828e-1fed7e7ef29c@status.luxcloud.space:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&security=tls&sni=status.luxcloud.space&alpn=h2%2Chttp%2F1.1&fp=firefox#blacklist 🇬🇧 Великобритания t.me/letovpn_free
+vless://1bda2ae7-b597-4704-95a8-29c0f76324ba@196.240.125.5:8443?alpn=h2&encryption=none&flow=xtls-rprx-vision&security=tls&sni=api-v1-6aca6fae.vmagnum.win&type=raw&fp=firefox#whitelist 🇷🇺 Россия t.me/letovpn_free
+vless://1bda2ae7-b597-4704-95a8-29c0f76324ba@nl.alpheratzz.org:8443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=api-v1-6acb7ac1.vmagnum.win&packetEncoding=xudp&fp=chrome#whitelist 🇺🇸 США t.me/letovpn_free
+vless://1bda2ae7-b597-4704-95a8-29c0f76324ba@fi.alpheratzz.org:443?encryption=none&type=xhttp&security=tls&sni=1bda2ae7.ferrin.uk&host=fi.alpheratzz.org&path=%2F&mode=auto&fp=ios#whitelist 🇺🇸 США t.me/letovpn_free
 vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@162.159.130.234:443?path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40public-vpn-200.opengw.net%3A443%3Fed%3D2560%23Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET&security=tls&encryption=none&insecure=0&host=snip.edgeoneai.cc.cd&type=ws&allowInsecure=0&sni=snip.edgeoneai.cc.cd#🇺🇸 США t.me/letovpn_free
-vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@162.159.135.234:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&type=ws&host=snip.edgeoneai.cc.cd&path=%2F#🇺🇸 США t.me/letovpn_free
-vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@www.speedtest.net:443?security=tls&type=ws&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn748359672.opengw.net%3A1458%3Fed%3D2560%23Telegram---bored_vpn&host=snip.edgeoneai.cc.cd&packetEncoding=xudp&alpn=http%2F1.1&sni=snip.edgeoneai.cc.cd&fp=chrome#whitelist 🇺🇸 США t.me/letovpn_free
-vless://30e52776-55ac-3cb4-8d36-e2910f07e2c3@160.25.74.91:443?encryption=none&security=tls&type=tcp&host=e79dbcd4s783.gogocs.xyz&sni=u695098ue79dbcd4s783.gogocs.xyz&flow=xtls-rprx-vision#whitelist 🇻🇳 Вьетнам t.me/letovpn_free
+vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@162.159.135.234:443?path=%2F&security=tls&alpn=h3%2Ch2&encryption=none&insecure=0&host=snip.edgeoneai.cc.cd&fp=chrome&type=ws&allowInsecure=0&sni=snip.edgeoneai.cc.cd#🇺🇸 США t.me/letovpn_free
+vless://tyxyrytyro@51.255.165.170:443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=tyxyrytyro-51255165170-direct.araghchy.com&fp=firefox&type=tcp&headerType=none#🇫🇷 Франция t.me/letovpn_free
+vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@www.speedtest.net:443?path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn748359672.opengw.net%3A1458%3Fed%3D2560%23Telegram---mehrosaboran&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&host=snip.edgeoneai.cc.cd&fp=chrome&type=ws&allowInsecure=0&sni=snip.edgeoneai.cc.cd#🇺🇸 США t.me/letovpn_free
+vless://6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8@milo.rubinaz.xyz:8080?encryption=none&security=&type=tcp#🇺🇸 США t.me/letovpn_free
+vless://eb8613e3-8393-4cff-a3ad-6501fd4adc63@152.69.195.67:47878?allowInsecure=0&sni=152.69.195.67#whitelist 🇯🇵 Япония t.me/letovpn_free
+vless://fc87e0d6-0f6a-423a-828e-1fed7e7ef29c@150.251.143.249:443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=w205.luxcloud.space&alpn=h2,http/1.1&type=tcp&headerType=none#whitelist 🇳🇱 Нидерланды t.me/letovpn_free
+vless://tyxyrytyro@tyxyrytyro-51255165170-direct.araghchy.com:443?security=tls&alpn=h2&encryption=none&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&flow=xtls-rprx-vision&sni=tyxyrytyro-51255165170-direct.araghchy.com#whitelist 🇺🇸 США t.me/letovpn_free
+vless://fc87e0d6-0f6a-423a-828e-1fed7e7ef29c@31.77.59.95:443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=u6.luxcloud.space&alpn=h2,http/1.1&type=tcp&headerType=none#whitelist 🇵🇱 Польша t.me/letovpn_free
 vless://8fb65472-5957-4f64-ba2d-b5812b2f155a@141.148.225.158:62145?#🇳🇱 Нидерланды t.me/letovpn_free
+vless://7b859f9e-0e6a-475f-b5e3-5d671b043164@87.228.33.153:6443?encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=for.cloudgamings.org&type=raw#🇷🇺 Россия t.me/letovpn_free
+vless://7b859f9e-0e6a-475f-b5e3-5d671b043164@188.225.73.226:443?encryption=none&flow=xtls-rprx-vision&fp=qq&security=tls&sni=api-germany-1.locallynet.org&type=raw#🇷🇺 Россия t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@188.164.248.216:443?encryption=none&type=ws&path=%2F&host=ccc.010304.xyz&security=tls&sni=ccc.010304.xyz&fp=firefox#🇳🇱 Нидерланды t.me/letovpn_free
-vless://ee0a38e3-d148-48ac-ba99-5133446c2377@95.85.253.241:2053?security=tls&encryption=none&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=95.85.253.241#🇵🇱 Польша t.me/letovpn_free
+vless://fc87e0d6-0f6a-423a-828e-1fed7e7ef29c@status.luxcloud.space:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&security=tls&sni=status.luxcloud.space&alpn=h2%2Chttp%2F1.1&fp=firefox#🇬🇧 Великобритания t.me/letovpn_free

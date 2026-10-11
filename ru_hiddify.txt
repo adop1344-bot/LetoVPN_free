@@ -1,0 +1,2 @@
+vless://1bda2ae7-b597-4704-95a8-29c0f76324ba@196.240.125.251:8443?alpn=h2&encryption=none&flow=xtls-rprx-vision&security=tls&sni=api-v1-6aca6fae.vmagnum.win&type=raw&fp=firefox#whitelist 🇷🇺 Россия t.me/letovpn_free
+vless://1bda2ae7-b597-4704-95a8-29c0f76324ba@196.240.125.5:8443?encryption=none&flow=xtls-rprx-vision&fp=chrome&security=tls&sni=api-v1-6aca6fae.vmagnum.win&type=raw#whitelist 🇷🇺 Россия t.me/letovpn_free

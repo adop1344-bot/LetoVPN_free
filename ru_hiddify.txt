@@ -1,8 +1,2 @@
-vless://7b859f9e-0e6a-475f-b5e3-5d671b043164@87.228.33.153:6443?encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=for.cloudgamings.org&type=raw#🇷🇺 Россия t.me/letovpn_free
-vless://1bda2ae7-b597-4704-95a8-29c0f76324ba@196.240.125.251:8443?alpn=h2&encryption=none&flow=xtls-rprx-vision&security=tls&sni=api-v1-6aca6fae.vmagnum.win&type=raw&fp=firefox#🇷🇺 Россия t.me/letovpn_free
-vless://7b859f9e-0e6a-475f-b5e3-5d671b043164@46.8.208.17:7443?encryption=none&flow=xtls-rprx-vision&fp=qq&security=tls&sni=hellox-3.locallynet.org&type=raw#🇷🇺 Россия t.me/letovpn_free
-vless://1bda2ae7-b597-4704-95a8-29c0f76324ba@196.240.125.5:8443?alpn=h2&encryption=none&flow=xtls-rprx-vision&security=tls&sni=api-v1-6aca6fae.vmagnum.win&type=raw&fp=firefox#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://7b859f9e-0e6a-475f-b5e3-5d671b043164@194.55.239.239:6443?encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=for.cloudgamings.org&type=raw#🇷🇺 Россия t.me/letovpn_free
-vless://7b859f9e-0e6a-475f-b5e3-5d671b043164@194.55.239.183:8443?encryption=none&type=tcp&flow=xtls-rprx-vision&security=tls&sni=hellox-1.locallynet.org&fp=firefox#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://1bda2ae7-b597-4704-95a8-29c0f76324ba@107.150.93.3:443?fp=ios&host=fi.alpheratzz.org&mode=auto&path=%2F&security=tls&sni=1bda2ae7.ferrin.uk&type=xhttp#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://7b859f9e-0e6a-475f-b5e3-5d671b043164@188.225.73.226:8443?encryption=none&flow=xtls-rprx-vision&fp=qq&security=tls&sni=api-germany-2.locallynet.org&type=raw#🇷🇺 Россия t.me/letovpn_free
+vless://7b859f9e-0e6a-475f-b5e3-5d671b043164@87.228.33.153:6443?type=tcp&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=for.cloudgamings.org#whitelist 🇷🇺 Россия t.me/letovpn_free
+vless://7b859f9e-0e6a-475f-b5e3-5d671b043164@87.242.94.237:8443?type=tcp&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=lada.locallynet.org#🇷🇺 Россия t.me/letovpn_free

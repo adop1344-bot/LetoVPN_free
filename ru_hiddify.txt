@@ -1,2 +1,0 @@
-vless://7b859f9e-0e6a-475f-b5e3-5d671b043164@87.228.33.153:6443?type=tcp&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=for.cloudgamings.org#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://7b859f9e-0e6a-475f-b5e3-5d671b043164@87.242.94.237:8443?type=tcp&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=lada.locallynet.org#🇷🇺 Россия t.me/letovpn_free

@@ -1,4 +1,4 @@
-#announce: Updated: 14.10.2026 19:34:22
+#announce: Updated: 15.10.2026 00:26:24
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
@@ -7,23 +7,22 @@
 
 vless://d342d11e-d224-4463-b982-532309285094@188.164.248.216:443?encryption=none&type=ws&path=%2F&host=ccc.010304.xyz&security=tls&sni=ccc.010304.xyz&fp=firefox#🇳🇱 Нидерланды t.me/letovpn_free
 vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@103.90.75.41:8443?security=tls&type=ws&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40VPNine1.opengw.net%3A1458%3Fed%3D2560&host=snip.edgeoneai.cc.cd&packetEncoding=xudp&alpn=http%2F1.1&sni=snip.edgeoneai.cc.cd&fp=unsafe&encryption=none#🇳🇱 Нидерланды t.me/letovpn_free
-vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@80.76.32.165:443?security=tls&type=ws&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40public-vpn-200.opengw.net%3A443&host=snip.edgeoneai.cc.cd&packetEncoding=xudp&sni=snip.edgeoneai.cc.cd&fp=chrome&encryption=none#🇩🇪 Германия t.me/letovpn_free
-vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@162.159.130.234:443?security=tls&type=ws&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40public-vpn-200.opengw.net%3A443%3Fed%3D2560%23Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET&host=snip.edgeoneai.cc.cd&packetEncoding=xudp&sni=snip.edgeoneai.cc.cd&fp=chrome&encryption=none#🇺🇸 США t.me/letovpn_free
+vless://3430793e-837c-47f2-8c8c-a3520d4217c2@2.28.232.213:2125?security=&encryption=none&headerType=&type=tcp#whitelist 🇩🇪 Германия t.me/letovpn_free
 vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@162.159.135.234:443?encryption=none&security=tls&sni=snip.edgeoneai.cc.cd&fp=chrome&type=ws&host=snip.edgeoneai.cc.cd&path=%2F#🇺🇸 США t.me/letovpn_free
-vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@www.speedtest.net:443?path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn748359672.opengw.net%3A1458%3Fed%3D2560%23Telegram---mehrosaboran&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&host=snip.edgeoneai.cc.cd&fp=chrome&type=ws&allowInsecure=0&sni=snip.edgeoneai.cc.cd#🇺🇸 США t.me/letovpn_free
+vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@162.159.130.234:443?security=tls&type=ws&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40public-vpn-200.opengw.net%3A443%3Fed%3D2560%23Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET&host=snip.edgeoneai.cc.cd&packetEncoding=xudp&sni=snip.edgeoneai.cc.cd&fp=chrome&encryption=none#🇺🇸 США t.me/letovpn_free
 vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@108.186.158.241:443?security=tls&type=ws&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40public-vpn-200.opengw.net%3A443&host=snip.edgeoneai.cc.cd&packetEncoding=xudp&sni=snip.edgeoneai.cc.cd&fp=chrome&encryption=none#🇺🇸 США t.me/letovpn_free
-trojan://trj-qWC4DKUemeUYWSKA1xx7okumSKKw0QSX@38.181.42.136:9443?security=tls&sni=www.jqyverse.com&fp=random&type=tcp#🇺🇸 США t.me/letovpn_free
-trojan://UX82473651@musical-mouse.rooster465.autos:443?security=tls&sni=musical-mouse.rooster465.autos#🇸🇬 Сингапур t.me/letovpn_free
-trojan://UX82473651@18.141.136.8:443?sni=musical-mouse.rooster465.autos&type=tcp&fp=chrome#🇸🇬 Сингапур t.me/letovpn_free
+vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@www.speedtest.net:443?path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40vpn748359672.opengw.net%3A1458%3Fed%3D2560%23Telegram---mehrosaboran&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&host=snip.edgeoneai.cc.cd&fp=chrome&type=ws&allowInsecure=0&sni=snip.edgeoneai.cc.cd#🇺🇸 США t.me/letovpn_free
+trojan://trj-qWC4DKUemeUYWSKA1xx7okumSKKw0QSX@38.181.42.136:9443?allowInsecure=0&sni=www.jqyverse.com#🇺🇸 США t.me/letovpn_free
+vless://c01391fa-7bd3-4b9d-b2db-4829b75e30da@tongue-expects-begins-old.trycloudflare.com:443?security=tls&type=ws&path=%2F&sni=tongue-expects-begins-old.trycloudflare.com&fp=chrome#whitelist cloudflare 🇺🇸 США t.me/letovpn_free
 trojan://UX82473651@brave-tomcat.rooster465.autos:443?security=tls&sni=brave-tomcat.rooster465.autos#🇸🇬 Сингапур t.me/letovpn_free
-vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@139.162.84.224:443?security=tls&type=ws&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40public-vpn-200.opengw.net%3A443fp%3Dchrome&host=snip.edgeoneai.cc.cd&packetEncoding=xudp&sni=snip.edgeoneai.cc.cd&fp=chrome#🇯🇵 Япония t.me/letovpn_free
+trojan://UX82473651@18.141.136.8:443?sni=musical-mouse.rooster465.autos&peer=musical-mouse.rooster465.autos&security=tls#🇸🇬 Сингапур t.me/letovpn_free
+trojan://UX82473651@musical-mouse.rooster465.autos:443?allowInsecure=0&sni=musical-mouse.rooster465.autos#🇸🇬 Сингапур t.me/letovpn_free
+vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@139.162.84.224:443?path=/fdip=sstp://vpn:vpn@VPNine1-vpn-200.opengw.net:443fp=chrome&security=tls&encryption=none&insecure=0&host=snip.edgeoneai.cc.cd&type=ws&allowInsecure=0&sni=snip.edgeoneai.cc.cd#whitelist 🇯🇵 Япония t.me/letovpn_free
 vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@76.13.218.192:8443?security=tls&type=ws&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40public-vpn-200.opengw.net%3A443&host=snip.edgeoneai.cc.cd&packetEncoding=xudp&sni=snip.edgeoneai.cc.cd&fp=chrome&encryption=none#🇲🇾 Малайзия t.me/letovpn_free
-vmess://eyJ2IjoiMiIsInBzIjoi8J+HufCfh60g0KLQsNC40LvQsNC90LQgWyPQoNCa0J9dIiwiYWRkIjoiMTE5LjQ2LjUxLjQ1IiwicG9ydCI6IjM3NTE1IiwiaWQiOiI5Yjc2YmMzMS0xN2E1LTQ0NTQtOTM0YS04ZDVmYjYwMmNkNzAiLCJhaWQiOiIwIiwic2N5IjoiYXV0byIsIm5ldCI6InRjcCIsInR5cGUiOiJub25lIiwiaG9zdCI6IiIsInBhdGgiOiIiLCJ0bHMiOiIifQ==#blacklist 🇹🇭 Таиланд t.me/letovpn_free
-vmess://eyJhZGQiOiIxNTYuMjQ1LjIzMi4yMzkiLCJhaWQiOiIwIiwiaG9zdCI6IiIsImlkIjoiYjE1ZTQ4MWQtMTdlNC00MWE4LTg0YzItMjNkNGYwNTE0ZDlhIiwibmV0Ijoid3MiLCJwYXRoIjoiXC8iLCJwb3J0IjoiMzUwNDMiLCJwcyI6Ilx1ZDgzY1x1ZGRlZFx1ZDgzY1x1ZGRmMFtvcGVucHJveHlsaXN0LmNvbV0gdm1lc3MtSEsiLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=#🇭🇰 Гонконг t.me/letovpn_free
-trojan://UX82473651@3.36.50.213:443?security=tls&sni=pure-kodiak.rooster465.autos&fp=chrome&type=tcp#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://UX82473651@pure-kodiak.rooster465.autos:443?security=tls&sni=pure-kodiak.rooster465.autos#🇰🇷 Южная Корея t.me/letovpn_free
+vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@103.38.236.248:443?security=tls&type=ws&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40public-vpn-200.opengw.net%3A443&host=snip.edgeoneai.cc.cd&packetEncoding=xudp&sni=snip.edgeoneai.cc.cd&fp=chrome#🇻🇳 Вьетнам t.me/letovpn_free
+vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@38.207.184.103:8443?security=tls&type=ws&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40public-vpn-200.opengw.net%3A443&host=snip.edgeoneai.cc.cd&packetEncoding=xudp&sni=snip.edgeoneai.cc.cd&fp=chrome&encryption=none#whitelist 🇭🇰 Гонконг t.me/letovpn_free
+trojan://UX82473651@3.36.50.213:443?sni=pure-kodiak.rooster465.autos&type=tcp&fp=chrome#🇰🇷 Южная Корея t.me/letovpn_free
+trojan://UX82473651@3.34.192.47:443?sni=central-jawfish.rooster465.autos&type=tcp&fp=chrome#🇰🇷 Южная Корея t.me/letovpn_free
 trojan://UX82473651@3.35.168.225:443?security=tls&sni=noted-cougar.rooster465.autos&type=tcp&headerType=none#🇰🇷 Южная Корея t.me/letovpn_free
 vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@27.102.132.165:443?security=tls&type=ws&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40public-vpn-200.opengw.net%3A443fp%3Dchrome&host=snip.edgeoneai.cc.cd&packetEncoding=xudp&sni=snip.edgeoneai.cc.cd&fp=chrome#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://UX82473651@central-jawfish.rooster465.autos:443?security=tls&sni=central-jawfish.rooster465.autos#🇰🇷 Южная Корея t.me/letovpn_free
-trojan://UX82473651@3.34.192.47:443?security=tls&sni=central-jawfish.rooster465.autos&fp=chrome&type=tcp#🇰🇷 Южная Корея t.me/letovpn_free
-vmess://eyJhZGQiOiIxNjUuMTU0LjE5NS4zOCIsImFpZCI6IjAiLCJob3N0IjoidjJyYXlucGx1cy0tdjJyYXlucGx1cy0tdjJyYXlucGx1cyIsImlkIjoiOTU5YThjYWYtNGNlYS00M2QwLWE1NDgtMzYyOGU3ZGRmYWZjIiwibmV0IjoidGNwIiwicGF0aCI6IiIsInBvcnQiOiIzNTAzNCIsInBzIjoi8J+HufCfh7wgVGFpd2FuLCBUYW95dWFuIHwgW0JMXSIsInNuaSI6IiIsInRscyI6IiIsInR5cGUiOiJub25lIiwidiI6IjIiLCJzY3kiOiJhdXRvIiwiYWxwbiI6IiIsImZwIjoiIn0=#blacklist 🇹🇼 Тайвань t.me/letovpn_free
+vless://c450727a-3a1f-4260-9bb4-1c668b45314c@dev.speciq.co:2086?encryption=none&type=xhttp#whitelist 🇨🇴 Колумбия t.me/letovpn_free

@@ -1,0 +1,5 @@
+vless://b3441cc7-1e5f-4eb6-8207-90788eeca21e@196.240.125.5:8443?flow=xtls-rprx-vision&security=tls&sni=api-v2-6ad3c751.vmagnum.win&type=raw&fp=chrome#whitelist 🇷🇺 Россия t.me/letovpn_free
+vless://b3441cc7-1e5f-4eb6-8207-90788eeca21e@196.240.125.251:8443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=api-v2-6ad3c751.vmagnum.win&type=tcp&fp=ios#whitelist 🇷🇺 Россия t.me/letovpn_free
+vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@139.100.226.187:8443?security=tls&type=ws&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40public-vpn-200.opengw.net%3A443&host=snip.edgeoneai.cc.cd&packetEncoding=xudp&sni=snip.edgeoneai.cc.cd&fp=chrome&encryption=none#🇷🇺 Россия t.me/letovpn_free
+vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@121.127.37.211:443?security=tls&type=ws&path=%2Ffp%3Dchrome&host=snip.edgeoneai.cc.cd&packetEncoding=xudp&sni=snip.edgeoneai.cc.cd&fp=chrome#🇷🇺 Россия t.me/letovpn_free
+vless://b3441cc7-1e5f-4eb6-8207-90788eeca21e@rus.noooo.win:8443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=id-6ad3c751.adhil.uk&alpn=h2&type=tcp&headerType=none&path=%2F&fp=firefox#whitelist 🇷🇺 Россия t.me/letovpn_free

@@ -1,14 +1,14 @@
-#announce: Updated: 17.10.2026 23:12:20
+#announce: Updated: 18.10.2026 05:53:23
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
-trojan://UX82473651@18.141.136.8:443?sni=musical-mouse.rooster465.autos&peer=musical-mouse.rooster465.autos&security=tls#🇸🇬 Сингапур t.me/letovpn_free
-trojan://UX82473651@musical-mouse.rooster465.autos:443?security=tls&sni=musical-mouse.rooster465.autos&fp=&type=tcp#🇸🇬 Сингапур t.me/letovpn_free
 trojan://UX82473651@47.131.250.125:443?sni=simple-molly.rooster465.autos&type=tcp&fp=chrome#🇸🇬 Сингапур t.me/letovpn_free
 trojan://UX82473651@brave-tomcat.rooster465.autos:443?security=tls&sni=brave-tomcat.rooster465.autos#🇸🇬 Сингапур t.me/letovpn_free
+trojan://UX82473651@18.141.136.8:443?sni=musical-mouse.rooster465.autos&peer=musical-mouse.rooster465.autos&security=tls#🇸🇬 Сингапур t.me/letovpn_free
 trojan://UX82473651@3.36.50.213:443?sni=pure-kodiak.rooster465.autos&type=tcp&fp=chrome#🇰🇷 Южная Корея t.me/letovpn_free
+trojan://UX82473651@musical-mouse.rooster465.autos:443?security=tls&sni=musical-mouse.rooster465.autos&fp=&type=tcp#🇸🇬 Сингапур t.me/letovpn_free
 trojan://UX82473651@pure-kodiak.rooster465.autos:443?security=tls&sni=pure-kodiak.rooster465.autos&fp=&type=tcp#🇰🇷 Южная Корея t.me/letovpn_free
 trojan://UX82473651@3.35.168.225:443?security=tls&sni=noted-cougar.rooster465.autos&type=tcp&headerType=none#🇰🇷 Южная Корея t.me/letovpn_free

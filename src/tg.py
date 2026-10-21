@@ -22,13 +22,18 @@ class TelegramBot:
             r = requests.post(url, json=payload, timeout=10)
             if r.status_code == 200:
                 return r.json().get("result", {}).get("message_id")
-        except: pass
+            else:
+                # Логируем ошибки API (rate limit, bad request) вместо тихого None
+                print(f"TG {method} -> {r.status_code}: {r.text[:200]}")
+        except Exception as e:
+            print(f"TG {method} error: {e}")
         return None
 
     def send_msg(self, text: str, parse_mode: str = "HTML") -> Optional[int]:
         return self._call("sendMessage", {"text": text, "parse_mode": parse_mode, "disable_web_page_preview": True})
 
     def edit_msg(self, msg_id: int, text: str, parse_mode: str = "HTML") -> bool:
+        if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID: return False
         try:
             url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/editMessageText"
             requests.post(url, json={"chat_id": TELEGRAM_CHAT_ID, "message_id": msg_id, "text": text, "parse_mode": parse_mode, "disable_web_page_preview": True}, timeout=10)

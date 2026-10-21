@@ -1,8 +1,8 @@
-#announce: Updated: 21.10.2026 00:23:08
+#announce: Updated: 21.10.2026 14:16:50
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VMESS.txt
 #profile-title: VMESS TG@LetoVPN_Free
 
-vmess://eyJ2IjoiMiIsInBzIjoi8J+HqPCfh7MgQ2hpbmEsIFNoZW56aGVuIHwgW0JMXSIsImFkZCI6IjM5LjEwOC4xMTMuMTI3IiwicG9ydCI6IjEwMDg2IiwiaWQiOiI3NTQ3ZGFhYS0xNTc3LTQ5YjAtOTUxOS1iZDE4MjNhZGQxYTciLCJhaWQiOiIwIiwibmV0Ijoid3MiLCJ0eXBlIjoibm9uZSIsImhvc3QiOiIiLCJwYXRoIjoiLyIsInRscyI6IiIsInNjeSI6ImF1dG8iLCJzbmkiOiIiLCJhbHBuIjoiIiwiZnAiOiIifQ==#blacklist 🇨🇳 CN t.me/letovpn_free
+vmess://eyJ2IjoiMiIsInBzIjoi8J+HufCfh7wgVGFpd2FuLCBUYW95dWFuIHwgW0JMXSIsImFkZCI6IjE2NS4xNTQuMTk1LjM4IiwicG9ydCI6IjM1MDM0IiwiaWQiOiI5NTlhOGNhZi00Y2VhLTQzZDAtYTU0OC0zNjI4ZTdkZGZhZmMiLCJhaWQiOiIwIiwic2N5IjoiYXV0byIsIm5ldCI6InRjcCIsInR5cGUiOiJ2bWVzcyIsImhvc3QiOiIiLCJwYXRoIjoiIiwidGxzIjoiIiwic25pIjoiIiwiYWxwbiI6IiIsImZwIjoiIiwiaW5zZWN1cmUiOiIwIiwidmNuIjoiIiwicGNzIjoiIn0=#blacklist 🇹🇼 Тайвань t.me/letovpn_free

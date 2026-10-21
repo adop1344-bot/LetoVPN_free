@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+"""
+Автономный скачиватель + проверщик Xray.
+Предупреждение: функция xray_ping использует `xray test`, которого нет
+в актуальных релизах Xray-core — рабочий путь реализован в src/ping.py
+(команда `xray run` + socks-probe). Этот модуль оставлен для скачивания
+бинарника и как справочная реализация.
+"""
 import os
 import subprocess
 import time
@@ -14,15 +21,15 @@ def download_xray():
     """Скачивает Xray бинарник, если его нет"""
     if os.path.exists("xray"):
         return True
-    
+
     print("📥 Скачиваю Xray...")
     try:
         url = "https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip"
         urllib.request.urlretrieve(url, "xray.zip")
-        
+
         with zipfile.ZipFile("xray.zip", "r") as zip_ref:
             zip_ref.extract("xray", ".")
-        
+
         os.chmod("xray", 0o755)
         os.remove("xray.zip")
         print("✅ Xray установлен")
@@ -33,31 +40,28 @@ def download_xray():
 
 def xray_ping(config: str, timeout: int = 5) -> Optional[float]:
     """
-    Проверяет конфиг через Xray
-    Возвращает пинг в мс или None
+    УСТАРЕЛО: `xray test` не существует в Xray-core — команда всегда
+    завершается ошибкой. Используйте ping.xray_check() вместо этой функции.
     """
     config_path = None
     try:
-        # Создаём временный конфиг для Xray
         with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
             config_path = f.name
-            # Преобразуем строку конфига в формат Xray
             xray_config = convert_to_xray_config(config)
             if not xray_config:
                 return None
             json.dump(xray_config, f)
-        
-        # Запускаем Xray в режиме проверки
+
         start = time.time()
         result = subprocess.run(
-            ["xray", "test", "-config", config_path],
+            ["xray", "run", "-config", config_path],
             capture_output=True,
             timeout=timeout
         )
-        
+
         if result.returncode == 0:
             return (time.time() - start) * 1000
-        
+
         return None
     except subprocess.TimeoutExpired:
         return None
@@ -69,25 +73,34 @@ def xray_ping(config: str, timeout: int = 5) -> Optional[float]:
             os.unlink(config_path)
 
 def convert_to_xray_config(config_line: str) -> dict:
-    """Преобразует VLESS/VMESS строку в формат Xray"""
+    """Преобразует VLESS/VMESS строку в формат Xray (справочная реализация)."""
     import urllib.parse
     import re
-    
+
     if config_line.startswith('vless://'):
-        # Парсим VLESS
         match = re.search(r'vless://([^@]+)@([^:]+):(\d+)(.*)', config_line)
         if not match:
             return None
-        
+
         uuid = match.group(1)
         host = match.group(2)
         port = int(match.group(3))
-        params = match.group(4)
-        
-        # Парсим параметры
+        params = match.group(4).split('#', 1)[0]  # убираем фрагмент #name
+
         parsed = urllib.parse.urlparse(params)
         query = urllib.parse.parse_qs(parsed.query)
-        
+
+        stream = {
+            "network": query.get("type", ["tcp"])[0],
+            "security": query.get("security", ["none"])[0],
+        }
+        sec = query.get("security", ["none"])[0]
+        if sec in ("tls", "reality"):
+            stream["tlsSettings"] = {
+                "serverName": query.get("sni", [""])[0],
+                "fingerprint": query.get("fp", ["chrome"])[0]
+            }
+
         return {
             "outbounds": [{
                 "protocol": "vless",
@@ -102,19 +115,12 @@ def convert_to_xray_config(config_line: str) -> dict:
                         }]
                     }]
                 },
-                "streamSettings": {
-                    "network": query.get("type", ["tcp"])[0],
-                    "security": query.get("security", ["none"])[0],
-                    "tlsSettings": {
-                        "serverName": query.get("sni", [""])[0],
-                        "fingerprint": query.get("fp", ["chrome"])[0]
-                    } if query.get("security", ["none"])[0] in ["tls", "reality"] else None
-                }
+                "streamSettings": stream
             }]
         }
-    
+
     elif config_line.startswith('vmess://'):
         # TODO: добавить парсинг vmess
         return None
-    
+
     return None

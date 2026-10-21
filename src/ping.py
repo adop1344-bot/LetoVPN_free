@@ -16,13 +16,28 @@ def init_xray():
 
 def tcp_ping(host: str, port: int, timeout: float) -> Optional[float]:
     """Быстрый TCP ping"""
+    sock = None
     try:
         start = time.time()
         sock = socket.create_connection((host, port), timeout=timeout)
         elapsed = (time.time() - start) * 1000
         sock.close()
         return elapsed
-    except: return None
+    except:
+        return None
+    finally:
+        if sock:
+            try: sock.close()
+            except: pass
+
+def _cleanup_xray(proc, config_path):
+    """Kill xray process and remove temp config file."""
+    try:
+        proc.kill(); proc.wait()
+    except: pass
+    if config_path:
+        try: os.unlink(config_path)
+        except: pass
 
 def xray_check(config: str) -> Optional[float]:
     if not XRAY_AVAILABLE: return None
@@ -41,17 +56,14 @@ def xray_check(config: str) -> Optional[float]:
         time.sleep(1.5)
 
         if proc.poll() is not None:
-            try: os.unlink(config_path)
-            except: pass
+            _cleanup_xray(proc, config_path)
             return None
 
         try:
             s = socket.create_connection(("127.0.0.1", sock_port), timeout=1)
             s.close()
         except:
-            proc.kill(); proc.wait()
-            try: os.unlink(config_path)
-            except: pass
+            _cleanup_xray(proc, config_path)
             return None
 
         try:
@@ -68,21 +80,23 @@ def xray_check(config: str) -> Optional[float]:
             ss.close()
             if '204' in resp[:50] or '200' in resp[:50]:
                 elapsed = (time.time() - start) * 1000
-                proc.kill(); proc.wait()
-                try: os.unlink(config_path)
-                except: pass
+                _cleanup_xray(proc, config_path)
                 return elapsed
         except: pass
 
-        proc.kill(); proc.wait()
-        try: os.unlink(config_path)
-        except: pass
+        _cleanup_xray(proc, config_path)
         return None
     except:
         if config_path:
             try: os.unlink(config_path)
             except: pass
         return None
+
+def _parse_query(qs: str) -> dict:
+    """Parse '?a=b&c=d' query string (ignores '#fragment')."""
+    import urllib.parse
+    qs = qs.lstrip("?#&").split('#', 1)[0]
+    return urllib.parse.parse_qs(urllib.parse.urlparse("?" + qs).query)
 
 def convert_to_xray_config(line: str, sock_port: int = 1080) -> Optional[dict]:
     import urllib.parse
@@ -92,7 +106,7 @@ def convert_to_xray_config(line: str, sock_port: int = 1080) -> Optional[dict]:
             m = re.search(r'vless://([^@]+)@([^:]+):(\d+)(.*)', line)
             if not m: return None
             u, h, p, qs = m.group(1), m.group(2), int(m.group(3)), m.group(4)
-            q = urllib.parse.parse_qs(urllib.parse.urlparse("?" + qs.lstrip("?#&")).query)
+            q = _parse_query(qs)
             ss = {"network": q.get("type", ["tcp"])[0], "security": q.get("security", ["none"])[0]}
             sec = q.get("security", ["none"])[0]
             if sec in ["tls", "reality"]:
@@ -125,7 +139,7 @@ def convert_to_xray_config(line: str, sock_port: int = 1080) -> Optional[dict]:
             m = re.search(r'trojan://([^@]+)@([^:]+):(\d+)(.*)', line)
             if not m: return None
             pw, h, p, qs = m.group(1), m.group(2), int(m.group(3)), m.group(4) or ""
-            q = urllib.parse.parse_qs(urllib.parse.urlparse("?" + qs.lstrip("?#&")).query)
+            q = _parse_query(qs)
             ss = {"network": q.get("type", ["tcp"])[0], "security": "tls",
                   "tlsSettings": {"serverName": q.get("sni", [h])[0],
                                   "fingerprint": q.get("fp", ["chrome"])[0] if q.get("fp") else "chrome"}}
@@ -140,26 +154,27 @@ def verify_config(config: str, timeout: float) -> Tuple[Optional[float], bool, b
     """
     1. Быстрый TCP ping (отсев мёртвых серверов)
     2. Xray real ping (точная проверка протокола)
-    Если Xray не доступен -> только TCP
+    Если Xray не доступен -> принимаем TCP ping как результат
     """
     host, port = extract_host_port(config)
     if not host or not port:
         return (None, False, False, None)
-    
+
     # ШАГ 1: TCP ping (быстрый, 3 сек)
     tcp_ms = tcp_ping(host, port, min(timeout, 3.0))
     if tcp_ms is None:
         return (None, False, False, None)
-    
-    # ШАГ 2: Xray (если доступен)
+
+    # ШАГ 2: Xray (если доступен) — точная проверка протокола
     if XRAY_AVAILABLE:
         x = xray_check(config)
         if x is not None:
             return (x, True, True, None)
         return (None, False, False, None)
-    
-    # ШАГ 3: Fallback (только TCP, без Xray)
-    return (None, False, False, None)
+
+    # ШАГ 3: Fallback — Xray не установлен, принимаем TCP-результат
+    # раньше тут было (None, False, False, None): все конфиги отбрасывались
+    return (tcp_ms, True, False, None)
 
 def extract_host_port(config: str) -> Tuple[Optional[str], Optional[int]]:
     try:
@@ -172,6 +187,15 @@ def extract_host_port(config: str) -> Tuple[Optional[str], Optional[int]]:
         elif config.startswith('trojan://'):
             m = re.search(r'trojan://[^@]+@([^:?#]+):(\d+)', config)
             if m: return m.group(1), int(m.group(2))
+        elif config.startswith('ss://'):
+            # ss://base64(method:password)@host:port  or  ss://method:password@host:port
+            body = config[5:].split('#', 1)[0].split('?', 1)[0]
+            if '@' in body:
+                hp = body.rsplit('@', 1)[1]
+            else:
+                hp = base64.b64decode(body + '=' * (4 - len(body) % 4)).decode(errors='ignore').rsplit('@', 1)[-1]
+            h, _, p = hp.rpartition(':')
+            if h and p.isdigit(): return h, int(p)
     except: pass
     return None, None
 
@@ -179,4 +203,5 @@ def get_protocol(config: str) -> str:
     if config.startswith('vless://'): return "VLESS"
     elif config.startswith('vmess://'): return "VMESS"
     elif config.startswith('trojan://'): return "TROJAN"
+    elif config.startswith('ss://'): return "SS"
     return ""

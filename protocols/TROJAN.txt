@@ -1,13 +1,16 @@
-#announce: Updated: 22.10.2026 19:43:17
+#announce: Updated: 23.10.2026 00:21:47
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
-trojan://4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA@de9.dedushka.top:443?security=tls&alpn=http%2F1.1&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=de9.dedushka.top&fp=android#blacklist 🇺🇸 США t.me/letovpn_free
+trojan://d2dINbhQ1N@74.82.196.93:443?security=tls&sni=www.ugly-xu.top&type=tcp&fp=android#blacklist 🇯🇵 Япония t.me/letovpn_free
+trojan://4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA@31.133.0.182:443?security=tls&sni=pl1.dedushka.top&fp=chrome&type=tcp&headerType=none&path=/#🇵🇱 Польша t.me/letovpn_free
+trojan://4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA@de1.dedushka.top:443?alpn=http%2F1.1&security=tls&sni=de1.dedushka.top&type=tcp#🇦🇪 ОАЭ t.me/letovpn_free
+trojan://4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA@188.241.241.236:443?sni=de10.dedushka.top&type=tcp#🇩🇪 Германия t.me/letovpn_free
 trojan://4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA@188.241.241.235:443?alpn=http%2F1.1&security=tls&sni=de9.dedushka.top&type=tcp#🇩🇪 Германия t.me/letovpn_free
-trojan://4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA@ie1.dedushka.top:443?alpn=http%2F1.1&security=tls&sni=ie1.dedushka.top#🇦🇪 ОАЭ t.me/letovpn_free
-trojan://4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA@pl1.dedushka.top:443?security=tls&sni=pl1.dedushka.top&alpn=http%2F1.1&fp=firefox&type=tcp#🇺🇸 США t.me/letovpn_free
-trojan://4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA@pl2.dedushka.top:443?alpn=http%2F1.1&security=tls&sni=pl2.dedushka.top&type=tcp#🇺🇸 США t.me/letovpn_free
 trojan://4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA@lv1.dedushka.top:443?security=tls&sni=lv1.dedushka.top&alpn=http%2F1.1&fp=chrome#🇺🇸 США t.me/letovpn_free
+trojan://4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA@pl2.dedushka.top:443?alpn=http%2F1.1&security=tls&sni=pl2.dedushka.top&type=tcp#🇺🇸 США t.me/letovpn_free
+trojan://4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA@pl1.dedushka.top:443?security=tls&sni=pl1.dedushka.top&alpn=http%2F1.1&fp=firefox&type=tcp#🇺🇸 США t.me/letovpn_free
+trojan://4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA@de9.dedushka.top:443?security=tls&alpn=http%2F1.1&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=de9.dedushka.top&fp=android#🇺🇸 США t.me/letovpn_free

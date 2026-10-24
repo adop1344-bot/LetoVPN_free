@@ -1,10 +1,9 @@
-#announce: Updated: 24.10.2026 06:10:40
+#announce: Updated: 24.10.2026 13:22:23
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/ru.txt
 #profile-title: ru TG@LetoVPN_Free
 
-vmess://eyJ2IjoiMiIsInBzIjoi8J+Ht/Cfh7ogUnVzc2lhIHwgWypDSURSXSBZQSIsImFkZCI6IjE1OC4xNjAuMTgwLjE2NSIsInBvcnQiOiIyNDIxMiIsImlkIjoiYzU4YzEyMDUtYjMwOC00MTZmLTg1MDMtYzA0NTU3YWJmOTNkIiwiYWlkIjoiMCIsInNjeSI6ImF1dG8iLCJuZXQiOiJ0Y3AiLCJ0eXBlIjoibm9uZSIsInRscyI6InRscyIsImFscG4iOiJoMixodHRwLzEuMSIsImhvc3QiOiIiLCJwYXRoIjoiIiwic25pIjoiIiwiZnAiOiIifQ==#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@139.100.226.187:8443?security=tls&type=ws&path=%2Ffdip%3Dsstp%3A%2F%2Fvpn%3Avpn%40public-vpn-200.opengw.net%3A443&host=snip.edgeoneai.cc.cd&packetEncoding=xudp&sni=snip.edgeoneai.cc.cd&fp=chrome&encryption=none#🇷🇺 Россия t.me/letovpn_free
+vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@139.100.226.187:8443?encryption=none&security=tls&type=ws&host=snip.edgeoneai.cc.cd&path=%2F&sni=snip.edgeoneai.cc.cd&fp=chrome#🇷🇺 Россия t.me/letovpn_free
 vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@109.69.22.15:443?security=tls&type=ws&path=%2F&host=snip.edgeoneai.cc.cd&packetEncoding=xudp&sni=snip.edgeoneai.cc.cd&fp=chrome#🇷🇺 Россия t.me/letovpn_free

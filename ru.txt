@@ -1,8 +1,8 @@
-#announce: Updated: 24.10.2026 23:20:10
+#announce: Updated: 25.10.2026 06:04:49
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/ru.txt
 #profile-title: ru TG@LetoVPN_Free
 
-vmess://eyJ2IjoiMiIsInBzIjoi8J+Ht/Cfh7ogUnVzc2lhIHwgWypDSURSXSBZQSIsImFkZCI6IjE1OC4xNjAuMTgwLjE2NSIsInBvcnQiOiIyNDIxMiIsImFpZCI6IjAiLCJzY3kiOiJhdXRvIiwibmV0IjoidGNwIiwidHlwZSI6Im5vbmUiLCJ0bHMiOiJ0bHMiLCJpZCI6ImM1OGMxMjA1LWIzMDgtNDE2Zi04NTAzLWMwNDU1N2FiZjkzZCIsInNraXAtY2VydC12ZXJpZnkiOnRydWUsImhvc3QiOiIiLCJwYXRoIjoiIiwic25pIjoiIiwiYWxwbiI6IiIsImZwIjoiIn0=#whitelist 🇷🇺 Россия t.me/letovpn_free
+vmess://eyJ2IjoiMiIsInBzIjoi8J+Ht/Cfh7ogUnVzc2lhIHwgWypDSURSXSBZQSIsImFkZCI6IjE1OC4xNjAuMTgwLjE2NSIsInBvcnQiOiIyNDIxMiIsImlkIjoiYzU4YzEyMDUtYjMwOC00MTZmLTg1MDMtYzA0NTU3YWJmOTNkIiwiYWlkIjoiMCIsIm5ldCI6InRjcCIsInR5cGUiOiJub25lIiwiaG9zdCI6IjE1OC4xNjAuMTgwLjE2NSIsInBhdGgiOiIiLCJ0bHMiOiJ0bHMiLCJzY3kiOiJhdXRvIiwic25pIjoiMTU4LjE2MC4xODAuMTY1IiwiYWxwbiI6IiIsImZwIjoiIn0=#whitelist 🇷🇺 Россия t.me/letovpn_free

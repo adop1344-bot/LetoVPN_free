@@ -1,2 +1,1 @@
-vmess://eyJ2IjoiMiIsInBzIjoi8J+Ht/Cfh7ogUnVzc2lhIHwgWypDSURSXSBZQSIsImFkZCI6IjE1OC4xNjAuMTgwLjE2NSIsInBvcnQiOiIyNDIxMiIsInR5cGUiOiJub25lIiwiaWQiOiJjNThjMTIwNS1iMzA4LTQxNmYtODUwMy1jMDQ1NTdhYmY5M2QiLCJhaWQiOiIwIiwibmV0IjoidGNwIiwicGF0aCI6Ii8iLCJob3N0IjoiIiwidGxzIjoidGxzIiwic2N5IjoiYXV0byIsInNuaSI6IiIsImFscG4iOiIiLCJmcCI6IiJ9#whitelist 🇷🇺 Россия t.me/letovpn_free
 vless://f9613819-d2fe-4b3a-a2e6-40c184c6854c@194.87.143.165:8443?encryption=none&security=tls&sni=wsru1.wba-pn.ru&fp=chrome&type=ws&path=/&host=194.87.143.165#🇷🇺 Россия t.me/letovpn_free

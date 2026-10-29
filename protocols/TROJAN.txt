@@ -1,34 +1,32 @@
-#announce: Updated: 29.10.2026 07:10:33
+#announce: Updated: 29.10.2026 15:20:47
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
-trojan://UAKWGor-h0woFsxKSWK92HptcM0g2k2h@176.114.95.242:443?security=tls&sni=lt-1.1984.love&fp=firefox#whitelist 🇷🇺 Россия t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.59:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=api.nextjobopportunityandclaimyouridealrole.com#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.118.166:443?allowInsecure=0&sni=learn.discovergreatjobsandadvanceyourcareer.com#🇪🇸 Испания t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.42:443?allowInsecure=0&sni=blog.healthcarejobshubenhancemedicalprofessionalskillstoday.com#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.81:443?sni=www.healthcarejobshubenhancemedicalprofessionalskillstoday.com&peer=www.healthcarejobshubenhancemedicalprofessionalskillstoday.com&security=tls#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.54:443?sni=learn.nextjobopportunityandclaimyouridealrole.com#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.131:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=www.nextjobopportunityandclaimyouridealrole.com#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.23:443?sni=courses.nextjobopportunityandclaimyouridealrole.com&peer=courses.nextjobopportunityandclaimyouridealrole.com&security=tls#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.81:443?security=tls&sni=www.healthcarejobshubenhancemedicalprofessionalskillstoday.com&type=tcp#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.45:443?sni=cdn.findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp&fp=chrome#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.118.131:443?sni=www.discovergreatjobsandadvanceyourcareer.com&type=tcp#🇪🇸 Испания t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.49:443?allowInsecure=0&sni=cdn.healthcarejobshubenhancemedicalprofessionalskillstoday.com#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.114:443?security=tls&sni=learn.findconnectwithemployersandbuildprofessionalnetwork.com#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.7:443?sni=www.searchnationwidecareerchangehelperandguidancetoday.com&peer=www.searchnationwidecareerchangehelperandguidancetoday.com&security=tls#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.42:443?security=tls&sni=blog.healthcarejobshubenhancemedicalprofessionalskillstoday.com&type=tcp#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.106:443?sni=www.findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.118.166:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=learn.discovergreatjobsandadvanceyourcareer.com#🇪🇸 Испания t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.49:443?security=tls&sni=cdn.healthcarejobshubenhancemedicalprofessionalskillstoday.com&type=tcp#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.118.131:443?allowInsecure=0&sni=www.discovergreatjobsandadvanceyourcareer.com#🇪🇸 Испания t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.106:443?allowInsecure=0&sni=www.findconnectwithemployersandbuildprofessionalnetwork.com#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.25:443?sni=cdn.searchnationwidecareerchangehelperandguidancetoday.com#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.131:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=www.nextjobopportunityandclaimyouridealrole.com#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.45:443?security=tls&sni=cdn.findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.7:443?sni=www.searchnationwidecareerchangehelperandguidancetoday.com&type=tcp#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.113:443?security=tls&sni=api.searchnationwidecareerchangehelperandguidancetoday.com#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.212:443?security=tls&sni=courses.healthcarejobshubenhancemedicalprofessionalskillstoday.com&type=tcp#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.169:443?sni=api.discoverfreshgraduatejobsstartyourprofessionaljourney.com&type=tcp#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.126:443?sni=resources.findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.132:443?sni=courses.findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.166:443?sni=blog.findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.245:443?sni=findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp&fp=chrome#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.132:443?sni=courses.findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.126:443?sni=resources.findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.147:443?sni=courses.unlockyourfuturefindyourperfectcareer.com&type=tcp#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.13:443?sni=blog.unlockyourfuturefindyourperfectcareer.com&type=tcp#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.142:443?security=tls&sni=cdn.unlockyourfuturefindyourperfectcareer.com#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.31:443?security=tls&insecure=0&headerType=&type=tcp&allowInsecure=0&sni=unlockyourfuturefindyourperfectcareer.com#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.13:443?sni=blog.unlockyourfuturefindyourperfectcareer.com&type=tcp#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.212:443?security=tls&sni=courses.healthcarejobshubenhancemedicalprofessionalskillstoday.com&type=tcp#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.113:443?security=tls&sni=api.searchnationwidecareerchangehelperandguidancetoday.com#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.147:443?sni=courses.unlockyourfuturefindyourperfectcareer.com&type=tcp#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.238.80.100:443?sni=connectwithtopemployersandfindidealjobs.com&type=tcp#🇲🇽 Мексика t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@64.176.7.205:443?sni=advanceyouremploymentskillsandcareerdevelopmenthub.com&type=tcp#🇨🇱 Чили t.me/letovpn_free

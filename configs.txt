@@ -1,4 +1,4 @@
-#announce: Updated: 28.10.2026 21:18:30
+#announce: Updated: 29.10.2026 07:10:33
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
@@ -11,47 +11,49 @@ vless://30e52776-55ac-3cb4-8d36-e2910f07e2c3@62.105.220.106:443?security=tls&typ
 vless://7858128a-6b5e-4f86-9bff-52c1f1e6439d@91.107.247.173:2083?path=/&security=tls&alpn=h3,h2,http/1.1&encryption=none&insecure=0&fp=chrome&type=ws&allowInsecure=0&sni=sino.bestsellers1.site#🇩🇪 Германия t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@157.230.101.36:443?security=tls&type=ws&path=/&host=ccc.010304.xyz&packetEncoding=xudp&sni=ccc.010304.xyz&fp=chrome&encryption=none#🇩🇪 Германия t.me/letovpn_free
 vless://36592d47-b9f5-4e8f-949e-45ac05472aab@91.107.188.129:2083?path=%2F&security=tls&sni=site.check-looks.space&type=ws#🇩🇪 Германия t.me/letovpn_free
-vless://d342d11e-d224-4463-b982-532309285094@www.5199dy.com:443?security=tls&type=ws&path=%2F&host=ccc.010304.xyz&packetEncoding=xudp&sni=ccc.010304.xyz&fp=chrome#🇺🇸 США t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@172.66.1.36:443?encryption=none&security=tls&type=ws&path=%2F&sni=ccc.010304.xyz&fp=unsafe#🇺🇸 США t.me/letovpn_free
-vless://d342d11e-d224-4463-b982-532309285094@chatgpt.com:443?sni=ccc.010304.xyz&type=ws&host=ccc.010304.xyz&path=/fp=chrome&security=tls#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.54:443?sni=learn.nextjobopportunityandclaimyouridealrole.com#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.131:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=www.nextjobopportunityandclaimyouridealrole.com#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.59:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=api.nextjobopportunityandclaimyouridealrole.com#🇺🇸 США t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@172.66.0.162:443?path=/&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&sni=ccc.010304.xyz#🇺🇸 США t.me/letovpn_free
+vless://d342d11e-d224-4463-b982-532309285094@chatgpt.com:443?sni=ccc.010304.xyz&type=ws&host=ccc.010304.xyz&path=/fp=chrome&security=tls#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.23:443?sni=courses.nextjobopportunityandclaimyouridealrole.com&peer=courses.nextjobopportunityandclaimyouridealrole.com&security=tls#🇺🇸 США t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@ccc.010304.xyz:443?sni=ccc.010304.xyz&type=ws&path=/fp=chrome&security=tls#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.113:443?security=tls&sni=api.searchnationwidecareerchangehelperandguidancetoday.com#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.7:443?sni=www.searchnationwidecareerchangehelperandguidancetoday.com&peer=www.searchnationwidecareerchangehelperandguidancetoday.com&security=tls#🇺🇸 США t.me/letovpn_free
+vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@us007.zestapp778.com:18580?security=tls&type=tcp&sni=us007.zestapp778.com&fp=chrome#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.169:443?sni=api.discoverfreshgraduatejobsstartyourprofessionaljourney.com&type=tcp#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.42:443?security=tls&sni=blog.healthcarejobshubenhancemedicalprofessionalskillstoday.com&type=tcp#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.49:443?security=tls&sni=cdn.healthcarejobshubenhancemedicalprofessionalskillstoday.com&type=tcp#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.81:443?security=tls&sni=www.healthcarejobshubenhancemedicalprofessionalskillstoday.com&type=tcp#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.42:443?security=tls&sni=blog.healthcarejobshubenhancemedicalprofessionalskillstoday.com&type=tcp#🇺🇸 США t.me/letovpn_free
-vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@us007.zestapp778.com:18580?security=tls&type=tcp&sni=us007.zestapp778.com&fp=chrome#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.166:443?sni=blog.findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.245:443?sni=findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp&fp=chrome#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.212:443?security=tls&sni=courses.healthcarejobshubenhancemedicalprofessionalskillstoday.com&type=tcp#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.106:443?sni=www.findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.45:443?sni=cdn.findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp&fp=chrome#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.132:443?sni=courses.findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.147:443?sni=courses.unlockyourfuturefindyourperfectcareer.com&type=tcp#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.114:443?security=tls&sni=learn.findconnectwithemployersandbuildprofessionalnetwork.com#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.126:443?sni=resources.findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.132:443?sni=courses.findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.166:443?sni=blog.findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.45:443?sni=cdn.findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp&fp=chrome#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.245:443?sni=findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp&fp=chrome#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.13:443?sni=blog.unlockyourfuturefindyourperfectcareer.com&type=tcp#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.142:443?security=tls&sni=cdn.unlockyourfuturefindyourperfectcareer.com#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.31:443?security=tls&insecure=0&headerType=&type=tcp&allowInsecure=0&sni=unlockyourfuturefindyourperfectcareer.com#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.13:443?sni=blog.unlockyourfuturefindyourperfectcareer.com&type=tcp#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.114:443?security=tls&sni=learn.findconnectwithemployersandbuildprofessionalnetwork.com#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.147:443?sni=courses.unlockyourfuturefindyourperfectcareer.com&type=tcp#🇺🇸 США t.me/letovpn_free
 vless://c08f0056-7a6d-4931-813b-aaa3cdd00aed@node-uk.connectsuite.org:8443?type=tcp&security=tls&sni=node-uk.connectsuite.org&alpn=h2%2Chttp%2F1.1#🇺🇸 США t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@143.198.76.78:443?sni=ccc.010304.xyz&type=ws&host=ccc.010304.xyz&path=/fp=chrome&security=tls#🇺🇸 США t.me/letovpn_free
-vless://30e52776-55ac-3cb4-8d36-e2910f07e2c3@s170.gogocs.xyz:443?security=tls&fp=chrome&type=tcp&flow=xtls-rprx-vision&packetEncoding=xudp&encryption=none#🇺🇸 США t.me/letovpn_free
 vless://924e20da-fcad-4e7e-8113-c62d27a0d01e@hw3.divarkhaghazi.com:465?alpn=http%2F1.1&encryption=none&host=hw3.divarkhaghazi.com.&path=%2F&security=tls&sni=hw3.divarkhaghazi.com.&type=ws#🇺🇸 США t.me/letovpn_free
-trojan://d7fe89bfe4994969@akr187.moldscience.cc:20026?security=tls&sni=akr187.moldscience.cc&fp=chrome#blacklist 🇺🇸 США t.me/letovpn_free
 vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@au001.zestapp778.com:35652?security=tls&type=tcp&sni=au001.zestapp778.com&fp=chrome#🇺🇸 США t.me/letovpn_free
-vless://7cc18adc-1ef0-42c9-8e7b-722d7622c7dd@req.apptrendv.com:2083?alpn=h2%2Chttp%2F1.1&encryption=none&security=tls&sni=email.apptrendv.com&type=tcp&fp=chrome#blacklist 🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.212:443?security=tls&sni=courses.healthcarejobshubenhancemedicalprofessionalskillstoday.com&type=tcp#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.59:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=api.nextjobopportunityandclaimyouridealrole.com#🇺🇸 США t.me/letovpn_free
 vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@th001.zestapp778.com:22222?fp=chrome&security=tls&sni=th001.zestapp778.com&type=tcp#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.113:443?security=tls&sni=api.searchnationwidecareerchangehelperandguidancetoday.com#🇺🇸 США t.me/letovpn_free
+vless://30e52776-55ac-3cb4-8d36-e2910f07e2c3@s170.gogocs.xyz:443?security=tls&fp=chrome&type=tcp&flow=xtls-rprx-vision&packetEncoding=xudp&encryption=none#🇺🇸 США t.me/letovpn_free
+vless://76ef5ab3-7075-4e23-b445-f3b1bd05d431@us.qik-fin.uk:443?security=tls&encryption=none&insecure=0&headerType=&type=tcp&allowInsecure=0&flow=xtls-rprx-vision&sni=us.qik-fin.uk#blacklist 🇬🇧 Великобритания t.me/letovpn_free
 vless://c08f0056-7a6d-4931-813b-aaa3cdd00aed@51.38.71.147:8443?security=tls&encryption=none&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=node-uk.connectsuite.org#🇬🇧 Великобритания t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@159.65.51.189:443?path=/fp&security=tls&encryption=none&insecure=0&host=ccc.010304.xyz&type=ws&allowInsecure=0&sni=ccc.010304.xyz#🇬🇧 Великобритания t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@43.174.193.1:443?encryption=none&security=tls&sni=ccc.010304.xyz&type=ws&host=ccc.010304.xyz&path=%2Ffp#🇸🇬 Сингапур t.me/letovpn_free
-vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@45.32.117.217:443?security=tls&sni=sg003.zestapp778.com&type=raw#🇸🇬 Сингапур t.me/letovpn_free
+vless://350d1a28-f365-4a18-b83a-26f183f60d0d@212.50.249.30:443?security=tls&fp=chrome&sni=vps.aisiwei.top#blacklist 🇯🇵 Япония t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@141.11.139.215:443?type=ws&security=tls&sni=ccc.010304.xyz&path=%2Ffp%3Dchrome&host=ccc.010304.xyz#🇯🇵 Япония t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@77.110.97.245:443?sni=ccc.010304.xyz&type=ws&host=ccc.010304.xyz&path=/fp=chrome&security=tls#🇸🇪 Швеция t.me/letovpn_free
-vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@50.7.249.163:443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=poland-new-new.failspace.top&type=tcp&fp=chrome#🇵🇱 Польша t.me/letovpn_free
 vless://b9fdc03f-389b-4cda-9be4-155b623bee15@2.26.6.1:2087?encryption=none&security=tls#🇵🇱 Польша t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@88.216.69.253:443?path=/fp=chrome&security=tls&encryption=none&insecure=0&host=ccc.010304.xyz&type=ws&allowInsecure=0&sni=ccc.010304.xyz#🇱🇹 Литва t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.118.131:443?sni=www.discovergreatjobsandadvanceyourcareer.com&type=tcp#🇪🇸 Испания t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.118.166:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=learn.discovergreatjobsandadvanceyourcareer.com#🇪🇸 Испания t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@155.103.71.142:443?sni=ccc.010304.xyz&type=ws&host=ccc.010304.xyz&path=/fp=chromefp=chrome&security=tls#🇹🇷 Турция t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.238.80.100:443?sni=connectwithtopemployersandfindidealjobs.com&type=tcp#🇲🇽 Мексика t.me/letovpn_free

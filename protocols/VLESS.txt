@@ -1,24 +1,25 @@
-#announce: Updated: 30.10.2026 15:11:52
+#announce: Updated: 30.10.2026 21:06:23
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
-vless://aba9cdd4-026c-0001-87a9-9b3e5f24dd82@87.242.119.253:443?security=tls&sni=hvtlr-ru-47sb.fade.mom&alpn=http%2F1.1%2Ch2&fp=qq#whitelist 🇷🇺 Россия t.me/letovpn_free
+vless://77290716-1ecb-5e6c-985b-8e2de8bbb434@8.6.112.0:2087?type=ws&security=tls&fp=firefox&sni=pl1.vlnet.site&host=pl1.vlnet.site#blacklist 🇺🇸 США t.me/letovpn_free
+vless://aba9cdd4-026c-0001-87a9-9b3e5f24dd82@87.242.119.253:443?security=tls&sni=hvtlr-ru-47sb.fade.mom&alpn=http%2F1.1%2Ch2&fp=chrome#whitelist 🇷🇺 Россия t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@188.164.248.216:443?path=%2F&security=tls&encryption=none&insecure=0&host=ccc.010304.xyz&type=ws&allowInsecure=0&sni=ccc.010304.xyz&fp=firefox#🇳🇱 Нидерланды t.me/letovpn_free
-vless://d342d11e-d224-4463-b982-532309285094@chatgpt.com:443?sni=ccc.010304.xyz&type=ws&host=ccc.010304.xyz&path=/fp=chrome&security=tls#🇺🇸 США t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@198.211.123.90:443?sni=ccc.010304.xyz&type=ws&host=ccc.010304.xyz&path=/fp=unsafefp=chrome&security=tls#🇳🇱 Нидерланды t.me/letovpn_free
-vless://d342d11e-d224-4463-b982-532309285094@172.66.0.162:443?path=/&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&sni=ccc.010304.xyz#🇺🇸 США t.me/letovpn_free
-vless://30e52776-55ac-3cb4-8d36-e2910f07e2c3@62.105.220.106:443?security=tls&type=tcp&packetEncoding=xudp&sni=u695098u7dae9c0cs220.gogocs.xyz&fp=chrome&flow=xtls-rprx-vision#🇳🇱 Нидерланды t.me/letovpn_free
 vless://36592d47-b9f5-4e8f-949e-45ac05472aab@91.107.188.129:2083?path=%2F&security=tls&sni=site.check-looks.space&type=ws#🇩🇪 Германия t.me/letovpn_free
-vless://d342d11e-d224-4463-b982-532309285094@ccc.010304.xyz:443?sni=ccc.010304.xyz&type=ws&path=/fp=chrome&security=tls#🇺🇸 США t.me/letovpn_free
+vless://30e52776-55ac-3cb4-8d36-e2910f07e2c3@62.105.220.106:443?security=tls&type=tcp&packetEncoding=xudp&sni=u695098u7dae9c0cs220.gogocs.xyz&fp=chrome&flow=xtls-rprx-vision#🇳🇱 Нидерланды t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@172.66.1.36:443?encryption=none&security=tls&type=ws&path=%2F&sni=ccc.010304.xyz&fp=unsafe#🇺🇸 США t.me/letovpn_free
+vless://d342d11e-d224-4463-b982-532309285094@172.66.0.162:443?path=/&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&sni=ccc.010304.xyz#🇺🇸 США t.me/letovpn_free
+vless://d342d11e-d224-4463-b982-532309285094@chatgpt.com:443?sni=ccc.010304.xyz&type=ws&host=ccc.010304.xyz&path=/fp=chrome&security=tls#🇺🇸 США t.me/letovpn_free
+vless://d342d11e-d224-4463-b982-532309285094@ccc.010304.xyz:443?sni=ccc.010304.xyz&type=ws&path=/fp=chrome&security=tls#🇺🇸 США t.me/letovpn_free
 vless://7858128a-6b5e-4f86-9bff-52c1f1e6439d@91.107.247.173:2083?path=/&security=tls&alpn=h3,h2,http/1.1&encryption=none&insecure=0&fp=chrome&type=ws&allowInsecure=0&sni=sino.bestsellers1.site#🇩🇪 Германия t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@143.198.76.78:443?sni=ccc.010304.xyz&type=ws&host=ccc.010304.xyz&path=/fp=chrome&security=tls#🇺🇸 США t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@88.216.69.253:443?path=/fp=chrome&security=tls&encryption=none&insecure=0&host=ccc.010304.xyz&type=ws&allowInsecure=0&sni=ccc.010304.xyz#🇱🇹 Литва t.me/letovpn_free
-vless://d342d11e-d224-4463-b982-532309285094@43.174.193.1:443?encryption=none&security=tls&sni=ccc.010304.xyz&type=ws&host=ccc.010304.xyz&path=%2Ffp#🇸🇬 Сингапур t.me/letovpn_free
 vless://924e20da-fcad-4e7e-8113-c62d27a0d01e@hw3.divarkhaghazi.com:465?alpn=http%2F1.1&encryption=none&host=hw3.divarkhaghazi.com.&path=%2F&security=tls&sni=hw3.divarkhaghazi.com.&type=ws#🇺🇸 США t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@141.11.139.215:443?type=ws&security=tls&sni=ccc.010304.xyz&path=%2Ffp%3Dchrome&host=ccc.010304.xyz#🇯🇵 Япония t.me/letovpn_free
+vless://d342d11e-d224-4463-b982-532309285094@43.174.193.1:443?encryption=none&security=tls&sni=ccc.010304.xyz&type=ws&host=ccc.010304.xyz&path=%2Ffp#🇸🇬 Сингапур t.me/letovpn_free
 vless://b9fdc03f-389b-4cda-9be4-155b623bee15@2.26.6.1:2087?encryption=none&security=tls#🇵🇱 Польша t.me/letovpn_free
 vless://d342d11e-d224-4463-b982-532309285094@155.103.71.142:443?sni=ccc.010304.xyz&type=ws&host=ccc.010304.xyz&path=/fp=chromefp=chrome&security=tls#🇹🇷 Турция t.me/letovpn_free

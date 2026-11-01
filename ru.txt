@@ -1,9 +1,12 @@
-#announce: Updated: 01.11.2026 00:05:54
+#announce: Updated: 01.11.2026 07:05:08
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/ru.txt
 #profile-title: ru TG@LetoVPN_Free
 
-vmess://eyJ2IjoiMiIsInBzIjoi8J+Ht/Cfh7ogUnVzc2lhIHwgWypDSURSXSBZQSIsImFkZCI6IjE1OC4xNjAuMTgwLjE2NSIsInBvcnQiOiIyNDIxMiIsImlkIjoiYzU4YzEyMDUtYjMwOC00MTZmLTg1MDMtYzA0NTU3YWJmOTNkIiwiYWlkIjoiMCIsInNjeSI6ImF1dG8iLCJuZXQiOiJ0Y3AiLCJob3N0IjoiMTU4LjE2MC4xODAuMTY1IiwidGxzIjoidGxzIiwic25pIjoiMTU4LjE2MC4xODAuMTY1IiwidHlwZSI6Im5vbmUiLCJwYXRoIjoiIiwiYWxwbiI6IiIsImZwIjoiIn0=#whitelist 🇷🇺 Россия t.me/letovpn_free
+vless://0b25cbd7-30e3-4659-92be-05b33b53c9d1@91.185.83.113:2743?alpn=http%2F1.1&encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=de.core-multiplayer.com&type=raw#🇷🇺 Россия t.me/letovpn_free
+vless://0b25cbd7-30e3-4659-92be-05b33b53c9d1@91.185.83.113:5443?alpn=http%2F1.1&encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=de.core-multiplayer.com&type=raw#🇷🇺 Россия t.me/letovpn_free
+vless://0b25cbd7-30e3-4659-92be-05b33b53c9d1@91.185.83.113:8443?alpn=http%2F1.1&encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=de.core-multiplayer.com&type=raw#🇷🇺 Россия t.me/letovpn_free
 vless://aba9cdd4-026c-0001-87a9-9b3e5f24dd82@87.242.119.253:443/?type=tcp&encryption=none&flow=&security=tls&sni=hvtlr-ru-47sb.fade.mom&alpn=http%2F1.1%2Ch2&fp=safari#🇷🇺 Россия t.me/letovpn_free
+vless://0b25cbd7-30e3-4659-92be-05b33b53c9d1@91.185.83.113:2643?alpn=http%2F1.1&encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=ru1.datacore-tech.ru&type=raw#🇷🇺 Россия t.me/letovpn_free

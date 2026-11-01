@@ -1,10 +1,7 @@
-#announce: Updated: 01.11.2026 15:43:53
+#announce: Updated: 02.11.2026 00:48:40
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/ru.txt
 #profile-title: ru TG@LetoVPN_Free
 
-vmess://eyJ2IjoiMiIsInBzIjoi8J+Ht/Cfh7ogUnVzc2lhIHwgWypDSURSXSBZQSIsImFkZCI6IjE1OC4xNjAuMTgwLjE2NSIsInBvcnQiOiIyNDIxMiIsImlkIjoiYzU4YzEyMDUtYjMwOC00MTZmLTg1MDMtYzA0NTU3YWJmOTNkIiwiYWlkIjoiMCIsInNjeSI6ImF1dG8iLCJuZXQiOiJ0Y3AiLCJ0eXBlIjoibm9uZSIsImhvc3QiOiIxNTguMTYwLjE4MC4xNjUiLCJwYXRoIjoiIiwidGxzIjoidGxzIiwic25pIjoiMTU4LjE2MC4xODAuMTY1IiwidGVzdF9uYW1lIjoiOTMiLCJhbHBuIjoiIiwiZnAiOiIifQ==#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://6116f0f3-15eb-4217-b38e-16514dc00ba1@fr1.robotodata.ru:7443?encryption=none&security=tls&sni=ru2.datacore-tech.ru&fp=safari&type=tcp&flow=xtls-rprx-vision#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://aba9cdd4-026c-0001-87a9-9b3e5f24dd82@87.242.119.253:443?alpn=%25255Bhttp%25252F1.1&host=hvtlr-ru-47sb.fade.mom&security=tls&sni=hvtlr-ru-47sb.fade.mom&type=tcp&fp=firefox#whitelist 🇷🇺 Россия t.me/letovpn_free

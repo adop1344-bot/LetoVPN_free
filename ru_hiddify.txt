@@ -1,0 +1,2 @@
+vmess://eyJ2IjoiMiIsInBzIjoi8J+Ht/Cfh7ogUnVzc2lhIHwgWypDSURSXSBZQSIsImFkZCI6IjE1OC4xNjAuMTgwLjE2NSIsInBvcnQiOiIyNDIxMiIsImlkIjoiYzU4YzEyMDUtYjMwOC00MTZmLTg1MDMtYzA0NTU3YWJmOTNkIiwiYWlkIjoiMCIsInNjeSI6ImF1dG8iLCJuZXQiOiJ0Y3AiLCJ0bHMiOiJ0bHMiLCJzbmkiOiIxNTguMTYwLjE4MC4xNjUiLCJmcCI6IiIsInR5cGUiOiJub25lIiwiaG9zdCI6IiIsInBhdGgiOiIiLCJhbHBuIjoiIn0=#whitelist 🇷🇺 Россия t.me/letovpn_free
+vless://2c7462d2-127f-4887-bf06-4b30ea6d9832@45.139.27.221:443?security=tls&sni=fi1.cdnconnect.org&type=ws&path=%2F&host=fi1.cdnconnect.org&fp=android#whitelist 🇷🇺 Россия t.me/letovpn_free

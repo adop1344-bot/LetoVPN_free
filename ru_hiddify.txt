@@ -1,0 +1,1 @@
+vless://53de05e9-8de3-48ae-9036-dcb203d4925c@107.150.93.22:443?security=tls&sni=53de05e9.ferrin.uk&type=xhttp&path=%2F&mode=stream-one&fp=edge#whitelist 🇷🇺 Россия t.me/letovpn_free

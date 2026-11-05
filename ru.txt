@@ -1,11 +1,7 @@
-#announce: Updated: 05.11.2026 07:57:43
+#announce: Updated: 05.11.2026 17:04:50
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/ru.txt
 #profile-title: ru TG@LetoVPN_Free
 
-vless://53de05e9-8de3-48ae-9036-dcb203d4925c@107.150.93.22:443?encryption=none&security=tls&sni=53de05e9.ferrin.uk&type=xhttp&fp=ios#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://53de05e9-8de3-48ae-9036-dcb203d4925c@165.231.157.147:8443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=api-6aeb73b7.adhil.uk&type=tcp&fp=edge#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://53de05e9-8de3-48ae-9036-dcb203d4925c@165.231.157.139:8443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=api-6aeb73b7.adhil.uk&type=tcp&fp=firefox#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://53de05e9-8de3-48ae-9036-dcb203d4925c@165.231.157.123:8443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=api-6aeb73b7.adhil.uk&type=tcp&fp=chrome#whitelist 🇷🇺 Россия t.me/letovpn_free

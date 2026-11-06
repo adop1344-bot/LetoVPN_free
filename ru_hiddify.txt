@@ -1,1 +1,0 @@
-vless://255a8044-3337-473e-af26-46a37208adcc@81.94.148.112:443?alpn=h2%2Chttp%2F1.1&encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=cdn4.anytube.ru&type=raw#🇷🇺 Россия t.me/letovpn_free

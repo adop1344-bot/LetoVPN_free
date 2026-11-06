@@ -1,7 +1,8 @@
-#announce: Updated: 05.11.2026 17:04:50
+#announce: Updated: 06.11.2026 07:56:58
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/ru.txt
 #profile-title: ru TG@LetoVPN_Free
 
+vless://255a8044-3337-473e-af26-46a37208adcc@81.94.148.112:443?alpn=h2%2Chttp%2F1.1&encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=cdn4.anytube.ru&type=raw#🇷🇺 Россия t.me/letovpn_free

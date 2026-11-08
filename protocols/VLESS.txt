@@ -1,13 +1,9 @@
-#announce: Updated: 08.11.2026 07:08:21
+#announce: Updated: 08.11.2026 15:50:12
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
-vless://817b61c8-9bf0-4365-8a52-e43dfad274a6@shin-ra.ccwu.cc:443?host=shin-ra.ccwu.cc&path=%2F&security=tls&sni=shin-ra.ccwu.cc&type=ws#blacklist 🇺🇸 США t.me/letovpn_free
-vless://1beed393-7c4d-4432-beee-f1026b72d0cf@104.17.70.206:8443?path=%2F&security=tls&alpn=http%2F1.1&encryption=none&host=free.sahanwickramasinghe.com&fp=chrome&type=ws&sni=free.sahanwickramasinghe.com&allowInsecure=0&insecure=0#blacklist 🇺🇸 США t.me/letovpn_free
-vless://eaf76557-2219-4799-8171-d7020adfefd0@104.18.151.231:2053?encryption=none&host=twilight-frost-15b0.yigom67484.workers.dev&path=%2Fws&security=tls&sni=twilight-frost-15b0.yigom67484.workers.dev&type=ws&fp=ios#blacklist 🇺🇸 США t.me/letovpn_free
-vless://eaf76557-2219-4799-8171-d7020adfefd0@104.18.151.231:443?headerType=none&host=steep-lake-615e.xeremed6978165.workers.dev&path=%2Fws&security=tls&sni=steep-lake-615e.xeremed6978165.workers.dev&type=ws&fp=firefox#blacklist 🇺🇸 США t.me/letovpn_free
-vless://64c5f924-1c24-44a5-acff-2e3ebcd2f807@198.202.24.27:443?alpn=h3%2Ch2%2Chttp%2F1.1&encryption=none&extra=%7B%22mode%22%3A%22auto%22%2C%22xPaddingBytes%22%3A%22100-1000%22%7D&host=nl29.dr-ping.ir&insecure=0&mode=auto&path=%2F&security=tls&sni=nl29.dr-ping.ir&type=xhttp&fp=firefox#🇺🇸 США t.me/letovpn_free
+vless://1beed393-7c4d-4432-beee-f1026b72d0cf@104.17.70.206:8443?alpn=http%2F1.1&encryption=none&host=free.sahanwickramasinghe.com&insecure=0&path=%2F&security=tls&sni=free.sahanwickramasinghe.com&type=ws&fp=ios#blacklist 🇺🇸 США t.me/letovpn_free
 vless://6ba4ed2e-b42b-4880-8b3b-c7e2df2d02f6@se3.shtil.io:443?encryption=none&security=tls&sni=se3.shtil.io&alpn=h2%2Chttp%2F1.1&fp=firefox&type=tcp#🇺🇸 США t.me/letovpn_free

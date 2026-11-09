@@ -1,10 +1,16 @@
-#announce: Updated: 09.11.2026 00:47:00
+#announce: Updated: 09.11.2026 07:23:31
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
+vless://7ad63b26-bf70-4872-8fab-ebaf73a1e19d@129.101.100.219:443?flow=xtls-rprx-vision&security=tls&sni=db-28.topp-con.xyz&alpn=h2%2Chttp%2F1.1&fp=firefox#whitelist 🇺🇸 США t.me/letovpn_free
+vless://68a67906-5b37-4779-a6cc-58a1655f18b4@mapzapravki.space:8443?&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=lada.locallynet.org&type=tcp&headerType=none&host=mapzapravki.space&path=%2F#whitelist 🇫🇷 Франция t.me/letovpn_free
+vless://cced2d3b-9840-4579-a6b3-5de365f3bf50@spacex.com:443?sni=wallweb6.pages.dev&type=ws&host=wallweb6.pages.dev&path=/fp=chrome&security=tls#blacklist 🇺🇸 США t.me/letovpn_free
+vless://817b61c8-9bf0-4365-8a52-e43dfad274a6@shin-ra.ccwu.cc:443?host=shin-ra.ccwu.cc&path=%2F&security=tls&sni=shin-ra.ccwu.cc&type=ws#blacklist 🇺🇸 США t.me/letovpn_free
+vless://68a67906-5b37-4779-a6cc-58a1655f18b4@87.242.94.108:8443?encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=lada.locallynet.org&type=tcp#whitelist 🇷🇺 Россия t.me/letovpn_free
+vless://eaf76557-2219-4799-8171-d7020adfefd0@104.18.151.231:443?encryption=none&host=delicate-hall-bf16.vpndkah.workers.dev&path=/ws&security=tls&sni=delicate-hall-bf16.vpndkah.workers.dev&type=ws#blacklist 🇺🇸 США t.me/letovpn_free
 vless://efd11a89-7506-44ce-95b6-6654859f155b@170.114.45.6:2096?security=tls&encryption=none&insecure=0&host=pcloud.z-tas.com&fp=chrome&type=ws&allowInsecure=0&sni=pcloud.z-tas.com#🇺🇸 США t.me/letovpn_free
 vless://efd11a89-7506-44ce-95b6-6654859f155b@170.114.46.6:2096?security=tls&encryption=none&insecure=0&host=pcloud.z-tas.com&fp=chrome&type=ws&allowInsecure=0&sni=pcloud.z-tas.com#🇺🇸 США t.me/letovpn_free
 vless://6ba4ed2e-b42b-4880-8b3b-c7e2df2d02f6@se3.shtil.io:443?encryption=none&security=tls&sni=se3.shtil.io&alpn=h2%2Chttp%2F1.1&fp=firefox&type=tcp#🇺🇸 США t.me/letovpn_free

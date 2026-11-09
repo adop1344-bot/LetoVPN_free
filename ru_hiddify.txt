@@ -1,0 +1,1 @@
+vless://68a67906-5b37-4779-a6cc-58a1655f18b4@87.242.94.108:8443?encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=lada.locallynet.org&type=tcp#whitelist 🇷🇺 Россия t.me/letovpn_free

@@ -1,12 +1,13 @@
-#announce: Updated: 13.11.2026 07:53:31
+#announce: Updated: 13.11.2026 17:00:03
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
-vless://67cd3349-f789-4cbb-8b91-4b6b1654ce7c@3.168.217.188:443?security=tls&type=ws&sni=dkfsoyk9ju2as.cloudfront.net&path=%2F&host=dkfsoyk9ju2as.cloudfront.net&fp=chrome#blacklist 🇺🇸 США t.me/letovpn_free
-vless://eaf76557-2219-4799-8171-d7020adfefd0@104.18.151.231:443?encryption=none&host=muddy-star-d195.aboumansour10313.workers.dev&path=/ws&security=tls&sni=muddy-star-d195.aboumansour10313.workers.dev&type=ws#blacklist 🇺🇸 США t.me/letovpn_free
+vless://67cd3349-f789-4cbb-8b91-4b6b1654ce7c@3.168.217.188:443?encryption=none&type=ws&security=tls&sni=d1afk2ndm8pox3.cloudfront.net&alpn=http%2F1.1&path=%2F&host=d1afk2ndm8pox3.cloudfront.net&fp=qq#blacklist 🇺🇸 США t.me/letovpn_free
+vless://67cd3349-f789-4cbb-8b91-4b6b1654ce7c@3.168.218.6:443?encryption=none&type=ws&security=tls&sni=d1afk2ndm8pox3.cloudfront.net&alpn=http%2F1.1&path=%2F&host=d1afk2ndm8pox3.cloudfront.net&fp=firefox#blacklist 🇺🇸 США t.me/letovpn_free
+vless://67cd3349-f789-4cbb-8b91-4b6b1654ce7c@3.168.217.190:443?&security=tls&fp=chrome&sni=d1afk2ndm8pox3.cloudfront.net&type=ws&headerType=none&host=d1afk2ndm8pox3.cloudfront.net&path=%2F#blacklist 🇺🇸 США t.me/letovpn_free
+vless://67cd3349-f789-4cbb-8b91-4b6b1654ce7c@3.169.9.125:443?encryption=none&security=tls&type=ws&sni=d1afk2ndm8pox3.cloudfront.net&host=d1afk2ndm8pox3.cloudfront.net&path=%2F&fp=firefox#blacklist 🇺🇸 США t.me/letovpn_free
 vless://99c5b713-dedf-4a10-8070-916ff3f49b0e@fs.qicai99.com:443?security=tls&type=ws&path=%2F&host=fs.qicai99.com&packetEncoding=xudp&alpn=h3%2Ch2%2Chttp%2F1.1&sni=fs.qicai99.com&fp=chrome&encryption=none#🇺🇸 США t.me/letovpn_free
-vless://67cd3349-f789-4cbb-8b91-4b6b1654ce7c@3.168.218.6:443?encryption=none&type=ws&security=tls&sni=dkfsoyk9ju2as.cloudfront.net&fp=chrome&alpn=http/1.1&path=/&host=dkfsoyk9ju2as.cloudfront.net#🇺🇸 США t.me/letovpn_free
 vless://c6624b96-e346-490b-9145-74c2543a9483@xjpp.zjlo.top:36442?security=tls&type=tcp&sni=xjpp.zjlo.top&flow=xtls-rprx-vision&fp=chrome#🇸🇬 Сингапур t.me/letovpn_free

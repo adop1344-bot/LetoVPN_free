@@ -1,1 +1,0 @@
-vless://c0c949fc-2ed6-4597-b680-a1a3276ebf87@188.225.24.62:443?alpn=h2%2Chttp%2F1.1&encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=img.bokovskay.app&type=raw#🇷🇺 Россия t.me/letovpn_free

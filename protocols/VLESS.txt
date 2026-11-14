@@ -1,13 +1,8 @@
-#announce: Updated: 14.11.2026 07:48:40
+#announce: Updated: 14.11.2026 16:03:40
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
-vless://d133dd1c-3084-46c3-ba6e-aa3597c43cc1@check-host.net:2053?mode=auto&path=%2F&security=tls&alpn=h2%2Chttp%2F1.1&encryption=none&insecure=0&host=n8.hyby.ir&fp=chrome&type=xhttp&allowInsecure=0&sni=n8.hyby.ir#blacklist 🇺🇸 США t.me/letovpn_free
-vless://b19c62cc-f2c2-4895-aee1-978a0f58f8c8@www.zoom.us:443?type=ws&security=tls&fp=chrome&sni=matrix.phonicsindia.mobi&host=matrix.phonicsindia.mobi#🇺🇸 США t.me/letovpn_free
-vless://c0c949fc-2ed6-4597-b680-a1a3276ebf87@188.225.24.62:443?alpn=h2%2Chttp%2F1.1&encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=img.bokovskay.app&type=raw#🇷🇺 Россия t.me/letovpn_free
-vless://99c5b713-dedf-4a10-8070-916ff3f49b0e@fs.qicai99.com:443?security=tls&type=ws&path=%2F&host=fs.qicai99.com&packetEncoding=xudp&alpn=h3%2Ch2%2Chttp%2F1.1&sni=fs.qicai99.com&fp=chrome&encryption=none#🇺🇸 США t.me/letovpn_free
-vless://ad9a885d-93bb-48e3-9937-57f1116b64e3@3.168.219.0:443?security=tls&type=ws&path=%2F&host=d1aedflfr97jes.cloudfront.net&sni=d1aedflfr97jes.cloudfront.net&fp=chrome&alpn=http%2F1.1&encryption=none#🇺🇸 США t.me/letovpn_free
 vless://c6624b96-e346-490b-9145-74c2543a9483@xjpp.zjlo.top:36442?security=tls&type=tcp&sni=xjpp.zjlo.top&flow=xtls-rprx-vision&fp=chrome#🇸🇬 Сингапур t.me/letovpn_free

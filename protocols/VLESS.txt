@@ -1,10 +1,10 @@
-#announce: Updated: 15.11.2026 07:37:49
+#announce: Updated: 15.11.2026 16:31:20
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
-vless://97fd7807-7e2b-49da-8a0e-e40197088f97@165.231.157.148:8443?encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=api-6af74a4f.adhil.uk&type=tcp#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://ad9a885d-93bb-48e3-9937-57f1116b64e3@3.168.219.0:443?alpn=http/1.1&encryption=none&host=d1aedflfr97jes.cloudfront.net&path=/&security=tls&sni=d1aedflfr97jes.cloudfront.net&type=ws#blacklist 🇺🇸 США t.me/letovpn_free
+vless://b076877c-0485-0001-b8da-3e58b09b7961@82.202.138.240:443?security=tls&sni=etqtd-ru-41sb.fade.mom#whitelist 🇷🇺 Россия t.me/letovpn_free
+vless://77146066-6f06-0001-bced-d2b73668de07@213.171.31.83:443?security=tls&sni=cffhi-ru-46sb.fade.mom&alpn=h2%2Chttp%2F1.1&fp=qq#whitelist 🇷🇺 Россия t.me/letovpn_free
 vless://c6624b96-e346-490b-9145-74c2543a9483@xjpp.zjlo.top:36442?security=tls&type=tcp&sni=xjpp.zjlo.top&flow=xtls-rprx-vision&fp=chrome#🇸🇬 Сингапур t.me/letovpn_free

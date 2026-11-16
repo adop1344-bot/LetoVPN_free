@@ -1,12 +1,12 @@
-#announce: Updated: 16.11.2026 07:35:13
+#announce: Updated: 16.11.2026 17:44:46
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
+vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.206:8443?alpn=http%2F1.1&encryption=none&host=free.sahanwickramasinghe.com&path=%2F&security=tls&sni=free.sahanwickramasinghe.com&type=ws&fp=edge&allowInsecure=0&insecure=0#blacklist 🇺🇸 США t.me/letovpn_free
 vless://2232d904-8e6a-4202-8240-6efd8aec02e9@app.streamru4.net:443?encryption=none&flow=xtls-rprx-vision&headerType=none&security=tls&sni=app.streamru4.net&type=tcp&fp=ios#🇺🇸 США t.me/letovpn_free
-vless://eaf76557-2219-4799-8171-d7020adfefd0@104.18.151.231:443?encryption=none&host=hidden-star-98c5.tebohi79684008.workers.dev&path=%2Fws&security=tls&sni=hidden-star-98c5.tebohi79684008.workers.dev&type=ws#blacklist 🇺🇸 США t.me/letovpn_free
-vless://2232d904-8e6a-4202-8240-6efd8aec02e9@84.32.100.247:443?security=tls&type=tcp&packetEncoding=xudp&sni=app.streamru4.net&fp=chrome&flow=xtls-rprx-vision&encryption=none#🇩🇪 Германия t.me/letovpn_free
-vless://8a1a991a-f206-447a-adaf-37a57c133418@ir2.cryptojakiro.com:443?&security=tls&fp=chrome&sni=ir2.cryptojakiro.com&type=ws&headerType=none&host=ir2.cryptojakiro.com&path=%2F#🇺🇸 США t.me/letovpn_free
+vless://c0c949fc-2ed6-4597-b680-a1a3276ebf87@188.225.24.192:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=portal.bokovskay.app&type=raw#🇷🇺 Россия t.me/letovpn_free
+vless://c0c949fc-2ed6-4597-b680-a1a3276ebf87@188.225.24.62:443?alpn=h2%2Chttp%2F1.1&encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=img.bokovskay.app&type=raw#🇷🇺 Россия t.me/letovpn_free
 vless://c6624b96-e346-490b-9145-74c2543a9483@xjpp.zjlo.top:36442?security=tls&type=tcp&sni=xjpp.zjlo.top&flow=xtls-rprx-vision&fp=chrome#🇸🇬 Сингапур t.me/letovpn_free

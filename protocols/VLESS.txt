@@ -1,4 +1,4 @@
-#announce: Updated: 17.11.2026 04:39:17
+#announce: Updated: 17.11.2026 18:35:38
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
@@ -6,5 +6,7 @@
 #profile-title: VLESS TG@LetoVPN_Free
 
 vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.206:8443?alpn=http%2F1.1&encryption=none&host=free.sahanwickramasinghe.com&path=%2F&security=tls&sni=free.sahanwickramasinghe.com&type=ws&fp=edge&allowInsecure=0&insecure=0#blacklist 🇺🇸 США t.me/letovpn_free
-vless://2232d904-8e6a-4202-8240-6efd8aec02e9@app.streamru4.net:443?encryption=none&flow=xtls-rprx-vision&headerType=none&security=tls&sni=app.streamru4.net&type=tcp&fp=ios#🇺🇸 США t.me/letovpn_free
+vless://dfe50e18-28ce-459e-a6b9-0f2585bcc3b6@48.102.209.71:443?security=tls&type=tcp&packetEncoding=xudp&sni=ee.point.cookie-line.cc&fp=firefox&flow=xtls-rprx-vision&encryption=none#🇺🇸 США t.me/letovpn_free
+vless://24fb9b5b-43b7-4058-a7e5-a0499ada1fda@146.19.254.171:8443?&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=146.19.254.171&type=tcp&headerType=none&path=%2F#🇳🇱 Нидерланды t.me/letovpn_free
+vless://352a250d-080b-47b5-b7db-f9f8fa31c551@130.78.30.147:443?&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=105ky37.virtual-network.lol&type=tcp&headerType=none&path=%2F#🇳🇱 Нидерланды t.me/letovpn_free
 vless://c6624b96-e346-490b-9145-74c2543a9483@xjpp.zjlo.top:36442?security=tls&type=tcp&sni=xjpp.zjlo.top&flow=xtls-rprx-vision&fp=chrome#🇸🇬 Сингапур t.me/letovpn_free

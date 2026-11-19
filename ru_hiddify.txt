@@ -1,1 +1,0 @@
-vless://fd90e601-a56c-42b8-aab7-aa02d26fcb04@168.113.143.5:443?flow=xtls-rprx-vision&security=tls&sni=rsk3.betust.net&fp=edge#whitelist 🇷🇺 Россия t.me/letovpn_free

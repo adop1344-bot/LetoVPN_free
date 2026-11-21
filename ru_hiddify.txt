@@ -1,2 +1,1 @@
-vless://7370aef1-b137-411d-ad0a-c12cc8c0b65e@188.225.74.139:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=spb.b2ai.top&type=raw#🇷🇺 Россия t.me/letovpn_free
-vless://71bd5b95-4079-417e-a34f-386a07588105@188.225.83.204:7443?encryption=none&fp=firefox&security=tls&sni=polska.champmoney.ru&type=raw#🇷🇺 Россия t.me/letovpn_free
+vless://e9958027-03be-4eb5-bcec-70415b2e4844@66.90.91.122:443?security=tls&sni=6b014610-e9958027.ferrin.uk&alpn=h2&type=xhttp&path=%2F&mode=auto&fp=android#whitelist 🇷🇺 Россия t.me/letovpn_free

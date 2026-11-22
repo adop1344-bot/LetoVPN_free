@@ -1,14 +1,16 @@
-#announce: Updated: 22.11.2026 01:53:52
+#announce: Updated: 22.11.2026 07:53:15
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
-vless://d6d40100-9442-0001-b5b9-6d259318c421@168.113.253.178:443?encryption=none&security=tls&sni=uzndiuvzvqqljdyhzs.fcloudservices.site&type=tcp&fp=chrome#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://e9958027-03be-4eb5-bcec-70415b2e4844@107.150.93.43:443?encryption=none&security=tls&sni=e9958027.ferrin.uk&type=xhttp&fp=ios#whitelist 🇪🇪 Эстония t.me/letovpn_free
-vless://e9958027-03be-4eb5-bcec-70415b2e4844@66.90.91.122:443?security=tls&alpn=h2&sni=6b014610-e9958027.ferrin.uk&type=xhttp&fp=android#whitelist 🇷🇺 Россия t.me/letovpn_free
+vless://e9958027-03be-4eb5-bcec-70415b2e4844@107.150.93.43:443?encryption=none&fp=firefox&host=107.150.93.43&security=tls&sni=e9958027.ferrin.uk&type=xhttp#whitelist 🇪🇪 Эстония t.me/letovpn_free
+vless://d795a9ec-5ed0-4309-ba6c-edc09b818669@31.43.179.196:443?type=xhttp&security=tls&sni=mama51.baklajann.ru&fp=chrome&path=/&host=mama51.baklajann.ru&mode=auto#blacklist 🇰🇿 KZ t.me/letovpn_free
+vless://d795a9ec-5ed0-4309-ba6c-edc09b818669@89.116.46.150:443?type=xhttp&security=tls&sni=145.baklajann.ru&fp=chrome&path=/&host=145.baklajann.ru&mode=auto#blacklist 🇩🇪 Германия t.me/letovpn_free
 vless://254f28cb-d0c1-41e9-a06b-f2155213ff04@177.177.215.45:444?flow=xtls-rprx-vision-udp443&security=tls&sni=ams2.shtil.io&fp=ios#🇳🇱 Нидерланды t.me/letovpn_free
 vless://24fb9b5b-43b7-4058-a7e5-a0499ada1fda@146.19.254.171:8443?security=tls&type=tcp&packetEncoding=xudp&sni=146.19.254.171&fp=chrome&flow=xtls-rprx-vision&encryption=none#🇳🇱 Нидерланды t.me/letovpn_free
 vless://03fcc618-b93d-6796-6aed-8a38c975d581@kuruish.org:443?encryption=none&security=tls&sni=kuruish.org&type=tcp&headerType=none&host=kuruish.org&allowInsecure=0&insecure=0#🇺🇸 США t.me/letovpn_free
 vless://254f28cb-d0c1-41e9-a06b-f2155213ff04@ams2.shtil.io:444?alpn=h2%2Chttp%2F1.1&flow=xtls-rprx-vision&security=tls&sni=ams2.shtil.io&fp=ios#🇺🇸 США t.me/letovpn_free
+vless://d6d40100-9442-0001-b5b9-6d259318c421@168.113.253.178:443?encryption=none&security=tls&sni=uzndiuvzvqqljdyhzs.fcloudservices.site&type=tcp&fp=chrome#🇷🇺 Россия t.me/letovpn_free
+vless://e9958027-03be-4eb5-bcec-70415b2e4844@66.90.91.122:443?security=tls&alpn=h2&sni=6b014610-e9958027.ferrin.uk&type=xhttp&fp=android#🇷🇺 Россия t.me/letovpn_free

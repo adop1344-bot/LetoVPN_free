@@ -1,2 +1,2 @@
-vless://d6d40100-9442-0001-b5b9-6d259318c421@168.113.253.178:443?encryption=none&security=tls&sni=uzndiuvzvqqljdyhzs.fcloudservices.site&type=tcp&fp=chrome#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://e9958027-03be-4eb5-bcec-70415b2e4844@66.90.91.122:443?security=tls&alpn=h2&sni=6b014610-e9958027.ferrin.uk&type=xhttp&fp=android#whitelist 🇷🇺 Россия t.me/letovpn_free
+vless://d6d40100-9442-0001-b5b9-6d259318c421@168.113.253.178:443?encryption=none&security=tls&sni=uzndiuvzvqqljdyhzs.fcloudservices.site&type=tcp&fp=chrome#🇷🇺 Россия t.me/letovpn_free
+vless://e9958027-03be-4eb5-bcec-70415b2e4844@66.90.91.122:443?security=tls&alpn=h2&sni=6b014610-e9958027.ferrin.uk&type=xhttp&fp=android#🇷🇺 Россия t.me/letovpn_free

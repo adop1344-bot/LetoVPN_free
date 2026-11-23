@@ -1,14 +1,13 @@
-#announce: Updated: 23.11.2026 02:18:54
+#announce: Updated: 23.11.2026 08:30:01
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
-vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.206:8443?alpn=http%2F1.1&encryption=none&host=free.sahanwickramasinghe.com&path=%2F&security=tls&sni=free.sahanwickramasinghe.com&type=ws&fp=edge&allowInsecure=0&insecure=0#blacklist 🇺🇸 США t.me/letovpn_free
+vless://52d0c9b1-80aa-4b20-bcb1-849991560498@66.90.91.122:443?security=tls&sni=6b02f2a1-52d0c9b1.ferrin.uk&alpn=h2&fp=safari&type=xhttp&path=%2F&mode=stream-one&extra=%7B%22xmux%22%3A%7B%22hMaxReusableSecs%22%3A%221140-1260%22%2C%22maxConnections%22%3A3%7D%7D#whitelist 🇷🇺 Россия t.me/letovpn_free
+vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.206:8443?alpn=http%2F1.1&encryption=none&host=free.sahanwickramasinghe.com&path=%2F&security=tls&sni=free.sahanwickramasinghe.com&type=ws&fp=safari&allowInsecure=0&insecure=0#blacklist 🇺🇸 США t.me/letovpn_free
 vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.27.97.42:8443?security=tls&alpn=http%2F1.1&host=free.sahanwickramasinghe.com&fp=edge&type=ws&sni=free.sahanwickramasinghe.com#blacklist 🇺🇸 США t.me/letovpn_free
-vless://cde5d3ef-7d14-4fed-a74d-ac98e39bf9ec@13.143.179.17:52006?flow=xtls-rprx-vision&security=tls&sni=nl.buyclicks.click&alpn=h2%2Chttp%2F1.1&fp=firefox#blacklist 🇺🇸 США t.me/letovpn_free
-vless://4d8d9640-7cc7-4c55-ba54-6ce0d1709541@141.193.213.20:8443?security=tls&type=ws&path=%2F&host=matrix.learnpodedu.com&packetEncoding=xudp&alpn=h2&sni=matrix.learnpodedu.com&fp=chrome#🇺🇸 США t.me/letovpn_free
 vless://254f28cb-d0c1-41e9-a06b-f2155213ff04@177.177.215.45:444?flow=xtls-rprx-vision-udp443&security=tls&sni=ams2.shtil.io&fp=ios#🇳🇱 Нидерланды t.me/letovpn_free
 vless://24fb9b5b-43b7-4058-a7e5-a0499ada1fda@146.19.254.171:8443?security=tls&type=tcp&packetEncoding=xudp&sni=146.19.254.171&fp=chrome&flow=xtls-rprx-vision&encryption=none#🇳🇱 Нидерланды t.me/letovpn_free
 vless://03fcc618-b93d-6796-6aed-8a38c975d581@kuruish.org:443?encryption=none&security=tls&sni=kuruish.org&type=tcp&headerType=none&host=kuruish.org&allowInsecure=0&insecure=0#🇺🇸 США t.me/letovpn_free

@@ -1,1 +1,0 @@
-vless://52d0c9b1-80aa-4b20-bcb1-849991560498@66.90.91.122:443?security=tls&sni=6b02f2a1-52d0c9b1.ferrin.uk&alpn=h2&fp=safari&type=xhttp&path=%2F&mode=stream-one&extra=%7B%22xmux%22%3A%7B%22hMaxReusableSecs%22%3A%221140-1260%22%2C%22maxConnections%22%3A3%7D%7D#whitelist 🇷🇺 Россия t.me/letovpn_free

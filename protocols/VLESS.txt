@@ -1,16 +1,12 @@
-#announce: Updated: 23.11.2026 20:20:53
+#announce: Updated: 24.11.2026 06:55:29
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
-vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.27.97.42:8443?security=tls&alpn=http%2F1.1&host=free.sahanwickramasinghe.com&fp=edge&type=ws&sni=free.sahanwickramasinghe.com#blacklist 🇺🇸 США t.me/letovpn_free
-vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.206:8443?alpn=http%2F1.1&encryption=none&host=free.sahanwickramasinghe.com&path=%2F&security=tls&sni=free.sahanwickramasinghe.com&type=ws&fp=edge&allowInsecure=0&insecure=0#blacklist 🇺🇸 США t.me/letovpn_free
-vless://4d8d9640-7cc7-4c55-ba54-6ce0d1709541@141.193.213.20:8443?encryption=none&fp=firefox&host=matrix.learnpodedu.com&security=tls&sni=matrix.learnpodedu.com&type=ws#blacklist 🇺🇸 США t.me/letovpn_free
-vless://4d8d9640-7cc7-4c55-ba54-6ce0d1709541@141.193.213.21:8443?encryption=none&fp=firefox&host=matrix.learnpodedu.com&security=tls&sni=matrix.learnpodedu.com&type=ws#blacklist 🇺🇸 США t.me/letovpn_free
-vless://4d8d9640-7cc7-4c55-ba54-6ce0d1709541@news.zoom.us:8443?type=ws&security=tls&fp=chrome&sni=matrix.learnpodedu.com&host=matrix.learnpodedu.com&vcn=matrix.learnpodedu.com#blacklist 🇺🇸 США t.me/letovpn_free
-vless://254f28cb-d0c1-41e9-a06b-f2155213ff04@177.177.215.45:444?flow=xtls-rprx-vision-udp443&security=tls&sni=ams2.shtil.io&fp=ios#🇳🇱 Нидерланды t.me/letovpn_free
-vless://24fb9b5b-43b7-4058-a7e5-a0499ada1fda@146.19.254.171:8443?security=tls&type=tcp&packetEncoding=xudp&sni=146.19.254.171&fp=chrome&flow=xtls-rprx-vision&encryption=none#🇳🇱 Нидерланды t.me/letovpn_free
+vless://2b7a122f-f6ff-4860-a919-7bf51be03c02@45.67.215.111:443?encryption=none&security=tls&sni=mama1455.baklajann.ru&fp=chrome&type=xhttp&path=/&host=mama1455.baklajann.ru&mode=auto&extra=%7B%22mode%22%3A%22packet-up%22%2C%22path%22%3A%22%2F%22%2C%22xmux%22%3A%7B%22maxConnections%22%3A4%2C%22maxConcurrency%22%3A0%2C%22cMaxReuseTimes%22%3A0%2C%22hMaxRequestTimes%22%3A%22600-900%22%2C%22hMaxReusableSecs%22%3A%221800-3000%22%2C%22hKeepAlivePeriod%22%3A0%7D%7D#whitelist 🇷🇺 Россия t.me/letovpn_free
+vless://2b7a122f-f6ff-4860-a919-7bf51be03c02@45.67.215.17:443?encryption=none&security=tls&sni=mama51.baklajann.ru&fp=chrome&type=xhttp&path=/&host=mama51.baklajann.ru&mode=auto&extra=%7B%22mode%22%3A%22packet-up%22%2C%22path%22%3A%22%2F%22%2C%22xmux%22%3A%7B%22maxConnections%22%3A4%2C%22maxConcurrency%22%3A0%2C%22cMaxReuseTimes%22%3A0%2C%22hMaxRequestTimes%22%3A%22600-900%22%2C%22hMaxReusableSecs%22%3A%221800-3000%22%2C%22hKeepAlivePeriod%22%3A0%7D%7D#whitelist 🇷🇺 Россия t.me/letovpn_free
+vless://2b7a122f-f6ff-4860-a919-7bf51be03c02@45.67.215.20:443?encryption=none&security=tls&sni=19.baklajann.ru&fp=chrome&type=xhttp&path=/&host=19.baklajann.ru&mode=auto&extra=%7B%22mode%22%3A%22packet-up%22%2C%22path%22%3A%22%2F%22%2C%22xmux%22%3A%7B%22maxConnections%22%3A4%2C%22maxConcurrency%22%3A0%2C%22cMaxReuseTimes%22%3A0%2C%22hMaxRequestTimes%22%3A%22600-900%22%2C%22hMaxReusableSecs%22%3A%221800-3000%22%2C%22hKeepAlivePeriod%22%3A0%7D%7D#whitelist 🇷🇺 Россия t.me/letovpn_free
+vless://a077dc9a-712f-48ea-b75c-d94af64011ec@188.225.46.6:443?alpn=h2%2Chttp%2F1.1&encryption=none&flow=xtls-rprx-vision-udp443&fp=firefox&security=tls&sni=spb.b2ai.top&type=raw#🇷🇺 Россия t.me/letovpn_free
 vless://03fcc618-b93d-6796-6aed-8a38c975d581@kuruish.org:443?encryption=none&security=tls&sni=kuruish.org&type=tcp&headerType=none&host=kuruish.org&allowInsecure=0&insecure=0#🇺🇸 США t.me/letovpn_free
-vless://254f28cb-d0c1-41e9-a06b-f2155213ff04@ams2.shtil.io:444?alpn=h2%2Chttp%2F1.1&flow=xtls-rprx-vision&security=tls&sni=ams2.shtil.io&fp=ios#🇺🇸 США t.me/letovpn_free

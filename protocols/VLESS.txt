@@ -1,12 +1,15 @@
-#announce: Updated: 24.11.2026 06:55:29
+#announce: Updated: 24.11.2026 20:04:21
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
-vless://2b7a122f-f6ff-4860-a919-7bf51be03c02@45.67.215.111:443?encryption=none&security=tls&sni=mama1455.baklajann.ru&fp=chrome&type=xhttp&path=/&host=mama1455.baklajann.ru&mode=auto&extra=%7B%22mode%22%3A%22packet-up%22%2C%22path%22%3A%22%2F%22%2C%22xmux%22%3A%7B%22maxConnections%22%3A4%2C%22maxConcurrency%22%3A0%2C%22cMaxReuseTimes%22%3A0%2C%22hMaxRequestTimes%22%3A%22600-900%22%2C%22hMaxReusableSecs%22%3A%221800-3000%22%2C%22hKeepAlivePeriod%22%3A0%7D%7D#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://2b7a122f-f6ff-4860-a919-7bf51be03c02@45.67.215.17:443?encryption=none&security=tls&sni=mama51.baklajann.ru&fp=chrome&type=xhttp&path=/&host=mama51.baklajann.ru&mode=auto&extra=%7B%22mode%22%3A%22packet-up%22%2C%22path%22%3A%22%2F%22%2C%22xmux%22%3A%7B%22maxConnections%22%3A4%2C%22maxConcurrency%22%3A0%2C%22cMaxReuseTimes%22%3A0%2C%22hMaxRequestTimes%22%3A%22600-900%22%2C%22hMaxReusableSecs%22%3A%221800-3000%22%2C%22hKeepAlivePeriod%22%3A0%7D%7D#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://2b7a122f-f6ff-4860-a919-7bf51be03c02@45.67.215.20:443?encryption=none&security=tls&sni=19.baklajann.ru&fp=chrome&type=xhttp&path=/&host=19.baklajann.ru&mode=auto&extra=%7B%22mode%22%3A%22packet-up%22%2C%22path%22%3A%22%2F%22%2C%22xmux%22%3A%7B%22maxConnections%22%3A4%2C%22maxConcurrency%22%3A0%2C%22cMaxReuseTimes%22%3A0%2C%22hMaxRequestTimes%22%3A%22600-900%22%2C%22hMaxReusableSecs%22%3A%221800-3000%22%2C%22hKeepAlivePeriod%22%3A0%7D%7D#whitelist 🇷🇺 Россия t.me/letovpn_free
-vless://a077dc9a-712f-48ea-b75c-d94af64011ec@188.225.46.6:443?alpn=h2%2Chttp%2F1.1&encryption=none&flow=xtls-rprx-vision-udp443&fp=firefox&security=tls&sni=spb.b2ai.top&type=raw#🇷🇺 Россия t.me/letovpn_free
+vless://7ad63b26-bf70-4872-8fab-ebaf73a1e19d@176.98.176.60:443?alpn=h2%252Chttp%252F1.1&flow=xtls-rprx-vision&host=mosaic.topp-con.xyz&security=tls&sni=mosaic.topp-con.xyz&type=tcp&fp=safari#whitelist 🇷🇺 Россия t.me/letovpn_free
+vless://254f28cb-d0c1-41e9-a06b-f2155213ff04@177.177.215.45:444?&security=tls&flow=xtls-rprx-vision&sni=ams2.shtil.io&type=tcp&headerType=none&host=ams2.shtil.io&path=%2F#whitelist 🇳🇱 Нидерланды t.me/letovpn_free
+vless://254f28cb-d0c1-41e9-a06b-f2155213ff04@ams2.shtil.io:444?&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=ams2.shtil.io&type=tcp&headerType=none&host=ams2.shtil.io&path=%2F#whitelist 🇺🇸 США t.me/letovpn_free
+vless://bd6c11e0-0233-4fb1-ba97-8d5f16d7155f@104.26.14.111:2083?encryption=none&security=tls&sni=site.check-looks.space&type=ws&path=%2F&host=site.check-looks.space#blacklist 🇺🇸 США t.me/letovpn_free
+vless://bd6c11e0-0233-4fb1-ba97-8d5f16d7155f@172.67.74.177:2083?encryption=none&security=tls&sni=site.check-looks.space&type=ws&path=%2F&host=site.check-looks.space#blacklist 🇺🇸 США t.me/letovpn_free
+vless://fbe22815-0718-4eae-816f-e91c67d15b54@94.159.98.82:2053?type=tcp&security=tls&fp=chrome&flow=xtls-rprx-vision&allowInsecure=0&insecure=0#blacklist 🇩🇪 Германия t.me/letovpn_free
+vless://ecf65acd-ea72-0002-be5f-cd23afb2722f@168.113.187.116:443?alpn=http%2F1.1&encryption=none&flow=xtls-rprx-vision&security=tls&sni=files.vpvi.store&type=tcp&fp=edge#whitelist 🇷🇺 Россия t.me/letovpn_free
 vless://03fcc618-b93d-6796-6aed-8a38c975d581@kuruish.org:443?encryption=none&security=tls&sni=kuruish.org&type=tcp&headerType=none&host=kuruish.org&allowInsecure=0&insecure=0#🇺🇸 США t.me/letovpn_free

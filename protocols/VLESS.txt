@@ -1,25 +1,11 @@
-#announce: Updated: 25.11.2026 05:02:51
+#announce: Updated: 25.11.2026 19:52:19
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
-vless://bd6c11e0-0233-4fb1-ba97-8d5f16d7155f@104.17.145.145:2083?encryption=none&host=site.check-looks.space&path=%2F&security=tls&sni=site.check-looks.space&type=ws&fp=firefox#blacklist 🇺🇸 США t.me/letovpn_free
-vless://bd6c11e0-0233-4fb1-ba97-8d5f16d7155f@104.17.145.43:2083?encryption=none&host=site.check-looks.space&path=%2F&security=tls&sni=site.check-looks.space&type=ws&fp=firefox#blacklist 🇺🇸 США t.me/letovpn_free
-vless://bd6c11e0-0233-4fb1-ba97-8d5f16d7155f@104.26.14.111:2083?encryption=none&security=tls&sni=site.check-looks.space&type=ws&path=%2F&host=site.check-looks.space#blacklist 🇺🇸 США t.me/letovpn_free
-vless://bd6c11e0-0233-4fb1-ba97-8d5f16d7155f@104.24.9.103:2083?encryption=none&security=tls&sni=site.check-looks.space&type=ws&path=%2F&host=site.check-looks.space#blacklist 🇺🇸 США t.me/letovpn_free
-vless://bd6c11e0-0233-4fb1-ba97-8d5f16d7155f@162.159.152.118:2083?encryption=none&host=site.check-looks.space&path=%2F&security=tls&sni=site.check-looks.space&type=ws&fp=safari#blacklist 🇺🇸 США t.me/letovpn_free
-vless://bd6c11e0-0233-4fb1-ba97-8d5f16d7155f@172.64.150.13:2083?encryption=none&host=site.check-looks.space&path=%2F&security=tls&sni=site.check-looks.space&type=ws&fp=edge#blacklist 🇺🇸 США t.me/letovpn_free
-vless://3493b1bc-1c65-46e6-9cb6-9dd62b99afea@108.158.199.93:443?security=tls&type=ws&sni=d1aedflfr97jes.cloudfront.net&path=%2F&host=d1aedflfr97jes.cloudfront.net&fp=chrome#blacklist 🇺🇸 США t.me/letovpn_free
-vless://bd6c11e0-0233-4fb1-ba97-8d5f16d7155f@172.64.150.205:2083?encryption=none&host=site.check-looks.space&path=%2F&security=tls&sni=site.check-looks.space&type=ws&fp=edge#blacklist 🇺🇸 США t.me/letovpn_free
-vless://bd6c11e0-0233-4fb1-ba97-8d5f16d7155f@172.67.74.177:2083?encryption=none&security=tls&sni=site.check-looks.space&type=ws&path=%2F&host=site.check-looks.space#blacklist 🇺🇸 США t.me/letovpn_free
-vless://4d8d9640-7cc7-4c55-ba54-6ce0d1709541@news.zoom.us:8443?type=ws&security=tls&sni=matrix.learnpodedu.com&host=matrix.learnpodedu.com&vcn=matrix.learnpodedu.com&fp=edge#blacklist 🇺🇸 США t.me/letovpn_free
-vless://4d8d9640-7cc7-4c55-ba54-6ce0d1709541@141.193.213.21:8443?type=ws&security=tls&fp=chrome&sni=matrix.learnpodedu.com&host=matrix.learnpodedu.com&vcn=matrix.learnpodedu.com#blacklist 🇺🇸 США t.me/letovpn_free
-vless://d7121b33-e335-4921-bb00-4c0b157e7fc1@94.183.167.172:443?security=tls&fp=chrome&sni=s8k4.scan-cdn.com#blacklist 🇦🇪 ОАЭ t.me/letovpn_free
-vless://d7121b33-e335-4921-bb00-4c0b157e7fc1@201.8.87.187:443?flow=xtls-rprx-vision&insecure=0&headerType=none&sni=2gcnbpjzq4go.cloud-kmt.com&encryption=none&allowInsecure=0&security=tls&type=tcp#🇸🇪 Швеция t.me/letovpn_free
 vless://04920673-035c-410d-94e4-5b1469d3fb6f@171.22.183.167:443?insecure=0&allowInsecure=0&headerType=none&security=tls&sni=171.22.183.167&type=tcp&flow=xtls-rprx-vision&encryption=none&fp=chrome#🇳🇱 Нидерланды t.me/letovpn_free
 vless://fbe22815-0718-4eae-816f-e91c67d15b54@94.159.98.82:2053?type=tcp&security=tls&fp=chrome&flow=xtls-rprx-vision&allowInsecure=0&insecure=0#🇩🇪 Германия t.me/letovpn_free
-vless://03fcc618-b93d-6796-6aed-8a38c975d581@kuruish.org:443?encryption=none&security=tls&sni=kuruish.org&type=tcp&headerType=none&host=kuruish.org&allowInsecure=0&insecure=0#🇺🇸 США t.me/letovpn_free
 vless://7ad63b26-bf70-4872-8fab-ebaf73a1e19d@176.98.176.60:443?alpn=h2%252Chttp%252F1.1&flow=xtls-rprx-vision&host=mosaic.topp-con.xyz&security=tls&sni=mosaic.topp-con.xyz&type=tcp&fp=safari#🇷🇺 Россия t.me/letovpn_free
-vless://254f28cb-d0c1-41e9-a06b-f2155213ff04@ams2.shtil.io:444?&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=ams2.shtil.io&type=tcp&headerType=none&host=ams2.shtil.io&path=%2F#🇺🇸 США t.me/letovpn_free
+vless://d7121b33-e335-4921-bb00-4c0b157e7fc1@94.183.167.172:443?security=tls&fp=chrome&sni=s8k4.scan-cdn.com#🇦🇪 ОАЭ t.me/letovpn_free

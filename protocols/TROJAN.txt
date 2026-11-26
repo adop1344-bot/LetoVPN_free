@@ -1,13 +1,13 @@
-#announce: Updated: 25.11.2026 19:52:19
+#announce: Updated: 26.11.2026 04:39:39
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/TROJAN.txt
 #profile-title: TROJAN TG@LetoVPN_Free
 
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.52:443?sni=courses.browseseniorrolesandenhanceyourcareertoday.com&peer=courses.browseseniorrolesandenhanceyourcareertoday.com&security=tls#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.30:443?security=tls&fp=chrome&sni=resources.searchnationwidecareerchangehelperandguidancetoday.com#🇺🇸 США t.me/letovpn_free
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.26:443?sni=blog.searchnationwidecareerchangehelperandguidancetoday.com&peer=blog.searchnationwidecareerchangehelperandguidancetoday.com&security=tls#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.52:443?sni=courses.browseseniorrolesandenhanceyourcareertoday.com&peer=courses.browseseniorrolesandenhanceyourcareertoday.com&security=tls#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.81:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=courses.searchnationwidecareerchangehelperandguidancetoday.com#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.53:443?sni=www.explorecreativejobsandenhanceyourcareerportfolio.com&peer=www.explorecreativejobsandenhanceyourcareerportfolio.com&security=tls#🇺🇸 США t.me/letovpn_free
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.26:443?sni=blog.searchnationwidecareerchangehelperandguidancetoday.com&peer=blog.searchnationwidecareerchangehelperandguidancetoday.com&security=tls#🇺🇸 США t.me/letovpn_free
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@139.84.231.142:443?sni=explorecareerpathsandunlockprofessionalsuccesstoday.com&peer=explorecareerpathsandunlockprofessionalsuccesstoday.com&security=tls#🇿🇦 ЮАР t.me/letovpn_free

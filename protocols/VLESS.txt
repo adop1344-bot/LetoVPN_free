@@ -1,9 +1,13 @@
-#announce: Updated: 26.11.2026 19:26:38
+#announce: Updated: 27.11.2026 04:37:36
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
+vless://0173d52e-8e1b-4681-831e-11529677b72f@one.alpheratzz.org:8443?type=raw&flow=xtls-rprx-vision&security=tls&sni=api-6b04608f.adhil.uk&alpn=h2&fp=qq#blacklist 🇺🇸 США t.me/letovpn_free
+vless://8840fac2-5361-4cb6-b887-cd1b95092394@50.7.159.242:443?security=tls&fp=firefox&sni=jp.reddotcorp.org#blacklist 🇯🇵 Япония t.me/letovpn_free
+vless://4d8d9640-7cc7-4c55-ba54-6ce0d1709541@141.193.213.21:8443?security=tls&sni=matrix.learnpodedu.com&type=ws&host=matrix.learnpodedu.com&fp=firefox#blacklist 🇺🇸 США t.me/letovpn_free
+vless://33393561-4c63-416f-91dd-f88efc57c42a@hw3.modemjibi.com:993?path=/&security=tls&alpn=http/1.1&encryption=none&insecure=0&fp=chrome&type=ws&allowInsecure=0&sni=hw3.modemjibi.com.#🇺🇸 США t.me/letovpn_free
 vless://04920673-035c-410d-94e4-5b1469d3fb6f@171.22.183.167:443?insecure=0&allowInsecure=0&headerType=none&security=tls&sni=171.22.183.167&type=tcp&flow=xtls-rprx-vision&encryption=none&fp=chrome#🇳🇱 Нидерланды t.me/letovpn_free
 vless://7ad63b26-bf70-4872-8fab-ebaf73a1e19d@176.98.176.60:443?alpn=h2%252Chttp%252F1.1&flow=xtls-rprx-vision&host=mosaic.topp-con.xyz&security=tls&sni=mosaic.topp-con.xyz&type=tcp&fp=safari#🇷🇺 Россия t.me/letovpn_free

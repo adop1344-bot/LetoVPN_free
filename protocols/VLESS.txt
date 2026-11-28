@@ -1,16 +1,12 @@
-#announce: Updated: 28.11.2026 04:10:36
+#announce: Updated: 28.11.2026 18:08:34
 #support-url: https://t.me/@why_im_gay
 #profile-update-interval: 1
 
 #profile-web-page-url: https://raw.githubusercontent.com/adop1344-bot/LetoVPN_free/main/protocols/VLESS.txt
 #profile-title: VLESS TG@LetoVPN_Free
 
-vless://f121ffc8-f6dc-4728-a871-a05e3f9cf8c5@196.198.111.166:8443?flow=xtls-rprx-vision&security=tls&sni=usr-6b09ce88-api-v3.alcors.net&alpn=h2&fp=firefox#blacklist 🇰🇿 KZ t.me/letovpn_free
-vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.206:8443?alpn=http%2F1.1&encryption=none&host=free.sahanwickramasinghe.com&path=%2F&security=tls&sni=free.sahanwickramasinghe.com&type=ws&fp=edge&allowInsecure=0&insecure=0#blacklist 🇺🇸 США t.me/letovpn_free
-vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.27.97.42:8443?&security=tls&fp=chrome&sni=free.sahanwickramasinghe.com&type=ws&headerType=none&host=free.sahanwickramasinghe.com&path=%2F#blacklist 🇺🇸 США t.me/letovpn_free
-vless://4d8d9640-7cc7-4c55-ba54-6ce0d1709541@141.193.213.21:8443?encryption=none&security=tls&sni=matrix.learnpodedu.com&fp=firefox&type=ws&host=matrix.learnpodedu.com&packetEncoding=xudp#blacklist 🇺🇸 США t.me/letovpn_free
-vless://4d8d9640-7cc7-4c55-ba54-6ce0d1709541@news.zoom.us:8443?encryption=none&security=tls&sni=matrix.learnpodedu.com&fp=edge&type=ws&host=matrix.learnpodedu.com&packetEncoding=xudp#blacklist 🇺🇸 США t.me/letovpn_free
-vless://4d8d9640-7cc7-4c55-ba54-6ce0d1709541@141.193.213.20:8443?encryption=none&fp=firefox&host=matrix.learnpodedu.com&security=tls&sni=matrix.learnpodedu.com&type=ws#blacklist 🇺🇸 США t.me/letovpn_free
-vless://bf14dc50-e9f2-49fd-8642-620446edeafb@www.visa.com:2083?&security=tls&fp=chrome&sni=v4-77j.pages.dev&type=ws&headerType=none&host=v4-77j.pages.dev&path=%2F#🇺🇸 США t.me/letovpn_free
-vless://faf6b8af-e741-4ef5-b1e2-25a3f413cc8e@188.225.77.71:443?alpn=h2&encryption=none&flow=xtls-rprx-vision-udp443&fp=ios&security=tls&sni=spb2.b2ai.top&type=raw#🇷🇺 Россия t.me/letovpn_free
+vless://7a42d986-f0b8-46e7-82cf-9516e168a613@108.159.247.2:443?security=tls&type=ws&path=%2F&host=d1aedflfr97jes.cloudfront.net&sni=d1aedflfr97jes.cloudfront.net&fp=chrome&alpn=http%2F1.1&encryption=none#blacklist 🇺🇸 США t.me/letovpn_free
 vless://8840fac2-5361-4cb6-b887-cd1b95092394@50.7.159.242:443?security=tls&fp=firefox&sni=jp.reddotcorp.org#🇯🇵 Япония t.me/letovpn_free
+vless://f121ffc8-f6dc-4728-a871-a05e3f9cf8c5@196.198.111.166:8443?flow=xtls-rprx-vision&security=tls&sni=usr-6b09ce88-api-v3.alcors.net&alpn=h2&fp=firefox#🇰🇿 KZ t.me/letovpn_free
+vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.27.97.42:8443?&security=tls&fp=chrome&sni=free.sahanwickramasinghe.com&type=ws&headerType=none&host=free.sahanwickramasinghe.com&path=%2F#🇺🇸 США t.me/letovpn_free
+vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.206:8443?alpn=http%2F1.1&encryption=none&host=free.sahanwickramasinghe.com&path=%2F&security=tls&sni=free.sahanwickramasinghe.com&type=ws&fp=edge&allowInsecure=0&insecure=0#🇺🇸 США t.me/letovpn_free

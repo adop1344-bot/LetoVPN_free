@@ -1,1 +1,1 @@
-vless://7ad63b26-bf70-4872-8fab-ebaf73a1e19d@176.98.176.60:443?alpn=h2%252Chttp%252F1.1&flow=xtls-rprx-vision&host=mosaic.topp-con.xyz&security=tls&sni=mosaic.topp-con.xyz&type=tcp&fp=safari#🇷🇺 Россия t.me/letovpn_free
+vless://faf6b8af-e741-4ef5-b1e2-25a3f413cc8e@188.225.77.71:443?alpn=h2&encryption=none&flow=xtls-rprx-vision-udp443&fp=ios&security=tls&sni=spb2.b2ai.top&type=raw#🇷🇺 Россия t.me/letovpn_free
